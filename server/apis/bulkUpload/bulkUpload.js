@@ -7,9 +7,8 @@ const fs = require("fs");
 const { Client } = require("@elastic/elasticsearch");
 const client = new Client({ node: "http://localhost:9200" });
 
-
 //global fileName variable
-var fileName = null;
+let fileName = null;
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -46,6 +45,32 @@ router.get("/SampleTemplate", (req, res) => {
   });
 });
 
+async function oldVehiclesDetails() {
+  // getting the old vehicles from db
+  let oldVehiclesDataFromDB = [];
+
+  const { body } = await client.search({
+    index: "bike-details",
+    body: {
+      size: 10000,
+      query: {
+        match_all: {},
+      },
+    },
+  });
+
+  return new Promise((resolve, reject) => {
+    if (!body) {
+      reject();
+    } else {
+      for (let i = 0; i < body.hits.hits.length; i++) {
+        oldVehiclesDataFromDB.push(body.hits.hits[i]._source);
+      }
+      resolve(oldVehiclesDataFromDB);
+    }
+  });
+}
+
 function zipHelper() {
   try {
     const zip = new Admzip(`./public/${fileName}`);
@@ -60,10 +85,15 @@ function zipHelper() {
         input: "./Bulk/BulkUploadFiles/Records.xlsx",
         output: null,
       },
-      function (err, result) {
+      async function (err, result) {
         if (err) {
           console.log(err);
         } else {
+          //getting the previous vehicles from database
+
+          const oldVehicles = await oldVehiclesDetails();
+
+          console.log("=====old vehicles", oldVehicles);
           dataUpload(result)
             .then(() => {
               removeDir("../server/Bulk/BulkUploadFiles/images");
@@ -203,7 +233,6 @@ async function dataUpload(data) {
     );
   });
 
- 
   const body = modifiedData.flatMap((doc) => [
     { index: { _index: "bike-details" } },
     doc,
