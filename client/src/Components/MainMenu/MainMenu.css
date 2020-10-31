@@ -1,86 +1,103 @@
-#dropdown1{
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+#dropdown1 {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .buy-dropdown-text {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: 0.02px;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.02px;
+  cursor: pointer;
 }
 
 .buy-dropdown-icon {
-    margin-left: 5px;
-    color: white;
-    font-size: 2rem !important;
+  margin-left: 5px;
+  color: white;
+  font-size: 2rem !important;
 }
 
 .dd-city-list {
-    font-size: 16px;
-    display: block;
-    line-height: 22px;
-    padding: 14px 16px;
+  font-size: 16px;
+  display: block;
+  line-height: 22px;
+  padding: 14px 16px;
 }
 
-.MuiInputBase-root .MuiOutlinedInput-root .MuiAutocomplete-inputRoot .MuiInputBase-fullWidth .MuiInputBase-formControl .MuiInputBase-adornedEnd .MuiOutlinedInput-adornedEnd {
-    padding: 0 !important;
+.MuiInputBase-root
+  .MuiOutlinedInput-root
+  .MuiAutocomplete-inputRoot
+  .MuiInputBase-fullWidth
+  .MuiInputBase-formControl
+  .MuiInputBase-adornedEnd
+  .MuiOutlinedInput-adornedEnd {
+  padding: 0 !important;
 }
-.MuiOutlinedInput-root{
-    border-top-left-radius: 5px !important;
-    border-bottom-left-radius: 5px !important;
-    border-top-right-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
+.MuiOutlinedInput-root {
+  border-top-left-radius: 5px !important;
+  border-bottom-left-radius: 5px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 
 .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 
-.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] .MuiAutocomplete-input {
-    padding: 0 0 0 10px !important;
-    margin: 0 !important;
+.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"]
+  .MuiAutocomplete-input {
+  padding: 0 0 0 10px !important;
+  margin: 0 !important;
 }
 .phone-number {
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0.02;
-    border: 0px !important;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.02;
+  border: 0px !important;
 }
-.phone-number-ham>a {
-    color: white;
+.phone-number-ham > a {
+  color: white;
 }
-.phone-number-ham:hover >a {
-    color: black;
+.phone-number-ham:hover > a {
+  color: black;
 }
 .icon-img {
-    margin-right: 10px;
-    cursor: pointer;
+  margin-right: 10px;
+  cursor: pointer;
 }
 .social-icon-img {
-    margin-right: 15px;
+  margin-right: 15px;
 }
-.menu-icons1{
-    cursor: pointer;
-    height: 47%;
-    margin-top: 1%;
-    /* /* margin-left: 5%; * */
+.menu-icons1 {
+  cursor: pointer;
+  height: 47%;
+  margin-top: 1%;
+  /* /* margin-left: 5%; * */
 }
-.menu-icons{
-    cursor: pointer;
-    height: 50%;
+.menu-icons {
+  cursor: pointer;
+  height: 50%;
 }
-.span-select-city{
-    margin-left: 1.75%;
-    width: 200%;
+.span-select-city {
+  margin-left: 1.75%;
+  width: 200%;
 }
-.phone-number-container{
-    display: flex;
-    justify-content: space-between;
+.phone-number-container {
+  display: flex;
+  justify-content: space-between;
 }
 .small-hr {
-    margin: 30px 0 10px 40px;
-    width: 180px;
+  margin: 30px 0 10px 40px;
+  width: 180px;
 }
+
+/* select dropdown at top css */
+
+.nav_dropdown {
+  padding-right: "20px";
+  padding-left: "10px";
+  margin-right: 10px;
+  margin-left:5px
+}
+
