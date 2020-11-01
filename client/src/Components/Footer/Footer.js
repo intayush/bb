@@ -37,9 +37,10 @@ const Footer = () => {
               looking to buy/sell a pre-owned 2 wheeler with the help of
               technology and a team of experts.
             </p>
-            <p style={{ marginTop: "20%" }} className="text">
+
+            <Link to="/copyright"><p style={{ marginTop: "20%" }} className="text">
               &copy; BikeBazaar.All rights reserved
-            </p>
+            </p></Link>
           </div>
           <div
             style={{
@@ -60,12 +61,13 @@ const Footer = () => {
           >
             <div style={{ display: "flex", flexDirection: "column" }}>
               <p className="text">Quick Links</p>
-              <span className="text">About</span>
-              <span className="text">How it works</span>
-              <span className="text">FAQs</span>
-              <span className="text">Privacy Policy</span>
-              <span className="text">Terms & Conditions</span>
-              <span className="text">Contact Us</span>
+             <Link to="/about" className="links"><span className="text">About</span></Link> 
+             <Link to="/howitworks" className="links">  <span className="text">How it works</span></Link>
+              <Link to="/faq" className="links"> <span className="text">FAQs</span></Link>
+              <Link to="/privacypolicy" className="links"><span className="text">Privacy Policy</span></Link>
+                <Link to="/termsandcondition" className="links">  <span className="text">Terms & Conditions</span></Link>
+              <Link to="/contact" className="links">  <span className="text">Contact Us</span></Link>
+             
             </div>
 
             <div
@@ -75,11 +77,11 @@ const Footer = () => {
                 marginTop: "12%",
               }}
             >
-              <span className="text">Buy</span>
-              <span className="text">Sell</span>
-              <span className="text">Locate Store</span>
-              <span className="text">Become a Franchise Owner</span>
-              <span className="text">Blog</span>
+             <Link className="links" to=""><span className="text">Buy</span></Link> 
+             <Link className="links" to="/sell"><span className="text">Sell</span></Link>  
+             <Link className="links"  to="/vehicledetails/locate-store"><span className="text">Locate Store</span></Link> 
+             <Link className="links" to="/becomefranchiseowner"><span className="text">Become a Franchise-Owner</span></Link> 
+             <Link className="links" to=""><span className="text">Blog</span></Link>  
             </div>
           </div>
           <div
@@ -99,7 +101,7 @@ const Footer = () => {
             }}
             className="col s12 m4 l4 "
           >
-            <span style={{ alignContent: "center" }} className="text">
+            <span style={{ alignContent: "center",marginBottom:'12%' }} className="text">
               Contact Info
             </span>
             <span className="text">
@@ -169,26 +171,26 @@ const Footer = () => {
           >
             <div style={{ display: "flex", flexDirection: "column" }}>
               <p className="text">Quick Links</p>
-              <span className="text">About</span>
-              <span className="text">How it works</span>
-              <span className="text">FAQs</span>
-              <span className="text">Privacy Policy</span>
-              <span className="text">Terms & Conditions</span>
-              <span className="text">Contact Us</span>
+              <Link className="links" to="/about"><span className="text">About</span></Link>
+              <Link className="links" to="/howitworks"><span className="text">How it works</span></Link>
+              <Link className="links" to="/faq"><span className="text">FAQs</span></Link>
+              <Link className="links" to="/privacypolicy"><span className="text">Privacy Policy</span></Link> 
+              <Link className="links" to="/termsandconditions"><span className="text">Terms & Conditions</span></Link>
+              <Link className="links" to="/contact"><span className="text">Contact Us</span></Link>
             </div>
 
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
-                marginTop: "12%",
+                marginTop: "10%",
               }}
             >
-              <span className="text">Buy</span>
-              <span className="text">Sell</span>
-              <span className="text">Locate Store</span>
-              <span className="text">Become a Franchise Owner</span>
-              <span className="text">Blog</span>
+             <Link className="links" to=""><span className="text">Buy</span></Link> 
+             <Link className="links" to="/sell"><span className="text">Sell</span></Link> 
+             <Link className="links" to="/locatestore"><span className="text">Locate Store</span></Link> 
+             <Link className="links"  to="/vehicledetails/locate-store"><span className="text">Become a Franchise Owner</span></Link> 
+             <Link className="links" to="/becomefranchiseowner"><span className="text">Blog</span></Link> 
             </div>
           </div>
           <hr className="horizontal" />
@@ -204,14 +206,14 @@ const Footer = () => {
               Contact Info
             </span>
             <br />
-            <div style={{ marginTop: "2%" }} className="text">
+            <div style={{ marginTop: "2%"}} className="text">
               <img
                 style={{ marginRight: "5px" }}
                 height="25"
                 src={callIcon}
                 alt="callIcon"
               />
-              8956853498
+             <span>8956853498</span> 
             </div>
 
             <div
