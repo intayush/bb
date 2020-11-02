@@ -28,3 +28,34 @@
   width: 100%;
   height: 600px;
 }
+
+
+
+/* for carousel of images problem on vehicles*/
+.carousel .slide {
+  text-align: justify;
+}
+
+.carousel .slide img {
+  position: absolute;
+  /* object-fit: contain; */
+  object-fit: scale-down;
+  pointer-events: all;
+}
+
+
+
+.image-gallery-icon {
+  position: fixed;
+  padding: 0;
+}
+.image-gallery-icon:focus {
+  background-color: transparent;
+}
+
+.image-gallery-content.left .image-gallery-slide .image-gallery-image,
+.image-gallery-content.right .image-gallery-slide .image-gallery-image {
+  max-height: 85vh;
+  position: relative;
+  object-fit: scale-down;
+}

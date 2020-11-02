@@ -291,7 +291,7 @@ const VehicleData = (props) => {
       <Grid item xs={12} md={12} sm={12} lg={6} className="vehicleGalSec">
         <div
           className="vehicleGal"
-          style={{ minHeight: "610px", maxHeight: "610px" }}
+          style={{ minHeight: "610px" }}
         >
           {props.data.sold == "true" ? (
             <Carousel
@@ -303,7 +303,7 @@ const VehicleData = (props) => {
               {sliderImages.map((image, key) => {
                 return (
                   <div key={key} style={{ cursor: 'pointer' }} onClick={() => setOpenImgPopup(true)} className="watermarked watermarkedCarousel">
-                    <img src={vehicleImagePath + image} alt="" />
+                    <img height="100%" src={vehicleImagePath + image} alt="" />
                   </div>
                 );
               })}
@@ -318,7 +318,7 @@ const VehicleData = (props) => {
                 {sliderImages.map((image, key) => {
                   return (
                     <div key={key} style={{ cursor: 'pointer' }} onClick={() => setOpenImgPopup(true)}>
-                      <img src={vehicleImagePath + image} alt="" />
+                      <img height="100%" src={vehicleImagePath + image} alt="" />
                     </div>
                   );
                 })}

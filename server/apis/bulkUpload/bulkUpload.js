@@ -89,11 +89,22 @@ function zipHelper() {
         if (err) {
           console.log(err);
         } else {
+
+
           //getting the previous vehicles from database
+          // const oldVehicles = await oldVehiclesDetails();
 
-          const oldVehicles = await oldVehiclesDetails();
+        //   let newRecords=[];
 
-          console.log("=====old vehicles", oldVehicles);
+        //   if (Array.isArray(oldVehicles) && oldVehicles.length) {
+
+        //    const newRecordsFromExcel=result.filter(item=>{
+        //       return !oldVehicles.some(el=>el.regnumber===item.registrationNumber)
+        //     })
+        //     newRecords.push(newRecordsFromExcel);
+        //     console.log("=====newRecords vehicles", newRecords);
+        // }
+
           dataUpload(result)
             .then(() => {
               removeDir("../server/Bulk/BulkUploadFiles/images");
