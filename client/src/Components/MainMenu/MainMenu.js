@@ -8,10 +8,10 @@ import hamburgerIcon from "../../assets/Hamburger_Icon.png";
 import callIcon from "../../assets/Phone.svg";
 import messageIcon from "../../assets/message.png";
 import closeIcon from "../../assets/Close.png";
-// import faceBookIcon from '../../assets/facebook-icon.svg';
-// import twitterIcon from '../../assets/twitter-icon.svg';
-// import linkedinIcon from '../../assets/linkedin-icon.svg';
-// import instagramIcon from '../../assets/instagram-icon.svg';
+import faceBookIcon from '../../assets/facebook-icon.svg';
+import twitterIcon from '../../assets/twitter-icon.svg';
+import linkedinIcon from '../../assets/linkedin-icon.svg';
+import instagramIcon from '../../assets/instagram-icon.svg';
 import selectedTyre from "../../assets/SelectedPageTyre.svg";
 import Grid from "@material-ui/core/Grid";
 import M from "materialize-css";
@@ -463,26 +463,30 @@ const HamburgerDropdown = () => {
         <MenuItem>
           <div style={{ marginLeft: "20px" }}>
             <a href="https://www.facebook.com/BikeBazaaar">
-              {/* <img className="social-icon-img" src={faceBookIcon}  alt="" style={{marginLeft:'35px'}} /> */}
-              <FacebookIcon />
+            {/* <a href="https://www.facebook.com/BikeBazaaar"> */}
+              <img className="social-icon-img" src={faceBookIcon}  alt="" />
+            
             </a>
           </div>
+
           <div style={{ marginLeft: "20px" }}>
-            <a href="https://twitter.com/BikeBazaaar">
-              {/* <img className="social-icon-img" src={twitterIcon}  alt="" /> */}
-              <TwitterIcon />
-            </a>
+          <a href="https://www.instagram.com/bikebazaaar/">
+             
+             <img className="social-icon-img" src={instagramIcon}  alt="" />
+           </a>
           </div>
+          
           <div style={{ marginLeft: "20px" }}>
             <a href="https://www.linkedin.com/company/bikebazaar">
-              {/* <img className="social-icon-img" src={linkedinIcon}  alt="" /> */}
-              <LinkedInIcon />
+              <img className="social-icon-img" src={linkedinIcon}  alt="" />
+  
             </a>
           </div>
           <div style={{ marginLeft: "20px" }}>
-            <a href="https://www.instagram.com/bikebazaaar/">
-              <InstagramIcon />
-              {/* <img className="social-icon-img" src={instagramIcon}  alt="" /> */}
+            
+
+            <a href="https://twitter.com/BikeBazaaar">
+              <img className="social-icon-img" src={twitterIcon}  alt="" />
             </a>
           </div>
         </MenuItem>
