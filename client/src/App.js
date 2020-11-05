@@ -26,19 +26,9 @@ import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import * as actions from "./store/actions/index";
 import jwt_decode from "jwt-decode";
 
-import TagManager from "react-gtm-module";
 
-const tagManagerArgs = {
-  gtmId: "GTM-NJPV2G6",
-};
-
-TagManager.initialize(tagManagerArgs);
 
 const App = () => {
-  window.dataLayer.push({
-    event: "pageview",
-  });
-
   //for admin login
   const dispatch = useDispatch();
   if (localStorage.getItem("adminJwtToken")) {
