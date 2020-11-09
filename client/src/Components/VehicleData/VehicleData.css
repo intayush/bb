@@ -46,9 +46,9 @@
 
 
 .image-gallery-icon {
-  position: fixed;
   padding: 0;
 }
+
 .image-gallery-icon:focus {
   background-color: transparent;
 }

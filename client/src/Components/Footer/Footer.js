@@ -31,8 +31,19 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
     margin: 0,
     color: "white",
-    marginTop: "3%",
+    marginTop: "4%",
   },
+  columnsText1:{
+    padding: 0,
+    margin: 0,
+    color: "white",
+    marginTop: "5.5%",
+   
+
+  },
+  iconImg:{
+      width:'100%'
+  }
 }));
 
 const Footer = () => {
@@ -48,7 +59,7 @@ const Footer = () => {
             <Grid item > 
               <div className="first_col">
                 <img src={FooterLogo} height="25" alt="FooterLogo" />
-                <p style={{ marginTop: "1%" }} className={classes.text}>
+                <p style={{ marginTop: "3%" }} className={classes.text}>
                   BikeBazaar aims to provide a hassle-free experience to
                   <br /> anyone looking to buy/sell a pre-owned 2 wheeler with
                   the <br /> help of technology and a team of experts.
@@ -62,14 +73,14 @@ const Footer = () => {
             <div
               style={{
                 borderRight: "1px solid white",
-                height: "120px",
+                height: "142px",
                 marginTop: "5%",
-                marginRight: "1.5%",
-                marginLeft: "1.5%",
+                marginRight: "2%",
+                marginLeft: "3%",
               }}
             ></div>
-            <Grid item md={5}>
-              <p style={{ marginBottom: "4%",marginLeft:"3%" }} className={classes.text}>
+            <Grid item md={4}>
+              <p style={{ marginBottom: "4%",marginLeft:"4%" }} className={classes.text}>
                 Quick Links
               </p>
               {/* for quick links two columns */}
@@ -78,22 +89,24 @@ const Footer = () => {
                   display: "flex",
                   flexDirection: "row",
                   justifyContent: "space-around",
+               
                 }}
               >
-                <div style={{ display: "flex-start", flexDirection: "column" }}>
-                  <p className={classes.columnsText}>About</p>
-                  <p className={classes.columnsText}>How it works</p>
-                  <p className={classes.columnsText}>FAQs</p>
-                  <p className={classes.columnsText}>Privacy Policy</p>
-                  <p className={classes.columnsText}>Terms & conditions</p>
-                  <p className={classes.columnsText}>Contact Us</p>
+                <div style={{ display: "flex-start", flexDirection: "column" ,flexFlow:'column'}}>
+                  <p className={classes.columnsText1}>About</p>
+                  <p className={classes.columnsText1}>How it works</p>
+                  <p className={classes.columnsText1}>FAQs</p>
+                  <p className={classes.columnsText1}>Privacy Policy</p>
+                  <p className={classes.columnsText1}>Terms & conditions</p>
+                  <p className={classes.columnsText1}>Contact Us</p>
                 </div>
 
                 <div
                   style={{
                     display: "flex-end",
                     flexDirection: "column",
-                    marginLeft: "20%",
+                      flexFlow:'column',
+                      
                   }}
                 >
                   <p className={classes.columnsText}>Buy</p>
@@ -110,14 +123,14 @@ const Footer = () => {
             <div
               style={{
                 borderRight: "1px solid white",
-                height: "120px",
+                height: "142px",
                 marginTop: "5%",
-                marginRight: "1.5%",
-                marginLeft: "1.5%",
+                marginRight: "3%",
+                marginLeft: "2%",
               }}
             ></div>
             <Grid item md={2}>
-              <div style={{ display: "flex", flexDirection: "column" }}>
+              <div style={{ display: "flex", flexDirection: "column",marginLeft:'5%' }}>
                 <p style={{ marginBottom: "4%" }} className={classes.text}>
                   Contact Info
                 </p>
@@ -127,14 +140,14 @@ const Footer = () => {
                     display: "flex",
                     flexDirection: "row",
                     color: "white",
-                    marginTop: "3%",
+                    marginTop: "7%",
                   }}
                 >
                   <img
                     className="icon-img"
                     src={callIcon}
                     width="30"
-                    height="25"
+                    height="30"
                     alt=""
                   />
                   <span style={{ marginLeft: "2%" }}>8956853498</span>
@@ -144,11 +157,12 @@ const Footer = () => {
                     display: "flex",
                     flexDirection: "row",
                     color: "white",
-                    marginTop: "4%",
+                    marginTop: "5%",
+                    justifyContent:'spaceBetween'
                   }}
                 >
-                  <img className="icon-img" src={messageIcon} alt="" />
-                  <span style={{ marginLeft: "4%" }}>
+                  <img className="iconImg" src={messageIcon}  alt="" />
+                  <span style={{ marginLeft: "10%" }}>
                     connect@bikebazaar.com
                   </span>
                 </div>
@@ -158,7 +172,7 @@ const Footer = () => {
                     display: "flex-start",
                     flexDirection: "column",
                     width: "70%",
-                    marginTop: "18%",
+                    marginTop: "22%",
                     letterSpacing: "1px",
                   }}
                 >

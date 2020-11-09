@@ -98,28 +98,7 @@ const About = (props) => {
   const fs17 = (matches) ? '' : classes.fs17;
   const flexEndClass = (matches) ? classes.flexEnd : '';
 
-  const visionCard = (matches) ? <Grid container component="div" direction="row" justify="center">
-                                <Grid item xs={11} sm={11} md={7} lg={7}>
-                                    <h3 className={classes.redHeading+' '+classes.mTop50 + ' '+ centerClass}>Vision</h3>
-                                    <p className={fs17}>
-                                        To make purchase of Pre-Owned Two-Wheelers as easy as that of New Two-Wheelers.
-                                    </p>
-                                </Grid>
-                                <Grid item xs={10} sm={10} md={5} lg={5} className={flexEndClass}>
-                                <img alt="" src={visionIcon} height="250" className={ml50}/>
-                                </Grid>
-                                </Grid> : 
-                                <Grid container component="div" direction="row" justify="center">
-                                    <Grid item xs={11} sm={11} md={5} lg={5} className={flexEndClass}>
-                                    <img alt="" src={visionIcon} height="250" className={ml50}/>
-                                    </Grid>
-                                    <Grid item xs={10} sm={10} md={7} lg={7}>
-                                        <h3 className={classes.redHeading+' '+classes.mTop50 + ' '+ centerClass}>Vision</h3>
-                                        <p className={fs17}>
-                                            To make purchase of Pre-Owned Two-Wheelers as easy as that of New Two-Wheelers.
-                                        </p>
-                                    </Grid>
-                                </Grid>
+ 
 
     useEffect(() =>{
         try {

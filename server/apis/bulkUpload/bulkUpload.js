@@ -90,10 +90,11 @@ function zipHelper() {
           console.log(err);
         } else {
 
-
+          
           //getting the previous vehicles from database
           // const oldVehicles = await oldVehiclesDetails();
 
+          // console.log("------->length",oldVehicles.length);
         //   let newRecords=[];
 
         //   if (Array.isArray(oldVehicles) && oldVehicles.length) {
@@ -164,7 +165,10 @@ function imgMappingHelper(data) {
   });
 }
 
+
+
 async function dataUpload(data) {
+
   const regtoimagesMapping = await imgMappingHelper(data);
 
   //making the modified array keys and values
@@ -183,8 +187,7 @@ async function dataUpload(data) {
     { lat: 16.999954, lon: 81.786184 },
   ];
 
-  const modifiedData = data.map((vehicle, index) => ({
-    id: Date.now(),
+  const modifiedData = data.map((vehicle) => ({
     name: vehicle.name,
     type: parseInt(vehicle.category),
     model: parseInt(vehicle.model),

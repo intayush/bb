@@ -9,7 +9,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import M from "materialize-css";
 import { BRANDS } from "../../shared/mappings/brands";
 import { MODELS } from "../../shared/mappings/bike_models";
-import {  useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import DropdownComponentUpload from "./DropdownComponentUpload";
@@ -21,7 +21,6 @@ import FormControl from "@material-ui/core/FormControl";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AdminInnerHeader from "../AdminSection/AdminInnerHeader";
 import Spinner from "../../Components/UI/Spinner/Spinner";
-
 
 import { sortableContainer, sortableElement } from "react-sortable-hoc";
 import arrayMove from "array-move";
@@ -299,27 +298,22 @@ const AdminUpload = (props) => {
   const [sliderImages, setSliderImages] = useState(null);
   const [previewImages, setPreviewImages] = useState([]);
 
-
-  
-// used for sorting of previewImages
+  // used for sorting of previewImages
   const onSortEnd = ({ oldIndex, newIndex, collection }) => {
     switch (collection) {
       case "gifs":
         setPreviewImages(arrayMove(previewImages, oldIndex, newIndex));
-        let img=arrayMove(previewImages, oldIndex, newIndex);
-        img=img.map((eachImg)=>eachImg.name);
+        let img = arrayMove(previewImages, oldIndex, newIndex);
+        img = img.map((eachImg) => eachImg.name);
 
         setFormData({
           ...formData,
           image: {
             ...formData.image,
             images: arrayMove(previewImages, oldIndex, newIndex),
-            imageNames:img
+            imageNames: img,
           },
         });
-        break;
-
-      default:
         break;
     }
   };
@@ -381,7 +375,6 @@ const AdminUpload = (props) => {
       },
     });
   };
-
 
   const skipValidation = [
     "addiitionalInfo",
@@ -664,7 +657,6 @@ const AdminUpload = (props) => {
     let elems = document.querySelectorAll("select");
 
     let submitObj = { ...formData };
-
 
     for (let i = 0; i < elems.length; i++) {
       let instance = M.FormSelect.getInstance(elems[i]);
@@ -1474,26 +1466,21 @@ const AdminUpload = (props) => {
                   >
                     {previewImages.map((gif, i) => (
                       <div key={i} className="image-preview">
-                        {/* {file.saved !== undefined ? (
-                      <img
-                        src={vehicleImagePath + file.name}
-                        width={200}
-                        height={150}
-                      />
-                    ) : (
-                      <img
-                        src={URL.createObjectURL(file)}
-                        width={200}
-                        height={150}
-                      />
-                    )} */}
-
-                        <SortableGif
-                          index={i}
-                          key={gif}
-                          gif={gif}
-                          collection="gifs"
-                        />
+                        {gif.saved !== undefined ? (
+                          <SortableGif
+                            index={i}
+                            key={gif}
+                            gif={gif}
+                            collection="gifs"
+                          />
+                        ) : (
+                          <img
+                            src={URL.createObjectURL(gif)}
+                            height="150"
+                            width="200"
+                            alt=""
+                          />
+                        )}
 
                         <span title="Remove image">
                           <DeleteIcon

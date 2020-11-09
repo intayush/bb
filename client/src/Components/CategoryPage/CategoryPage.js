@@ -14,24 +14,27 @@ import * as actions from "../../store/actions/index";
 import Spinner from "../../Components/UI/Spinner/Spinner";
 import { Menu } from "../../shared/utility";
 import categoryData from "../../shared/mappings/category_data";
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-const CategoryPage = props => {
+const CategoryPage = (props) => {
   const dispatch = useDispatch();
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('sm'));
-  const { vehicles, filter, loading, currentData, selectedCity } = useSelector(
-    state => state.vehicleDetails
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
+  const { vehicles, filter, currentData, selectedCity } = useSelector(
+    (state) => state.vehicleDetails
   );
+
+
   var category;
   var searchTerm;
   var stateFilterData = {
     ...filter,
-    city: selectedCity
+    city: selectedCity,
   };
+
   useEffect(() => {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
@@ -40,10 +43,10 @@ const CategoryPage = props => {
       const search = new URLSearchParams(props.history.location.search);
       searchTerm = search.get("searchTerm") ? search.get("searchTerm") : "";
     }
-    if(props.location.state) {
+    if (props.location.state) {
       stateFilterData = {
         ...stateFilterData,
-        storeId: props.location.state.storeId
+        storeId: props.location.state.storeId,
       };
       searchTerm = "";
     }
@@ -51,17 +54,18 @@ const CategoryPage = props => {
   }, [
     props.history.location.search,
     props.match.params.category,
-    selectedCity
+    selectedCity,
   ]);
 
   useEffect(() => {
     dispatch(actions.getPaginatedData(0, 12));
   }, [vehicles]);
 
-  const onPageChanged = paginationData => {
+
+  const onPageChanged = (paginationData) => {
     const { currentPage, totalPages, pageLimit } = paginationData;
-    console.log("najsbdsjdsdfsdf : : ", paginationData)
-    // console.log(paginationData.totalRecords)
+
+
     const offset = (currentPage - 1) * pageLimit;
     dispatch(actions.getPaginatedData(offset, pageLimit));
   };
@@ -70,9 +74,10 @@ const CategoryPage = props => {
   let renderedVehicles = <Spinner />;
   let paginations = "";
   let containerClass = "";
+
+  
   if (vehicles.length && currentData[0] != "NA") {
     renderedVehicles = currentData.map((vehicle, index) => (
-      
       <Card
         key={index}
         year={vehicle._source.myear}
@@ -88,6 +93,7 @@ const CategoryPage = props => {
       />
     ));
     containerClass = vehicles.length > 12 ? "cardContainer" : "";
+
     const totalRecords = Object.keys(vehicles).length;
     paginations = (
       <Pagination
@@ -103,7 +109,7 @@ const CategoryPage = props => {
     renderedVehicles = <h2>'No Vehicles Found!'</h2>;
   }
 
-  console.log(categoryData);
+  
   let navigation = categoryData[props.match.params.category].name
     .replace("Bike", "Motorcycle")
     .slice(0, -1)
