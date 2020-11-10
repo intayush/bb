@@ -1,7 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
+
 
 const Gif = ({ gif }) => {
+
   const vehicleImagePath = "../../vehicles/";
 
   return (
@@ -17,8 +18,6 @@ const Gif = ({ gif }) => {
   );
 };
 
-Gif.propTypes = {
-  gif: PropTypes.string.isRequired,
-};
+
 
 export default Gif;

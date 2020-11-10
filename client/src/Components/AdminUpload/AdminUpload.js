@@ -305,7 +305,7 @@ const AdminUpload = (props) => {
         setPreviewImages(arrayMove(previewImages, oldIndex, newIndex));
         let img = arrayMove(previewImages, oldIndex, newIndex); 
           img=img.map((eachImg)=>eachImg.name);
-          
+
         setFormData({
           ...formData,
           image: {
@@ -914,15 +914,15 @@ const AdminUpload = (props) => {
                   <span>Name:*</span>&nbsp;&nbsp;
                 </label>
 
-                {formData.name.value == undefined ? <></>: 
+              
                  <input
-                 value={formData.name.value}
+                 value={formData.name.value == undefined ?"": formData.name.value}
                  onChange={(event) => updateFormFieldHandler(event, formData)}
                  type="text"
                  name="name"
                  id="name"
                  onBlur={(event) => validateAndUpdateFormdata(event, formData)}
-               /> }
+               /> 
                
                
                 {formData.name.error && (
