@@ -6,7 +6,6 @@ import Banner from "../Banner/Banner";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
-import headingLines from "../../assets/heading-lines.svg";
 import blackHeadingLines from '../../assets/black-heading-lines.svg';
 import VehicleAdvantage from '../../Components/VehicleAdvantage/VehicleAdvantage';
 import buyIcon from '../../assets/Buy-Icon.svg';

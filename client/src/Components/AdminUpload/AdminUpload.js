@@ -303,9 +303,9 @@ const AdminUpload = (props) => {
     switch (collection) {
       case "gifs":
         setPreviewImages(arrayMove(previewImages, oldIndex, newIndex));
-        let img = arrayMove(previewImages, oldIndex, newIndex);
-        img = img.map((eachImg) => eachImg.name);
-
+        let img = arrayMove(previewImages, oldIndex, newIndex); 
+          img=img.map((eachImg)=>eachImg.name);
+          
         setFormData({
           ...formData,
           image: {
@@ -913,14 +913,18 @@ const AdminUpload = (props) => {
                 <label htmlFor="regnumber">
                   <span>Name:*</span>&nbsp;&nbsp;
                 </label>
-                <input
-                  value={formData.name.value}
-                  onChange={(event) => updateFormFieldHandler(event, formData)}
-                  type="text"
-                  name="name"
-                  id="name"
-                  onBlur={(event) => validateAndUpdateFormdata(event, formData)}
-                />
+
+                {formData.name.value == undefined ? <></>: 
+                 <input
+                 value={formData.name.value}
+                 onChange={(event) => updateFormFieldHandler(event, formData)}
+                 type="text"
+                 name="name"
+                 id="name"
+                 onBlur={(event) => validateAndUpdateFormdata(event, formData)}
+               /> }
+               
+               
                 {formData.name.error && (
                   <p className={classes.formError}>
                     {formData.name.errorMessage}
@@ -944,7 +948,7 @@ const AdminUpload = (props) => {
                     />
                   )}
                 </div>
-              </Grid>{" "}
+              </Grid>
               <Grid item xs={12} sm={12} md={5} lg={5}>
                 <div>
                   {vehicleId == undefined ? (
@@ -962,7 +966,7 @@ const AdminUpload = (props) => {
                     />
                   )}
                 </div>
-              </Grid>{" "}
+              </Grid>
               <Grid item xs={12} sm={12} md={5} lg={5}>
                 <div>
                   {vehicleId == undefined ? (
@@ -980,7 +984,7 @@ const AdminUpload = (props) => {
                     />
                   )}
                 </div>
-              </Grid>{" "}
+              </Grid>
               <Grid item xs={12} sm={12} md={5} lg={5}>
                 <div>
                   {vehicleId == undefined ? (
@@ -1472,6 +1476,7 @@ const AdminUpload = (props) => {
                             key={gif}
                             gif={gif}
                             collection="gifs"
+                          
                           />
                         ) : (
                           <img
