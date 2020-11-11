@@ -25,7 +25,11 @@ const initialState = {
   }
 };
 
+
+
 const vehicles = (state, action) => {
+
+
   return updateObject(state, {
     filter: action.filterData,
     category: action.category,
@@ -42,10 +46,19 @@ const vehiclesNames = (state, action) => {
 };
 
 const getPaginatedData = (state, action) => {
-  const currentData = state.vehicles.slice(
+
+  let reversedVehicleList=[];
+
+  for(let i=state.vehicles.length-1;i>=0;i--){
+
+    reversedVehicleList.push(state.vehicles[i])
+  }
+
+  let currentData =reversedVehicleList.slice(
     action.offset,
     action.offset + action.pageLimit
   );
+
   return updateObject(state, {
     loading: false,
     currentData: currentData
@@ -58,6 +71,7 @@ const getVehicleData = (state, action) => {
     vehicle: action.vehicleData
   });
 };
+
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -94,6 +108,7 @@ const reducer = (state = initialState, action) => {
         }
       };
     case actionTypes.CHANGE_CITY:
+
       const updatedFilter = state.filter;
       updatedFilter.city = action.payload;
       return {
@@ -101,6 +116,7 @@ const reducer = (state = initialState, action) => {
         selectedCity: action.payload,
         filter: updatedFilter
       }
+
       case actionTypes.CHANGE_CATEGORY:
       // console.log({
       //   ...state,
