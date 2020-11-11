@@ -33,17 +33,15 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     marginTop: "4%",
   },
-  columnsText1:{
+  columnsText1: {
     padding: 0,
     margin: 0,
     color: "white",
-    marginTop: "5.5%",
-   
-
+    marginTop: "6%",
   },
-  iconImg:{
-      width:'100%'
-  }
+  iconImg: {
+    width: "100%",
+  },
 }));
 
 const Footer = () => {
@@ -56,7 +54,7 @@ const Footer = () => {
       {matches ? (
         <div className={classes.root}>
           <Grid container>
-            <Grid item > 
+            <Grid item>
               <div className="first_col">
                 <img src={FooterLogo} height="25" alt="FooterLogo" />
                 <p style={{ marginTop: "3%" }} className={classes.text}>
@@ -80,7 +78,10 @@ const Footer = () => {
               }}
             ></div>
             <Grid item md={4}>
-              <p style={{ marginBottom: "4%",marginLeft:"4%" }} className={classes.text}>
+              <p
+                style={{ marginBottom: "4%", marginLeft: "4%" }}
+                className={classes.text}
+              >
                 Quick Links
               </p>
               {/* for quick links two columns */}
@@ -89,10 +90,15 @@ const Footer = () => {
                   display: "flex",
                   flexDirection: "row",
                   justifyContent: "space-around",
-               
                 }}
               >
-                <div style={{ display: "flex-start", flexDirection: "column" ,flexFlow:'column'}}>
+                <div
+                  style={{
+                    display: "flex-start",
+                    flexDirection: "column",
+                    flexFlow: "column",
+                  }}
+                >
                   <p className={classes.columnsText1}>About</p>
                   <p className={classes.columnsText1}>How it works</p>
                   <p className={classes.columnsText1}>FAQs</p>
@@ -105,8 +111,7 @@ const Footer = () => {
                   style={{
                     display: "flex-end",
                     flexDirection: "column",
-                      flexFlow:'column',
-                      
+                    flexFlow: "column",
                   }}
                 >
                   <p className={classes.columnsText}>Buy</p>
@@ -129,8 +134,14 @@ const Footer = () => {
                 marginLeft: "2%",
               }}
             ></div>
-            <Grid item md={2}>
-              <div style={{ display: "flex", flexDirection: "column",marginLeft:'5%' }}>
+            <Grid item>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  marginLeft: "5%",
+                }}
+              >
                 <p style={{ marginBottom: "4%" }} className={classes.text}>
                   Contact Info
                 </p>
@@ -144,6 +155,7 @@ const Footer = () => {
                   }}
                 >
                   <img
+                    style={{ width: "15%" }}
                     className="icon-img"
                     src={callIcon}
                     width="30"
@@ -158,11 +170,18 @@ const Footer = () => {
                     flexDirection: "row",
                     color: "white",
                     marginTop: "5%",
-                    justifyContent:'spaceBetween'
+               
+                    justifyContent: "spaceBetween",
                   }}
                 >
-                  <img className="iconImg" src={messageIcon}  alt="" />
-                  <span style={{ marginLeft: "10%" }}>
+                  <img
+                    style={{ width: "15%" ,marginLeft:'2%'}}
+                    className="iconImg"
+                    src={messageIcon}
+                    width="30"
+                    alt=""
+                  />
+                  <span style={{ marginLeft: "9%" }}>
                     connect@bikebazaar.com
                   </span>
                 </div>
@@ -171,9 +190,10 @@ const Footer = () => {
                   style={{
                     display: "flex-start",
                     flexDirection: "column",
-                    width: "70%",
+
                     marginTop: "22%",
-                    letterSpacing: "1px",
+                    wordSpacing: "3.5px",
+                    letterSpacing:'2px'
                   }}
                 >
                   <p style={{ color: "white" }}>Connect with us</p>
@@ -181,13 +201,15 @@ const Footer = () => {
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      justifyContent:'space-between'
+                      justifyContent: "space-between",
+                      width: "65%",
+                      fontWeight:'500'
                     }}
                   >
-                    <img  src={faceBookIcon} />
-                    <img  src={instagramIcon} />
-                    <img  src={linkedinIcon} />
-                    <img  src={twitterIcon} />
+                    <img src={faceBookIcon} />
+                    <img src={instagramIcon} />
+                    <img src={linkedinIcon} />
+                    <img src={twitterIcon} />
                   </div>
                 </div>
               </div>

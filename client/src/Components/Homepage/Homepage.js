@@ -58,7 +58,7 @@ const Homepage = (props) => {
         {
           name: "Hari Raj",
           message:
-            "If anyone is looking for a pre owned bikes/scooty then bike bazaar is the right place to go... Awesome experience from team bike bazaar... Especially Subhojit and sandeep helped me a lot to find out the best vehicle which i was exactly looking for...i will always recommend bike bazaar..thankyou team??"
+            "If anyone is looking for a pre owned bikes/scooty then bike bazaar is the right place to go... Awesome experience from team bike bazaar... Especially Subhojit and sandeep helped me a lot to find out the best vehicle which i was exactly looking for...i will always recommend bike bazaar..thankyou team."
         },
         {
           name: "Md Aquiluzzaman",
@@ -173,19 +173,19 @@ const Homepage = (props) => {
         <Grid container component="div" direction="row">
           <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
             <div className="box-shadow center-align" onMouseEnter={() => setBikeHover(true)} onMouseLeave={() => setBikeHover(false)} style={{background:'white'}} onClick={() => handleCategoryClick(CATEGORY.BIKE)}>
-              <img alt="" src={bikeHover ? bikeStill : bikeGIF} height="170" width="290"/>
+              <img alt="" src={bikeHover ?bikeGIF  : bikeStill} height="170" width="290"/>
               <h5>Motorcycle</h5>
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
             <div className="box-shadow center-align" onMouseEnter={() => setScooterHover(true)} onMouseLeave={() => setScooterHover(false)} style={{background:'white'}} onClick={() => handleCategoryClick(CATEGORY.SCOOTER)}>
-              <img alt="" src={scooterHover ? scooterStill : scooterGIF} height="170" width="290" />
+              <img alt="" src={scooterHover ? scooterGIF :  scooterStill} height="170" width="290" />
               <h5>Scooter</h5>
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
             <div className="box-shadow center-align" onMouseEnter={() => setHighEndBikeHover(true)} onMouseLeave={() => setHighEndBikeHover(false)} style={{background:'white'}} onClick={() => handleCategoryClick(CATEGORY.HIGH_END_BIKE)}>
-              <img alt="" src={highEndBikeHover ? highEndStill : highEndBikeGIF} height="170" width="290" />
+              <img alt="" src={highEndBikeHover ? highEndBikeGIF  : highEndStill} height="170" width="290" />
               <h5>High-End Motorcycle</h5>
             </div>
           </Grid>

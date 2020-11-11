@@ -916,7 +916,7 @@ const AdminUpload = (props) => {
 
               
                  <input
-                 value={formData.name.value == undefined ?"": formData.name.value}
+                 value={formData.name.value != undefined && formData.name.value}
                  onChange={(event) => updateFormFieldHandler(event, formData)}
                  type="text"
                  name="name"
