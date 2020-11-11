@@ -21,10 +21,8 @@ const ModalText = () => {
         <ul>
             <li> - Name of the excel file will always remain Records.xlsx (with the same format extension - .xlsx).</li>
             <li> - Images for each bike are to be kept in folders named as the Registration NUmber of the bike. All these folders are to be placed inside an images folder in the zip.</li>
-
             <li> - Only .zip (NOT .rar or .7z) files are supported for upload. Zip contains the above mentioned images folder and Records.xlsx file.</li>
             <li> - Follow the following excel structure for the upload</li>
-            
         </ul>
         <br />
         <h6 className={classes.heading}>Excel structure explained:</h6>
@@ -45,24 +43,17 @@ const ModalText = () => {
             <li> - <span className={classes.excel}>bhp: </span> Brake horse power</li>
             <li> - <span className={classes.excel}>category: </span> Category of the two-wheeler as follows: 1 for Bike, 2 for Scooter, 3 for High-end Bike</li>
             <li> - <span className={classes.excel}>mileage: </span> Mileage the two-wheeler gives</li>
-            <li> - <span className={classes.excel}>images: </span> comma separated list of names of the image files for each vehicle with the extension, for eg: Activa1.jpeg,Activa2.png</li>
-            <li> - <span className={classes.excel}>storeId: </span> Store Id where the vehicle is up for sale as follows: 1 for Aluva, 2 for Kolakata, 3 for Rajahmundary 
-            ,4 for Thrissur, 5 for Bangalore, 6 for Chennai ,
-            7 for New Delhi, 8 for Gurgaon, 9 for Hyderabad,
-            10 for Jaipur, 11 for Mumbai, 12 for Nagpur,
-            13 for Pune
-            </li>
+            <li> - <span className={classes.excel}>images: </span> All Images pertaining to one bike are to be placed inside the folder that is named as per the registration number of the bike</li>
+            <li> - <span className={classes.excel}>storeId: </span> Store Id where the vehicle is up for sale as follows: 1 for Aluva, 2 for Kolakata, 3 for Rajahmundary</li>
             <li> - <span className={classes.excel}>discountPercent: </span> Discount in percent to be provided on the two-wheeler</li>
-           
         </ul>
         <br />
         <h6 className={classes.heading}>Limitations:</h6>
         <ul>
-            <li> -Please do not use special characters for name of the two wheeler </li>
             <li> -"More details about the Two-wheeler" section will not be added through the bulk upload functionality.</li>
             <li> -Not for editing two-wheeler - please DO NOT use to edit any existing two-wheeler details. This functionality is only meant for the purpose of adding new two-wheelers.</li>
-            <li> -If the particular bike details are already existing on the web app refrain from adding it again as it will create a duplicate entry</li>
-            <li> -Do not exceed the size limit of the zip more than 500mb</li>
+            <li> -If the particular bike details are already existing on the web app refrain from adding it again as it will create a duplicate entry.</li>
+            <li> -While uploading more then one records -please make sure that there should not be any special characters used in the folders name.</li>
         </ul>
     </>
 )};
