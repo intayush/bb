@@ -628,7 +628,7 @@ const AdminUpload = (props) => {
 
       setLoader(true);
 
-      if(uploaders!=undefined || undefined == null){
+      if(uploaders!=undefined || uploaders != null || uploaders.length!=0 ){
 
         axios
         .all(uploaders)
@@ -637,9 +637,9 @@ const AdminUpload = (props) => {
             .post("/apis/seedData/adminVehiclesUpload", submitObj)
             .then((response) => {
               setLoader(false);
-              history.push("/admin/list");
+              history.push("/admin/list")
               if (response.status === 200) {
-                //history.push("/admin/list");
+                history.push("/admin/list");
                 setTooltipState({
                   open: true,
                   message: "Your details have been saved",
