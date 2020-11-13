@@ -628,7 +628,7 @@ const AdminUpload = (props) => {
 
       setLoader(true);
 
-      if(uploaders!=undefined || undefined == null){
+      if(uploaders!=undefined || undefined != null){
 
         axios
         .all(uploaders)
@@ -639,7 +639,7 @@ const AdminUpload = (props) => {
               setLoader(false);
               history.push("/admin/list");
               if (response.status === 200) {
-                //history.push("/admin/list");
+                history.push("/admin/list");
                 setTooltipState({
                   open: true,
                   message: "Your details have been saved",
