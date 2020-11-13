@@ -21,6 +21,7 @@ import FormControl from "@material-ui/core/FormControl";
 import DeleteIcon from "@material-ui/icons/Delete";
 import AdminInnerHeader from "../AdminSection/AdminInnerHeader";
 import Spinner from "../../Components/UI/Spinner/Spinner";
+
 import { sortableContainer, sortableElement } from "react-sortable-hoc";
 import arrayMove from "array-move";
 import Gif from "./utility/Gif";
@@ -582,11 +583,12 @@ const AdminUpload = (props) => {
 
 
     console.log("======submitobj",submitObj);
-    
     for (let i = 0; i < elems.length; i++) {
       let instance = M.FormSelect.getInstance(elems[i]);
       let targetName = instance.el.name;
       let targetValue = instance.el.value;
+
+   
       submitObj = {
         ...submitObj,
         [targetName]: {
@@ -623,8 +625,12 @@ const AdminUpload = (props) => {
         }
       });
 
+
       setLoader(true);
-      axios
+
+      if(uploaders!=undefined || undefined == null){
+
+        axios
         .all(uploaders)
         .then(() => {
           axios
@@ -633,7 +639,7 @@ const AdminUpload = (props) => {
               setLoader(false);
               history.push("/admin/list");
               if (response.status === 200) {
-                history.push("/admin/list");
+                //history.push("/admin/list");
                 setTooltipState({
                   open: true,
                   message: "Your details have been saved",
@@ -651,6 +657,8 @@ const AdminUpload = (props) => {
           setLoader(false);
           alert(err.message);
         });
+      }
+    
     }
   };
 
@@ -706,7 +714,9 @@ const AdminUpload = (props) => {
         }
       });
       setLoader(true);
-      axios
+      if(uploaders!=undefined || uploaders !=null || uploaders.length !=0){
+
+        axios
         .all(uploaders)
         .then(() => {
           axios
@@ -732,6 +742,8 @@ const AdminUpload = (props) => {
           setLoader(false);
           alert(err.message);
         });
+      }
+     
     }
   };
 
@@ -918,7 +930,7 @@ const AdminUpload = (props) => {
 
               
                  <input
-                 value={formData.name.value != undefined && formData.name.value}
+                  value={formData.name.value}
                  onChange={(event) => updateFormFieldHandler(event, formData)}
                  type="text"
                  name="name"
