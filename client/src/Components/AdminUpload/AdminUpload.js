@@ -628,7 +628,7 @@ const AdminUpload = (props) => {
 
       setLoader(true);
 
-      if(uploaders!=undefined || uploaders != null || uploaders.length!=0 ){
+      if(uploaders!=undefined || undefined != null){
 
         axios
         .all(uploaders)
@@ -637,7 +637,7 @@ const AdminUpload = (props) => {
             .post("/apis/seedData/adminVehiclesUpload", submitObj)
             .then((response) => {
               setLoader(false);
-              history.push("/admin/list")
+              history.push("/admin/list");
               if (response.status === 200) {
                 history.push("/admin/list");
                 setTooltipState({
@@ -897,11 +897,14 @@ const AdminUpload = (props) => {
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
   return (
+    
     <>
+
       <AdminInnerHeader />
       {loader ? (
         <Spinner />
       ) : (
+        
         <div className={classes.body}>
           {tooltip}
           {vehicleId !== undefined ? (
@@ -909,627 +912,631 @@ const AdminUpload = (props) => {
           ) : (
             <h4 className={classes.heading}>Upload Vehicle Details</h4>
           )}
-          <form action="" encType="multipart/form-data">
-            <Grid
-              container
-              component="div"
-              direction="row"
-              justify="space-evenly"
-            >
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={11}
-                lg={11}
-                className={classes.mb20}
-              >
-                <label htmlFor="regnumber">
-                  <span>Name:*</span>&nbsp;&nbsp;
-                </label>
 
-              
+          {(formData ==undefined || formData==null ) ?<></>:
+             <form action="" encType="multipart/form-data">
+             <Grid
+               container
+               component="div"
+               direction="row"
+               justify="space-evenly"
+             >
+               <Grid
+                 item
+                 xs={12}
+                 sm={12}
+                 md={11}
+                 lg={11}
+                 className={classes.mb20}
+               >
+                 <label htmlFor="regnumber">
+                   <span>Name:*</span>&nbsp;&nbsp;
+                 </label>
+ 
+               
+                  <input
+                   value={formData.name.value}
+                  onChange={(event) => updateFormFieldHandler(event, formData)}
+                  type="text"
+                  name="name"
+                  id="name"
+                  onBlur={(event) => validateAndUpdateFormdata(event, formData)}
+                /> 
+                
+                
+                 {formData.name.error && (
+                   <p className={classes.formError}>
+                     {formData.name.errorMessage}
+                   </p>
+                 )}
+               </Grid>
+               <Grid item xs={12} sm={12} md={5} lg={5}>
+                 <div>
+                   {vehicleId == undefined ? (
+                     <DropdownComponentUpload
+                       labelName="Type"
+                       optionsObject={typeOptions}
+                       onClickFunction={validateAndUpdateTypeDropDown}
+                     />
+                   ) : (
+                     <DropdownComponentUpdate
+                       labelName="Type"
+                       optionsObject={typeOptions}
+                       populatedObject={populatedTypeObject}
+                       onClickFunction={validateAndUpdateTypeDropDown}
+                     />
+                   )}
+                 </div>
+               </Grid>
+               <Grid item xs={12} sm={12} md={5} lg={5}>
+                 <div>
+                   {vehicleId == undefined ? (
+                     <DropdownComponentUpload
+                       labelName="Brand"
+                       optionsObject={brandOptions}
+                       onClickFunction={validateAndUpdateBrandDropDown}
+                     />
+                   ) : (
+                     <DropdownComponentUpdate
+                       labelName="Brand"
+                       optionsObject={brandOptions}
+                       populatedObject={populatedBrandObject}
+                       onClickFunction={validateAndUpdateBrandDropDown}
+                     />
+                   )}
+                 </div>
+               </Grid>
+               <Grid item xs={12} sm={12} md={5} lg={5}>
+                 <div>
+                   {vehicleId == undefined ? (
+                     <DropdownComponentUpload
+                       labelName="Store"
+                       optionsObject={storeOptions}
+                       onClickFunction={validateAndUpdateStoreIdDropDown}
+                     />
+                   ) : (
+                     <DropdownComponentUpdate
+                       labelName="Store"
+                       optionsObject={storeOptions}
+                       populatedObject={populatedStoreObject}
+                       onClickFunction={validateAndUpdateStoreIdDropDown}
+                     />
+                   )}
+                 </div>
+               </Grid>
+               <Grid item xs={12} sm={12} md={5} lg={5}>
+                 <div>
+                   {vehicleId == undefined ? (
+                     <DropdownComponentUpload
+                       labelName="Model"
+                       optionsObject={modelOptions}
+                       onClickFunction={validateAndUpdateModelDropDown}
+                     />
+                   ) : (
+                     <DropdownComponentUpdate
+                       labelName="Model"
+                       optionsObject={modelOptions}
+                       populatedObject={populatedModelObject}
+                       onClickFunction={validateAndUpdateModelDropDown}
+                     />
+                   )}
+                 </div>
+               </Grid>
+               <Grid item xs={12} sm={12} md={5} lg={5}>
+                 <label htmlFor="regnumber">
+                   <span>Registration Number:*</span>&nbsp;&nbsp;
+                 </label>
                  <input
-                  value={formData.name.value}
+                   value={formData.regnumber.value}
+                   onChange={(event) => updateFormFieldHandler(event, formData)}
+                   type="text"
+                   name="regnumber"
+                   id="regnumber"
+                   onBlur={(event) => validateAndUpdateFormdata(event, formData)}
+                 />
+                 {formData.regnumber.error && (
+                   <p className={classes.formError}>
+                     {formData.regnumber.errorMessage}
+                   </p>
+                 )}
+               </Grid>
+               <Grid item xs={12} sm={12} md={5} lg={5}>
+                 {/* <label htmlFor="descr">
+                 <span>Description:*</span>&nbsp;&nbsp;
+               </label>
+               <input
+                 value={formData.descr.value}
                  onChange={(event) => updateFormFieldHandler(event, formData)}
                  type="text"
-                 name="name"
-                 id="name"
+                 name="descr"
+                 id="descr"
                  onBlur={(event) => validateAndUpdateFormdata(event, formData)}
-               /> 
-               
-               
-                {formData.name.error && (
-                  <p className={classes.formError}>
-                    {formData.name.errorMessage}
-                  </p>
-                )}
-              </Grid>
-              <Grid item xs={12} sm={12} md={5} lg={5}>
-                <div>
-                  {vehicleId == undefined ? (
-                    <DropdownComponentUpload
-                      labelName="Type"
-                      optionsObject={typeOptions}
-                      onClickFunction={validateAndUpdateTypeDropDown}
-                    />
-                  ) : (
-                    <DropdownComponentUpdate
-                      labelName="Type"
-                      optionsObject={typeOptions}
-                      populatedObject={populatedTypeObject}
-                      onClickFunction={validateAndUpdateTypeDropDown}
-                    />
-                  )}
-                </div>
-              </Grid>
-              <Grid item xs={12} sm={12} md={5} lg={5}>
-                <div>
-                  {vehicleId == undefined ? (
-                    <DropdownComponentUpload
-                      labelName="Brand"
-                      optionsObject={brandOptions}
-                      onClickFunction={validateAndUpdateBrandDropDown}
-                    />
-                  ) : (
-                    <DropdownComponentUpdate
-                      labelName="Brand"
-                      optionsObject={brandOptions}
-                      populatedObject={populatedBrandObject}
-                      onClickFunction={validateAndUpdateBrandDropDown}
-                    />
-                  )}
-                </div>
-              </Grid>
-              <Grid item xs={12} sm={12} md={5} lg={5}>
-                <div>
-                  {vehicleId == undefined ? (
-                    <DropdownComponentUpload
-                      labelName="Store"
-                      optionsObject={storeOptions}
-                      onClickFunction={validateAndUpdateStoreIdDropDown}
-                    />
-                  ) : (
-                    <DropdownComponentUpdate
-                      labelName="Store"
-                      optionsObject={storeOptions}
-                      populatedObject={populatedStoreObject}
-                      onClickFunction={validateAndUpdateStoreIdDropDown}
-                    />
-                  )}
-                </div>
-              </Grid>
-              <Grid item xs={12} sm={12} md={5} lg={5}>
-                <div>
-                  {vehicleId == undefined ? (
-                    <DropdownComponentUpload
-                      labelName="Model"
-                      optionsObject={modelOptions}
-                      onClickFunction={validateAndUpdateModelDropDown}
-                    />
-                  ) : (
-                    <DropdownComponentUpdate
-                      labelName="Model"
-                      optionsObject={modelOptions}
-                      populatedObject={populatedModelObject}
-                      onClickFunction={validateAndUpdateModelDropDown}
-                    />
-                  )}
-                </div>
-              </Grid>
-              <Grid item xs={12} sm={12} md={5} lg={5}>
-                <label htmlFor="regnumber">
-                  <span>Registration Number:*</span>&nbsp;&nbsp;
-                </label>
-                <input
-                  value={formData.regnumber.value}
-                  onChange={(event) => updateFormFieldHandler(event, formData)}
-                  type="text"
-                  name="regnumber"
-                  id="regnumber"
-                  onBlur={(event) => validateAndUpdateFormdata(event, formData)}
-                />
-                {formData.regnumber.error && (
-                  <p className={classes.formError}>
-                    {formData.regnumber.errorMessage}
-                  </p>
-                )}
-              </Grid>
-              <Grid item xs={12} sm={12} md={5} lg={5}>
-                {/* <label htmlFor="descr">
-                <span>Description:*</span>&nbsp;&nbsp;
-              </label>
-              <input
-                value={formData.descr.value}
-                onChange={(event) => updateFormFieldHandler(event, formData)}
-                type="text"
-                name="descr"
-                id="descr"
-                onBlur={(event) => validateAndUpdateFormdata(event, formData)}
-              />
-              {formData.descr.error && (
-                <p className={classes.formError}>{formData.descr.errorMessage}</p>
-              )} */}
-              </Grid>
-              <Grid item xs={12} sm={12} md={5} lg={5}>
-                <label htmlFor="price">
-                  <span>Price:*</span>&nbsp;&nbsp;
-                </label>
-                <input
-                  value={formData.price.value}
-                  onChange={(event) => updateFormFieldHandler(event, formData)}
-                  type="number"
-                  name="price"
-                  id="price"
-                  onBlur={(event) => validateAndUpdateFormdata(event, formData)}
-                />
-                {formData.price.error && (
-                  <p className={classes.formError}>
-                    {formData.price.errorMessage}
-                  </p>
-                )}
-              </Grid>
-              <Grid item xs={12} sm={12} md={5} lg={5}>
-                <label htmlFor="myear">
-                  <span>Manufacturing Year:*</span>&nbsp;&nbsp;
-                </label>
-                <input
-                  value={formData.myear.value}
-                  onChange={(event) => updateFormFieldHandler(event, formData)}
-                  type="number"
-                  name="myear"
-                  id="myear"
-                  onBlur={(event) => validateAndUpdateFormdata(event, formData)}
-                />
-                {formData.myear.error && (
-                  <p className={classes.formError}>
-                    {formData.myear.errorMessage}
-                  </p>
-                )}
-              </Grid>
-              <Grid item xs={12} sm={12} md={5} lg={5}>
-                <label htmlFor="mmonth">
-                  <span>Manufacturing Month:*</span>&nbsp;&nbsp;
-                </label>
-                <input
-                  value={formData.mmonth.value}
-                  onChange={(event) => updateFormFieldHandler(event, formData)}
-                  type="number"
-                  name="mmonth"
-                  id="mmonth"
-                  onBlur={(event) => validateAndUpdateFormdata(event, formData)}
-                />
-                {formData.mmonth.error && (
-                  <p className={classes.formError}>
-                    {formData.mmonth.errorMessage}
-                  </p>
-                )}
-              </Grid>
-              <Grid item xs={12} sm={12} md={5} lg={5}>
-                <label htmlFor="kmdriven">
-                  <span>Kms. Driven:*</span>&nbsp;&nbsp;
-                </label>
-                <input
-                  value={formData.kmdriven.value}
-                  onChange={(event) => updateFormFieldHandler(event, formData)}
-                  type="number"
-                  name="kmdriven"
-                  id="kmdriven"
-                  onBlur={(event) => validateAndUpdateFormdata(event, formData)}
-                />
-                {formData.kmdriven.error && (
-                  <p className={classes.formError}>
-                    {formData.kmdriven.errorMessage}
-                  </p>
-                )}
-              </Grid>
-              <Grid item xs={12} sm={12} md={5} lg={5}>
-                <label htmlFor="owner">
-                  <span>Owner:*</span>&nbsp;&nbsp;
-                </label>
-                <input
-                  value={formData.owner.value}
-                  onChange={(event) => updateFormFieldHandler(event, formData)}
-                  type="text"
-                  name="owner"
-                  id="owner"
-                  onBlur={(event) => validateAndUpdateFormdata(event, formData)}
-                />
-                {formData.owner.error && (
-                  <p className={classes.formError}>
-                    {formData.owner.errorMessage}
-                  </p>
-                )}
-              </Grid>
-              <Grid item xs={12} sm={12} md={5} lg={5}>
-                <label htmlFor="cc">
-                  <span>CC:*</span>&nbsp;&nbsp;
-                </label>
-                <input
-                  value={formData.cc.value}
-                  onChange={(event) => updateFormFieldHandler(event, formData)}
-                  type="number"
-                  name="cc"
-                  id="cc"
-                  onBlur={(event) => validateAndUpdateFormdata(event, formData)}
-                />
-                {formData.cc.error && (
-                  <p className={classes.formError}>
-                    {formData.cc.errorMessage}
-                  </p>
-                )}
-              </Grid>
-              {/* <Grid item xs={12} sm={12} md={5} lg={5}>
-              <label htmlFor="bhp">
-                <span>BHP:*</span>&nbsp;&nbsp;
-              </label>
-              <input
-                value={formData.bhp.value}
-                onChange={(event) => updateFormFieldHandler(event, formData)}
-                type="number"
-                name="bhp"
-                id="bhp"
-                onBlur={(event) => validateAndUpdateFormdata(event, formData)}
-              />
-              {formData.bhp.error && (
-                <p className={classes.formError}>{formData.bhp.errorMessage}</p>
-              )}
-            </Grid>
-            <Grid item xs={12} sm={12} md={5} lg={5}>
-              <label htmlFor="mileage">
-                <span>Mileage:*</span>&nbsp;&nbsp;
-              </label>
-              <input
-                value={formData.mileage.value}
-                onChange={(event) => updateFormFieldHandler(event, formData)}
-                type="number"
-                name="mileage"
-                id="mileage"
-                onBlur={(event) => validateAndUpdateFormdata(event, formData)}
-              />
-              {formData.mileage.error && (
-                <p className={classes.formError}>
-                  {formData.mileage.errorMessage}
-                </p>
-              )}
-            </Grid> */}
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={11}
-                lg={11}
-                className={classes.mb20}
-              >
-                <label htmlFor="additionalInfo">
-                  <span>Additional Information:</span>&nbsp;&nbsp;
-                </label>
-                <input
-                  value={formData.additionalInfo.value}
-                  onChange={(event) => updateFormFieldHandler(event, formData)}
-                  type="text"
-                  name="additionalInfo"
-                  id="additionalInfo"
-                />
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={11}
-                lg={11}
-                className={classes.mb20}
-              >
-                <label htmlFor="bulletInfo1">
-                  <span>Bullet Information 1:</span>&nbsp;&nbsp;
-                </label>
-                <input
-                  value={formData.bulletInfo1.value}
-                  onChange={(event) => updateFormFieldHandler(event, formData)}
-                  type="text"
-                  name="bulletInfo1"
-                  id="bulletInfo1"
-                  onBlur={(event) => validateAndUpdateFormdata(event, formData)}
-                />
-                {formData.bulletInfo1.error && (
-                  <p className={classes.formError}>
-                    {formData.bulletInfo1.errorMessage}
-                  </p>
-                )}
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={11}
-                lg={11}
-                className={classes.mb20}
-              >
-                <label htmlFor="bulletInfo2">
-                  <span>Bullet Information 2:</span>&nbsp;&nbsp;
-                </label>
-                <input
-                  value={formData.bulletInfo2.value}
-                  onChange={(event) => updateFormFieldHandler(event, formData)}
-                  type="text"
-                  name="bulletInfo2"
-                  id="bulletInfo2"
-                  onBlur={(event) => validateAndUpdateFormdata(event, formData)}
-                />
-                {formData.bulletInfo2.error && (
-                  <p className={classes.formError}>
-                    {formData.bulletInfo2.errorMessage}
-                  </p>
-                )}
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={11}
-                lg={11}
-                className={classes.mb20}
-              >
-                <label htmlFor="bulletInfo3">
-                  <span>Bullet Information 3:</span>&nbsp;&nbsp;
-                </label>
-                <input
-                  value={formData.bulletInfo3.value}
-                  onChange={(event) => updateFormFieldHandler(event, formData)}
-                  type="text"
-                  name="bulletInfo3"
-                  id="bulletInfo3"
-                  onBlur={(event) => validateAndUpdateFormdata(event, formData)}
-                />
-                {formData.bulletInfo3.error && (
-                  <p className={classes.formError}>
-                    {formData.bulletInfo3.errorMessage}
-                  </p>
-                )}
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={11}
-                lg={11}
-                className={classes.mb20}
-              >
-                <label htmlFor="bulletInfo4">
-                  <span>Bullet Information 4:</span>&nbsp;&nbsp;
-                </label>
-                <input
-                  value={formData.bulletInfo4.value}
-                  onChange={(event) => updateFormFieldHandler(event, formData)}
-                  type="text"
-                  name="bulletInfo4"
-                  id="bulletInfo4"
-                  onBlur={(event) => validateAndUpdateFormdata(event, formData)}
-                />
-                {formData.bulletInfo4.error && (
-                  <p className={classes.formError}>
-                    {formData.bulletInfo4.errorMessage}
-                  </p>
-                )}
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={11}
-                lg={11}
-                className={classes.mb20}
-              >
-                <label htmlFor="bulletInfo5">
-                  <span>Bullet Information 5:</span>&nbsp;&nbsp;
-                </label>
-                <input
-                  value={formData.bulletInfo5.value}
-                  onChange={(event) => updateFormFieldHandler(event, formData)}
-                  type="text"
-                  name="bulletInfo5"
-                  id="bulletInfo5"
-                  onBlur={(event) => validateAndUpdateFormdata(event, formData)}
-                />
-                {formData.bulletInfo5.error && (
-                  <p className={classes.formError}>
-                    {formData.bulletInfo5.errorMessage}
-                  </p>
-                )}
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={11}
-                lg={11}
-                className={classes.mb20}
-              >
-                <label htmlFor="bulletInfo6">
-                  <span>Bullet Information 6:</span>&nbsp;&nbsp;
-                </label>
-                <input
-                  value={formData.bulletInfo6.value}
-                  onChange={(event) => updateFormFieldHandler(event, formData)}
-                  type="text"
-                  name="bulletInfo6"
-                  id="bulletInfo6"
-                  onBlur={(event) => validateAndUpdateFormdata(event, formData)}
-                />
-                {formData.bulletInfo6.error && (
-                  <p className={classes.formError}>
-                    {formData.bulletInfo6.errorMessage}
-                  </p>
-                )}
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={11}
-                lg={11}
-                className={classes.mb20}
-              >
-                <Grid
-                  container
-                  component="div"
-                  direction="row"
-                  justify="space-evenly"
-                >
-                  <Grid item xs={12} sm={12} md={4} lg={4}>
-                    <label htmlFor="bulletInfo6">
-                      <span>Sold:</span>&nbsp;&nbsp;
-                    </label>
-                    <FormControl component="fieldset">
-                      <RadioGroup
-                        row
-                        aria-label="position"
-                        name="position"
-                        defaultValue={formData.sold.value}
-                        onChange={(event) =>
-                          validateAndUpdateSoldFlag(event, formData)
-                        }
-                      >
-                        <FormControlLabel
-                          value="false"
-                          control={<Radio />}
-                          label="Up for sale"
-                          labelPlacement="bottom"
-                        />
-                        <FormControlLabel
-                          value="true"
-                          control={<Radio />}
-                          label="Sold"
-                          labelPlacement="bottom"
-                        />
-                      </RadioGroup>
-                    </FormControl>
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={3} lg={3}>
-                    <label htmlFor="discountPercent">
-                      <span>Discount Percent (%):</span>&nbsp;&nbsp;
-                    </label>
-                    <input
-                      value={formData.discountPercent.value}
-                      onChange={(event) =>
-                        updateFormFieldHandler(event, formData)
-                      }
-                      type="text"
-                      name="discountPercent"
-                      id="discountPercent"
-                      onBlur={(event) =>
-                        validateAndUpdateFormdata(event, formData)
-                      }
-                    />
-                    {formData.discountPercent.error && (
-                      <p className={classes.formError}>
-                        {formData.discountPercent.errorMessage}
-                      </p>
-                    )}
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={1} lg={1}></Grid>
-                  <Grid item xs={12} sm={12} md={4} lg={4}>
-                    <label htmlFor="discountedPrice">
-                      <span>Discounted Price:</span>&nbsp;&nbsp;
-                    </label>
-                    <p>
-                      {Math.ceil(
-                        formData.price.value -
-                          (formData.price.value *
-                            formData.discountPercent.value) /
-                            100
-                      )}
-                    </p>
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={10}
-                lg={10}
-                className={classes.mt40}
-              >
-                <label htmlFor="image">
-                  <span className={classes.label}> Upload images </span>
-                </label>
-
-                <input
-                  className="form-control"
-                  type="file"
-                  onChange={(event) => selectFiles(event, formData)}
-                  multiple
-                />
-
-                {formData.image.message ? (
-                  <p className="text-info">{formData.image.message}</p>
-                ) : (
-                  ""
-                )}
-
-                <br />
-
-                <div
-                  className={
-                    matches
-                      ? "preview-image-container"
-                      : "preview-image-container-mobile"
-                  }
-                >
-                  <SortableGifsContainer
-                    axis="x"
-                    onSortEnd={onSortEnd}
-                    onSortStart={(_, event) => event.preventDefault()}
-                  >
-                    {previewImages.map((gif, i) => (
-                      <div key={i} className="image-preview">
-                        {gif.saved !== undefined ? (
-                          <SortableGif
-                            index={i}
-                            key={gif}
-                            gif={gif}
-                            collection="gifs"
-                          
-                          />
-                        ) : (
-                          <img
-                            src={URL.createObjectURL(gif)}
-                            height="150"
-                            width="200"
-                            alt=""
-                          />
-                        )}
-
-                        <span title="Remove image">
-                          <DeleteIcon
-                            className="delete-icon"
-                            onClick={() => removeImageHandler(i)}
-                          />
-                        </span>
-                      </div>
-                    ))}
-                  </SortableGifsContainer>
-                </div>
-              </Grid>
-            </Grid>
-            <div className="center-align">
-              {vehicleId !== undefined ? (
-                <button
-                  type="button"
-                  className="btn"
-                  onClick={() => updateSubmitForm(vehicleId)}
-                  id={"id-" + vehicleId}
-                >
-                  Update Vehicle
-                </button>
-              ) : (
-                <button type="button" className="btn" onClick={submitForm}>
-                  Upload Vehicle
-                </button>
-              )}
-            </div>
-          </form>
+               />
+               {formData.descr.error && (
+                 <p className={classes.formError}>{formData.descr.errorMessage}</p>
+               )} */}
+               </Grid>
+               <Grid item xs={12} sm={12} md={5} lg={5}>
+                 <label htmlFor="price">
+                   <span>Price:*</span>&nbsp;&nbsp;
+                 </label>
+                 <input
+                   value={formData.price.value}
+                   onChange={(event) => updateFormFieldHandler(event, formData)}
+                   type="number"
+                   name="price"
+                   id="price"
+                   onBlur={(event) => validateAndUpdateFormdata(event, formData)}
+                 />
+                 {formData.price.error && (
+                   <p className={classes.formError}>
+                     {formData.price.errorMessage}
+                   </p>
+                 )}
+               </Grid>
+               <Grid item xs={12} sm={12} md={5} lg={5}>
+                 <label htmlFor="myear">
+                   <span>Manufacturing Year:*</span>&nbsp;&nbsp;
+                 </label>
+                 <input
+                   value={formData.myear.value}
+                   onChange={(event) => updateFormFieldHandler(event, formData)}
+                   type="number"
+                   name="myear"
+                   id="myear"
+                   onBlur={(event) => validateAndUpdateFormdata(event, formData)}
+                 />
+                 {formData.myear.error && (
+                   <p className={classes.formError}>
+                     {formData.myear.errorMessage}
+                   </p>
+                 )}
+               </Grid>
+               <Grid item xs={12} sm={12} md={5} lg={5}>
+                 <label htmlFor="mmonth">
+                   <span>Manufacturing Month:*</span>&nbsp;&nbsp;
+                 </label>
+                 <input
+                   value={formData.mmonth.value}
+                   onChange={(event) => updateFormFieldHandler(event, formData)}
+                   type="number"
+                   name="mmonth"
+                   id="mmonth"
+                   onBlur={(event) => validateAndUpdateFormdata(event, formData)}
+                 />
+                 {formData.mmonth.error && (
+                   <p className={classes.formError}>
+                     {formData.mmonth.errorMessage}
+                   </p>
+                 )}
+               </Grid>
+               <Grid item xs={12} sm={12} md={5} lg={5}>
+                 <label htmlFor="kmdriven">
+                   <span>Kms. Driven:*</span>&nbsp;&nbsp;
+                 </label>
+                 <input
+                   value={formData.kmdriven.value}
+                   onChange={(event) => updateFormFieldHandler(event, formData)}
+                   type="number"
+                   name="kmdriven"
+                   id="kmdriven"
+                   onBlur={(event) => validateAndUpdateFormdata(event, formData)}
+                 />
+                 {formData.kmdriven.error && (
+                   <p className={classes.formError}>
+                     {formData.kmdriven.errorMessage}
+                   </p>
+                 )}
+               </Grid>
+               <Grid item xs={12} sm={12} md={5} lg={5}>
+                 <label htmlFor="owner">
+                   <span>Owner:*</span>&nbsp;&nbsp;
+                 </label>
+                 <input
+                   value={formData.owner.value}
+                   onChange={(event) => updateFormFieldHandler(event, formData)}
+                   type="text"
+                   name="owner"
+                   id="owner"
+                   onBlur={(event) => validateAndUpdateFormdata(event, formData)}
+                 />
+                 {formData.owner.error && (
+                   <p className={classes.formError}>
+                     {formData.owner.errorMessage}
+                   </p>
+                 )}
+               </Grid>
+               <Grid item xs={12} sm={12} md={5} lg={5}>
+                 <label htmlFor="cc">
+                   <span>CC:*</span>&nbsp;&nbsp;
+                 </label>
+                 <input
+                   value={formData.cc.value}
+                   onChange={(event) => updateFormFieldHandler(event, formData)}
+                   type="number"
+                   name="cc"
+                   id="cc"
+                   onBlur={(event) => validateAndUpdateFormdata(event, formData)}
+                 />
+                 {formData.cc.error && (
+                   <p className={classes.formError}>
+                     {formData.cc.errorMessage}
+                   </p>
+                 )}
+               </Grid>
+               {/* <Grid item xs={12} sm={12} md={5} lg={5}>
+               <label htmlFor="bhp">
+                 <span>BHP:*</span>&nbsp;&nbsp;
+               </label>
+               <input
+                 value={formData.bhp.value}
+                 onChange={(event) => updateFormFieldHandler(event, formData)}
+                 type="number"
+                 name="bhp"
+                 id="bhp"
+                 onBlur={(event) => validateAndUpdateFormdata(event, formData)}
+               />
+               {formData.bhp.error && (
+                 <p className={classes.formError}>{formData.bhp.errorMessage}</p>
+               )}
+             </Grid>
+             <Grid item xs={12} sm={12} md={5} lg={5}>
+               <label htmlFor="mileage">
+                 <span>Mileage:*</span>&nbsp;&nbsp;
+               </label>
+               <input
+                 value={formData.mileage.value}
+                 onChange={(event) => updateFormFieldHandler(event, formData)}
+                 type="number"
+                 name="mileage"
+                 id="mileage"
+                 onBlur={(event) => validateAndUpdateFormdata(event, formData)}
+               />
+               {formData.mileage.error && (
+                 <p className={classes.formError}>
+                   {formData.mileage.errorMessage}
+                 </p>
+               )}
+             </Grid> */}
+               <Grid
+                 item
+                 xs={12}
+                 sm={12}
+                 md={11}
+                 lg={11}
+                 className={classes.mb20}
+               >
+                 <label htmlFor="additionalInfo">
+                   <span>Additional Information:</span>&nbsp;&nbsp;
+                 </label>
+                 <input
+                   value={formData.additionalInfo.value}
+                   onChange={(event) => updateFormFieldHandler(event, formData)}
+                   type="text"
+                   name="additionalInfo"
+                   id="additionalInfo"
+                 />
+               </Grid>
+               <Grid
+                 item
+                 xs={12}
+                 sm={12}
+                 md={11}
+                 lg={11}
+                 className={classes.mb20}
+               >
+                 <label htmlFor="bulletInfo1">
+                   <span>Bullet Information 1:</span>&nbsp;&nbsp;
+                 </label>
+                 <input
+                   value={formData.bulletInfo1.value}
+                   onChange={(event) => updateFormFieldHandler(event, formData)}
+                   type="text"
+                   name="bulletInfo1"
+                   id="bulletInfo1"
+                   onBlur={(event) => validateAndUpdateFormdata(event, formData)}
+                 />
+                 {formData.bulletInfo1.error && (
+                   <p className={classes.formError}>
+                     {formData.bulletInfo1.errorMessage}
+                   </p>
+                 )}
+               </Grid>
+               <Grid
+                 item
+                 xs={12}
+                 sm={12}
+                 md={11}
+                 lg={11}
+                 className={classes.mb20}
+               >
+                 <label htmlFor="bulletInfo2">
+                   <span>Bullet Information 2:</span>&nbsp;&nbsp;
+                 </label>
+                 <input
+                   value={formData.bulletInfo2.value}
+                   onChange={(event) => updateFormFieldHandler(event, formData)}
+                   type="text"
+                   name="bulletInfo2"
+                   id="bulletInfo2"
+                   onBlur={(event) => validateAndUpdateFormdata(event, formData)}
+                 />
+                 {formData.bulletInfo2.error && (
+                   <p className={classes.formError}>
+                     {formData.bulletInfo2.errorMessage}
+                   </p>
+                 )}
+               </Grid>
+               <Grid
+                 item
+                 xs={12}
+                 sm={12}
+                 md={11}
+                 lg={11}
+                 className={classes.mb20}
+               >
+                 <label htmlFor="bulletInfo3">
+                   <span>Bullet Information 3:</span>&nbsp;&nbsp;
+                 </label>
+                 <input
+                   value={formData.bulletInfo3.value}
+                   onChange={(event) => updateFormFieldHandler(event, formData)}
+                   type="text"
+                   name="bulletInfo3"
+                   id="bulletInfo3"
+                   onBlur={(event) => validateAndUpdateFormdata(event, formData)}
+                 />
+                 {formData.bulletInfo3.error && (
+                   <p className={classes.formError}>
+                     {formData.bulletInfo3.errorMessage}
+                   </p>
+                 )}
+               </Grid>
+               <Grid
+                 item
+                 xs={12}
+                 sm={12}
+                 md={11}
+                 lg={11}
+                 className={classes.mb20}
+               >
+                 <label htmlFor="bulletInfo4">
+                   <span>Bullet Information 4:</span>&nbsp;&nbsp;
+                 </label>
+                 <input
+                   value={formData.bulletInfo4.value}
+                   onChange={(event) => updateFormFieldHandler(event, formData)}
+                   type="text"
+                   name="bulletInfo4"
+                   id="bulletInfo4"
+                   onBlur={(event) => validateAndUpdateFormdata(event, formData)}
+                 />
+                 {formData.bulletInfo4.error && (
+                   <p className={classes.formError}>
+                     {formData.bulletInfo4.errorMessage}
+                   </p>
+                 )}
+               </Grid>
+               <Grid
+                 item
+                 xs={12}
+                 sm={12}
+                 md={11}
+                 lg={11}
+                 className={classes.mb20}
+               >
+                 <label htmlFor="bulletInfo5">
+                   <span>Bullet Information 5:</span>&nbsp;&nbsp;
+                 </label>
+                 <input
+                   value={formData.bulletInfo5.value}
+                   onChange={(event) => updateFormFieldHandler(event, formData)}
+                   type="text"
+                   name="bulletInfo5"
+                   id="bulletInfo5"
+                   onBlur={(event) => validateAndUpdateFormdata(event, formData)}
+                 />
+                 {formData.bulletInfo5.error && (
+                   <p className={classes.formError}>
+                     {formData.bulletInfo5.errorMessage}
+                   </p>
+                 )}
+               </Grid>
+               <Grid
+                 item
+                 xs={12}
+                 sm={12}
+                 md={11}
+                 lg={11}
+                 className={classes.mb20}
+               >
+                 <label htmlFor="bulletInfo6">
+                   <span>Bullet Information 6:</span>&nbsp;&nbsp;
+                 </label>
+                 <input
+                   value={formData.bulletInfo6.value}
+                   onChange={(event) => updateFormFieldHandler(event, formData)}
+                   type="text"
+                   name="bulletInfo6"
+                   id="bulletInfo6"
+                   onBlur={(event) => validateAndUpdateFormdata(event, formData)}
+                 />
+                 {formData.bulletInfo6.error && (
+                   <p className={classes.formError}>
+                     {formData.bulletInfo6.errorMessage}
+                   </p>
+                 )}
+               </Grid>
+               <Grid
+                 item
+                 xs={12}
+                 sm={12}
+                 md={11}
+                 lg={11}
+                 className={classes.mb20}
+               >
+                 <Grid
+                   container
+                   component="div"
+                   direction="row"
+                   justify="space-evenly"
+                 >
+                   <Grid item xs={12} sm={12} md={4} lg={4}>
+                     <label htmlFor="bulletInfo6">
+                       <span>Sold:</span>&nbsp;&nbsp;
+                     </label>
+                     <FormControl component="fieldset">
+                       <RadioGroup
+                         row
+                         aria-label="position"
+                         name="position"
+                         defaultValue={formData.sold.value}
+                         onChange={(event) =>
+                           validateAndUpdateSoldFlag(event, formData)
+                         }
+                       >
+                         <FormControlLabel
+                           value="false"
+                           control={<Radio />}
+                           label="Up for sale"
+                           labelPlacement="bottom"
+                         />
+                         <FormControlLabel
+                           value="true"
+                           control={<Radio />}
+                           label="Sold"
+                           labelPlacement="bottom"
+                         />
+                       </RadioGroup>
+                     </FormControl>
+                   </Grid>
+                   <Grid item xs={12} sm={12} md={3} lg={3}>
+                     <label htmlFor="discountPercent">
+                       <span>Discount Percent (%):</span>&nbsp;&nbsp;
+                     </label>
+                     <input
+                       value={formData.discountPercent.value}
+                       onChange={(event) =>
+                         updateFormFieldHandler(event, formData)
+                       }
+                       type="text"
+                       name="discountPercent"
+                       id="discountPercent"
+                       onBlur={(event) =>
+                         validateAndUpdateFormdata(event, formData)
+                       }
+                     />
+                     {formData.discountPercent.error && (
+                       <p className={classes.formError}>
+                         {formData.discountPercent.errorMessage}
+                       </p>
+                     )}
+                   </Grid>
+                   <Grid item xs={12} sm={12} md={1} lg={1}></Grid>
+                   <Grid item xs={12} sm={12} md={4} lg={4}>
+                     <label htmlFor="discountedPrice">
+                       <span>Discounted Price:</span>&nbsp;&nbsp;
+                     </label>
+                     <p>
+                       {Math.ceil(
+                         formData.price.value -
+                           (formData.price.value *
+                             formData.discountPercent.value) /
+                             100
+                       )}
+                     </p>
+                   </Grid>
+                 </Grid>
+               </Grid>
+               <Grid
+                 item
+                 xs={12}
+                 sm={12}
+                 md={10}
+                 lg={10}
+                 className={classes.mt40}
+               >
+                 <label htmlFor="image">
+                   <span className={classes.label}> Upload images </span>
+                 </label>
+ 
+                 <input
+                   className="form-control"
+                   type="file"
+                   onChange={(event) => selectFiles(event, formData)}
+                   multiple
+                 />
+ 
+                 {formData.image.message ? (
+                   <p className="text-info">{formData.image.message}</p>
+                 ) : (
+                   ""
+                 )}
+ 
+                 <br />
+ 
+                 <div
+                   className={
+                     matches
+                       ? "preview-image-container"
+                       : "preview-image-container-mobile"
+                   }
+                 >
+                   <SortableGifsContainer
+                     axis="x"
+                     onSortEnd={onSortEnd}
+                     onSortStart={(_, event) => event.preventDefault()}
+                   >
+                     {previewImages.map((gif, i) => (
+                       <div key={i} className="image-preview">
+                         {gif.saved !== undefined ? (
+                           <SortableGif
+                             index={i}
+                             key={gif}
+                             gif={gif}
+                             collection="gifs"
+                           
+                           />
+                         ) : (
+                           <img
+                             src={URL.createObjectURL(gif)}
+                             height="150"
+                             width="200"
+                             alt=""
+                           />
+                         )}
+ 
+                         <span title="Remove image">
+                           <DeleteIcon
+                             className="delete-icon"
+                             onClick={() => removeImageHandler(i)}
+                           />
+                         </span>
+                       </div>
+                     ))}
+                   </SortableGifsContainer>
+                 </div>
+               </Grid>
+             </Grid>
+             <div className="center-align">
+               {vehicleId !== undefined ? (
+                 <button
+                   type="button"
+                   className="btn"
+                   onClick={() => updateSubmitForm(vehicleId)}
+                   id={"id-" + vehicleId}
+                 >
+                   Update Vehicle
+                 </button>
+               ) : (
+                 <button type="button" className="btn" onClick={submitForm}>
+                   Upload Vehicle
+                 </button>
+               )}
+             </div>
+           </form>
+          }
+         
         </div>
       )}
     </>
