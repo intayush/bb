@@ -463,30 +463,30 @@ const HamburgerDropdown = () => {
         <MenuItem>
           <div style={{ marginLeft: "20px" }}>
             <a href="https://www.facebook.com/BikeBazaaar">
-            {/* <a href="https://www.facebook.com/BikeBazaaar"> */}
-              <img className="social-icon-img" src={faceBookIcon}  alt="" />
-            
+              {/* <a href="https://www.facebook.com/BikeBazaaar"> */}
+              <img className="social-icon-img" src={faceBookIcon} alt="" />
+
             </a>
           </div>
 
           <div style={{ marginLeft: "20px" }}>
-          <a href="https://www.instagram.com/bikebazaaar/">
-             
-             <img className="social-icon-img" src={instagramIcon}  alt="" />
-           </a>
+            <a href="https://www.instagram.com/bikebazaaar/">
+
+              <img className="social-icon-img" src={instagramIcon} alt="" />
+            </a>
           </div>
-          
+
           <div style={{ marginLeft: "20px" }}>
             <a href="https://www.linkedin.com/company/bikebazaar">
-              <img className="social-icon-img" src={linkedinIcon}  alt="" />
-  
+              <img className="social-icon-img" src={linkedinIcon} alt="" />
+
             </a>
           </div>
           <div style={{ marginLeft: "20px" }}>
-            
+
 
             <a href="https://twitter.com/BikeBazaaar">
-              <img className="social-icon-img" src={twitterIcon}  alt="" />
+              <img className="social-icon-img" src={twitterIcon} alt="" />
             </a>
           </div>
         </MenuItem>
@@ -558,6 +558,7 @@ const MainMenu = (props) => {
           <Grid item xs={6} sm={6} md={6} lg={6}>
             <Grid container component="div" direction="row">
               <Grid item xs={12} sm={12} md={12} lg={12}>
+
                 <form id="searchForm" className="input-field">
                   <Grid
                     container
@@ -594,7 +595,10 @@ const MainMenu = (props) => {
                         />
                       </div>
                     </Grid>
-                    <Grid item xs={2} sm={2} md={2} lg={2}>
+
+
+                    { searchTerm && selectedCity ? <Grid item xs={2} sm={2} md={2} lg={2}>
+
                       <Link
                         to={`/category/bike?searchTerm=${searchTerm}&city=${selectedCity}`}
                       >
@@ -610,7 +614,25 @@ const MainMenu = (props) => {
                           <img src={searchIcon} height="25" alt="" />
                         </button>
                       </Link>
-                    </Grid>
+
+                    </Grid> : <Grid item xs={2} sm={2} md={2} lg={2}>
+                        <Link
+                          to={`/category/bike`}
+                        >
+                          <button
+                            style={{
+                              marginTop: "1px",
+                              width: "100%",
+                              backgroundColor: "#1d1d1d",
+                            }}
+                            className="btn search-label-btn"
+                            type="submit"
+                          >
+                            <img src={searchIcon} height="25" alt="" />
+                          </button>
+                        </Link>
+                      </Grid>}
+
                   </Grid>
                 </form>
               </Grid>
