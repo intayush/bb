@@ -3,7 +3,7 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { connect, useDispatch } from "react-redux";
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { CHANGE_CATEGORY } from "../../../store/actions/actionTypes";
 import * as actions from "../../../store/actions/index";
@@ -23,23 +23,30 @@ const useStyle = makeStyles({
   },
 });
 
-const CategoryWidget = (props) => {
-
+const CategoryWidget = React.memo((props) => {
   const dispatch = useDispatch();
 
+  let [selectedCategory, setSelectedCategory] = useState(props.category);
 
-  const [selectedCategory, setSelectedCategory] = useState(props.category);
+  useEffect(() => {
+    localStorage.setItem("setchangedCategory", selectedCategory);
+  }, [selectedCategory]);
 
-  const handleChange = (clickValue) => {
+  useEffect(() => {
+    let categoryFromLocalStorage = localStorage.getItem("setchangedCategory");
+    selectedCategory = categoryFromLocalStorage;
+  }, [selectedCategory]);
+
+  const handleChange = (event) => {
     let filterData = props.filter;
-    console.log("filter count", parseInt(clickValue.target.value));
-    setSelectedCategory(parseInt(clickValue.target.value));
-    
+    console.log("filter count", parseInt(event.target.value));
+    setSelectedCategory(parseInt(event.target.value));
+
     dispatch({
       type: CHANGE_CATEGORY,
-      payload: parseInt(clickValue.target.value),
+      payload: parseInt(event.target.value),
     });
-    props.cityFilter(parseInt(clickValue.target.value), filterData);
+    props.cityFilter(parseInt(event.target.value), filterData);
   };
 
   const handleChange2 = (categ) => {
@@ -90,7 +97,7 @@ const CategoryWidget = (props) => {
                   control={<BBRadio />}
                   label= {`All ${selectedCategory === 0 ? valued : ""}` }
                   checked={selectedCategory === 0}
-                />
+                />valued
               </li>
             </Link> */}
             <Link to="/category/bike">
@@ -130,7 +137,7 @@ const CategoryWidget = (props) => {
       </div>
     </div>
   );
-};
+});
 
 const mapStateToProps = (state) => {
   return {
