@@ -26,7 +26,7 @@ const useStyle = makeStyles({
 const CategoryWidget = React.memo((props) => {
   const dispatch = useDispatch();
 
-  let [selectedCategory, setSelectedCategory] = useState(props.category || 1);
+  let [selectedCategory, setSelectedCategory] = useState(props.category);
 
   const handleChange = (event) => {
     let filterData = props.filter;
