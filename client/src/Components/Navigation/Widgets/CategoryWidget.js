@@ -28,15 +28,6 @@ const CategoryWidget = React.memo((props) => {
 
   let [selectedCategory, setSelectedCategory] = useState(props.category);
 
-  useEffect(() => {
-    localStorage.setItem("setchangedCategory", selectedCategory);
-  }, [selectedCategory]);
-
-  useEffect(() => {
-    let categoryFromLocalStorage = localStorage.getItem("setchangedCategory");
-    selectedCategory = categoryFromLocalStorage;
-  }, [selectedCategory]);
-
   const handleChange = (event) => {
     let filterData = props.filter;
     console.log("filter count", parseInt(event.target.value));
