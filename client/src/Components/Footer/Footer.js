@@ -54,7 +54,7 @@ const Footer = () => {
       {matches ? (
         <div className={classes.root}>
           <Grid container>
-            <Grid item>
+            <Grid item md={4}>
               <div className="first_col">
                 <img src={FooterLogo} height="25" alt="FooterLogo" />
                 <p style={{ marginTop: "3%" }} className={classes.text}>
@@ -79,7 +79,7 @@ const Footer = () => {
             ></div>
             <Grid item md={4}>
               <p
-                style={{ marginBottom: "4%", marginLeft: "4%" }}
+                style={{ marginBottom: "4%", marginLeft: "7%" }}
                 className={classes.text}
               >
                 Quick Links
@@ -139,7 +139,7 @@ const Footer = () => {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  marginLeft: "5%",
+                  marginLeft: "14%",
                 }}
               >
                 <p style={{ marginBottom: "4%" }} className={classes.text}>
@@ -155,7 +155,7 @@ const Footer = () => {
                   }}
                 >
                   <img
-                    style={{ width: "15%" }}
+                    style={{ width: "15%",marginLeft:'1%' }}
                     className="icon-img"
                     src={callIcon}
                     width="30"
@@ -169,19 +169,19 @@ const Footer = () => {
                     display: "flex",
                     flexDirection: "row",
                     color: "white",
-                    marginTop: "5%",
-               
-                    justifyContent: "spaceBetween",
+                    marginTop: "8%",
+
+                    justifyContent: "space-between",
                   }}
                 >
                   <img
-                    style={{ width: "15%" ,marginLeft:'2%'}}
+                    style={{ width: "15%", marginLeft: "1%",marginRight:"10px" }}
                     className="iconImg"
                     src={messageIcon}
                     width="30"
                     alt=""
                   />
-                  <span style={{ marginLeft: "9%" }}>
+                  <span style={{ marginLeft: "7%" }}>
                     connect@bikebazaar.com
                   </span>
                 </div>
@@ -191,9 +191,9 @@ const Footer = () => {
                     display: "flex-start",
                     flexDirection: "column",
 
-                    marginTop: "22%",
+                    marginTop: "16%",
                     wordSpacing: "3.5px",
-                    letterSpacing:'2px'
+                    letterSpacing: "2px",
                   }}
                 >
                   <p style={{ color: "white" }}>Connect with us</p>
@@ -202,14 +202,15 @@ const Footer = () => {
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "space-between",
-                      width: "65%",
-                      fontWeight:'500'
+                      width: "70%",
+                      fontWeight: "500",
+                      marginTop:'3%'
                     }}
                   >
                     <img src={faceBookIcon} />
-                    <img src={instagramIcon} />
-                    <img src={linkedinIcon} />
-                    <img src={twitterIcon} />
+                    <img style={{ marginLeft: "2%",cursor:'pointer' }} src={instagramIcon} />
+                    <img style={{ marginLeft: "2%" ,cursor:'pointer'}} src={linkedinIcon} />
+                    <img style={{ marginLeft: "2%" ,cursor:'pointer'}} src={twitterIcon} />
                   </div>
                 </div>
               </div>
