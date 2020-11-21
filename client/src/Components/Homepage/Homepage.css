@@ -232,12 +232,36 @@ i.icon-black {
   box-shadow: none !important;
 }
 
+/* bikeshadow at the top category */
+
+.motorcycle-box-mobileView-shadow{
+
+    width: fit-content;
+    border-radius: 15px;
+    padding: 15px !important;
+    cursor: pointer;
+    margin-top: 5% !important;
+    box-shadow: 0px 5px 9px 1px rgba(0, 0, 0, 0.2);
+  
+}
+
+.vehicle-box-shadow {
+  width: fit-content;
+  border-radius: 15px;
+  padding: 15px !important;
+  cursor: pointer;
+  margin-top: 5% !important;
+  box-shadow: 0px 2px 4.8px 0.2px rgba(0, 0, 0, 0.2);
+}
+
 .box-shadow {
   width: fit-content;
   border-radius: 15px;
   padding: 15px !important;
   cursor: pointer;
+  margin-top: 5% !important;
 }
+
 .box-shadow:hover {
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.4);
 }

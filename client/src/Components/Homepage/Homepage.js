@@ -27,8 +27,13 @@ import Grid from "@material-ui/core/Grid";
 import * as CATEGORY from "../../shared/constants/category";
 import { CHANGE_CATEGORY } from "../../store/actions/actionTypes";
 // import { HOMEPAGE_LOAD } from "../../store/actions/actionTypes"
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 const Homepage = (props) => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const [bikeHover, setBikeHover] = useState(false);
@@ -39,12 +44,12 @@ const Homepage = (props) => {
   };
   const [sliderState, changeSlider] = useState(null);
   useEffect(() => {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   }, []);
 
   const handleCategoryClick = (category) => {
     let category_id = 0;
-    if(category === "bike") category_id = 1;
+    if (category === "bike") category_id = 1;
     else if (category === "scooter") category_id = 2;
     else category_id = 3;
     dispatch({ type: CHANGE_CATEGORY, payload: category_id });
@@ -123,7 +128,7 @@ const Homepage = (props) => {
               <h4 className="text-white">
                 <img alt="" src={logo} className="tick-icon" />
                 <span>
-                  6 Months'{" "} <span className="bold">Warranty</span>
+                  6 Months' <span className="bold">Warranty</span>
                 </span>
               </h4>
               <h4 className="text-white">
@@ -170,26 +175,55 @@ const Homepage = (props) => {
             <img alt="" src={headingLines} width="57" height="4" />
           </Grid>
         </Grid>
-        <Grid container component="div" direction="row">
-          <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
-            <div className="box-shadow center-align" onMouseEnter={() => setBikeHover(true)} onMouseLeave={() => setBikeHover(false)} style={{background:'white'}} onClick={() => handleCategoryClick(CATEGORY.BIKE)}>
-              <img alt="" src={bikeHover ?bikeGIF  : bikeStill} height="170" width="290"/>
-              <h5>Motorcycle</h5>
-            </div>
+
+        {matches ?
+
+
+          <Grid container component="div" direction="row">
+            <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
+              <div className="box-shadow center-align" onMouseEnter={() => setBikeHover(true)} onMouseLeave={() => setBikeHover(false)} style={{ background: 'white' }} onClick={() => handleCategoryClick(CATEGORY.BIKE)}>
+                <img alt="" src={bikeHover ? bikeGIF : bikeStill} height="170" width="290" />
+                <h5>Motorcycle</h5>
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
+              <div className="box-shadow center-align" onMouseEnter={() => setScooterHover(true)} onMouseLeave={() => setScooterHover(false)} style={{ background: 'white' }} onClick={() => handleCategoryClick(CATEGORY.SCOOTER)}>
+                <img alt="" src={scooterHover ? scooterGIF : scooterStill} height="170" width="290" />
+                <h5>Scooter</h5>
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
+              <div className="box-shadow center-align" onMouseEnter={() => setHighEndBikeHover(true)} onMouseLeave={() => setHighEndBikeHover(false)} style={{ background: 'white' }} onClick={() => handleCategoryClick(CATEGORY.HIGH_END_BIKE)}>
+                <img alt="" src={highEndBikeHover ? highEndBikeGIF : highEndStill} height="170" width="290" />
+                <h5>High-End Motorcycle</h5>
+              </div>
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
-            <div className="box-shadow center-align" onMouseEnter={() => setScooterHover(true)} onMouseLeave={() => setScooterHover(false)} style={{background:'white'}} onClick={() => handleCategoryClick(CATEGORY.SCOOTER)}>
-              <img alt="" src={scooterHover ? scooterGIF :  scooterStill} height="170" width="290" />
-              <h5>Scooter</h5>
-            </div>
+
+          :
+          <Grid container component="div" direction="row">
+            <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
+              <div className="motorcycle-box-mobileView-shadow center-align" onMouseEnter={() => setBikeHover(true)} onMouseLeave={() => setBikeHover(false)} style={{ background: 'white' }} onClick={() => handleCategoryClick(CATEGORY.BIKE)}>
+                <img alt="" src={bikeHover ? bikeGIF : bikeStill} height="170" width="290" />
+                <h5>Motorcycle</h5>
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
+              <div className="vehicle-box-shadow center-align" onMouseEnter={() => setScooterHover(true)} onMouseLeave={() => setScooterHover(false)} style={{ background: 'white' }} onClick={() => handleCategoryClick(CATEGORY.SCOOTER)}>
+                <img alt="" src={scooterHover ? scooterGIF : scooterStill} height="170" width="290" />
+                <h5>Scooter</h5>
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
+              <div className="vehicle-box-shadow center-align" onMouseEnter={() => setHighEndBikeHover(true)} onMouseLeave={() => setHighEndBikeHover(false)} style={{ background: 'white' }} onClick={() => handleCategoryClick(CATEGORY.HIGH_END_BIKE)}>
+                <img alt="" src={highEndBikeHover ? highEndBikeGIF : highEndStill} height="170" width="290" />
+                <h5>High-End Motorcycle</h5>
+              </div>
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
-            <div className="box-shadow center-align" onMouseEnter={() => setHighEndBikeHover(true)} onMouseLeave={() => setHighEndBikeHover(false)} style={{background:'white'}} onClick={() => handleCategoryClick(CATEGORY.HIGH_END_BIKE)}>
-              <img alt="" src={highEndBikeHover ? highEndBikeGIF  : highEndStill} height="170" width="290" />
-              <h5>High-End Motorcycle</h5>
-            </div>
-          </Grid>
-        </Grid>
+
+        }
+
       </div>
       <div className="section-3">
         <Grid container component="div" direction="row" className="advantageRow">
@@ -255,7 +289,7 @@ const Homepage = (props) => {
           direction="row"
           className="row"
           justify="center"
-          style={{paddingBottom: '20px'}}
+          style={{ paddingBottom: '20px' }}
         >
           <Grid item xs={12} sm={12} md={4} lg={5}>
             <div className="gola-wrapper">
@@ -298,7 +332,7 @@ const Homepage = (props) => {
           component="div"
           direction="row"
           className="row center-align"
-          style={{marginBottom: "0px"}}
+          style={{ marginBottom: "0px" }}
         >
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <h3>TESTIMONIALS</h3>
@@ -319,17 +353,17 @@ const Homepage = (props) => {
             </div>
           </Grid>
           <Grid item xs={10} sm={10} md={10} lg={10} className="center-align">
-            <div className="carousel" style={{minHeight: "300px"}}>
-              <a className="carousel-item" href="#one!" index="0" style={{marginTop: "-10px"}}>
+            <div className="carousel" style={{ minHeight: "300px" }}>
+              <a className="carousel-item" href="#one!" index="0" style={{ marginTop: "-10px" }}>
                 <img alt="" className="circle" src={testimonial_hari} />
               </a>
               {/* <a className="carousel-item" href="#two!" index="1">
                 <img alt="" className="circle" src={testimonial2} />
               </a> */}
-              <a className="carousel-item" href="#two!" index="1" style={{marginTop: "-10px"}}>
+              <a className="carousel-item" href="#two!" index="1" style={{ marginTop: "-10px" }}>
                 <img alt="" className="circle" src={testimonial_md} />
               </a>
-              <a className="carousel-item" href="#three!" index="2" style={{marginTop: "-10px"}}>
+              <a className="carousel-item" href="#three!" index="2" style={{ marginTop: "-10px" }}>
                 <img alt="" className="circle" src={testimonial_azhar} />
               </a>
               {/* <a className="carousel-item" href="#five!" index="4">

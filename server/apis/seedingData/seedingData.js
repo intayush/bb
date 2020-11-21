@@ -52,7 +52,7 @@ router.get("/createbikeMapping", (req, res) => {
     );
   }
   run().catch(console.log);
-  res.json({ msg: "Index Created Sucessfully" });
+  res.json({ msg: "createbikeMapping Index Created Sucessfully" });
 });
 
 router.get("/deleteMapping", (req, res) => {
@@ -90,7 +90,7 @@ router.get("/createStoreLocationMapping", (req, res) => {
     console.log(err);
   });
   res.json({
-    msg: "mapping created"
+    msg: "createStoreLocationMapping mapping created"
   });
 });
 
@@ -767,7 +767,7 @@ router.get("/uploadLocations", (req, res) => {
     console.log(count);
   }
   upload().catch(console.log);
-  res.json({ msg: "Location index seeded" });
+  res.json({ msg: " uploadLocations Location index seeded" });
 });
 
 router.get("/uploadNewLocations", (req, res) => {
@@ -882,7 +882,7 @@ router.get("/uploadNewLocations", (req, res) => {
     console.log(count);
   }
   upload().catch(console.log);
-  res.json({ msg: "New Location added" });
+  res.json({ msg: "uploadNewLocations New Location added" });
 });
 
 
@@ -909,7 +909,7 @@ router.get("/createLeadDetail", (req, res) => {
     );
   }
   run().catch(console.log);
-  res.json({ msg: "Index Created Sucessfully" });
+  res.json({ msg: "createLeadDetail Index Created Sucessfully" });
 });
 
 
@@ -963,7 +963,7 @@ router.get("/sellBikeDetails", (req, res) => {
     );
   }
   run().catch(console.log);
-  res.json({ msg: "Index Created Sucessfully" });
+  res.json({ msg: "sellBikeDetails Index Created Sucessfully" });
 });
 
 

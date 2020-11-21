@@ -53,7 +53,7 @@ router.get("/createSellerDetail", (req, res) => {
     );
   }
   run().catch(console.log);
-  res.json({ msg: "Index Created Sucessfully" });
+  res.json({ msg: "createSellerDetail Index Created Sucessfully" });
 });
 
 //details of buyer and bike from product detail page
@@ -78,7 +78,7 @@ router.get("/createBuyerIndex", (req, res) => {
     );
   }
   run().catch(console.log);
-  res.json({ msg: "Index Created Sucessfully" });
+  res.json({ msg: "createBuyerIndex Index Created Sucessfully" });
 });
 
 //details of buyer and bike from product detail page
@@ -104,7 +104,7 @@ router.get("/createFranchiseIndex", (req, res) => {
     );
   }
   run().catch(console.log);
-  res.json({ msg: "Index Created Sucessfully" });
+  res.json({ msg: "createFranchiseIndex Index Created Sucessfully" });
 });
 
 //details of buyer and bike from product detail page
@@ -134,7 +134,7 @@ router.get("/createSellerIndex", (req, res) => {
     );
   }
   run().catch(console.log);
-  res.json({ msg: "Index Created Sucessfully" });
+  res.json({ msg: "createSellerIndex Index Created Sucessfully" });
 });
 
 router.post("/insertFranchiseRequest", (req, res) => {

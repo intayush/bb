@@ -8,7 +8,6 @@ import faceBookIcon from "../../assets/facebook-icon.svg";
 import twitterIcon from "../../assets/twitter-icon.svg";
 import linkedinIcon from "../../assets/linkedin-icon.svg";
 import instagramIcon from "../../assets/instagram-icon.svg";
-
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 const useStyles = makeStyles((theme) => ({
@@ -25,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
   copyright: {
     color: "white",
-    marginTop: "20%",
+    marginTop: "18%",
   },
   columnsText: {
     padding: 0,
@@ -57,7 +56,7 @@ const Footer = () => {
             <Grid item md={4}>
               <div className="first_col">
                 <img src={FooterLogo} height="25" alt="FooterLogo" />
-                <p style={{ marginTop: "3%" }} className={classes.text}>
+                <p style={{ marginTop: "5%" }} className={classes.text}>
                   BikeBazaar aims to provide a hassle-free experience to
                   <br /> anyone looking to buy/sell a pre-owned 2 wheeler with
                   the <br /> help of technology and a team of experts.
@@ -151,7 +150,7 @@ const Footer = () => {
                     display: "flex",
                     flexDirection: "row",
                     color: "white",
-                    marginTop: "7%",
+                    marginTop: "8%",
                   }}
                 >
                   <img
