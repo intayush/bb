@@ -154,7 +154,7 @@ const Footer = () => {
                   }}
                 >
                   <img
-                    style={{ width: "15%",marginLeft:'1%' }}
+                    style={{ width: "15%", marginLeft: "1%" }}
                     className="icon-img"
                     src={callIcon}
                     width="30"
@@ -174,7 +174,11 @@ const Footer = () => {
                   }}
                 >
                   <img
-                    style={{ width: "15%", marginLeft: "1%",marginRight:"10px" }}
+                    style={{
+                      width: "15%",
+                      marginLeft: "1%",
+                      marginRight: "10px",
+                    }}
                     className="iconImg"
                     src={messageIcon}
                     width="30"
@@ -189,13 +193,12 @@ const Footer = () => {
                   style={{
                     display: "flex-start",
                     flexDirection: "column",
-
                     marginTop: "16%",
                     wordSpacing: "3.5px",
                     letterSpacing: "2px",
                   }}
                 >
-                  <p style={{ color: "white" }}>Connect with us</p>
+                  <p style={{ color: "white" ,fontSize:'15px'}}>Connect with us</p>
                   <div
                     style={{
                       display: "flex",
@@ -203,13 +206,22 @@ const Footer = () => {
                       justifyContent: "space-between",
                       width: "70%",
                       fontWeight: "500",
-                      marginTop:'3%'
+                      marginTop: "3%",
                     }}
                   >
                     <img src={faceBookIcon} />
-                    <img style={{ marginLeft: "2%",cursor:'pointer' }} src={instagramIcon} />
-                    <img style={{ marginLeft: "2%" ,cursor:'pointer'}} src={linkedinIcon} />
-                    <img style={{ marginLeft: "2%" ,cursor:'pointer'}} src={twitterIcon} />
+                    <img
+                      style={{ marginLeft: "2%", cursor: "pointer" }}
+                      src={instagramIcon}
+                    />
+                    <img
+                      style={{ marginLeft: "2%", cursor: "pointer" }}
+                      src={linkedinIcon}
+                    />
+                    <img
+                      style={{ marginLeft: "2%", cursor: "pointer" }}
+                      src={twitterIcon}
+                    />
                   </div>
                 </div>
               </div>
@@ -217,7 +229,126 @@ const Footer = () => {
           </Grid>
         </div>
       ) : (
-        <></>
+        <div>
+          <img src={FooterLogo} height="25" alt="" />
+          <p style={{ fontSize: "13px", color: "white" }}>
+            BikeBazaar aims to provide a hassle-free experience to anyone
+            looking to buy/sell a pre-owned 2 wheeler with the help of
+            technology and a team of experts.
+          </p>
+          <p style={{ color: "white", fontSize: "12px" }}>
+            © 2019 BikeBazaar. All rights reserved.
+          </p>
+
+          <p
+            style={{
+              color: "white",
+              marginTop: "5%",
+              fontSize: "16px",
+              fontWeight: 500,
+            }}
+          >
+            Quick Links
+          </p>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <div style={{ display: "flex-start", flexDirection: "column" }}>
+                  <p style={{ color: "white" }}>About</p>
+                  <p style={{ color: "white" }}>How it works</p>
+                  <p style={{ color: "white" }}>FAQs</p>
+                  <p style={{ color: "white" }}>Privacy Policy</p>
+                  <p style={{ color: "white" }}>Terms & Conditions</p>
+                  <p style={{ color: "white" }}>Contact Us</p>
+            </div>
+            <div style={{ display: "flex-start", flexDirection: "column" }}>
+                  <p style={{ color: "white" }}> Buy</p>
+                  <p style={{ color: "white" }}>Sell</p>
+                  <p style={{ color: "white" }}>Locate Store</p>
+                  <p style={{ color: "white" }}>Become a Franchise Owner</p>
+                  <p style={{ color: "white" }}>Blog</p>
+            </div>
+          </div>
+          <hr style={{ marginTop: "3%", marginBottom: "10%" }} />
+          <span style={{ color: "white" }}>Contact Info</span>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              color: "white",
+              marginTop: "4%",
+            }}
+          >
+            <img
+              style={{ marginLeft: "1%" }}
+              className="icon-img"
+              src={callIcon}
+              width="25"
+              height="25"
+              alt=""
+            />
+            <span style={{ marginLeft: "1%" }}>8956853498</span>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              color: "white",
+              marginTop: "4%",
+            }}
+          >
+            <img
+              style={{
+                marginLeft: "1%",
+              }}
+              src={messageIcon}
+              height="20"
+              width="25"
+              alt=""
+            />
+            <span style={{ marginLeft: "3%" }}>connect@bikebazaar.com</span>
+          </div>
+          <div
+            style={{
+              display: "flex-start",
+              flexDirection: "column",
+              marginTop: "8%",
+              wordSpacing: "3.5px",
+              letterSpacing: "2px",
+            }}
+          >
+            <p style={{ color: "white" }}>Connect with us</p>
+            <div
+              style={{
+                display: "flex-start",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                width: "70%",
+                fontWeight: "500",
+                marginTop: "3%",
+              }}
+            >
+              <img src={faceBookIcon} />
+              <img
+                style={{ marginLeft: "10%", cursor: "pointer" }}
+                src={instagramIcon}
+              />
+              <img
+                style={{ marginLeft: "10%", cursor: "pointer" }}
+                src={linkedinIcon}
+              />
+              <img
+                style={{ marginLeft: "10%", cursor: "pointer" }}
+                src={twitterIcon}
+              />
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

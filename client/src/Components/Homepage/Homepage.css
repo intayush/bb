@@ -407,3 +407,14 @@ i.icon-black {
 .floatRight {
   float: right !important;
 }
+
+
+/* mobile banner */
+.mobile-banner{
+  position: relative !important;
+}
+
+.mobile-banner-text{
+  position: relative !important;
+  
+}
