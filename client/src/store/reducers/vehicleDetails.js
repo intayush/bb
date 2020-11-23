@@ -9,69 +9,62 @@ const initialState = {
   currentPage: null,
   totalPages: null,
   vehicle: null,
-  category: null,
+  category: 0,
   selectedCity: "", //this will serve as city filter gets update on city widget
   filter: {
     sort: {
       column: null,
-      order: null
+      order: null,
     },
     city: null,
     myear: [],
     budget: [],
     brand: [],
     kmdriven: 100000,
-    searchTerm: "*"
-  }
+    searchTerm: "*",
+  },
 };
 
-
-
 const vehicles = (state, action) => {
-
-
   return updateObject(state, {
     filter: action.filterData,
     category: action.category,
     loading: false,
-    vehicles: action.vehicleList
+    vehicles: action.vehicleList,
   });
 };
 
 const vehiclesNames = (state, action) => {
   return updateObject(state, {
     loading: false,
-    vehicleNames: action.vehicleNames
+    vehicleNames: action.vehicleNames,
   });
 };
 
 const getPaginatedData = (state, action) => {
+  let reversedVehicleList = [];
 
-  let reversedVehicleList=[];
-
-  for(let i=state.vehicles.length-1;i>=0;i--){
-
-    reversedVehicleList.push(state.vehicles[i])
+  for (let i = state.vehicles.length - 1; i >= 0; i--) {
+    reversedVehicleList.push(state.vehicles[i]);
   }
 
-  let currentData =reversedVehicleList.slice(
+  let currentData = reversedVehicleList.slice(
     action.offset,
     action.offset + action.pageLimit
   );
 
   return updateObject(state, {
     loading: false,
-    currentData: currentData
+    currentData: currentData,
   });
 };
 
 const getVehicleData = (state, action) => {
   return updateObject(state, {
     loading: false,
-    vehicle: action.vehicleData
+    vehicle: action.vehicleData,
   });
 };
-
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -81,7 +74,7 @@ const reducer = (state = initialState, action) => {
       return getPaginatedData(state, action);
     case actionTypes.GET_VEHICLE_DATA:
       return getVehicleData(state, action);
-    case actionTypes.GET_VEHICLE_NAMES: 
+    case actionTypes.GET_VEHICLE_NAMES:
       return vehiclesNames(state, action);
     case actionTypes.HOMEPAGE_LOAD:
       return {
@@ -97,35 +90,33 @@ const reducer = (state = initialState, action) => {
         filter: {
           sort: {
             column: null,
-            order: null
+            order: null,
           },
           city: "Aluva",
           myear: [],
           budget: [],
           brand: [],
           kmdriven: 100000,
-          searchTerm: "*"
-        }
+          searchTerm: "*",
+        },
       };
-    case actionTypes.CHANGE_CITY:
 
+    case actionTypes.CHANGE_CITY:
       const updatedFilter = state.filter;
       updatedFilter.city = action.payload;
       return {
         ...state,
         selectedCity: action.payload,
-        filter: updatedFilter
-      }
+        filter: updatedFilter,
+      };
 
-      case actionTypes.CHANGE_CATEGORY:
-      // console.log({f
-      //   ...state,
-      //   category: action.payload
-      // })
+    case actionTypes.CHANGE_CATEGORY:
       return {
         ...state,
-        category: action.payload
-      }
+        category: action.payload,
+      };
+
+
     default:
       return state;
   }

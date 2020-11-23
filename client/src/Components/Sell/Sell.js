@@ -27,6 +27,9 @@ import stepsToSellMobile from '../../assets/steps_to_sell_ mobile.jpg';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Modal from '@material-ui/core/Modal';
 import closeIcon from "../../assets/Close.png";
+import InputAdornment from '@material-ui/core/InputAdornment';
+import { Input } from '@material-ui/core';
+
 
 const useStyles = makeStyles(theme => ({
   body: {
@@ -91,7 +94,7 @@ const useStyles = makeStyles(theme => ({
   },
   sellHeadingMobile:{
     paddingBottom: 13,
-    fontSize: 19,
+    fontSize: 15,
     fontWeight: 800,
     color: '#ff0000',
     textAlign: 'center'
@@ -539,7 +542,8 @@ const Sell = props => {
       {/* <Header /> */}
       <MainMenu />
       {tooltip}
-      <Grid container component="div" direction="row" justify="center"> 
+
+      {matches? <Grid container component="div" direction="row" justify="center"> 
         <Grid item xs={11} md={11} sm={11} lg={11} className={classes.banner}>
             <Banner navigation="Sell" heading="Sell any Two-Wheeler" text="" path={props.location.pathname}/>
         </Grid>
@@ -562,7 +566,7 @@ const Sell = props => {
                               <label htmlFor="name">
                                 <span className={classes.label}>Name:*</span>&nbsp;&nbsp;(eg. Varunam Reddy)
                               </label>
-                              <input type="text" name="name" id="name"
+                              <input  type="text" name="name" id="name"
                                 onBlur={event =>
                                   validateAndUpdateFormdata(event, formData)
                                 }
@@ -868,6 +872,350 @@ const Sell = props => {
             <SellingProcess heading="BikeBazaar Advantage"/>
           </Grid>
         </Grid>
+        
+
+        //mobile View sell page
+        :
+
+        <Grid container component="div" direction="row" justify="center"> 
+        <Grid item xs={11} md={11} sm={11} lg={11} className={classes.banner}>
+            <Banner navigation="Sell" heading="Sell any Two-Wheeler" text="" path={props.location.pathname}/>
+        </Grid>
+        {stepsToSellSection}
+        <Grid item xs={11} sm={11} md={11} lg={11} className="center-align">
+          <h3 className={classes.bookAppointmentHeading}>Book An Appointment</h3>
+          <img alt="" src={headingLines} width="57" height="4"/>
+        </Grid>
+        <Grid item xs={11} sm={11} md={11} lg={11}>
+            <Paper className={classes.paper}>
+              <Grid container component="div" direction="row">
+                <Grid container component="div" direction="row">
+                  <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <form action="" id="shareYourDetailsForm" encType="multipart/form-data">
+                     {/* 1st row for Appointment Form */}
+                     <Grid container component="div" direction="row" justify="space-evenly">
+                        <Grid item xs={12} sm={12} md={12} lg={12} >
+                          <Grid container component="div" direction="row"  justify="space-evenly" >
+                            {/* <Grid item xs={12} md={12} sm={5} lg={5}>
+                              <label htmlFor="name">
+                                <span className={classes.label}>Name:*</span>&nbsp;&nbsp;(eg. Varunam Reddy)
+                              </label>
+                              <input type="text" name="name" id="name"
+                                onBlur={event =>
+                                  validateAndUpdateFormdata(event, formData)
+                                }
+                                className={
+                                  formData.name.error
+                                    ? "invalid"
+                                    : formData.name.value
+                                    ? "valid"
+                                    : ""
+                                }/>
+                              {formData.name.error && (
+                                <p className={classes.formError}>
+                                  {formData.name.errorMessage}
+                                </p>
+                              )}
+                            </Grid> */}
+
+                            <Input  
+                            InputProps={{
+                             startAdornment: <InputAdornment position="start">Name:*</InputAdornment>,
+                                     }} disableUnderline={true} type="text"
+                                      />
+
+
+                            <Grid item xs={12} sm={12} md={5} lg={5}>
+                              <label htmlFor="mobile">
+                                <span  className={classes.label}>Mobile No:*</span>&nbsp;&nbsp;(eg. +91 9999999999)
+                              </label>
+                              <input type="text" name="mobile" required
+                                onBlur={event =>
+                                  validateAndUpdateFormdata(event, formData)
+                                }
+                                className={
+                                  formData.mobile.error
+                                    ? "invalid"
+                                    : formData.mobile.value
+                                    ? "valid"
+                                    : ""
+                                }/>
+                              {formData.mobile.error && (
+                                <p className={classes.formError}>
+                                  {formData.mobile.errorMessage}
+                                </p>
+                              )}
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      
+                      {/* 2nd row for Appointment Form */}
+                      <Grid container component="div" direction="row" justify="space-evenly">
+                        <Grid item xs={12} sm={12} md={12} lg={12} >
+                          <Grid container component="div" direction="row"  justify="space-evenly" >
+                            <Grid item xs={12} sm={12} md={5} lg={5}>
+                                <label htmlFor="city">
+                                  <span  className={classes.label}>City:*</span>&nbsp;&nbsp;(eg. Pune, Kolkata)
+                                </label>
+                                <input type="text" name="city" id="city"
+                                  onBlur={event =>
+                                    validateAndUpdateFormdata(event, formData)
+                                  }
+                                  className={
+                                    formData.city.error
+                                      ? "invalid"
+                                      : formData.city.value
+                                      ? "valid"
+                                      : ""
+                                  }/>
+                                {formData.city.error && (
+                                  <p className={classes.formError}>
+                                    {formData.city.errorMessage}
+                                  </p>
+                                )}
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={5} lg={5}>
+                              <label htmlFor="address">
+                                <span  className={classes.label}>Address:</span>&nbsp;&nbsp;(eg. 123, abc colony, Mumbai)
+                              </label>
+                              <textarea name="address"
+                                onBlur={event =>
+                                  updateFormdata(event, formData)
+                                }
+                                className={
+                                  formData.address.error
+                                    ? "invalid materialize-textarea"
+                                    : formData.address.value
+                                    ? "valid materialize-textarea"
+                                    : "materialize-textarea"
+                                }></textarea>
+                                {formData.address.error && (
+                                <p className={classes.formError}>
+                                  {formData.address.errorMessage}
+                                </p>
+                                )}
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      
+                      {/* 3rd row for Appointment Form */}
+                      <Grid container component="div" direction="row" justify="space-evenly">
+                        <Grid item xs={12} sm={12} md={12} lg={12} >
+                          <Grid container component="div" direction="row"  justify="space-evenly" >
+                            <Grid item xs={12} sm={12} md={5} lg={5}>
+                                <label htmlFor="make">
+                                  <span  className={classes.label}>Make:*</span>&nbsp;&nbsp;(eg. Honda, Bajaj)
+                                </label>
+                                <input type="text" name="make" required
+                                  onBlur={event =>
+                                    validateAndUpdateFormdata(event, formData)
+                                  }
+                                  className={
+                                    formData.make.error
+                                      ? "invalid"
+                                      : formData.make.value
+                                      ? "valid"
+                                      : ""
+                                  }/>
+                                {formData.make.error && (
+                                  <p className={classes.formError}>
+                                    {formData.make.errorMessage}
+                                  </p>
+                                )}
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={5} lg={5}>
+                              <label htmlFor="model">
+                                <span  className={classes.label}>Model:*</span>&nbsp;&nbsp;(eg. Activa, Pulsar)
+                              </label>
+                              <input type="text" name="model" required
+                                onBlur={event =>
+                                  validateAndUpdateFormdata(event, formData)
+                                }
+                                className={
+                                  formData.model.error
+                                    ? "invalid"
+                                    : formData.model.value
+                                    ? "valid"
+                                    : ""
+                                }/>
+                              {formData.model.error && (
+                                <p className={classes.formError}>
+                                  {formData.model.errorMessage}
+                                </p>
+                              )}
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      
+                      {/* 4nd row for Appointment Form */}
+                      <Grid container component="div" direction="row" justify="space-evenly">
+                        <Grid item xs={12} sm={12} md={12} lg={12} >
+                          <Grid container component="div" direction="row"  justify="space-evenly" >
+                            <Grid item xs={12} sm={12} md={5} lg={5}>
+                                <label htmlFor="variant">
+                                  <span  className={classes.label}>Variant:</span>&nbsp;&nbsp;(eg. 150cc std)
+                                </label>
+                                <input type="text" name="variant" id="variant"
+                                  onBlur={event =>
+                                    updateFormdata(event, formData)}
+                                    className={
+                                      formData.variant.error
+                                        ? "invalid"
+                                        : formData.variant.value
+                                        ? "valid"
+                                        : ""
+                                    }/>
+                                  {formData.variant.error && (
+                                    <p className={classes.formError}>
+                                      {formData.variant.errorMessage}
+                                    </p>
+                                  )}
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={5} lg={5}>
+                              <label htmlFor="kmsdriven">
+                                <span  className={classes.label}>KMs Driven:</span>&nbsp;&nbsp;(eg. 40,0000 km)
+                              </label>
+                              <input type="text" name="kmsdriven" id="kmsdriven"
+                                onBlur={event =>
+                                  updateFormdata(event, formData)
+                                }
+                                className={
+                                  formData.kmsdriven.error
+                                    ? "invalid"
+                                    : formData.kmsdriven.value
+                                    ? "valid"
+                                    : ""
+                                }/>
+                              {formData.kmsdriven.error && (
+                                <p className={classes.formError}>
+                                  {formData.kmsdriven.errorMessage}
+                                </p>
+                              )}
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      
+                      {/* 5nd row for Appointment Form */}
+                      <Grid container component="div" direction="row" justify="space-evenly">
+                        <Grid item xs={12} sm={12} md={12} lg={12} >
+                          <Grid container component="div" direction="row"  justify="space-evenly" >
+                            <Grid item xs={12} sm={12} md={5} lg={5}>
+                                <label htmlFor="yom">
+                                  <span  className={classes.label}>Year of Manufacture:*</span>&nbsp;&nbsp;(eg. 2013)
+                                </label>
+                                <input
+                                  type="text"
+                                  name="yom"
+                                  onBlur={event =>
+                                    validateAndUpdateFormdata(event, formData)
+                                  }
+                                  className={
+                                    formData.yom.error
+                                      ? "invalid"
+                                      : formData.yom.value
+                                      ? "valid"
+                                      : ""
+                                  }/>
+                                {formData.yom.error && (
+                                  <p className={classes.formError}>
+                                    {formData.yom.errorMessage}
+                                  </p>
+                                )}
+                            </Grid>
+                            <Grid item xs={12} sm={12} md={5} lg={5}>
+                              <label htmlFor="promocode">
+                                <span  className={classes.label}>Promocode:</span>&nbsp;&nbsp;(If applicable)
+                              </label>
+                              <input type="text" name="promocode" id="promocode"
+                                onBlur={event =>
+                                  updateFormdata(event, formData)
+                                }
+                                className={
+                                  formData.promocode.error
+                                    ? "invalid"
+                                    : formData.promocode.value
+                                    ? "valid"
+                                    : ""
+                                }/>
+                              {formData.promocode.error && (
+                                <p className={classes.formError}>
+                                  {formData.promocode.errorMessage}
+                                </p>
+                              )}
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid container component="div" direction="row" justify="space-evenly">
+                        <Grid item xs={12} sm={12} md={5} lg={5}>
+                      </Grid>
+                      <Grid container component="div" direction="row" justify="space-evenly" className={classes.banner+' form-group'}>
+                              <Grid item xs={11} sm={11} md={11} lg={11}>
+                                <label className="fieldname">
+                                    <input type="checkbox" className="filled-in" defaultChecked />
+                                    <span>Interested in Exchange</span>
+                                </label>
+                              </Grid>
+                          </Grid>
+                          <Grid container component="div" direction="row" justify="space-evenly">
+                            <Grid item xs={11} sm={11} md={11} lg={11}>
+                              <label htmlFor="image">
+                                <span className={classes.label}> Upload images </span>&nbsp;&nbsp;(Images should be in jpeg, png or tiff formats only)
+                              </label>
+                              <br />
+                              <input 
+                               title=""
+                               className="form-control transparent" 
+                               type="file"
+                               onChange={(event)=>selectFiles(event, formData)} 
+                               multiple
+                               />
+                              <br />
+                              { formData.image.message? <p className="text-info">{formData.image.message}</p>: ''}
+                              {/* {formData.image.error && (
+                                <p className={classes.formError}>
+                                  {formData.image.errorMessage}
+                                </p>
+                              )} */}
+                              <div className={matches ? "preview-image-container" : "preview-image-container-mobile"}>
+                                {previewImage.map((file, _i)=>(
+                                  <div key={_i} className="image-preview">
+                                    <img src={URL.createObjectURL(file)} width={200} height={150} />
+                                    <span title="Remove image"><DeleteIcon className="delete-icon" onClick={() => removeImageHandler(_i)} /></span>
+                                  </div>
+                                  ))}
+                              </div>  
+                            </Grid> 
+                          </Grid>
+                        </Grid>
+                      <Grid container component="div" direction="row">
+                        <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
+                          <div className="form-group">
+                            <button type="button" className="btn" onClick={submitForm} >
+                              Sell Your Vehicle
+                            </button>
+                            {/* <button type="button" onClick={handleOpen}>
+                              Open Modal
+                            </button> */}
+                          </div>
+                        </Grid>
+                      </Grid>
+                    </form>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Paper>
+          </Grid>
+          <Grid item xs={11} sm={11} md={11} lg={11}>
+            <SellingProcess heading="BikeBazaar Advantage"/>
+          </Grid>
+        </Grid>
+        }
+     
       <Footer />
     </div>
   );

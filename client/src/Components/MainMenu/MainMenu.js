@@ -29,10 +29,6 @@ import TextField from "@material-ui/core/TextField";
 import * as actions from "../../store/actions/index";
 import _ from "lodash";
 import useDebounce from "./use-debounce";
-import FacebookIcon from "@material-ui/icons/Facebook";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import InstagramIcon from "@material-ui/icons/Instagram";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 

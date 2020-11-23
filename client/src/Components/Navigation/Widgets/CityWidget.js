@@ -50,22 +50,7 @@ const CityWidget = props => {
   const { selectedCity, category, citynames } = useSelector(state => state.vehicleDetails);
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearchTerm = useDebounce(searchTerm, 300);
-
-  const [state, setState] = useState({
-    tags: [
-      { id: 1, name: "Aluva" },
-      { id: 2, name: "Kolkata" }
-    ],
-    // suggestions: [
-    //   { id: 3, name: "Bananas" },
-    //   { id: 4, name: "Mangos" },
-    //   { id: 5, name: "Lemons" },
-    //   { id: 6, name: "Apricots" }
-    // ]
-  });
-
-  // console.log("ref", reactTags);
-
+  
   useEffect(() => {
     const filterData = {
       ...citynames,

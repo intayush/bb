@@ -23,24 +23,12 @@ const useStyle = makeStyles({
   },
 });
 
-const CategoryWidget = React.memo((props) => {
+const CategoryWidget =(props) => {
   const dispatch = useDispatch();
 
-  let [selectedCategory, setSelectedCategory] = useState(props.category || 1);
+  let [selectedCategory, setSelectedCategory] = useState(props.category);
 
-  const handleChange = (event) => {
-    let filterData = props.filter;
-    console.log("filter count", parseInt(event.target.value));
-    setSelectedCategory(parseInt(event.target.value));
-
-    dispatch({
-      type: CHANGE_CATEGORY,
-      payload: parseInt(event.target.value),
-    });
-    props.cityFilter(parseInt(event.target.value), filterData);
-  };
-
-  const handleChange2 = (categ) => {
+  const handleChange = (categ) => {
     let filterData = props.filter;
     setSelectedCategory(categ);
     dispatch({ type: CHANGE_CATEGORY, payload: categ });
@@ -58,7 +46,7 @@ const CategoryWidget = React.memo((props) => {
   let valued = " ( " + val(props.vehicles) + " ) ";
 
   useEffect(() => {
-    handleChange2(props.category);
+    handleChange(props.category);
   }, [props.category]);
 
   return (
@@ -78,19 +66,9 @@ const CategoryWidget = React.memo((props) => {
         <RadioGroup
           aria-label="category"
           name="category"
-          onChange={handleChange}
+         
         >
           <ul className="cat-list">
-            {/* <Link to='/category/all'>
-              <li>
-                <FormControlLabel
-                  value="0"
-                  control={<BBRadio />}
-                  label= {`All ${selectedCategory === 0 ? valued : ""}` }
-                  checked={selectedCategory === 0}
-                />valued
-              </li>
-            </Link> */}
             <Link to="/category/bike">
               <li>
                 <FormControlLabel
@@ -128,7 +106,7 @@ const CategoryWidget = React.memo((props) => {
       </div>
     </div>
   );
-});
+};
 
 const mapStateToProps = (state) => {
   return {

@@ -25,10 +25,9 @@ const CategoryPage = (props) => {
     (state) => state.vehicleDetails
   );
 
-
-  var category;
-  var searchTerm;
-  var stateFilterData = {
+  let category;
+  let searchTerm;
+  let stateFilterData = {
     ...filter,
     city: selectedCity,
   };

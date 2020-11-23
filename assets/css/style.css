@@ -156,7 +156,6 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .ProductListSec .sortby { width: auto; float: none; margin: 0 15px; }
 	.ProductListSec h5 { float:none;}
 }
-
 @media screen and (min-width: 320px) and (max-width: 992px) {
 .wapper .pageDtl { margin: 0 15px 30px; }
 .wapper { width: 100%; margin:40px auto;}
