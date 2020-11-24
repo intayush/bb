@@ -156,7 +156,7 @@ const VehicleAdvantage = (props) => {
               textAlign: "center",
             }}
           >
-            {" "}
+            
             BikeBazaar Brings Great Advantage for Buyers
           </p>
         )}
