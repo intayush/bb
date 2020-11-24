@@ -229,14 +229,14 @@ const Footer = () => {
           </Grid>
         </div>
       ) : (
-        <div>
+        <div style={{width:"100%"}}>
           <img src={FooterLogo} height="25" alt="" />
-          <p style={{ fontSize: "13px", color: "white" }}>
+          <p style={{ fontSize: "10px", color: "white" , lineHeight: '1.3'}}>
             BikeBazaar aims to provide a hassle-free experience to anyone
             looking to buy/sell a pre-owned 2 wheeler with the help of
             technology and a team of experts.
           </p>
-          <p style={{ color: "white" }}>
+          <p style={{ color: "white" ,fontSize:'10px'}}>
             © 2019 BikeBazaar. All rights reserved.
           </p>
 
@@ -244,7 +244,7 @@ const Footer = () => {
             style={{
               color: "white",
               marginTop: "5%",
-              fontSize: "16px",
+              fontSize: "15px",
               fontWeight: 600,
             }}
           >

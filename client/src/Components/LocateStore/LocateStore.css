@@ -22,6 +22,8 @@
   padding: 15px 20px;
   margin: 10px 0 40px 0;
 }
+
+
 .locateDropdownCard ul {
   list-style: none;
   margin: 0 0 24px;
@@ -55,14 +57,15 @@
   font-size: 16px;
   color: #000000;
 }
+
 .custom-drop-mobile {
   width: 195px;
-  height: 60px;
+  height: 40px;
   border-radius: 4px;
-  line-height: 62px;
   text-transform: none;
   text-align: left;
-  font-size: 13px;
+  font-size: 10px;
+  justify-content: space-between;
 }
 .custom-drop span {
   margin-left: 5px;
@@ -86,7 +89,13 @@
   margin: 15px 0px;
   padding: 0px 10px 0px 25px;
 }
-.seacrh-location-button {
+
+.locateDropdownCard .mobile-input-field {
+  margin-top: 6%;
+  padding-left: 2%;
+}
+
+.search-location-button {
   width: 60px;
   height: 60px;
   background-color: #ff0000;
@@ -96,8 +105,19 @@
   padding: 13px;
   cursor: pointer;
 }
+
+.mobileView-search-location-button {
+  width: 100px;
+  height: 40px;
+  background-color: black;
+  border-radius: 3px;
+  margin-top: 49px;
+  padding: 13px;
+  cursor: pointer;
+}
+
+
 .locateDropdownCard .input-field p {
-  margin-left: 5px;
   margin-bottom: 4px;
   letter-spacing: 0.47px;
   color: #000000;
@@ -107,6 +127,13 @@
   letter-spacing: 1.07px;
   color: #ff0000;
   font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+.mobileMapHeading {
+  letter-spacing: "normal";
+  color: #ff0000;
+  font-size: 15px;
   font-weight: bold;
   text-align: center;
 }
