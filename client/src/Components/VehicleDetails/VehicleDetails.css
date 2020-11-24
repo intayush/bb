@@ -166,24 +166,8 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .vehicleAdvantage .advantageSec .advantage1 .advantageIconRight img { margin: 25% 0; }
 .vehicleAdvantage .advantageSec .advantage1 h3 { font-size:24px; background: url(../../assets/images/icons/advantage-icon-rt.png) right 30px no-repeat; font-weight: 800; color: #ff0000; padding-top: 37px; padding-right: 180px; text-align: right; }
 .vehicleAdvantage .advantageSec .advantage1 p { padding-right: 70px; font-size: 18px; text-align: right; }
-.advantagePadding {
-  padding: 15px !important;
-}
-.padding0{
-  padding: 0px !important;
-}
 
-.margin0 {
-  margin: 0px !important;
-}
 
-.advantageMobile {
-  font-size: 24px !important;
-}
-
-.advantage1Mobile {
-  font-size: 24px !important;
-}
 
 .similar { width: 1200px; margin:100px auto; }
 .similar .carousel { height:auto; max-height:100%; border: none; padding: 5px; background: none; overflow: inherit }

@@ -896,7 +896,7 @@ const Sell = props => {
                      <Grid container component="div" direction="row" justify="space-evenly">
                         <Grid item xs={12} sm={12} md={12} lg={12} >
                           <Grid container component="div" direction="row"  justify="space-evenly" >
-                            {/* <Grid item xs={12} md={12} sm={5} lg={5}>
+                            <Grid item xs={12} md={12} sm={5} lg={5}>
                               <label htmlFor="name">
                                 <span className={classes.label}>Name:*</span>&nbsp;&nbsp;(eg. Varunam Reddy)
                               </label>
@@ -916,14 +916,9 @@ const Sell = props => {
                                   {formData.name.errorMessage}
                                 </p>
                               )}
-                            </Grid> */}
+                            </Grid>
 
-                            <Input  
-                            InputProps={{
-                             startAdornment: <InputAdornment position="start">Name:*</InputAdornment>,
-                                     }} disableUnderline={true} type="text"
-                                      />
-
+                          
 
                             <Grid item xs={12} sm={12} md={5} lg={5}>
                               <label htmlFor="mobile">
