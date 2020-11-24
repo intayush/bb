@@ -244,17 +244,12 @@ const About = (props) => {
             <Paper className={classes.paper2Mobile}>
               <Grid container component="div" direction="row" justify="center">
                 <Grid item xs={11} sm={11} md={5} lg={5}>
-                  <h3
-                    className={
-                      classes.redHeading +
-                      " " +
-                      classes.mTop50 +
-                      " " +
-                      centerClass
-                    }
-                  >
-                    Mission
-                  </h3>
+                    <div style={{textAlign:'center',width:'100%',fontSize: "15px",fontWeight: "bold",color:'#ff0000'}}>
+                        <p>
+                        Mission
+                        </p>
+                    </div>
+                  
                   <img
                     alt=""
                     src={missionIcon}
