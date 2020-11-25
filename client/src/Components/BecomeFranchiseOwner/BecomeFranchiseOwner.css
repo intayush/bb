@@ -78,6 +78,16 @@
 }
 
 .mobileAdvantageIconLeft{
+  width:100px;
+  height:100px;
+  border-radius: 50%;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17);
+  background-color: #ffffff;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.mobileAdvantageIconLeft{
 
   width:70px;
   height:70px;
@@ -306,10 +316,15 @@
   font-size: 13px !important;
 }
 
-.support .advantage h3.mobileHeading {
-  font-size: 13px !important;
+.support .advantage p.mobileHeading {
+  font-size: 12.5px !important;
 }
 
+
+.mobileHeading{
+font-size: "12.5px";
+font-weight: bold;
+}
 h2.centerAdv {
   font-size: 24px;
   font-weight: 800;

@@ -70,6 +70,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+
   banner: {
     marginTop: theme.spacing(4),
   },
@@ -81,6 +82,10 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiGrid-item": {
       marginTop: theme.spacing(1),
     },
+  },
+
+  mobileform: {
+    padding: "1px",
   },
   submitButton: {
     position: "relative",
@@ -105,6 +110,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 15,
     letterSpacing: "0.83px",
     color: "#000",
+  },
+  mobileLabel: {
+    fontSize: "12.5px",
+    color: "#232c2b",
   },
   padding0: {
     padding: "0px !important",
@@ -156,6 +165,12 @@ const useStyles = makeStyles((theme) => ({
   advantageIcon: {
     marginLeft: "40%",
   },
+  textFieldInputProps: {
+    borderBottom: "1px solid #9e9e9e",
+    paddingBottom: "9%",
+    paddingRight: "2%",
+    paddingTop: "0%",
+  },
 }));
 
 const BecomeFranchiseOwner = (props) => {
@@ -171,7 +186,7 @@ const BecomeFranchiseOwner = (props) => {
   const divider = matches ? (
     <Divider orientation="vertical" className={classes.divider} />
   ) : (
-    ""
+    <hr style={{ width: "100%", margin: "4% 0% 4% 0% " }} />
   );
 
   useEffect(() => {
@@ -468,21 +483,31 @@ const BecomeFranchiseOwner = (props) => {
                     </p>
                   )}
                 </Grid>
-                {matches?     <Grid
-                  item
-                  className={classes.item2}
-                  xs={12}
-                  sm={12}
-                  md={6}
-                  lg={5}
-                >
-                  <img
-                    src={BikeBazaarStore}
-                    width="500px"
-                    className={matches ? "" : "imageMobile"}
-                  />
-                </Grid>:<Grid xs={12} sm={12}><img height="98%" width="100%" src={BikeBazaarStore} alt=""/> </Grid>}
-            
+                {matches ? (
+                  <Grid
+                    item
+                    className={classes.item2}
+                    xs={12}
+                    sm={12}
+                    md={6}
+                    lg={5}
+                  >
+                    <img
+                      src={BikeBazaarStore}
+                      width="500px"
+                      className={matches ? "" : "imageMobile"}
+                    />
+                  </Grid>
+                ) : (
+                  <Grid xs={12} sm={12}>
+                    <img
+                      height="98%"
+                      width="100%"
+                      src={BikeBazaarStore}
+                      alt=""
+                    />{" "}
+                  </Grid>
+                )}
               </Grid>
             </Grid>
           </div>
@@ -659,11 +684,9 @@ const BecomeFranchiseOwner = (props) => {
                 </Grid>
               ) : (
                 <Grid component="div" direction="row" xs={12} sm={12}>
-              
-                
                   <div style={{ display: "flex" }}>
                     <>
-                      <div  className="mobileAdvantageIconLeft">
+                      <div className="mobileAdvantageIconLeft">
                         <img
                           height="35"
                           style={{ marginTop: "25%" }}
@@ -690,7 +713,6 @@ const BecomeFranchiseOwner = (props) => {
                   >
                     <p style={{ marginTop: "2%" }}>Strong IT Infrastructure</p>
                   </div>
-              
                 </Grid>
               )}
 
@@ -711,47 +733,46 @@ const BecomeFranchiseOwner = (props) => {
                   </Grid>
                 </Grid>
               ) : (
-               
                 <Grid
-                style={{ marginBottom: "5%" }}
-                xs={12}
-                sm={12}
-                component="div"
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    marginLeft: "16%",
-                  }}
+                  style={{ marginBottom: "5%" }}
+                  xs={12}
+                  sm={12}
+                  component="div"
                 >
-                  <img
-                    style={{ transform: "scaleX(-1)", marginTop: "10%" }}
-                    height="15"
-                    width="80"
-                    src={advantageIcon}
-                    alt=""
-                  />
-                  <div className="mobileAdvantageIconLeftAlign">
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      marginLeft: "16%",
+                    }}
+                  >
                     <img
-                      height="40"
-                      width="40"
-                      style={{ marginTop: "25%" }}
-                      src={callCentre}
+                      style={{ transform: "scaleX(-1)", marginTop: "10%" }}
+                      height="15"
+                      width="80"
+                      src={advantageIcon}
+                      alt=""
                     />
+                    <div className="mobileAdvantageIconLeftAlign">
+                      <img
+                        height="40"
+                        width="40"
+                        style={{ marginTop: "25%" }}
+                        src={callCentre}
+                      />
+                    </div>
                   </div>
-                </div>
 
-                <div
-                  style={{
-                    textAlign: "center",
-                    fontSize: "12.5px",
-                    fontWeight: "bold",
-                  }}
-                >
-               <p style={{ marginTop: "2%" }}>Dedicated Call-Center</p>
-                </div>
-              </Grid>
+                  <div
+                    style={{
+                      textAlign: "center",
+                      fontSize: "12.5px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    <p style={{ marginTop: "2%" }}>Dedicated Call-Center</p>
+                  </div>
+                </Grid>
               )}
 
               {matches ? (
@@ -776,7 +797,6 @@ const BecomeFranchiseOwner = (props) => {
                   </Grid>
                 </Grid>
               ) : (
-              
                 <Grid
                   style={{ marginBottom: "5%" }}
                   xs={12}
@@ -811,7 +831,7 @@ const BecomeFranchiseOwner = (props) => {
                       fontWeight: "bold",
                     }}
                   >
-                     <p style={{ marginTop: "2%" }}>More Sales Than Ever</p>
+                    <p style={{ marginTop: "2%" }}>More Sales Than Ever</p>
                   </div>
                 </Grid>
               )}
@@ -859,47 +879,47 @@ const BecomeFranchiseOwner = (props) => {
                 // </Grid>
 
                 <Grid
-                style={{ marginBottom: "5%" }}
-                xs={12}
-                sm={12}
-                component="div"
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    marginLeft: "16%",
-                  }}
+                  style={{ marginBottom: "5%" }}
+                  xs={12}
+                  sm={12}
+                  component="div"
                 >
-                  <img
-                    style={{ transform: "scaleX(-1)", marginTop: "10%" }}
-                    height="15"
-                    width="80"
-                    src={advantageIcon}
-                    alt=""
-                  />
-                  <div className="mobileAdvantageIconLeftAlign">
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      marginLeft: "16%",
+                    }}
+                  >
                     <img
-                      height="50"
-                      width="50"
-                      style={{ marginTop: "15%" }}
-                      src={shakeHand}
+                      style={{ transform: "scaleX(-1)", marginTop: "10%" }}
+                      height="15"
+                      width="80"
+                      src={advantageIcon}
+                      alt=""
                     />
+                    <div className="mobileAdvantageIconLeftAlign">
+                      <img
+                        height="50"
+                        width="50"
+                        style={{ marginTop: "15%" }}
+                        src={shakeHand}
+                      />
+                    </div>
                   </div>
-                </div>
 
-                <div
-                  style={{
-                    textAlign: "center",
-                    fontSize: "12.5px",
-                    fontWeight: "bold",
-                  }}
-                >
-            <p style={{ marginTop: "4%" }}>
-                     BTL Activities and B2B Tieups
+                  <div
+                    style={{
+                      textAlign: "center",
+                      fontSize: "12.5px",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    <p style={{ marginTop: "4%" }}>
+                      BTL Activities and B2B Tieups
                     </p>
-                </div>
-              </Grid>
+                  </div>
+                </Grid>
               )}
             </div>
           </div>
@@ -923,15 +943,27 @@ const BecomeFranchiseOwner = (props) => {
                 lg={12}
                 className="center-align"
               >
-                <h4 className="redhead">
-                  Share Your Details to own a BikeBazaar Store
-                </h4>
+                {matches ? (
+                  <h4 className="redhead">
+                    Share Your Details to own a BikeBazaar Store
+                  </h4>
+                ) : (
+                  <p className="mobileRedHead">
+                    Share Your Details <br />
+                    to own a BikeBazaar Store
+                  </p>
+                )}
+
                 <img src={blackHeadingLines} alt="" width="57" height="4" />
               </Grid>
               <form
                 action=""
-                id="shareYourDetailsForm"
-                className={classes.form}
+                id={
+                  matches
+                    ? "shareYourDetailsForm"
+                    : "shareYourDetailsFormMobile"
+                }
+                className={matches ? classes.form : classes.mobileform}
               >
                 <Grid container component="div" direction="row">
                   <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -939,151 +971,309 @@ const BecomeFranchiseOwner = (props) => {
                       container
                       component="div"
                       direction="row"
-                      justify="space-evenly"
+                      justify="space-between"
                     >
-                      <Grid item xs={12} sm={12} md={5} lg={5}>
-                        <label className="fieldname" htmlFor="name">
-                          <span className={classes.label}>Name:*</span>
-                          &nbsp;&nbsp;(eg. Varunam Reddy)
-                        </label>
-                        <input
-                          type="text"
-                          name="name"
-                          id="name"
-                          className={
-                            formData.name.error
-                              ? "invalid"
-                              : formData.name.value
-                              ? "valid"
-                              : ""
-                          }
-                          onBlur={(event) => updateFormdata(event, formData)}
-                        />
-                        {formData.name.error && (
-                          <div className="invalid-feedback d-block">
-                            {formData.name.errorMessage}
-                          </div>
-                        )}
-                      </Grid>
-                      <Grid item xs={12} sm={12} md={5} lg={5}>
-                        <label className="fieldname" htmlFor="mobile">
-                          <span className={classes.label}>Mobile No:*</span>
-                          &nbsp;&nbsp;(eg. +91 9999999999)
-                        </label>
-                        <input
-                          type="text"
-                          name="mobile"
-                          className={
-                            formData.mobile.error
-                              ? "invalid"
-                              : formData.mobile.value
-                              ? "valid"
-                              : ""
-                          }
-                          onBlur={(event) => updateFormdata(event, formData)}
-                        />
-                        {formData.mobile.error && (
-                          <div className="invalid-feedback d-block">
-                            {formData.mobile.errorMessage}
-                          </div>
-                        )}
-                      </Grid>
-                      <Grid item xs={12} sm={12} md={5} lg={5}>
-                        <label className="fieldname" htmlFor="email">
-                          <span className={classes.label}>Email:*</span>
-                          &nbsp;&nbsp;(eg. abc@gmail.com)
-                        </label>
-                        <input
-                          type="text"
-                          name="email"
-                          id="email"
-                          className={
-                            formData.email.error
-                              ? "invalid"
-                              : formData.email.value
-                              ? "valid"
-                              : ""
-                          }
-                          onBlur={(event) => updateFormdata(event, formData)}
-                        />
-                        {formData.email.error && (
-                          <div className="invalid-feedback d-block">
-                            {formData.email.errorMessage}
-                          </div>
-                        )}
-                      </Grid>
-                      <Grid item xs={12} sm={12} md={5} lg={5}>
-                        <label className="fieldname" htmlFor="city">
-                          <span className={classes.label}>City:*</span>
-                          &nbsp;&nbsp;(eg. Pune, Kolkata)
-                        </label>
-                        <input
-                          type="text"
-                          name="city"
-                          id="city"
-                          className={
-                            formData.city.error
-                              ? "invalid"
-                              : formData.city.value
-                              ? "valid"
-                              : ""
-                          }
-                          onBlur={(event) => updateFormdata(event, formData)}
-                        />
-                        {formData.city.error && (
-                          <div className="invalid-feedback d-block">
-                            {formData.city.errorMessage}
-                          </div>
-                        )}
-                      </Grid>
-                      <Grid item xs={12} sm={12} md={5} lg={5}>
-                        <label className="fieldname" htmlFor="variant">
-                          <span className={classes.label}>Address:*</span>
-                          &nbsp;&nbsp;(eg. 123, abc colony, Mumbai)
-                        </label>
-                        <input
-                          type="text"
-                          name="address"
-                          id="address"
-                          className={
-                            formData.address.error
-                              ? "invalid"
-                              : formData.address.value
-                              ? "valid"
-                              : ""
-                          }
-                          onBlur={(event) => updateFormdata(event, formData)}
-                        />
-                        {formData.address.error && (
-                          <div className="invalid-feedback d-block">
-                            {formData.address.errorMessage}
-                          </div>
-                        )}
-                      </Grid>
-                      <Grid item xs={12} sm={12} md={5} lg={5}>
-                        <label className="fieldname" htmlFor="pin">
-                          <span className={classes.label}>Pincode:*</span>
-                          &nbsp;&nbsp;(eg. 110075)
-                        </label>
-                        <input
-                          type="text"
-                          name="pin"
-                          id="pin"
-                          className={
-                            formData.pin.error
-                              ? "invalid"
-                              : formData.name.value
-                              ? "valid"
-                              : ""
-                          }
-                          onBlur={(event) => updateFormdata(event, formData)}
-                        />
-                        {formData.pin.error && (
-                          <div className="invalid-feedback d-block">
-                            {formData.pin.errorMessage}
-                          </div>
-                        )}
-                      </Grid>
+                      {matches ? (
+                        <Grid item xs={12} sm={12} md={5} lg={5}>
+                          <label className="fieldname" htmlFor="name">
+                            <span className={classes.label}>Name:*</span>
+                            &nbsp;&nbsp;(eg. Varunam Reddy)
+                          </label>
+                          <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            onBlur={(event) => updateFormdata(event, formData)}
+                          />
+                          {formData.name.error && (
+                            <div className="invalid-feedback d-block">
+                              {formData.name.errorMessage}
+                            </div>
+                          )}
+                        </Grid>
+                      ) : (
+                        <Grid item xs={12} sm={12} md={5} lg={5}>
+                          <label htmlFor="name">
+                            <span className={classes.mobileLabel}>Name:*</span>
+                            &nbsp;&nbsp;(eg. Varunam Reddy)
+                          </label>
+                          <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            onBlur={(event) => updateFormdata(event, formData)}
+                          />
+                          {formData.name.error && (
+                            <div className="invalid-feedback d-block">
+                              {formData.name.errorMessage}
+                            </div>
+                          )}
+                        </Grid>
+                      )}
+
+                      {matches ? (
+                        <Grid item xs={12} sm={12} md={5} lg={5}>
+                          <label className="fieldname" htmlFor="mobile">
+                            <span className={classes.label}>Mobile No:*</span>
+                            &nbsp;&nbsp;(eg. +91 9999999999)
+                          </label>
+                          <input
+                            type="text"
+                            name="mobile"
+                            className={
+                              formData.mobile.error
+                                ? "invalid"
+                                : formData.mobile.value
+                                ? "valid"
+                                : ""
+                            }
+                            onBlur={(event) => updateFormdata(event, formData)}
+                          />
+                          {formData.mobile.error && (
+                            <div className="invalid-feedback d-block">
+                              {formData.mobile.errorMessage}
+                            </div>
+                          )}
+                        </Grid>
+                      ) : (
+                        <Grid item xs={12} sm={12} md={5} lg={5}>
+                          <label htmlFor="mobile">
+                            <span className={classes.mobileLabel}>
+                              Mobile No:*
+                            </span>
+                            &nbsp;&nbsp; (eg. +91 9999999999)
+                          </label>
+                          <input
+                            type="text"
+                            name="mobile"
+                            className={
+                              formData.mobile.error
+                                ? "invalid"
+                                : formData.mobile.value
+                                ? "valid"
+                                : ""
+                            }
+                            onBlur={(event) => updateFormdata(event, formData)}
+                          />
+                          {formData.mobile.error && (
+                            <div className="invalid-feedback d-block">
+                              {formData.mobile.errorMessage}
+                            </div>
+                          )}
+                        </Grid>
+                      )}
+
+                      {matches ? (
+                        <Grid item xs={12} sm={12} md={5} lg={5}>
+                          <label className="fieldname" htmlFor="email">
+                            <span className={classes.label}>Email:*</span>
+                            &nbsp;&nbsp;(eg. abc@gmail.com)
+                          </label>
+                          <input
+                            type="text"
+                            name="email"
+                            id="email"
+                            className={
+                              formData.email.error
+                                ? "invalid"
+                                : formData.email.value
+                                ? "valid"
+                                : ""
+                            }
+                            onBlur={(event) => updateFormdata(event, formData)}
+                          />
+                          {formData.email.error && (
+                            <div className="invalid-feedback d-block">
+                              {formData.email.errorMessage}
+                            </div>
+                          )}
+                        </Grid>
+                      ) : (
+                        <Grid item xs={12} sm={12} md={5} lg={5}>
+                          <label htmlFor="email">
+                            <span className={classes.mobileLabel}>Email:*</span>
+                            &nbsp;&nbsp;(eg. abc@gmail.com)
+                          </label>
+                          <input
+                            type="text"
+                            name="email"
+                            id="email"
+                            className={
+                              formData.email.error
+                                ? "invalid"
+                                : formData.email.value
+                                ? "valid"
+                                : ""
+                            }
+                            onBlur={(event) => updateFormdata(event, formData)}
+                          />
+                          {formData.email.error && (
+                            <div className="invalid-feedback d-block">
+                              {formData.email.errorMessage}
+                            </div>
+                          )}
+                        </Grid>
+                      )}
+
+                      {matches ? (
+                        <Grid item xs={12} sm={12} md={5} lg={5}>
+                          <label className="fieldname" htmlFor="city">
+                            <span className={classes.label}>City:*</span>
+                            &nbsp;&nbsp;(eg. Pune, Kolkata)
+                          </label>
+                          <input
+                            type="text"
+                            name="city"
+                            id="city"
+                            className={
+                              formData.city.error
+                                ? "invalid"
+                                : formData.city.value
+                                ? "valid"
+                                : ""
+                            }
+                            onBlur={(event) => updateFormdata(event, formData)}
+                          />
+                          {formData.city.error && (
+                            <div className="invalid-feedback d-block">
+                              {formData.city.errorMessage}
+                            </div>
+                          )}
+                        </Grid>
+                      ) : (
+                        <Grid item xs={12} sm={12} md={5} lg={5}>
+                          <label htmlFor="city">
+                            <span className={classes.mobileLabel}>City:*</span>
+                            &nbsp;&nbsp;(eg. Pune, Kolkata)
+                          </label>
+                          <input
+                            type="text"
+                            name="city"
+                            id="city"
+                            className={
+                              formData.city.error
+                                ? "invalid"
+                                : formData.city.value
+                                ? "valid"
+                                : ""
+                            }
+                            onBlur={(event) => updateFormdata(event, formData)}
+                          />
+                          {formData.city.error && (
+                            <div className="invalid-feedback d-block">
+                              {formData.city.errorMessage}
+                            </div>
+                          )}
+                        </Grid>
+                      )}
+
+                      {matches ? (
+                        <Grid item xs={12} sm={12} md={5} lg={5}>
+                          <label className="fieldname" htmlFor="variant">
+                            <span className={classes.label}>Address:*</span>
+                            &nbsp;&nbsp;(eg. 123, abc colony, Mumbai)
+                          </label>
+                          <input
+                            type="text"
+                            name="address"
+                            id="address"
+                            className={
+                              formData.address.error
+                                ? "invalid"
+                                : formData.address.value
+                                ? "valid"
+                                : ""
+                            }
+                            onBlur={(event) => updateFormdata(event, formData)}
+                          />
+                          {formData.address.error && (
+                            <div className="invalid-feedback d-block">
+                              {formData.address.errorMessage}
+                            </div>
+                          )}
+                        </Grid>
+                      ) : (
+                        <Grid item xs={12} sm={12} md={5} lg={5}>
+                          <label htmlFor="variant">
+                            <span className={classes.mobileLabel}>
+                              Address:*
+                            </span>
+                            &nbsp;&nbsp;(eg. 123, abc colony, Mumbai)
+                          </label>
+                          <input
+                            type="text"
+                            name="address"
+                            id="address"
+                            className={
+                              formData.address.error
+                                ? "invalid"
+                                : formData.address.value
+                                ? "valid"
+                                : ""
+                            }
+                            onBlur={(event) => updateFormdata(event, formData)}
+                          />
+                          {formData.address.error && (
+                            <div className="invalid-feedback d-block">
+                              {formData.address.errorMessage}
+                            </div>
+                          )}
+                        </Grid>
+                      )}
+
+                      {matches ? (
+                        <Grid item xs={12} sm={12} md={5} lg={5}>
+                          <label className="fieldname" htmlFor="pin">
+                            <span className={classes.label}>Pincode:*</span>
+                            &nbsp;&nbsp;(eg. 110075)
+                          </label>
+                          <input
+                            type="text"
+                            name="pin"
+                            id="pin"
+                            className={
+                              formData.pin.error
+                                ? "invalid"
+                                : formData.name.value
+                                ? "valid"
+                                : ""
+                            }
+                            onBlur={(event) => updateFormdata(event, formData)}
+                          />
+                          {formData.pin.error && (
+                            <div className="invalid-feedback d-block">
+                              {formData.pin.errorMessage}
+                            </div>
+                          )}
+                        </Grid>
+                      ) : (
+                        <Grid item xs={12} sm={12} md={5} lg={5}>
+                          <label tmlFor="pin">
+                            <span className={classes.mobileLabel}>
+                              Pincode:*
+                            </span>
+                            &nbsp;&nbsp;(eg. 110075)
+                          </label>
+                          <input
+                            type="text"
+                            name="pin"
+                            id="pin"
+                            className={
+                              formData.pin.error
+                                ? "invalid"
+                                : formData.name.value
+                                ? "valid"
+                                : ""
+                            }
+                            onBlur={(event) => updateFormdata(event, formData)}
+                          />
+                          {formData.pin.error && (
+                            <div className="invalid-feedback d-block">
+                              {formData.pin.errorMessage}
+                            </div>
+                          )}
+                        </Grid>
+                      )}
                     </Grid>
                   </Grid>
                 </Grid>
@@ -1122,101 +1312,211 @@ const BecomeFranchiseOwner = (props) => {
               className="support"
             >
               <Grid item xs={12} sm={12} md={5} lg={5} className="center-align">
-                <h4 className="center-align redhead">Pre-Launch Support</h4>
-                <img src={blackHeadingLines} alt="" />
-                <Grid
-                  container
-                  component="div"
-                  direction="row"
-                  className="advantage"
-                >
-                  <Grid item xs={4} sm={4} md={2} lg={2}>
-                    <div className="advantageIconLeft">
+                {matches ? (
+                  <h4 className="center-align redhead">Pre-Launch Support</h4>
+                ) : (
+                  <p className="mobileRedHead">Pre-Launch Support</p>
+                )}
+                <img style={{marginBottom:'10%'}} src={blackHeadingLines} alt="" />
+
+                {matches ? (
+                  <Grid
+                    container
+                    component="div"
+                    direction="row"
+                    className="advantage"
+                  >
+                    <Grid item xs={4} sm={4} md={2} lg={2}>
+                      <div className="advantageIconLeft">
+                        <img
+                          className="rupees"
+                          src={strongOnlinePresence}
+                          alt=""
+                        />
+                      </div>
+                    </Grid>
+                    <Grid item xs={8} sm={8} md={10} lg={10}>
+                      <h3 className={mobileHeading}>Strong Online Presence</h3>
+                    </Grid>
+                  </Grid>
+                ) : (
+                  <Grid container component="div" direction="column">
+                    <div className="mobileAdvantageIconLeft">
                       <img
-                        className="rupees"
+                        style={{ marginTop: "20%" }}
+                        height="40"
+                        width="40"
                         src={strongOnlinePresence}
                         alt=""
                       />
                     </div>
+                    <p className="mobileHeading">Strong Online Presence</p>
                   </Grid>
-                  <Grid item xs={8} sm={8} md={10} lg={10}>
-                    <h3 className={mobileHeading}>Strong Online Presence</h3>
+                )}
+
+                {matches ? (
+                  <Grid
+                    container
+                    component="div"
+                    direction="row"
+                    className="advantage1"
+                  >
+                    <Grid item xs={8} sm={8} md={10} lg={10}>
+                      <h3 className={mobileHeading}>
+                        Showroom Branding & Exhaustive
+                        <br />
+                        Guidelines for CI of Showroom
+                      </h3>
+                    </Grid>
+                    <Grid item xs={4} sm={4} md={2} lg={2} className="icon">
+                      <div className="advantageIconRight">
+                        <img
+                          className="rupees"
+                          src={strongOnlinePresence}
+                          alt=""
+                        />
+                      </div>
+                    </Grid>
                   </Grid>
-                </Grid>
-                <Grid
-                  container
-                  component="div"
-                  direction="row"
-                  className="advantage1"
-                >
-                  <Grid item xs={8} sm={8} md={10} lg={10}>
-                    <h3 className={mobileHeading}>
+                ) : (
+                  <Grid container component="div" direction="column">
+                    <div className="mobileAdvantageIconLeft">
+                      <img
+                        style={{ marginTop: "20%" }}
+                        height="40"
+                        width="40"
+                        src={strongOnlinePresence}
+                        alt=""
+                      />
+                    </div>
+                    <p className={mobileHeading}>
                       Showroom Branding & Exhaustive
                       <br />
                       Guidelines for CI of Showroom
-                    </h3>
+                    </p>
                   </Grid>
-                  <Grid item xs={4} sm={4} md={2} lg={2} className="icon">
-                    <div className="advantageIconRight">
+                )}
+
+                {matches ? (
+                  <Grid
+                    container
+                    component="div"
+                    direction="row"
+                    className="advantage"
+                  >
+                    <Grid item xs={2} sm={2} md={2} lg={2}>
+                      <div className="advantageIconLeft">
+                        <img
+                          className="rupees"
+                          src={strongOnlinePresence}
+                          alt=""
+                        />
+                      </div>
+                    </Grid>
+                    <Grid item xs={10} sm={10} md={10} lg={10}>
+                      <h3 className={mobileHeading}>
+                        Training & Development for
+                        <br />
+                        High Performance
+                      </h3>
+                    </Grid>
+                  </Grid>
+                ) : (
+                  <Grid container component="div" direction="column">
+                    <div className="mobileAdvantageIconLeft">
                       <img
-                        className="rupees"
+                        style={{ marginTop: "20%" }}
+                        height="40"
+                        width="40"
                         src={strongOnlinePresence}
                         alt=""
                       />
                     </div>
-                  </Grid>
-                </Grid>
-                <Grid
-                  container
-                  component="div"
-                  direction="row"
-                  className="advantage"
-                >
-                  <Grid item xs={2} sm={2} md={2} lg={2}>
-                    <div className="advantageIconLeft">
-                      <img
-                        className="rupees"
-                        src={strongOnlinePresence}
-                        alt=""
-                      />
-                    </div>
-                  </Grid>
-                  <Grid item xs={10} sm={10} md={10} lg={10}>
-                    <h3 className={mobileHeading}>
+                    <p className={mobileHeading}>
                       Training & Development for
                       <br />
                       High Performance
-                    </h3>
+                    </p>
                   </Grid>
-                </Grid>
+                )}
               </Grid>
               {divider}
+
               <Grid item xs={12} sm={12} md={5} lg={5} className="center-align">
-                <h4 className="redhead">Post-Launch Support</h4>
-                <img src={blackHeadingLines} alt="" />
-                <Grid
-                  container
-                  component="div"
-                  direction="row"
-                  className="advantage"
-                >
-                  <Grid item xs={4} sm={4} md={2} lg={2}>
-                    <div className="advantageIconLeft">
-                      <img
-                        className="rupees"
-                        src={strongOnlinePresence}
-                        alt=""
-                      />
+                {matches ? (
+                  <h4 className="center-align redhead">Pre-Launch Support</h4>
+                ) : (
+                  <p className="mobileRedHead">Post-Launch Support</p>
+                )}
+                <img style={{marginBottom:'10%'}} src={blackHeadingLines} alt="" />
+
+                {matches ? (
+                  <Grid
+                    container
+                    component="div"
+                    direction="row"
+                    className="advantage"
+                  >
+                    <Grid item xs={4} sm={4} md={2} lg={2}>
+                      <div className="advantageIconLeft">
+                        <img
+                          className="rupees"
+                          src={strongOnlinePresence}
+                          alt=""
+                        />
+                      </div>
+                    </Grid>
+                    <Grid item xs={8} sm={8} md={10} lg={10}>
+                      <h3 className={mobileHeading}>
+                        Online Demand Generation
+                        <br />& BTL Activities
+                      </h3>
+                    </Grid>
+                  </Grid>
+                ) : (
+                  <Grid
+                    style={{ marginBottom: "5%" }}
+                    xs={12}
+                    sm={12}
+                    direction="row"
+                    component="div"
+                  >
+                    <div style={{ display: "flex" }}>
+                      <>
+                        <div className="mobileAdvantageIconLeft">
+                          <img
+                            height="35"
+                            style={{ marginTop: "25%" }}
+                            src={strongOnlinePresence}
+                          />
+                        </div>
+
+                        <img
+                          style={{ marginTop: "8%" }}
+                          width="70"
+                          height="15"
+                          src={advantageIcon}
+                          alt=""
+                        />
+                      </>
+                    </div>
+
+                    <div
+                      style={{
+                        textAlign: "center",
+                        fontSize: "12.5px",
+                        fontWeight: "bold",
+                      }}
+                    >
+                     <p className={mobileHeading}>
+                        Online Demand Generation
+                        <br />& BTL Activities
+                      </p>
                     </div>
                   </Grid>
-                  <Grid item xs={8} sm={8} md={10} lg={10}>
-                    <h3 className={mobileHeading}>
-                      Online Demand Generation
-                      <br />& BTL Activities
-                    </h3>
-                  </Grid>
-                </Grid>
-                <Grid
+                )}
+
+                {matches?<Grid
                   container
                   component="div"
                   direction="row"
@@ -1238,8 +1538,26 @@ const BecomeFranchiseOwner = (props) => {
                       />
                     </div>
                   </Grid>
-                </Grid>
-                <Grid
+                </Grid>:<Grid container component="div" direction="column">
+                    <div className="mobileAdvantageIconLeft">
+                      <img
+                        style={{ marginTop: "20%" }}
+                        height="40"
+                        width="40"
+                        src={strongOnlinePresence}
+                        alt=""
+                      />
+                    </div>
+                    <p className={mobileHeading}>
+                      Tools and Technologies for
+                      <br />
+                      Business Efficiency
+                    </p>
+                  </Grid>}
+
+                  
+
+                  {matches?<Grid
                   container
                   component="div"
                   direction="row"
@@ -1261,8 +1579,26 @@ const BecomeFranchiseOwner = (props) => {
                       Call Center
                     </h3>
                   </Grid>
-                </Grid>
+                </Grid>:<Grid container component="div" direction="column">
+                    <div className="mobileAdvantageIconLeft">
+                      <img
+                        style={{ marginTop: "20%" }}
+                        height="40"
+                        width="40"
+                        src={strongOnlinePresence}
+                        alt=""
+                      />
+                    </div>
+                    <p className={mobileHeading}>
+                      Qualified Team & Dedicated
+                      <br />
+                      Call Center
+                    </p>
+                  </Grid>}
+                
+
               </Grid>
+
             </Grid>
           </div>
         </Grid>

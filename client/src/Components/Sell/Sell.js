@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import "./Sell.css";
-// import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
@@ -12,12 +11,9 @@ import blackHeadingLines from '../../assets/black-heading-lines.svg';
 import stepsToSell from '../../assets/steps-to-sell.svg';
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
-// import Tooltip from "../UI/Tooltip/Tooltip";
 import axios from "axios";
 import isEmpty from "validator/lib/isEmpty";
 import isAlpha from "validator/lib/isAlpha";
-// import isMobilePhone from "validator/lib/isMobilePhone";
-// import isAlphaNumeric from "validator/lib/isAlphanumeric";
 import isAscii from "validator/lib/isAscii";
 import isNumeric from "validator/lib/isNumeric";
 import { makeStyles, withTheme } from "@material-ui/core/styles";
@@ -27,8 +23,6 @@ import stepsToSellMobile from '../../assets/steps_to_sell_ mobile.jpg';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Modal from '@material-ui/core/Modal';
 import closeIcon from "../../assets/Close.png";
-import InputAdornment from '@material-ui/core/InputAdornment';
-import { Input } from '@material-ui/core';
 
 
 const useStyles = makeStyles(theme => ({
