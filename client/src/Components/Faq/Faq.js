@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import "./Faq.css";
-// import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
@@ -13,7 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-
+import faqPageIcon from "../../assets/faqPageIcon.svg";
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -53,6 +52,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Faq = (props) => {
+
+  const [showImage,setshowImage]=useState(false);
+
 const theme = useTheme();
 const matches = useMediaQuery(theme.breakpoints.up('sm'));
 const classes = useStyles();
@@ -87,6 +89,7 @@ const classes = useStyles();
           <Grid container component="div" direction="row" justify="center">
               <Grid item xs={11} sm={11} md={11} lg={11}>
                   <Paper className={classes.paper}>
+                    
                       <h5 id="faqHeading" className={classes.faqHeading}>
                           How do I select a suitable two-wheeler for myself?
                       </h5>
@@ -99,6 +102,7 @@ const classes = useStyles();
                       <p className={classes.faqSteps}>
                           Step 3: You will be shown multiple options to select from for the two-wheeler you want to buy, select any of them to see further.
                       </p>
+
                       <ExpansionPanel className={classes.collapsible}>
                           <ExpansionPanelSummary
                           expandIcon={<ExpandMoreIcon />}
@@ -113,6 +117,7 @@ const classes = useStyles();
                           Another way to see two-wheeler nearest to your location is by using the “Locate Store” feature, through which you can find out the BikeBazaar store nearest to your location. 
                           </ExpansionPanelDetails>
                       </ExpansionPanel>
+
                       <ExpansionPanel className={classes.collapsible}>
                           <ExpansionPanelSummary
                           expandIcon={<ExpandMoreIcon />}
@@ -212,26 +217,12 @@ const classes = useStyles();
       <Grid container component="div" direction="row" justify="center">
         <Grid item xs={11} sm={11} md={11} lg={11}>
           <Paper elevation={3} className={classes.paper}>
-            {/* <h5 id="faqHeading" className={classes.faqHeading}>
-              How do I select a suitable two-wheeler for myself?
-            </h5>
-            <p className={classes.faqSteps}>
-              Step 1: Select the category of the two-wheeler you want to buy out
-              of Motorcycles, Scooters and High-End Motorcycles
-            </p>
-            <p className={classes.faqSteps}>
-              Step 2: Use the filter for City, Manufacturing Year, Budget, Brand
-              and KMs driven for the chosen category of the two-wheeler.
-            </p>
-            <p className={classes.faqSteps}>
-              Step 3: You will be shown multiple options to select from for the
-              two-wheeler you want to buy, select any of them to see further.
-            </p> */}
-
+   
             <ExpansionPanel
               style={{ border: "none" }}
               className={classes.collapsible}
             >
+              
               <ExpansionPanelSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
@@ -242,11 +233,13 @@ const classes = useStyles();
                   fontWeight: "bold",
                 }}
               >
+                
                 How do I select a suitable two-wheeler for myself?
               </ExpansionPanelSummary>
 
-              <ExpansionPanelDetails>
+              <ExpansionPanelDetails >
                 <div style={{ display: "flex", flexDirection: "column" }}>
+                    
                   <p style={{ fontSize: "10px" }}>
                     Step 1: Select the category of the two-wheeler you want to
                     buy out of Motorcycles, Scooters and High-End Motorcycles

@@ -56,8 +56,6 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "materialize-css": "^1.0.0-rc.2"
-  },
+  
   "proxy": "http://localhost:4200"
 }
