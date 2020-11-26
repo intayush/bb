@@ -216,13 +216,14 @@ const classes = useStyles();
       </Grid>
       <Grid container component="div" direction="row" justify="center">
         <Grid item xs={11} sm={11} md={11} lg={11}>
-          <Paper elevation={3} className={classes.paper}>
-   
+          <Paper  elevation={3} className={classes.paper}>
+              <img style={{marginLeft:'20%'}} height="165" width="165" src={faqPageIcon} alt=""/>
             <ExpansionPanel
+              defaultExpanded
               style={{ border: "none" }}
               className={classes.collapsible}
             >
-              
+             
               <ExpansionPanelSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
@@ -232,8 +233,9 @@ const classes = useStyles();
                   fontSize: "13px",
                   fontWeight: "bold",
                 }}
-              >
-                
+              > 
+           
+               
                 How do I select a suitable two-wheeler for myself?
               </ExpansionPanelSummary>
 
