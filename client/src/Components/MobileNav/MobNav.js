@@ -18,13 +18,16 @@ import linkedinIcon from "../../assets/linkedin-icon.svg";
 import instagramIcon from "../../assets/instagram-icon.svg";
 import messageIcon from "../../assets/message.png";
 import callIcon from "../../assets/Phone.svg";
-import { withStyles, useTheme } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import selectedTyre from "../../assets/SelectedPageTyre.svg";
 import Grid from "@material-ui/core/Grid";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { CHANGE_CITY, CHANGE_CATEGORY } from "../../store/actions/actionTypes";
 import FormControl from "@material-ui/core/FormControl";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
+
 const StyledMenuItem = withStyles({
   root: {
     "&:hover": {
@@ -84,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LocationDropDown = () => {
+const LocationDropDown = ({matches}) => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
   const [select, setSelect] = useState(true);
@@ -99,20 +102,25 @@ const LocationDropDown = () => {
     setAnchorEl(null);
   };
 
-  const handleCityChange = (event) => {
+  const handleCityChange = (value,matches) => {
   
-    if (event.target.value === "Select City") {
+    if (value=== "Select City") {
       dispatch({ type: CHANGE_CITY, payload: "" });
     } else {
-      dispatch({ type: CHANGE_CITY, payload: event.target.value });
+      dispatch({ type: CHANGE_CITY, payload: value });
     }
 
     handleClose();
     if (window.location.pathname === "/") {
-      window.scrollTo({
+      
+      {matches? window.scrollTo({
         top: 500,
         behavior: "smooth",
-      });
+      }): window.scrollTo({
+        top: 150,
+        behavior: "smooth",
+      })}
+     
     }
   };
 
@@ -174,46 +182,46 @@ const LocationDropDown = () => {
           },
         }}
       >
-        <StyledMenuItem value="Select City" onClick={() => handleCityChange("Select City")}>
+        <StyledMenuItem  onClick={() => handleCityChange("Select City",matches)}>
           Select City
         </StyledMenuItem>
-        <StyledMenuItem value="Aluva" onClick={() => handleCityChange("Aluva")}>
+        <StyledMenuItem  onClick={() => handleCityChange("Aluva",matches)}>
           Aluva
         </StyledMenuItem>
-        <StyledMenuItem value="Select City"onClick={() => handleCityChange("Kolkata")}>
+        <StyledMenuItem onClick={() => handleCityChange("Kolkata",matches)}>
           Kolkata
         </StyledMenuItem>
-        <StyledMenuItem value="Select City" onClick={() => handleCityChange("Rajahmundry")}>
+        <StyledMenuItem onClick={() => handleCityChange("Rajahmundry",matches)}>
           Rajahmundry
         </StyledMenuItem>
-        <StyledMenuItem value="Select City" onClick={() => handleCityChange("Thrissur")}>
+        <StyledMenuItem  onClick={() => handleCityChange("Thrissur",matches)}>
           Thrissur
         </StyledMenuItem>
-        <StyledMenuItem value="Select City" onClick={() => handleCityChange("Bangalore")}>
+        <StyledMenuItem  onClick={() => handleCityChange("Bangalore",matches)}>
           Bangalore
         </StyledMenuItem>
-        <StyledMenuItem value="Select City" onClick={() => handleCityChange("Chennai")}>
+        <StyledMenuItem  onClick={() => handleCityChange("Chennai",matches)}>
           Chennai
         </StyledMenuItem>
-        <StyledMenuItem value="Select City" onClick={() => handleCityChange("New Delhi")}>
+        <StyledMenuItem  onClick={() => handleCityChange("New Delhi",matches)}>
           New Delhi
         </StyledMenuItem>
-        <StyledMenuItem value="Select City" onClick={() => handleCityChange("Gurgaon")}>
+        <StyledMenuItem  onClick={() => handleCityChange("Gurgaon",matches)}>
           Gurgaon
         </StyledMenuItem>
-        <StyledMenuItem onClick={() => handleCityChange("Hyderabad")}>
+        <StyledMenuItem onClick={() => handleCityChange("Hyderabad",matches)}>
           Hyderabad
         </StyledMenuItem>
-        <StyledMenuItem onClick={() => handleCityChange("Jaipur")}>
+        <StyledMenuItem onClick={() => handleCityChange("Jaipur",matches)}>
           Jaipur
         </StyledMenuItem>
-        <StyledMenuItem value="Select City" onClick={() => handleCityChange("Mumbai")}>
+        <StyledMenuItem  onClick={() => handleCityChange("Mumbai",matches)}>
           Mumbai
         </StyledMenuItem >
-        <StyledMenuItem value="Select City" onClick={() => handleCityChange("Nagpur")}>
+        <StyledMenuItem  onClick={() => handleCityChange("Nagpur",matches)}>
           Nagpur
         </StyledMenuItem>
-        <StyledMenuItem value="Select City" onClick={() => handleCityChange("Pune")}>
+        <StyledMenuItem onClick={() => handleCityChange("Pune",matches)}>
           Pune
         </StyledMenuItem>
       </Menu>
@@ -360,6 +368,9 @@ const HamburgerDropdown = () => {
 };
 
 const MobNav = () => {
+  const theme=useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
+
   const classes = useStyles();
   const [searchTerm, setSearchTerm] = useState("");
   const dispatch = useDispatch();
@@ -415,7 +426,7 @@ const MobNav = () => {
           <Grid container component="div" className="search-container-main">
             <Grid item xs={4} sm={4} >
               <div id="searchLocation">
-                <LocationDropDown />
+                <LocationDropDown  matches={matches}/>
               </div>
             </Grid>
             <Grid item xs={6} sm={6} >
