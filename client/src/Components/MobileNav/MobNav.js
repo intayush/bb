@@ -100,6 +100,7 @@ const LocationDropDown = () => {
   };
 
   const handleCityChange = (event) => {
+  
     if (event.target.value === "Select City") {
       dispatch({ type: CHANGE_CITY, payload: "" });
     } else {
@@ -159,7 +160,7 @@ const LocationDropDown = () => {
         getContentAnchorEl={null}
         anchorOrigin={{
           vertical: "bottom",
-          horizontal: "center",
+          horizontal: "bottom",
         }}
         transformOrigin={{ vertical: "top", horizontal: "center" }}
         MenuListProps={{ onMouseLeave: handleClose }}
@@ -169,35 +170,35 @@ const LocationDropDown = () => {
             marginRight: "5%",
             width: "28%",
             scrollbarWidth: "thin",
-           
+            marginTop:'12%'
           },
         }}
       >
-        <StyledMenuItem  onClick={() => handleCityChange("Select City")}>
+        <StyledMenuItem value="Select City" onClick={() => handleCityChange("Select City")}>
           Select City
         </StyledMenuItem>
-        <StyledMenuItem onClick={() => handleCityChange("Aluva")}>
+        <StyledMenuItem value="Aluva" onClick={() => handleCityChange("Aluva")}>
           Aluva
         </StyledMenuItem>
-        <StyledMenuItem onClick={() => handleCityChange("Kolkata")}>
+        <StyledMenuItem value="Select City"onClick={() => handleCityChange("Kolkata")}>
           Kolkata
         </StyledMenuItem>
-        <StyledMenuItem onClick={() => handleCityChange("Rajahmundry")}>
+        <StyledMenuItem value="Select City" onClick={() => handleCityChange("Rajahmundry")}>
           Rajahmundry
         </StyledMenuItem>
-        <StyledMenuItem onClick={() => handleCityChange("Thrissur")}>
+        <StyledMenuItem value="Select City" onClick={() => handleCityChange("Thrissur")}>
           Thrissur
         </StyledMenuItem>
-        <StyledMenuItem onClick={() => handleCityChange("Bangalore")}>
+        <StyledMenuItem value="Select City" onClick={() => handleCityChange("Bangalore")}>
           Bangalore
         </StyledMenuItem>
-        <StyledMenuItem onClick={() => handleCityChange("Chennai")}>
+        <StyledMenuItem value="Select City" onClick={() => handleCityChange("Chennai")}>
           Chennai
         </StyledMenuItem>
-        <StyledMenuItem onClick={() => handleCityChange("New Delhi")}>
+        <StyledMenuItem value="Select City" onClick={() => handleCityChange("New Delhi")}>
           New Delhi
         </StyledMenuItem>
-        <StyledMenuItem onClick={() => handleCityChange("Gurgaon")}>
+        <StyledMenuItem value="Select City" onClick={() => handleCityChange("Gurgaon")}>
           Gurgaon
         </StyledMenuItem>
         <StyledMenuItem onClick={() => handleCityChange("Hyderabad")}>
@@ -206,13 +207,13 @@ const LocationDropDown = () => {
         <StyledMenuItem onClick={() => handleCityChange("Jaipur")}>
           Jaipur
         </StyledMenuItem>
-        <StyledMenuItem onClick={() => handleCityChange("Mumbai")}>
+        <StyledMenuItem value="Select City" onClick={() => handleCityChange("Mumbai")}>
           Mumbai
-        </StyledMenuItem>
-        <StyledMenuItem onClick={() => handleCityChange("Nagpur")}>
+        </StyledMenuItem >
+        <StyledMenuItem value="Select City" onClick={() => handleCityChange("Nagpur")}>
           Nagpur
         </StyledMenuItem>
-        <StyledMenuItem onClick={() => handleCityChange("Pune")}>
+        <StyledMenuItem value="Select City" onClick={() => handleCityChange("Pune")}>
           Pune
         </StyledMenuItem>
       </Menu>
@@ -240,8 +241,7 @@ const HamburgerDropdown = () => {
         src={hamburgerIcon}
         alt=""
       />
-
-      <Menu
+        <Menu
         id="hamburger-menu"
         anchorEl={anchorEl}
         keepMounted
@@ -249,17 +249,17 @@ const HamburgerDropdown = () => {
         onClose={handleClose}
         getContentAnchorEl={null}
         anchorOrigin={{
-          vertical: "top !important",
-          horizontal: "left !important",
+          vertical: "top",
+          horizontal: "right",
         }}
-        transformOrigin={{ vertical: "top", horizontal: "left" }}
+        transformOrigin={{ vertical: "top", horizontal: "right" }}
         MenuListProps={{ onMouseLeave: handleClose }}
         PaperProps={{
           style: {
             backgroundColor: "#1d1d1d",
             width: "80%",
-            height: "72%",
-            marginTop:'-10%',
+            marginTop: "-10%",
+            marginLeft:'6%'
           },
         }}
       >
