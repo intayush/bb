@@ -198,7 +198,8 @@ const LocationDropDown = () => {
   };
 
   const handleCityChange = (value) => {
-    // console.log(value)
+   
+    console.log()
     if (value === "Select City") {
       dispatch({ type: CHANGE_CITY, payload: "" });
     } else {
@@ -214,7 +215,6 @@ const LocationDropDown = () => {
     }
   };
 
-  console.log("New City", selectedCity);
 
   return (
     <>
