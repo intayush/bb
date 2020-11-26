@@ -63,7 +63,6 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0 0 4px 1px rgba(0, 0, 0, 0.2) !important",
     padding: theme.spacing(2),
     fontSize: 16,
-    letterSpacing: 0.63,
     color: "#000000",
   
   }
@@ -75,7 +74,7 @@ const SellingProcess = (props) => {
   const classes = useStyles();
   return (
     <div id="SellingProcess">
-      <Paper className={matches?classes.paper + " center-align":classes.mobilePaper + " center-align"}>
+      <Paper className={matches?(classes.paper + " center-align"):(classes.mobilePaper + " center-align")}>
         {matches?  <h3 className={classes.heading}>{props.heading}</h3>:
            <p
             className={classes.mobileHeading}
@@ -115,7 +114,8 @@ const SellingProcess = (props) => {
                 <br />
                 in "1 Visit"
               </h5>
-              <p className={matches?classes.text:classes.mobileText}>
+
+              {matches?<p className={classes.text}>
                 Any two-wheeler can be sold
                 <br />
                 to us just in one visit.
@@ -123,7 +123,15 @@ const SellingProcess = (props) => {
                 Now encash your two-wheeler
                 <br />
                 within few hours
-              </p>
+              </p>:<p className={classes.mobileText}> Any two-wheeler can be sold
+      
+                to us just in one visit.
+                <br />
+                Now encash your two-wheeler
+         
+                within few hours</p>}
+
+
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4}>

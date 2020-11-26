@@ -639,7 +639,7 @@ const BecomeFranchiseOwner = (props) => {
                   >
                     <img
                       style={{ transform: "scaleX(-1)", marginTop: "10%" }}
-                      height="15"
+                      height="17"
                       width="80"
                       src={advantageIcon}
                       alt=""
@@ -748,7 +748,7 @@ const BecomeFranchiseOwner = (props) => {
                   >
                     <img
                       style={{ transform: "scaleX(-1)", marginTop: "10%" }}
-                      height="15"
+                      height="17"
                       width="80"
                       src={advantageIcon}
                       alt=""
@@ -893,7 +893,7 @@ const BecomeFranchiseOwner = (props) => {
                   >
                     <img
                       style={{ transform: "scaleX(-1)", marginTop: "10%" }}
-                      height="15"
+                      height="17"
                       width="80"
                       src={advantageIcon}
                       alt=""
