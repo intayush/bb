@@ -19,7 +19,7 @@ import instaIcon from "../../assets/icons/social_media/Instagram.svg";
 import linkedinIcon from "../../assets/icons/social_media/Linkedin.svg";
 import EmailIcon from "@material-ui/icons/Email";
 import CallIcon from "@material-ui/icons/Call";
-import { grey } from "@material-ui/core/colors";
+import { grey  } from "@material-ui/core/colors";
 import isEmpty from "validator/lib/isEmpty";
 // import isAlpha from "validator/lib/isAlpha";
 import isEmail from "validator/lib/isEmail";
@@ -31,6 +31,9 @@ import isAscii from "validator/lib/isAscii";
 import axios from "axios";
 import Modal from '@material-ui/core/Modal';
 import closeIcon from "../../assets/Close.png";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import mobiledivider from "../../assets/mobiledivider.png";
 
 const BBRadio = withStyles({
   root: {
@@ -55,13 +58,22 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(3),
     marginRight: theme.spacing(1),
     color: theme.palette.text.secondary,
-    height: "100%"
+    height: "100%",
+    width:'100%'
+    
   },
   paper2: {
     padding: theme.spacing(3),
     marginLeft: theme.spacing(1),
     color: theme.palette.text.secondary,
     height: "100%"
+  },
+
+  mobilepaper2:{
+    padding: theme.spacing(3),
+    color: theme.palette.text.secondary,
+    height: "100%",
+    marginTop:'4%'
   },
   mapContainer: {
     marginTop: theme.spacing(5),
@@ -76,6 +88,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: 16,
     letterSpacing: '0.83px'
   },
+  mobileLabel:{},
   submit:{
     background: '#ff0000',
     padding: '6px 30px',
@@ -141,7 +154,8 @@ const formValidator = (name, value) => {
 
 const Contact = props => {
   const classes = useStyles();
-
+  const theme=useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
   useEffect(() =>{
     try {
       window.scroll({
@@ -340,40 +354,60 @@ const Contact = props => {
           />
           <Grid container component="div" direction="row">
             <Grid item xs={12} sm={12} md={5} lg={5}>
-              <Paper className={classes.paper1}>
+              <Paper elevation={3} className={classes.paper1}>
                 <div className="center-align">
-                  <h5 className="contact-heading">Contact Us</h5>
-                  <img src={headingLines} alt="" className="heading-line" />
+                  {matches?<h5 className="contact-heading">Contact Us</h5>:<p style={{fontSize:'15px',fontWeight:'bold',color:'#ff0000'}}>Contact Us</p>}
+                  {matches?<img src={headingLines} alt="" className="heading-line" />:<img src={mobiledivider} alt="mobile-divider-line"/>}
                 </div>
-                <p className="sub-heading-black">Office:</p>
-                <p className="sub-heading-red">
+                {matches?<p className="sub-heading-black">Office:</p>:<p style={{fontSize:'13px',fontWeight:'bold',color:'black'}}>Office: </p>}
+                <p className={matches?"sub-heading-red":"mobileSub-heading-red"}>
                   BikeBazaar<sup>TM</sup>
                 </p>
-                <p className="address">
+                
+               {matches?<p className="address">
                 The Daftar, Bungalow No. 261/2/7
                 <br />
                 Silver Oak Society, Baner Road, Baner
                 <br />
                 Pune, Maharashtra 411045.
                 <br />
-                </p>
-                <p className="sub-heading-black">Contact:</p>
+                </p>:<p className="mobile-address">The Daftar, Bungalow No. 261/2/7
+                Silver Oak Society, Baner Road, Baner
+                Pune, Maharashtra 411045.</p>} 
+
+
+                <p className={matches?"sub-heading-black":"mobileSub-heading-black "}>Contact:</p>
                 <a target="_blank" href="tel: 8956853498" >
-                  <div className="mobile">
+
+                 {matches?<div className="mobile">
                     <CallIcon style={{ fontSize: 23, color: grey[900] }} />
                     &nbsp;&nbsp;&nbsp;
                       <span style={{color:'black', opacity: '0.5'}}> 8956853498</span>
-                  </div>
+                  </div>:<><CallIcon style={{fontSize:'15px',color:grey[900]}} />
+                  &nbsp;&nbsp;&nbsp;<span style={{fontSize:'10px',color:'#232b2b'}}>8956853498</span>
+                  <br/>
+                  </>} 
+
                 </a>
+
                 <a target="_blank" href="mailto:connect@bikebazaar.com" >
-                  <div className="mail">
+
+                  {/* <div className="mail">
                     <EmailIcon style={{ fontSize: 23, color: grey[900] }} />
                     &nbsp;&nbsp;&nbsp;
                     <span style={{color:'black', opacity: '0.5'}}>connect@bikebazaar.com</span>
                   </div>
+                   */}
+                     {matches?<div className="mobile">
+                    <EmailIcon style={{ fontSize: 23, color: grey[900] }} />
+                    &nbsp;&nbsp;&nbsp;
+                      <span style={{color:'black', opacity: '0.5'}}> connect@bikebazaar.com</span>
+                  </div>:<><EmailIcon style={{fontSize:'15px',color:grey[900]}} />
+                  &nbsp;&nbsp;&nbsp;<span style={{fontSize:'10px',color:'#232b2b'}}>connect@bikebazaar.com</span>
+                  </>} 
                 </a>
-                <p className="sub-heading-black">Follow Us On:</p>
-                <div className="social-media-links">
+                {matches?<p className="sub-heading-black">Follow Us On:</p>:<p style={{fontSize:'13px',fontWeight:'bold',color:'black'}}>Follow Us On:</p>}
+                {matches?<div className="social-media-links">
                   <a href="https://www.facebook.com/BikeBazaaar">
                     <img src={facebookIcon} alt="" height="22" />
                   </a>
@@ -386,14 +420,28 @@ const Contact = props => {
                   <a href="https://www.linkedin.com/company/bikebazaar">
                     <img src={linkedinIcon} alt="" height="22" />
                   </a>
-                </div>
+                </div>:<div style={{idth:'100%'}} >
+                  <a href="https://www.facebook.com/BikeBazaaar">
+                    <img  src={facebookIcon} alt="" height="13" />
+                  </a>
+                  <a href="https://twitter.com/BikeBazaaar" >
+                    <img style={{marginLeft:'5%'}} src={twitterIcon} alt="" height="13" />
+                  </a>
+                  <a href="https://www.instagram.com/bikebazaaar/" >
+                    <img style={{marginLeft:'5%'}}  src={instaIcon} alt="" height="13" />
+                  </a>
+                  <a href="https://www.linkedin.com/company/bikebazaar">
+                    <img  style={{marginLeft:'5%'}}  src={linkedinIcon} alt="" height="13" />
+                  </a>
+                </div>}
+                
               </Paper>
             </Grid>
             <Grid item xs={12} sm={12} md={7} lg={7}>
-              <Paper className={classes.paper2}>
+              <Paper elevation={3} className={matches?classes.paper2:classes.mobilepaper2}>
                 <div className="center-align">
-                  <h5 className="contact-heading">Contact Form</h5>
-                  <img src={headingLines} alt="" className="heading-line" />
+                  {matches? <h5 className="contact-heading">Contact Form</h5>:<p style={{fontSize:'15px',fontWeight:'bold',color:'#ff0000'}}>Contact Us</p>}
+                  <img src={matches?headingLines:mobiledivider} alt="" className="heading-line" />
                 </div>
                 <div id="contactForm">
                   <form>
