@@ -14,6 +14,7 @@ import VehicleAdvantage from "../../Components/VehicleAdvantage/VehicleAdvantage
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
+
 const useStyles = makeStyles((theme) => ({
   body: {
     backgroundColor: "#f7f7f7",

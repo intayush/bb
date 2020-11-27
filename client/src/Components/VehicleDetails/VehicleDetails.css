@@ -151,6 +151,8 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .vehicleReport p { font-size: 18px; color: #232c2b; }
 
 .vehicleAdvantageSec { background-color: #e5e5e5; box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3); }
+.vehicleAdvantageSecMobile{background-color: #f5f5f5; box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3);}
+
 .vehicleAdvantage h2 { color: #232c2b; }
 .vehicleAdvantage .advantageSec { padding: 0 0; }
 .vehicleAdvantage .advantageSec .advantage { padding: 5px 0; }

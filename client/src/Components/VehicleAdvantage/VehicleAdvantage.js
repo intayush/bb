@@ -8,6 +8,9 @@ import emiIcon from "../../assets/images/icons/emi.png";
 import transferIcon from "../../assets/images/icons/transfer.png";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import leftRedDotLine from "../../assets/images/icons/advantage-icon-lt.png";
+import rightDotLine from "../../assets/images/icons/advantage-icon-rt.png";
+
 
 const VehicleAdvantage = (props) => {
   const theme = useTheme();
@@ -41,6 +44,7 @@ const VehicleAdvantage = (props) => {
   ) : (
     <Grid container component="div" direction="row">
       <Grid item xs={12} sm={12} md={2} lg={2}>
+        <div style={{display:'flex',flexDirection:'row'}}> <img style={{marginTop:'16%',marginLeft:'19%'}} height="10" width="45" src={rightDotLine} alt=""/>
         <div
           style={{
             borderRadius: "60%",
@@ -50,7 +54,8 @@ const VehicleAdvantage = (props) => {
             width: "100px",
             textAlign: "center",
             boxShadow: " 0 0 12px 0 rgba(0, 0, 0, 0.17)",
-            marginLeft: "35%",
+           
+            
           }}
         >
           <img
@@ -60,7 +65,8 @@ const VehicleAdvantage = (props) => {
             alt=""
             style={{ marginTop: "10px" }}
           />
-        </div>
+        </div></div>
+     
       </Grid>
       <Grid item xs={12} sm={12} md={10} lg={10}>
         <div
@@ -68,6 +74,7 @@ const VehicleAdvantage = (props) => {
             flexDirection: "column",
             display: "flex",
             textAlign: "center",
+            marginTop:'3%'
           }}
         >
           <span style={{ fontWeight: "bold", color: "#ff0000" }}>
@@ -100,7 +107,9 @@ const VehicleAdvantage = (props) => {
   ) : (
     <Grid container component="div" direction="row">
       <Grid item xs={12} sm={12} md={2} lg={2}>
-        <div
+          <div style={{display:'flex',flexDirection:'row'}}>
+          <img style={{marginTop:'16%',marginLeft:'20%'}} height="10" width="45" src={rightDotLine} alt=""/>
+          <div
           style={{
             borderRadius: "60%",
             backgroundColor: "white",
@@ -109,7 +118,7 @@ const VehicleAdvantage = (props) => {
             width: "100px",
             textAlign: "center",
             boxShadow: " 0 0 12px 0 rgba(0, 0, 0, 0.17)",
-            marginLeft: "35%",
+           
           }}
         >
           <img
@@ -119,7 +128,8 @@ const VehicleAdvantage = (props) => {
             alt=""
             style={{ marginTop: "10px" }}
           />
-        </div>
+        </div>  </div>
+       
       </Grid>
       <Grid item xs={12} sm={12} md={10} lg={10}>
         <div
@@ -127,6 +137,7 @@ const VehicleAdvantage = (props) => {
             flexDirection: "column",
             display: "flex",
             textAlign: "center",
+            marginTop:'3%'
           }}
         >
           <span style={{ fontWeight: "bold", color: "#ff0000" }}>
@@ -142,7 +153,7 @@ const VehicleAdvantage = (props) => {
   );
 
   return (
-    <Grid item xs={12} sm={12} md={12} lg={12} className="vehicleAdvantageSec">
+    <Grid item xs={12} sm={12} md={12} lg={12} className={matches?"vehicleAdvantageSec":" vehicleAdvantageSecMobile"}>
       <div className={containerStyle + " vehicleAdvantage " + advantagePadding}>
         {matches ? (
           <h2 className="center-align">
@@ -164,8 +175,9 @@ const VehicleAdvantage = (props) => {
         <div className="center-align">
           <img src={headingLines} alt="" />
         </div>
-        <br />
-        <br />
+        {matches?<React.Fragment><br />
+        <br /></React.Fragment>:<React.Fragment><br/></React.Fragment> }
+       
         <div className="advantageSec">
           {matches ? (
             <Grid
@@ -190,6 +202,8 @@ const VehicleAdvantage = (props) => {
           ) : (
             <Grid container component="div" direction="row">
               <Grid item xs={12} sm={12} md={2} lg={2}>
+                <div style={{display:'flex',flexDirection:'row'}}>
+            
                 <div
                   style={{
                     borderRadius: "60%",
@@ -199,7 +213,7 @@ const VehicleAdvantage = (props) => {
                     width: "100px",
                     textAlign: "center",
                     boxShadow: " 0 0 12px 0 rgba(0, 0, 0, 0.17)",
-                    marginLeft: "35%",
+                    marginLeft:'35%'
                   }}
                 >
                   <img
@@ -210,15 +224,23 @@ const VehicleAdvantage = (props) => {
                     style={{ marginTop: "10px" }}
                   />
                 </div>
+                <img style={{marginTop:'16%'}}height="10" width="45" src={leftRedDotLine} alt=""/>
+                </div>
               </Grid>
               <Grid item xs={12} sm={12} md={10} lg={10}>
+             
+  
                 <div
+                
                   style={{
                     flexDirection: "column",
                     display: "flex",
                     textAlign: "center",
+                    marginTop:'3%',
+                    
                   }}
                 >
+
                   <span style={{ fontWeight: "bold", color: "#ff0000" }}>
                     Certified by Auto Experts
                   </span>
@@ -227,6 +249,7 @@ const VehicleAdvantage = (props) => {
                     certified by our team of Auto Experts
                   </p>
                 </div>
+                
               </Grid>
             </Grid>
           )}
@@ -256,6 +279,7 @@ const VehicleAdvantage = (props) => {
           ) : (
             <Grid container component="div" direction="row">
               <Grid item xs={12} sm={12} md={2} lg={2}>
+                <div style={{display:'flex',flexDirection:'row'}}>  
                 <div
                   style={{
                     borderRadius: "60%",
@@ -276,6 +300,9 @@ const VehicleAdvantage = (props) => {
                     style={{ marginTop: "10px" }}
                   />
                 </div>
+                <img style={{marginTop:'16%'}}height="10" width="45" src={leftRedDotLine} alt=""/>
+                </div>
+            
               </Grid>
               <Grid item xs={12} sm={12} md={10} lg={10}>
                 <div
@@ -283,6 +310,7 @@ const VehicleAdvantage = (props) => {
                     flexDirection: "column",
                     display: "flex",
                     textAlign: "center",
+                    marginTop:'3%'
                   }}
                 >
                   <span style={{ fontWeight: "bold", color: "#ff0000" }}>
@@ -322,7 +350,7 @@ const VehicleAdvantage = (props) => {
           ) : (
             <Grid container component="div" direction="row">
               <Grid item xs={12} sm={12} md={2} lg={2}>
-                <div
+                <div style={{display:"flex",flexDirection:'row'}}><div
                   style={{
                     borderRadius: "60%",
                     backgroundColor: "white",
@@ -342,6 +370,9 @@ const VehicleAdvantage = (props) => {
                     style={{ marginTop: "10px" }}
                   />
                 </div>
+                <img style={{marginTop:'16%'}} height="10" width="45" src={leftRedDotLine} alt=""/>
+                </div>
+                
               </Grid>
               <Grid item xs={12} sm={12} md={10} lg={10}>
                 <div
@@ -349,6 +380,7 @@ const VehicleAdvantage = (props) => {
                     flexDirection: "column",
                     display: "flex",
                     textAlign: "center",
+                    marginTop:'3%'
                   }}
                 >
                   <span style={{ fontWeight: "bold", color: "#ff0000" }}>
