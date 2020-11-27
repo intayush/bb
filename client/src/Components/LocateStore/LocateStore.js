@@ -299,20 +299,20 @@ let LocateStore = (props) => {
                 data-target="cityDropdown"
               >
                 <img
-                  style={matches ? { marginTop: "3%" } : { marginTop: "5%" }}
+                  style={matches ? { marginTop: "3%" } : { marginTop: "4%" }}
                   src={cityIcon}
                   width={matches ? "80" : "30"}
                   height={cityIconHeight}
                   alt=""
                 />
                 <span
-                  style={matches ? { fontSize: "15px" } : { fontSize: "11px" }}
+                  style={matches ? { fontSize: "15px" } : { fontSize: "13px" }}
                   id="currentCity"
                 >
                   Search Your City
                 </span>
                 <img
-                  style={matches ? { marginTop: "5%" } : { marginTop: "9%" }}
+                  style={matches ? { marginTop: "5%" } : { marginTop: "6%" }}
                   src={dropdownIcon}
                   width="22"
                   height="11"
