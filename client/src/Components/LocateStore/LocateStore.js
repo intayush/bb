@@ -285,7 +285,8 @@ let LocateStore = (props) => {
         <div className="locateDropdownCard">
           <div className="row">
             <div className={matches ? "input-field" : "mobile-input-field"}>
-              <p>Please Select Your City</p>
+             {matches?<p>Please Select Your City</p>:<p style={{fontSize:'12.5px',marginBottom:'3%'}}>Please Select Your City</p>} 
+              
               <div
                 style={{
                   display: "flex",
@@ -337,7 +338,7 @@ let LocateStore = (props) => {
             >
               <img
                 src={searchIcon}
-                style={matches ? {} : { marginLeft: "10px" }}
+                style={matches ? {} : { marginBottom:'20px'}}
                 width={matches ? "30" : "20"}
                 height={matches ? "30" : "20"}
                 alt=""
@@ -355,7 +356,7 @@ let LocateStore = (props) => {
           </h4>
         ) : (
           <p className="mobileMapHeading">
-            {" "}
+          
             List of Stores Nearest to
             <br /> Selected Location
           </p>

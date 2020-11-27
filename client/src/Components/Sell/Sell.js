@@ -19,7 +19,11 @@ import isNumeric from "validator/lib/isNumeric";
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import stepsToSellMobile from "../../assets/steps_to_sell_ mobile.jpg";
+// import stepsToSellMobile from "../../assets/steps_to_sell_ mobile.jpg";
+import shareTwoWheelerIcon from "../../assets/Icon-1.png";
+import inspectionIcon from "../../assets/Icons-2.png";
+import documentIcon from "../../assets/Icon-3.png";
+import instantPaymentIcon from "../../assets/Icon-4.png";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Modal from "@material-ui/core/Modal";
 import closeIcon from "../../assets/Close.png";
@@ -45,16 +49,26 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: 0,
     color: "#000000",
     lineHeight: "15px",
+   
   },
   paper1: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
     boxShadow: "0 0 4px 1px rgba(0, 0, 0, 0.2) !important",
     paddingTop: theme.spacing(3),
-    fontSize: 16,
     letterSpacing: 0,
     color: "#000000",
-    lineHeight: "28px",
+    
+  },
+
+  mobilePaper1:{
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+    boxShadow: "0 0 4px 1px rgba(0, 0, 0, 0.2) !important",
+    paddingTop: theme.spacing(3),
+    letterSpacing: 0,
+    color: "#000000",
+    width:'91%'
   },
   mapContainer: {
     marginTop: theme.spacing(3),
@@ -206,6 +220,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "flex-start",
   },
+  
 }));
 
 const formValidator = (name, value) => {
@@ -585,18 +600,43 @@ const Sell = (props) => {
           </div>
         </div>
       </Paper>
-      {/* </Grid> */}
+     
     </Grid>
   ) : (
-    // <Grid item xs={12} sm={12} md={8}>
-    <Paper className={classes.paper1 + " center-align"}>
+    <Paper className={classes.mobilePaper1 + " center-align"}>
       <h3 className={classes.sellHeadingMobile}>
         Steps to Sell Your Two-Wheeler
       </h3>
-      <img src={stepsToSellMobile} width="750" alt="" />
+     <img  alt="" src={blackHeadingLines} width="40" height="10"  />
+      {/* Share your two wheelers details section */}
+      <div style={{display:'flex',flexDirection:'column',textAlign:'center'}}>
+            <p style={{fontSize:'13px',fontWeight:'bold',color: '#232b2b'}}>Share Your <br/>Two-Wheeler’s Details </p>
+            <img style={{marginLeft:'35%'}} height="10%" width="25%" src={shareTwoWheelerIcon} alt=""/>
+      </div>
+     {/* inspection section */}
+
+     <div style={{display:'flex',flexDirection:'column',textAlign:'center'}}>
+            <p style={{fontSize:'13px',fontWeight:'bold',color: '#232b2b'}}>Inspection by our <br/> Auto Expert </p>
+            <img style={{marginLeft:'35%'}} height="10%" width="25%" src={inspectionIcon} alt=""/>
+      </div>
+
+      {/* document verification section */}
+
+      <div style={{display:'flex',flexDirection:'column',textAlign:'center'}}>
+            <p style={{fontSize:'13px',fontWeight:'bold',color: '#232b2b'}}>Document <br/> Verification </p>
+            <img style={{marginLeft:'35%'}} height="10%" width="25%" src={documentIcon} alt=""/>
+      </div>
+
+      {/* instant payement method */}
+
+      <div style={{display:'flex',flexDirection:'column',textAlign:'center'}}>
+            <p style={{fontSize:'13px',fontWeight:'bold',color: '#232b2b'}}>Instant Payment For <br/>Your Two-Wheeler</p>
+            <img style={{marginLeft:'35%',marginBottom:'10%'}} height="10%" width="25%" src={instantPaymentIcon} alt=""/>
+      </div>
+      
     </Paper>
   );
-  // </Grid>;
+  
 
   return (
     <div id="Sell" className={classes.body}>
@@ -1192,6 +1232,7 @@ const Sell = (props) => {
                                   &nbsp;&nbsp;(eg. Varunam Reddy)
                                 </label>
                                 <input
+                                
                                   type="text"
                                   name="name"
                                   id="name"

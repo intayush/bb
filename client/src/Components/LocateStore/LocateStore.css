@@ -59,7 +59,7 @@
 }
 
 .custom-drop-mobile {
-  width: 195px;
+ width: 250px;
   height: 40px;
   border-radius: 4px;
   text-transform: none;
@@ -107,11 +107,11 @@
 }
 
 .mobileView-search-location-button {
-  width: 100px;
+  width: 60px;
   height: 40px;
   background-color: black;
   border-radius: 3px;
-  margin-top: 49px;
+  margin-top: 18%;
   padding: 13px;
   cursor: pointer;
 }
