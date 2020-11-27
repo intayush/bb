@@ -24,7 +24,6 @@ import Grid from "@material-ui/core/Grid";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { CHANGE_CITY, CHANGE_CATEGORY } from "../../store/actions/actionTypes";
-import FormControl from "@material-ui/core/FormControl";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 
@@ -87,6 +86,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 const LocationDropDown = ({matches}) => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -126,38 +126,37 @@ const LocationDropDown = ({matches}) => {
 
   return (
     <>
-      <span
+      <div
         style={{
           height: 40,
-          width:100,
+          width:"100%",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           cursor: "pointer",
           color: "black",
-        
           flexDirection:'row'
         }}
         onClick={handleClick}
       >
        
-        {selectedCity ? selectedCity : "Select City"}
+       <p style={{fontSize:'10px'}}>{selectedCity ? selectedCity : "Select City"}</p> 
 
         <span onClick={handleClick}>
           {select ? (
             <ExpandMoreIcon
-              style={{ paddingTop: "5px", justifyContent: "center" }}
+              style={{ paddingTop: "5px", marginLeft:'20%',justifyContent: "center" }}
             />
           ) : (
             <ChevronRightIcon
-              style={{ paddingTop: "5px", justifyContent: "center" }}
+              style={{ paddingTop: "5px", marginLeft:'20%',justifyContent: "center" }}
             />
           )}
         </span>
 
         {/* used for the side border */}
         <div id="border-height"></div>
-      </span>
+      </div>
       
       <Menu
         id="customised-menu"
@@ -176,7 +175,7 @@ const LocationDropDown = ({matches}) => {
           style: {
             backgroundColor: "black",
             marginRight: "5%",
-            width: "28%",
+            width: "26%",
             scrollbarWidth: "thin",
             marginTop:'12%'
           },
@@ -424,12 +423,12 @@ const MobNav = () => {
       >
         <form id="searchForm" className="input-field">
           <Grid container component="div" className="search-container-main">
-            <Grid item xs={4} sm={4} >
+            <Grid item xs={3} sm={3} >
               <div id="searchLocation">
                 <LocationDropDown  matches={matches}/>
               </div>
             </Grid>
-            <Grid item xs={6} sm={6} >
+            <Grid item xs={7} sm={7} >
               <div className="arrow">
                 <Autocomplete
                   id="searchField"
@@ -438,13 +437,13 @@ const MobNav = () => {
                   options={searchTerm ? vehicleNames : []}
                   renderInput={(params) => (
                     <StyledTextField
-                      placeholder="Search Vehicle"
+                      placeholder="Search Your Vehicle"
                       onChange={updateState(params.inputProps.value)}
                       {...params}
                       style={{
                         paddingLeft: "20px !important",
                         margin: "0px",
-                      
+                        
                       }}
                       label=""
                       margin="normal"
