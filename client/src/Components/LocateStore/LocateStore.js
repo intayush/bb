@@ -90,7 +90,7 @@ let LocateStore = (props) => {
     {
       city: "Kolkata",
       locationName: "BikeBazaar – Undelcared, Kolkata",
-      address: "Contact Info: Chirag Shah || Mob No: +91-90387 95892",
+      address: "8A, Nasiruddin Rd, Lower Range, Beck Bagan, Ballygunge, Kolkata, West Bengal 700017 .Contact Info: Chirag Shah || Mob No: +91-90387 95892",
       coordinates: {
         lat: 16.999954,
         lng: 81.786184,
