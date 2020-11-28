@@ -117,7 +117,7 @@ const LocationDropDown = ({matches}) => {
         top: 500,
         behavior: "smooth",
       }): window.scrollTo({
-        top: 0,
+        top: 150,
         behavior: "smooth",
       })}
      
@@ -266,7 +266,9 @@ const HamburgerDropdown = () => {
             backgroundColor: "#1d1d1d",
             width: "80%",
             marginTop: "-10%",
-            marginLeft:'6%'
+            marginLeft:'6%',
+            height:'85%',
+            overflowY:'hidden'
           },
         }}
       >
