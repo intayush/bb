@@ -89,11 +89,11 @@ let LocateStore = (props) => {
     },
     {
       city: "Kolkata",
-      locationName: "BikeBazaar – Undelcared, Kolkata",
+      locationName: "BikeBazaar – 8A Nasiruddin,Kolkata",
       address: "8A, Nasiruddin Rd, Lower Range, Beck Bagan, Ballygunge, Kolkata, West Bengal 700017 .Contact Info: Chirag Shah || Mob No: +91-90387 95892",
       coordinates: {
-        lat: 16.999954,
-        lng: 81.786184,
+        lat: 22.541450,
+        lng: 88.363410,
       },
       storeId: 2,
     },
