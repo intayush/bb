@@ -140,7 +140,7 @@ const LocationDropDown = ({matches}) => {
         onClick={handleClick}
       >
        
-       <p style={{fontSize:'10px'}}>{selectedCity ? selectedCity : "Select City"}</p> 
+       <p style={{fontSize:'12px'}}>{selectedCity ? selectedCity : "Select City"}</p> 
 
         <span onClick={handleClick}>
           {select ? (
@@ -175,7 +175,7 @@ const LocationDropDown = ({matches}) => {
           style: {
             backgroundColor: "black",
             marginRight: "5%",
-            width: "26%",
+            width: "30%",
             scrollbarWidth: "thin",
             marginTop:'12%'
           },
@@ -355,7 +355,7 @@ const HamburgerDropdown = () => {
         <br />
         <Link to={`/copyright`}>
           <StyledMenuItem>
-            <span style={{ fontSize: "13px" }}>
+            <span style={{ fontSize: "11px" }}>
               © 2019 BikeBazaar. All rights reserved.
             </span>
           </StyledMenuItem>
@@ -423,12 +423,12 @@ const MobNav = () => {
       >
         <form id="searchForm" className="input-field">
           <Grid container component="div" className="search-container-main">
-            <Grid item xs={3} sm={3} >
+            <Grid item xs={4} sm={4} >
               <div id="searchLocation">
                 <LocationDropDown  matches={matches}/>
               </div>
             </Grid>
-            <Grid item xs={7} sm={7} >
+            <Grid item xs={6} sm={6} >
               <div className="arrow">
                 <Autocomplete
                   id="searchField"
@@ -437,7 +437,7 @@ const MobNav = () => {
                   options={searchTerm ? vehicleNames : []}
                   renderInput={(params) => (
                     <StyledTextField
-                      placeholder="Search Your Vehicle"
+                      placeholder="Search Vehicle"
                       onChange={updateState(params.inputProps.value)}
                       {...params}
                       style={{
@@ -445,6 +445,7 @@ const MobNav = () => {
                         margin: "0px",
                         
                       }}
+                     
                       label=""
                       margin="normal"
                       variant="outlined"
