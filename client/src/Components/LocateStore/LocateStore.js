@@ -19,6 +19,7 @@ import { CHANGE_CITY } from "../../store/actions/actionTypes";
 import { useLocation, useHistory } from "react-router-dom";
 import Modal from "@material-ui/core/Modal";
 import closeIcon from "../../assets/Close.png";
+import mobiledivider from "../../assets/mobiledivider.png";
 
 let useStyles = makeStyles((theme) => ({
   mapContainer: {
@@ -458,7 +459,7 @@ let LocateStore = (props) => {
           <div className="locateDropdownCard">
             {heading}
             <div className="heading-lines">
-              <img src={headingLines} width="57" height="4" alt="" />
+              {matches?<img src={headingLines} width="57" height="4" alt="" />:<img src={mobiledivider} height="4"/>}
             </div>
             <Grid
               container
