@@ -8,6 +8,7 @@ import rp from "../../assets/rp.svg";
 import syv from "../../assets/syv.svg";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import mobiledivider from "../../assets/mobiledivider.png";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -29,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     marginTop: 30,
+  },
+  mobileContainer:{
+    marginTop:'1%'
   },
   subHeading: {
     fontSize: 18,
@@ -79,17 +83,17 @@ const SellingProcess = (props) => {
            <p
             className={classes.mobileHeading}
          >
-          Selling Process made easy <br/>by BikeBazaar
+           {props.heading}
          </p>
         }
       
-        <img alt="" src={headingLines} width="57" height="4" />
+      {matches?<img alt="" src={headingLines} width="57" height="4" />:<img src={mobiledivider} height="4"/>}  
         <Grid
           container
           component="div"
           direction="row"
           justify="center"
-          className={classes.container}
+          className={matches?classes.container:classes.mobileContainer}
         >
           <Grid item xs={12} sm={12} md={4} lg={4}>
             <img src={rp} width={145} alt="" />
