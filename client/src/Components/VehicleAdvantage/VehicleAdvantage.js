@@ -10,7 +10,7 @@ import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import leftRedDotLine from "../../assets/images/icons/advantage-icon-lt.png";
 import rightDotLine from "../../assets/images/icons/advantage-icon-rt.png";
-
+import mobiledivider from "../../assets/mobiledivider.png";
 
 const VehicleAdvantage = (props) => {
   const theme = useTheme();
@@ -173,8 +173,9 @@ const VehicleAdvantage = (props) => {
         )}
 
         <div className="center-align">
-          <img src={headingLines} alt="" />
+          {matches?<img src={headingLines} alt="" />:<img src={mobiledivider} height="4" alt=""/>}
         </div>
+
         {matches?<React.Fragment><br />
         <br /></React.Fragment>:<React.Fragment><br/></React.Fragment> }
        

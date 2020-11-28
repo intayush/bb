@@ -13,7 +13,7 @@ import visionIcon from "../../assets/Vision-Icon.svg";
 import VehicleAdvantage from "../../Components/VehicleAdvantage/VehicleAdvantage";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-
+import mobiledivider from "../../assets/mobiledivider.png";
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -218,7 +218,7 @@ const About = (props) => {
                 About BikeBazaar
               </h3>
               <div className="center-align">
-                <img alt="" src={blackHeadingLines} width="57" height="4" />
+                <img alt="" src={mobiledivider}  height="4" />
               </div>
               BikeBazaar aims to provide a hassle-free experience to anyone
               looking to buy/sell a pre-owned 2 wheeler with the help of
