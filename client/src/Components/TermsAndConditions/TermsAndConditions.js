@@ -46,11 +46,20 @@ const useStyle = makeStyles((theme) => ({
       marginBottom: 10,
     },
   },
+
+  mobileList:{
+    marginLeft: 15,
+    "& li": {
+      listStyleType: "disc !important",
+      marginTop: 10,
+      marginBottom: 10,
+    },
+  },
   red: {
     color: "#ff0000",
   },
   mobilePaper: {
-    marginBottom: theme.spacing(5),
+    marginBottom: theme.spacing(3),
     boxShadow: "0 0 4px 1px rgba(0, 0, 0, 0.2) !important",
     padding: "20px",
     fontSize: 10,
@@ -531,32 +540,32 @@ const TermsAndConditions = (props) => {
             <Grid item xs={11} sm={11} md={11} lg={11}>
               <Paper className={classes.mobilePaper}>
                 These ‘Terms and Conditions’ are for the users of the BikeBazaar
-                website. Website www.BikeBazaar.com is owned and operated by
+                website. Website www.BikeBazaar.com <br/>is owned and operated by
                 ‘BluBird Auto Trade Private Limited’. Through BikeBazaar
-                website, we provide access to users to our services, products
-                and information present therein. <br /> <br />
+                website, we provide <br/>access to users to our services, products
+                and <br/>information present therein. <br /> <br />
                 You are required to read our ‘Terms and Conditions’ and ‘Privacy
                 Policy’ before starting using our services. By using BikeBazaar
                 services, you agree to our ‘Terms and Conditions’ and ‘Privacy
-                Policy’. If you don’t agree with our ‘Terms and Conditions’,
-                please do not use our services and unsubscribe from BikeBazaar
+                Policy’. If you don’t agree with<br/> our ‘Terms and Conditions’,
+                please do not use our<br/> services and unsubscribe from BikeBazaar
                 website.
                 <br />
                 <br />
-                This document of ‘Terms and Conditions’ of BikeBazaar is an
-                electronic record in terms of Information Technology Act, 2000
+                This document of ‘Terms and Conditions’ of BikeBazaar<br/> is an
+                electronic record in terms of Information <br/> Technology Act, 2000
                 and rules made thereunder and doesn’t require any physical copy,
                 signature or seal.
                 <br />
                 <br />
-                BikeBazaar reserves all the rights related to these ‘Terms and
+                BikeBazaar reserves all the rights related to these  <br/>‘Terms and
                 Conditions’ and these can be changed anytime without any notice.
                 And you are required to check the ‘Terms and Conditions’
                 periodically to keep yourself updated with the changes.
                 <br />
                 <br />
-                These ‘Terms and Conditions’ apply to users who come to
-                BikeBazaar website and transact and extend to those users who
+                These ‘Terms and Conditions’ apply to users who come <br/>to
+                BikeBazaar website and transact and extend to <br/>those users who
                 just access the information and don’t transact.
               </Paper>
             </Grid>
@@ -567,10 +576,10 @@ const TermsAndConditions = (props) => {
                 To qualify to be user of BikeBazaar website, you need to be of
                 18+ age. If your age is lower than 18 years, you shall not
                 register as a user of BikeBazaar and shall not use or transact
-                on our website. If you wish to use or transact on our website,
-                such use or transaction must be done by your parents or legal
-                guardians. If you are found to be minor, BikeBazaar reserves all
-                rights to terminate your membership.
+                on our website. If you wish to use or transact <br/>on our website,
+                such use or transaction must be done<br/> by your parents or legal
+                guardians. If you are found to<br/> be minor, BikeBazaar reserves all
+                rights to terminate<br/> your membership.
                 <br />
                 <br />
                 BikeBazaar reserves all the rights to terminate your membership
@@ -582,9 +591,9 @@ const TermsAndConditions = (props) => {
               <Paper className={classes.mobilePaper}>
                 <h3 className={classes.mobilePaperHeading}>Communication</h3>
                 <br />
-                When you share your information with us, you agree to receive
+                When you share your information with us, you agree <br/> to receive
                 communication from us in the form of SMS, telephone, email and
-                other means. If you wish to opt out of this communication, it
+                other means. If you wish to opt <br/> out of this communication, it
                 will be your sole responsibility to take the action upfront in
                 this regard.
               </Paper>
@@ -596,67 +605,68 @@ const TermsAndConditions = (props) => {
                 </h3>
                 <br />
                 BikeBazaar owns ‘Intellectual Property Rights’ (IPRs) related to
-                all the information, media, resources and other content
-                published on BikeBazaar website. Apart from your personal
-                information, you don’t have any rights on information, media,
+                all the information, media, resources and <br/>other content
+                published on BikeBazaar website. <br/>Apart from your personal
+                information, you don’t have <br/>any rights on information, media,
                 resources or content published on this website. Any misuse of
                 any of these intellectual properties is strictly prohibited and
-                subjected to strict action against you as per court of law.
+                <br/> subjected to strict action against you as per court of <br/>law.
               </Paper>
             </Grid>
             <Grid item xs={11} sm={11} md={11} lg={11}>
               <Paper className={classes.mobilePaper}>
                 <h3 className={classes.mobilePaperHeading}>
-                  Additional Terms and Conditions for specific user groups
+                  Additional Terms and Conditions <br/>for specific user groups
                 </h3>
                 <br />
                 <h4 className={classes.mobilePaperSubHeading}>Buyers</h4>
                 <br />
-                <ul className={classes.list}>
+                <ul className={classes.mobileList}>
                   <li>
-                    “Buyers” is the category of users who want to buy used
+                    “Buyers” is the category of users who want to<br/> buy used
                     two-wheeler through franchise stores registered on
                     BikeBazaar website.
                   </li>
                   <li>
-                    Buyers are required to share their correct information and
+                    Buyers are required to share their correct <br/>information and
                     contact details. You solely are responsible for the
                     consequences of not sharing the correct details about you.
                   </li>
                   <li>
-                    By sharing your information, you accept that we may
-                    communicate to you through phone, Email, SMS or other means
-                    of communication and you shall not have any issue in that.
+                    By sharing your information, you accept that we <br/>may
+                    communicate to you through phone, Email, <br/>SMS or other means
+                    of communication and you <br/> shall not have any issue in that.
                   </li>
                   <li>
-                    Buyers can access the information about used two-wheelers
+                    Buyers can access the information about used <br/>two-wheelers
                     for the sole purpose of buying the vehicle.
                   </li>
                   <li>
-                    Any other reason (apart from buying) for accessing the
-                    information about the two-wheeler or BikeBazaar or franchise
-                    stores will not be entertained.
+                    Any other reason (apart from buying) for accessing <br/> the
+                    information about the two-wheeler or<br/> BikeBazaar or franchise
+                    stores will not be <br/>entertained.
                   </li>
                   <li>
-                    Dealers/Mediators/Brokers cannot disguise themselves as
+                    Dealers/Mediators/Brokers cannot disguise <br/>themselves as
                     buyers and access the information related to Two-wheelers or
                     BikeBazaar or franchise stores. BikeBazaar reserves all the
                     rights related to qualifying or disqualifying anyone as
                     “Buyer”.
                   </li>
                 </ul>
-                <br />
-                <br />
+                {matches?<>  <br />
+                <br /></>:<></>}
+              
                 <h4 className={classes.mobilePaperSubHeading}>Sellers</h4>
                 <br />
-                <ul className={classes.list}>
+                <ul className={classes.mobileList}>
                   <li>
-                    “Sellers” is the category of users who want to sell their
-                    used two-wheeler through BikeBazaar website or franchise
+                    “Sellers” is the category of users who want to sell <br/>their
+                    used two-wheeler through BikeBazaar website <br/>or franchise
                     stores.
                   </li>
                   <li>
-                    Sellers are required to share correct information about
+                    Sellers are required to share correct information <br/>about
                     themselves while submitting their personal information on
                     the website.
                   </li>
@@ -667,49 +677,50 @@ const TermsAndConditions = (props) => {
                   </li>
                   <li>
                     Contact from available on the “Seller” page can only be
-                    filled and submitted by sellers of two-wheelers. Any other
+                    filled and submitted by sellers of two-wheelers.<br/> Any other
                     category of users will not be entertained on this webpage.
                     And you should fill this form only when you want to sell
                     your used two-wheeler through BikeBazaar website or store.
                   </li>
                   <li>
-                    Sellers need to upload pics of their two-wheelers only,
+                    Sellers need to upload pics of their two-wheelers <br/>only,
                     which they want to sell. Any other image uploaded by you
-                    will not be entertained and you solely are responsible for
-                    the consequences. Uploading obscene images may even land you
-                    in legal troubles. It’s why, the process of uploading the
+                    will not be entertained and you<br/> solely are responsible for
+                    the consequences.<br/> Uploading obscene images may even land you
+                    in <br/>legal troubles. It’s why, the process of uploading the
                     two-wheeler images should be done very carefully by you.
                   </li>
                   <li>
-                    Dealers/Mediators/Brokers cannot disguise themselves as
-                    sellers. BikeBazaar reserves all the rights related to
+                    Dealers/Mediators/Brokers cannot disguise <br/> themselves as
+                    sellers. BikeBazaar reserves all the<br/> rights related to
                     qualifying or disqualifying someone as “Seller”.
                   </li>
                 </ul>
-                <br />
-                <br />
+                {matches? <>   <br />
+                <br /></>:<></>}
+             
                 <h4 className={classes.mobilePaperSubHeading}>Franchisee</h4>
                 <br />
-                <ul className={classes.list}>
+                <ul className={classes.mobileList}>
                   <li>
                     “Franchisee” is the category of users who want to partner
                     with BikeBazaar in establishing BikeBazaar franchise stores
                     in their premises.
                   </li>
                   <li>
-                    Franchisee are required to share correct information while
+                    Franchisee are required to share correct <br/> information while
                     showing interest in becoming our franchisee partner. You
                     only are responsible for the consequences of sharing the
                     fake information.
                   </li>
                   <li>
-                    Contact Form available on ‘Franchisee’ page can only be
+                    Contact Form available on ‘Franchisee’ page can <br/>only be
                     filled and submitted by users willing to become our
-                    franchise partners. Any other category of users will not be
+                    franchise partners. Any other category <br/>of users will not be
                     entertained on this webpage.
                   </li>
                   <li>
-                    BikeBazaar reserves all the rights related to qualifying or
+                    BikeBazaar reserves all the rights related to<br/> qualifying or
                     disqualifying someone as Franchisee.
                   </li>
                 </ul>
@@ -719,14 +730,14 @@ const TermsAndConditions = (props) => {
             <Grid item xs={11} sm={11} md={11} lg={11}>
               <Paper className={classes.mobilePaper}>
                 <h3 className={classes.mobilePaperHeading}>Prohibited Conduct</h3>
-                <br />
+                <br/>
                 By accessing BikeBazaar website or visiting franchise store or
                 availing any of our services, you agree not to:
-                <ul className={classes.list}>
+                <ul className={classes.mobileList}>
                   <li>Violate Terms and Conditions.</li>
                   <li>
-                    Faking your identity, faking any information about you or
-                    referring yourself as the wrong user group (Buyer, Sellers
+                    Faking your identity, faking any information about<br/> you or
+                    referring yourself as the wrong user group <br/>(Buyer, Sellers
                     or Franchisee).
                   </li>
                   <li>
@@ -734,16 +745,16 @@ const TermsAndConditions = (props) => {
                     property rights.
                   </li>
                   <li>
-                    Using BikeBazaar services if you are below the age of 18 not
+                    Using BikeBazaar services if you are below the <br/>age of 18 not
                     accompanied with parents or local guardian.
                   </li>
                   <li>
-                    Share, post or transmit any information, image or data which
+                    Share, post or transmit any information, image or<br/> data which
                     is pornographic in nature or vulgar of offensive.
                   </li>
                   <li>
-                    Share, transmit or post any data, image or information which
-                    is about private or personal matters of any person.
+                    Share, transmit or post any data, image or<br/> information which
+                    is about private or personal <br/>matters of any person.
                   </li>
                   <li>
                     Refuse to confirm your identity when asked by BikeBazaar to
@@ -754,9 +765,9 @@ const TermsAndConditions = (props) => {
                     BikeBazaar website or App.
                   </li>
                   <li>
-                    Use BikeBazaar website or Mobile App in any manner which
+                    Use BikeBazaar website or Mobile App in any <br/>manner which
                     could interfere with the normal or automated functioning of
-                    user journey on the website or mobile app.
+                    user journey on the<br/> website or mobile app.
                   </li>
                   <li>
                     Affect the operations of BikeBazaar by any means, including
@@ -774,8 +785,8 @@ const TermsAndConditions = (props) => {
                     networks, servers or system.
                   </li>
                   <li>
-                    Use the assets, facilities or capabilities of BikeBazaar to
-                    conduct any activity which is illegal or infringes the
+                    Use the assets, facilities or capabilities of BikeBazaar<br/> to
+                    conduct any activity which is illegal or infringes<br/> the
                     rights of others.
                   </li>
                   <li>
@@ -789,11 +800,11 @@ const TermsAndConditions = (props) => {
                     BikeBazaar, any third party or you.
                   </li>
                   <li>
-                    Take any action which affects the BikeBazaar brand in any
+                    Take any action which affects the BikeBazaar brand <br/>in any
                     negative way.
                   </li>
                   <li>
-                    Take any action which causes BikeBazaar to lose any of its
+                    Take any action which causes BikeBazaar to lose any<br/> of its
                     partners, associates, employees or service providers.
                   </li>
                 </ul>
@@ -819,7 +830,7 @@ const TermsAndConditions = (props) => {
                   Governing Law and Forum for Disputes
                 </h3>
                 <br />
-                Any claim or dispute you might have against BikeBazaar must be
+                Any claim or dispute you might have against<br/> BikeBazaar must be
                 resolved by a court having jurisdiction in Pune, Maharashtra,
                 India. This Agreement shall be governed by Indian law only and
                 this paragraph shall survive termination of this Agreement.
@@ -829,8 +840,8 @@ const TermsAndConditions = (props) => {
               <Paper className={classes.mobilePaper}>
                 <h3 className={classes.mobilePaperHeading}>Credit and EMI</h3>
                 <br />
-                BikeBazaar through its credit partners facilitates low cost EMI
-                option to buyers to purchase their dream two-wheeler. However,
+                BikeBazaar through its credit partners facilitates low <br/>cost EMI
+                option to buyers to purchase their dream<br/> two-wheeler. However,
                 availability of credit varies profile to profile basis. And the
                 amount of loan, minimum EMI possible and term of loan depends
                 upon your credit history and CIBIL Score.
@@ -848,11 +859,11 @@ const TermsAndConditions = (props) => {
                 <br />
                 BikeBazaar facilitates 6 months’ (or such other period as may be
                 decided by BikeBazaar) warranty on all refurbished pre-owned
-                two-wheelers which is extendable beyond 6 months’ time (or such
+                two-wheelers which is<br/> extendable beyond 6 months’ time (or such
                 period as may be decided by BikeBazaar) through third party
                 providing warranty solutions and administration. BikeBazaar
-                reserves all rights to decide whether it wants to facilitate
-                extended warranty on any two-wheeler or not. The said warranty
+                reserves all rights to decide whether it<br/> wants to facilitate
+                extended warranty on any<br/> two-wheeler or not. The said warranty
                 coverage is provided for only some specific parts of
                 two-wheeler.
               </Paper>
@@ -863,9 +874,9 @@ const TermsAndConditions = (props) => {
                 <br />
                 You shall indemnify and hold harmless BikeBazaar website, Mobile
                 App, it’s owners, licensees, affiliates, subsidiaries,
-                associated companies, group companies and their respective
+                associated companies, group companies<br/> and their respective
                 employees, agents, directors, investors, from any demand or
-                claim or actions arising out of your breach of BikeBazaar’s
+                claim or actions<br/> arising out of your breach of BikeBazaar’s
                 ‘Terms and Conditions’ or ‘Privacy Policy’, or your violation of
                 any rules, law or regulations or the rights of a third party, or
                 legal code formulated by Indian government.
@@ -881,8 +892,8 @@ const TermsAndConditions = (props) => {
                 portions of this agreement at any time. The changes will become
                 effective as soon as they are published and deemed accepted by
                 you. If you do not agree with such changes, you have all right
-                to stop using the BikeBazaar website, app or services. For
-                Certain changes, we might require notifying you in advance and
+                to stop<br/> using the BikeBazaar website, app or services. For
+                <br/>Certain changes, we might require notifying you in advance and
                 BikeBazaar will comply with such requirements.
               </Paper>
             </Grid>
@@ -894,7 +905,7 @@ const TermsAndConditions = (props) => {
                 <br />
                 Violation of BikeBazaar’s Terms and Conditions may result in a
                 series of actions including;
-                <ul className={classes.list}>
+                <ul className={classes.mobileList}>
                   <li>Account Suspension</li>
                   <li>Limitations on Account</li>
                   <li>Loss of special status or Privileges</li>
