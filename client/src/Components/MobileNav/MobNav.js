@@ -117,7 +117,7 @@ const LocationDropDown = ({matches}) => {
         top: 500,
         behavior: "smooth",
       }): window.scrollTo({
-        top: 150,
+        top: 0,
         behavior: "smooth",
       })}
      
@@ -437,7 +437,7 @@ const MobNav = () => {
                   options={searchTerm ? vehicleNames : []}
                   renderInput={(params) => (
                     <StyledTextField
-                      placeholder="Search Vehicle"
+                      placeholder="Search Here"
                       onChange={updateState(params.inputProps.value)}
                       {...params}
                       style={{
@@ -475,7 +475,7 @@ const MobNav = () => {
                 </Link>
               </Grid>
             ) : (
-              <Grid item xs={2} sm={2} md={2} lg={2}>
+              <Grid item xs={2} sm={2}>
                 <Link to={`/category/bike`}>
                   <button
                     style={{
@@ -486,7 +486,7 @@ const MobNav = () => {
                     className="btn search-label-btn"
                     type="submit"
                   >
-                    <img src={searchIcon} height="25" alt="" />
+                    <img src={searchIcon} height="25"  alt="" />
                   </button>
                 </Link>
               </Grid>
