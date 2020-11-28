@@ -43,6 +43,10 @@ const useStyle = makeStyles(theme =>({
         listStyleType: 'disc !important',
         marginLeft: 50
     },
+    mobileli:{
+        listStyleType: 'disc !important',
+        marginLeft: 10
+    },
     mobileView:{
         marginBottom: theme.spacing(5),
         boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
@@ -132,7 +136,7 @@ const PrivacyPolicy = props => {
                         If you don’t wish that your website actions be tracked through cookies, you can update your browser settings and decide how you want to control the cookies for BikeBazaar.  Through browser settings, you can prevent the browser from accepting the cookies for any website and disable the cookies altogether.
                         <br/><br/>
                         <h4 className={classes.subHeading}>Engagement</h4><br/>
-                        Your engagement with our brand is crucial for us. It helps us in deciding whether you are the right audience for us or not which in turn helps you get better products and services. It’s why we regularly check your engagement with our brand. We do check email open rates, click rates for the emails sent to you. You are given full freedom to unsubscribe from our services anytime and stop us from checking the engagement rates.
+                        Your engagement with our brand is crucial for us. It helps us in deciding whether you are the right <br/>audience for us or not which in turn helps you get better products and services. It’s why we regularly check your engagement with our brand. We do check email open rates, click rates for the emails sent to you. You are given full freedom to unsubscribe from our services anytime and stop us from checking the engagement rates.
                         <br/><br/>
                         <h4 className={classes.subHeading}>IP Address</h4><br/>
                         BikeBazaar’s Web Servers collect your IP Address transmitted by your router which helps us to get more information about our visitors.
@@ -206,7 +210,7 @@ const PrivacyPolicy = props => {
                     <br/><br/>
                     Please read our ‘Privacy Policy’ & ‘Terms & Conditions’ before starting using our services. By using BikeBazaar services, you are deemed to agree to our ‘Privacy Policy’ and ‘Term & Conditions’. If you wish to not bind yourself by our privacy policy, please do not use our services and unsubscribe from the website. 
                     <br/><br/>
-                    This privacy policy of BikeBazaar is an electronic record in the form of electronic contract as per the ‘Information Technology Act, 2000’ and rules made thereunder and don’t require any physical copy, signature or seal.
+                    This privacy policy of BikeBazaar is an electronic <br/>record in the form of electronic contract as per the ‘Information Technology Act, 2000’ and rules made thereunder and don’t require any physical copy, signature or seal.
                     <br/><br/>
                     BikeBazaar privacy policy can be changed anytime without any notice. And you are required to check the privacy policy periodically to keep yourself updated with the changes.
                     <br/><br/>
@@ -214,8 +218,8 @@ const PrivacyPolicy = props => {
                 </Grid>
                 <Grid item xs={11} sm={11} md={11} lg={11}>
                     <Paper className={classes.mobileView}>
-                        <h3 className={classes.mobilepaperHeading}>Information we collect, store and use</h3><br/>
-                        BikeBazaar collects a range of information about you to provide relevant products, services, information and offers. All your information is secure with us and it is free of any probable misuse. 
+                        <span className={classes.mobilepaperHeading}>Information we collect,<br/> store and use</span><br/>
+                        BikeBazaar collects a range of information about you to provide relevant products, services, information and offers. All your information is secure with us and it is <br/>free of any probable misuse. 
                         <br/><br/>
                         Following are some ways through which we collect information about you:
                         <br/><br/>
@@ -227,7 +231,7 @@ const PrivacyPolicy = props => {
                         <br/><br/>
                         We collect this information to offer you a personalized experience on our website and to provide you customized products, services and information. 
                         <br /> <br />
-                        Your personal information is safe with us and we do not share it with any third party. 
+                        Your personal information is safe with us and we do <br/>not share it with any third party. 
                         Even if we are required to share it with any third party to offer you relevant products, services and information we do share it in an anonymized manner.
                         <br /> <br />
                         <h4 className={classes.mobilesubheading}>Cookies</h4><br/>
@@ -245,8 +249,8 @@ const PrivacyPolicy = props => {
                         <br/><br/>
                         We do not collect following information:
                         <ul>
-                            <li className={classes.li}>We do not collect any personal or sensitive information about you which has not been shared voluntarily by you.</li>
-                            <li className={classes.li}>We do not track any browsing behaviour outside our own website.</li>
+                            <li className={classes.mobileli}>We do not collect any personal or sensitive information about you which has not been shared voluntarily by you.</li>
+                            <li className={classes.mobileli}>We do not track any browsing behaviour outside our own website.</li>
                         </ul>
                     </Paper>
                 </Grid>
@@ -261,7 +265,7 @@ const PrivacyPolicy = props => {
                         We regularly use third party web tools which help us to provide you a better user experience of BikeBazaar website and serve you better. Your information shared with such third-party web tools is anonymised and you are given full freedom to opt-out of such web tools.
                         <br/><br/>
                         <h4 className={classes.mobilesubheading}>Third-Party Websites</h4><br/>
-                        To give you the opportunity to learn more about the industry and about the products and services you are interested in, we may provide links to resources of third-party websites. We make our best efforts to link to only those websites which are secure and reliable from any international standards.  
+                        To give you the opportunity to learn more about the industry and about the products and services you are interested in, we may provide links to resources of <br/>third-party websites. We make our best efforts to link to only those websites which are secure and reliable from any international standards.  
                         <br/><br/>
                         We may share some of your information with advertising portals (Like Google, Facebook) to show you customized ads which will have products and services you are interested in. And this is done in an anonymised manner.
                         <br/><br/>
