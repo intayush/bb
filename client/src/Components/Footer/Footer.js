@@ -72,13 +72,7 @@ const Footer = () => {
             </Grid>
             {/* creating vertical lines */}
             <div
-              style={{
-                borderRight: "1px solid white",
-                height: "142px",
-                marginTop: "5%",
-                marginRight: "2%",
-                marginLeft: "3%",
-              }}
+              className="verticalLine"
             ></div>
             <Grid item md={4}>
               <p
@@ -87,6 +81,7 @@ const Footer = () => {
               >
                 Quick Links
               </p>
+              
               {/* for quick links two columns */}
               <div
                 style={{
@@ -129,14 +124,9 @@ const Footer = () => {
             </Grid>
             {/* creating vertical lines */}
             <div
-              style={{
-                borderRight: "1px solid white",
-                height: "142px",
-                marginTop: "5%",
-                marginRight: "3%",
-                marginLeft: "2%",
-              }}
+              className="verticalLineRight"
             ></div>
+            
             <Grid item>
               <div
                 style={{

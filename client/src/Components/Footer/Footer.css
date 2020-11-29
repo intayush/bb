@@ -35,3 +35,21 @@
     font-weight: 100;
     letter-spacing: 1.5px;
   }
+
+  .verticalLine{
+    border-right: 1px solid white;
+    height: 142px;
+    margin-top: 5%;
+    margin-right: 2%;
+    margin-left: 3%
+  }
+
+  .verticalLineRight{
+    border-right: 1px solid white;
+    height: 142px;
+    margin-top: 5%;
+    margin-right: 2%;
+    margin-left: 1%;
+  }
+
+
