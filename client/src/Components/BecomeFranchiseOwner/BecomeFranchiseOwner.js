@@ -27,6 +27,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Modal from "@material-ui/core/Modal";
 import closeIcon from "../../assets/Close.png";
 import advantageIcon from "../../assets/images/icons/advantage-icon-lt.png";
+import mobiledivider from "../../assets/mobiledivider.png";
 
 const formValidator = (name, value) => {
   switch (name) {
@@ -499,13 +500,14 @@ const BecomeFranchiseOwner = (props) => {
                     />
                   </Grid>
                 ) : (
-                  <Grid xs={12} sm={12}>
+                  <Grid style={{textAlign:'center'}}  xs={12} sm={12}>
+                    <img alt="" src={mobiledivider} height="4" />
                     <img
                       height="98%"
                       width="100%"
                       src={BikeBazaarStore}
                       alt=""
-                    />{" "}
+                    />
                   </Grid>
                 )}
               </Grid>

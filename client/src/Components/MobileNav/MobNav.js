@@ -117,7 +117,7 @@ const LocationDropDown = ({matches}) => {
         top: 500,
         behavior: "smooth",
       }): window.scrollTo({
-        top: 150,
+        top: 400,
         behavior: "smooth",
       })}
      
