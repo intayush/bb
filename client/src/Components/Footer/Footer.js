@@ -10,6 +10,7 @@ import linkedinIcon from "../../assets/linkedin-icon.svg";
 import instagramIcon from "../../assets/instagram-icon.svg";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import {Link} from "react-router-dom";
 import "./Footer.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -81,7 +82,7 @@ const Footer = () => {
             ></div>
             <Grid item md={4}>
               <p
-                style={{ marginBottom: "4%", marginLeft: "7%" }}
+                style={{ marginBottom: "4%", marginLeft: "8%" }}
                 className={classes.text}
               >
                 Quick Links
@@ -101,12 +102,12 @@ const Footer = () => {
                     flexFlow: "column",
                   }}
                 >
-                  <p className={classes.columnsText1}>About</p>
-                  <p className={classes.columnsText1}>How it works</p>
-                  <p className={classes.columnsText1}>FAQs</p>
-                  <p className={classes.columnsText1}>Privacy Policy</p>
-                  <p className={classes.columnsText1}>Terms & conditions</p>
-                  <p className={classes.columnsText1}>Contact Us</p>
+                  <p className={classes.columnsText1}><Link style={{letterSpacing:'0px'}} to="/about">About</Link></p>
+                  <p className={classes.columnsText1}><Link style={{letterSpacing:'0px'}}to="/howitworks">How it works</Link></p>
+                  <p className={classes.columnsText1}><Link style={{letterSpacing:'0px'}}to="/faq">FAQs</Link></p>
+                  <p className={classes.columnsText1}><Link style={{letterSpacing:'0px'}}to="//privacypolicy">Privacy Policy</Link></p>
+                  <p className={classes.columnsText1}><Link style={{letterSpacing:'0px'}}to="/termsandconditions">Terms & conditions</Link></p>
+                  <p className={classes.columnsText1}><Link style={{letterSpacing:'0px'}}to="/contact">Contact Us</Link></p>
                 </div>
 
                 <div
@@ -116,11 +117,11 @@ const Footer = () => {
                     flexFlow: "column",
                   }}
                 >
-                  <p className={classes.columnsText}>Buy</p>
-                  <p className={classes.columnsText}>Sell</p>
-                  <p className={classes.columnsText}>Locate Store</p>
-                  <p className={classes.columnsText}>
-                    Become a Franchise Owner
+                  <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/buy">Buy</Link></p>
+                  <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/sell">Sell</Link></p>
+                  <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/vehicledetails/locate-store">Locate Store</Link></p>
+                  <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/becomefranchiseowner"> Become a Franchise Owner</Link>
+                   
                   </p>
                   <p className={classes.columnsText}>Blog</p>
                 </div>
@@ -260,20 +261,20 @@ const Footer = () => {
               marginTop:'1%'
             }}
           >
-            <div style={{ display: "flex-start", flexDirection: "column" ,width:'30%'}}>
-                  <span style={{ color: "white",fontSize:'10px ' }}>About</span><br/>
-                  <span style={{ color: "white",fontSize:'10px ' }}>How it works</span><br/>
-                  <span style={{ color: "white" ,fontSize:'10px '}}>FAQs</span><br/>
-                  <span style={{ color: "white" ,fontSize:'10px '}}>Privacy Policy</span><br/>
-                  <span style={{ color: "white",fontSize:'10px ' }}>Terms & Conditions</span><br/>
-                  <span style={{ color: "white" ,fontSize:'10px '}}>Contact Us</span>
-            </div>
+            <div style={{ display: "flex-start", flexDirection: "column" ,width:'40%'}}>
+                  <span style={{ fontSize:'10px ' }}><Link style={{color:'white',letterSpacing:'0px'}} to="/about">About</Link></span><br/>
+                  <span style={{fontSize:'10px ' }}><Link style={{color:'white',letterSpacing:'0px'}} to="/howitworks">How it works</Link></span><br/>
+                  <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/faq">FAQs</Link></span><br/>
+                  <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/privacypolicy">Privacy Policy</Link></span><br/>
+                  <span style={{fontSize:'10px ' }}><Link style={{color:'white',letterSpacing:'0px'}} to="/termsandconditions">Terms & Conditions</Link></span><br/>
+                  <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/contact">Contact Us</Link></span>
+            </div><Link to=""></Link>
             <div style={{ display: "flex-start", flexDirection: "column" ,marginLeft:'20%'}}>
-                  <span style={{ color: "white" ,fontSize:'10px '}}> Buy</span><br/>
-                  <span style={{ color: "white" ,fontSize:'10px '}}>Sell</span><br/>
-                  <span style={{ color: "white" ,fontSize:'10px '}}>Locate Store</span><br/>
-                  <span style={{ color: "white" ,fontSize:'10px '}}>Become a Franchise Owner</span><br/>
-                  <span style={{ color: "white" ,fontSize:'10px '}}>Blog</span>
+                  <span style={{ fontSize:'10px '}}> <Link style={{color:'white',letterSpacing:'0px'}} to="/buy">Buy</Link></span><br/>
+                  <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/sell">Sell</Link></span><br/>
+                  <span style={{fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/vehicledetails/locate-store">Locate Store</Link></span><br/>
+                  <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/becomefranchiseowner">Become a Franchise Owner</Link></span><br/>
+                  <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="">Blog</Link></span>
             </div>
           </div>
           <hr style={{ marginTop: "3%", marginBottom: "3%" }} />
