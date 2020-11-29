@@ -16,3 +16,22 @@
 .footerIcons{
     margin-left: 10px;
 }
+
+
+.mobilefooter {
+    min-height: 208px;
+    background-color: #404040;
+    padding: 19px 20px 24px;
+  }
+  .mobilefooter .row:nth-child(1) {
+    margin-bottom: 29px;
+  }
+  .mobilefooter .row:nth-child(2) {
+    margin-bottom: 40px;
+  }
+  .mobile a {
+    color: white;
+    font-size: 14px;
+    font-weight: 100;
+    letter-spacing: 1.5px;
+  }

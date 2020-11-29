@@ -10,6 +10,8 @@ import linkedinIcon from "../../assets/linkedin-icon.svg";
 import instagramIcon from "../../assets/instagram-icon.svg";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import "./Footer.css";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -48,8 +50,9 @@ const Footer = () => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
 
+  const footerCss=matches?"footer":"mobilefooter"
   return (
-    <div className="footer">
+    <div className={footerCss}>
       {matches ? (
         <div className={classes.root}>
           <Grid container>
@@ -240,21 +243,21 @@ const Footer = () => {
             © 2019 BikeBazaar. All rights reserved.
           </p>
 
-          <p
+          <span
             style={{
               color: "white",
-              marginTop: "5%",
               fontSize: "15px",
               fontWeight: 600,
             }}
           >
             Quick Links
-          </p>
+          </span>
           <div
             style={{
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
+              marginTop:'1%'
             }}
           >
             <div style={{ display: "flex-start", flexDirection: "column" ,width:'30%'}}>
@@ -273,33 +276,33 @@ const Footer = () => {
                   <span style={{ color: "white" ,fontSize:'10px '}}>Blog</span>
             </div>
           </div>
-          <hr style={{ marginTop: "3%", marginBottom: "10%" }} />
-          <span style={{ color: "white" }}>Contact Info</span>
+          <hr style={{ marginTop: "3%", marginBottom: "3%" }} />
+          <span style={{ color: "white",fontWeight:'600' }}>Contact Info</span>
 
           <div
             style={{
               display: "flex",
               flexDirection: "row",
               color: "white",
-              marginTop: "4%",
+              marginTop: "1%",
             }}
           >
             <img
               style={{ marginLeft: "1%" }}
               className="icon-img"
               src={callIcon}
-              width="25"
-              height="25"
+              width="18"
+              height="14"
               alt=""
             />
-            <span style={{ marginLeft: "1%" }}>8956853498</span>
+            <span style={{ marginLeft: "1%",fontSize:'13px' }}>8956853498</span>
           </div>
           <div
             style={{
               display: "flex",
               flexDirection: "row",
               color: "white",
-              marginTop: "4%",
+              marginTop: "2%",
             }}
           >
             <img
@@ -307,11 +310,11 @@ const Footer = () => {
                 marginLeft: "1%",
               }}
               src={messageIcon}
-              height="20"
-              width="25"
+              height="14"
+              width="18"
               alt=""
             />
-            <span style={{ marginLeft: "5%" }}>connect@bikebazaar.com</span>
+            <span style={{ marginLeft: "5%",fontSize:'13px' }}>connect@bikebazaar.com</span>
           </div>
           <div
             style={{
@@ -319,10 +322,10 @@ const Footer = () => {
               flexDirection: "column",
               marginTop: "8%",
               wordSpacing: "3.5px",
-              letterSpacing: "2px",
+              
             }}
           >
-            <p style={{ color: "white" }}>Connect with us</p>
+            <p style={{ color: "white" ,fontWeight:'600'}}>Connect with us</p>
             <div
               style={{
                 display: "flex-start",
@@ -330,20 +333,20 @@ const Footer = () => {
                 justifyContent: "space-between",
                 width: "70%",
                 fontWeight: "500",
-                marginTop: "3%",
+                marginTop: "1%",
               }}
             >
-              <img src={faceBookIcon} />
+              <img src={faceBookIcon} style={{height:'13px',width:'16px'}} />
               <img
-                style={{ marginLeft: "10%", cursor: "pointer" }}
+                style={{ marginLeft: "8%", cursor: "pointer",height:'13px',width:'16px' }}
                 src={instagramIcon}
               />
               <img
-                style={{ marginLeft: "10%", cursor: "pointer" }}
+                style={{ marginLeft: "10%", cursor: "pointer",height:'13px',width:'16px' }}
                 src={linkedinIcon}
               />
               <img
-                style={{ marginLeft: "10%", cursor: "pointer" }}
+                 style={{ marginLeft: "10%", cursor: "pointer",height:'13px',width:'16px' }}
                 src={twitterIcon}
               />
             </div>
