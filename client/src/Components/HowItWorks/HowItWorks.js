@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 16,
   },
   mobileText: {
-    fontSize: "10px",
+    fontSize: "9px",
   },
   advantageContainer: {
     width: 1200,
@@ -200,14 +200,17 @@ const HowItWorks = (props) => {
                   ) : (
                     <>
                       <br />
-                      <span
+                      <p className={classes.mobileText}
                         
                       >
-                        Find any Two-Wheeler using multiple filtering options
-                       
-                      </span>
-                      <span> and Select the most suitable two-wheeler for you from
-                       </span>
+                        Find any Two-Wheeler using  multiple filtering options
+                        <br />
+                      
+                        and Select the most suitable two-wheeler for you from
+                        <br /> 
+                        hundreds of options.
+                      
+                       </p>
                     </>
                   )}
                 </div>
@@ -218,20 +221,33 @@ const HowItWorks = (props) => {
                 sm={12}
                 md={4}
                 lg={4}
-                className={classes.mb100}
+                className={matches ? classes.mb100 : classes.mobilemb100}
               >
                 <div>
-                  <h5 className={classes.subHeading}>
+                  <span className={matches ? classes.subHeading : classes.mobilesubHeading}>
                     2. Visit BikeBazaar Store
-                  </h5>
-                  <img src={visitIcon} width={300} alt="" />
+                  </span>
+                  {matches ? (
+                    <img src={visitIcon} width={300} alt="" />
+                  ) : (
+                    <img src={visitIcon} height="150" alt="" />
+                  )}
+                  {matches ? (
                   <p className={classes.text}>
-                    Visit the nearest BikeBazaar Store
+                  Visit the nearest BikeBazaar Store
+                  <br />
+                  to have a look & feel of Two-
+                  <br />
+                  Wheeler chosen by you. You can inspect it on all parameters.
+                </p>) : (
+                    <p className={classes.mobileText}>
+                    Visit the nearest BikeBazaar Store to have a look & feel
                     <br />
-                    to have a look & feel of Two-
+                     of Two-Wheeler chosen by you. You can inspect it on all
                     <br />
-                    Wheeler chosen by you. You can inspect it on all parameters.
+                    parameters.
                   </p>
+                  )}
                 </div>
               </Grid>
               <Grid
@@ -240,11 +256,16 @@ const HowItWorks = (props) => {
                 sm={12}
                 md={4}
                 lg={4}
-                className={classes.mb100}
+                className={matches ? classes.mb100 : classes.mobilemb100}
               >
                 <div>
-                  <h5 className={classes.subHeading}>3. Buy</h5>
-                  <img src={buyIcon} width={300} alt="" />
+                  <h5 className={matches ? classes.subHeading : classes.mobilesubHeading}>3. Buy</h5>
+                  {matches ? (
+                    <img src={buyIcon} width={300} alt="" />
+                  ) : (
+                    <img src={buyIcon} height="150" alt="" />
+                  )}
+                  {matches ? (
                   <p className={classes.text}>
                     After you make your decision about
                     <br />
@@ -255,7 +276,17 @@ const HowItWorks = (props) => {
                     immediately after submitting your
                     <br />
                     identity details.
+                  </p>) : (
+                    <p className={classes.mobileText}>
+                    After you make your decision about any Two-Wheeler,
+                    <br />
+                     you can buy the vehicle immediately after
+                    <br />
+                     submitting your identity details.
+                
+                    
                   </p>
+                  )}
                 </div>
               </Grid>
             </Grid>
