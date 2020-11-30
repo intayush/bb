@@ -10,8 +10,9 @@ import VehicleAdvantage from "../../Components/VehicleAdvantage/VehicleAdvantage
 import buyIcon from "../../assets/Buy-Icon.svg";
 import selectIcon from "../../assets/Select-Icon.svg";
 import visitIcon from "../../assets/Visit-BB-Store-Icon.svg";
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import mobiledivider from "../../assets/mobiledivider.png";
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -23,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
   subContainer: {
     marginTop: 50,
   },
+  mobilesubContainer: {
+    marginTop: "1%",
+  },
   paper: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(6),
@@ -33,13 +37,12 @@ const useStyles = makeStyles((theme) => ({
     color: "#000000",
     lineHeight: "28px",
   },
-  mobilePaper:{
+  mobilePaper: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(6),
     boxShadow: "0 0 4px 1px rgba(0, 0, 0, 0.2) !important",
     padding: theme.spacing(3),
     color: "#000000",
-
   },
   redHeading: {
     paddingBottom: 13,
@@ -54,22 +57,21 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     color: "#ff0000",
     textAlign: "center",
-
   },
   subHeading: {
     fontSize: 18,
     fontWeight: 600,
   },
-  mobilesubHeading:{
+  mobilesubHeading: {
     fontSize: 13,
     fontWeight: "bold",
   },
 
-  text :{
+  text: {
     fontSize: 16,
   },
-  mobileText:{
-    fontSize:'10px'
+  mobileText: {
+    fontSize: "10px",
   },
   advantageContainer: {
     width: 1200,
@@ -79,12 +81,15 @@ const useStyles = makeStyles((theme) => ({
   mb100: {
     marginBottom: "100px",
   },
+  mobilemb100: {
+    marginBottom: "10px",
+  },
 }));
 
 const HowItWorks = (props) => {
-  const theme=useTheme();
+  const theme = useTheme();
   const classes = useStyles();
-  let matches = useMediaQuery(theme.breakpoints.up('sm'));
+  let matches = useMediaQuery(theme.breakpoints.up("sm"));
 
   useEffect(() => {
     try {
@@ -125,18 +130,42 @@ const HowItWorks = (props) => {
         alignItems="center"
       >
         <Grid item xs={11} sm={11} md={11} lg={11}>
-          <Paper className={matches?classes.paper + " center-align":classes.mobilePaper+ " center-align"}>
-            <h3 className={matches?classes.redHeading:classes.readHeadingMobile}>
-                {matches?<span>Best Way to Buy a Pre-Owned Two-Wheeler</span>:<p> Best Way to Buy<br/>
-a Pre-Owned Two-Wheeler</p>}  
+          <Paper
+            className={
+              matches
+                ? classes.paper + " center-align"
+                : classes.mobilePaper + " center-align"
+            }
+          >
+            <h3
+              className={
+                matches ? classes.redHeading : classes.readHeadingMobile
+              }
+            >
+              {matches ? (
+                <span>Best Way to Buy a Pre-Owned Two-Wheeler</span>
+              ) : (
+                <p>
+                  {" "}
+                  Best Way to Buy
+                  <br />a Pre-Owned Two-Wheeler
+                </p>
+              )}
             </h3>
-            <img alt="" src={blackHeadingLines} width="57" height="4" />
+            {matches ? (
+              <img alt="" src={blackHeadingLines} width="57" height="4" />
+            ) : (
+              <img alt="" src={mobiledivider} height="4" />
+            )}
+
             <Grid
               container
               component="div"
               direction="row"
               justify="center"
-              className={classes.subContainer}
+              className={
+                matches ? classes.subContainer : classes.mobilesubContainer
+              }
             >
               <Grid
                 item
@@ -144,19 +173,43 @@ a Pre-Owned Two-Wheeler</p>}
                 sm={12}
                 md={4}
                 lg={4}
-                className={classes.mb100}
+                className={matches ? classes.mb100 : classes.mobilemb100}
               >
                 <div>
-                  <h5 className={matches?classes.subHeading:classes.mobilesubHeading}>1. Select</h5>
-                  <img src={selectIcon} width={300} alt="" />
-                  <p className={matches?classes.text:classes.mobileText}>
-                    Find any Two-Wheeler using
-                    <br />
-                    multiple filtering options and Select
-                    <br />
-                    the most suitable two-wheeler for you from hundreds of
-                    options.
-                  </p>
+                  <h5
+                    className={
+                      matches ? classes.subHeading : classes.mobilesubHeading
+                    }
+                  >
+                    1. Select
+                  </h5>
+                  {matches ? (
+                    <img src={selectIcon} width={300} alt="" />
+                  ) : (
+                    <img src={selectIcon} height="150" alt="" />
+                  )}
+                  {matches ? (
+                    <p className={classes.text}>
+                      Find any Two-Wheeler using
+                      <br />
+                      multiple filtering options and Select
+                      <br />
+                      the most suitable two-wheeler for you from hundreds of
+                      options.
+                    </p>
+                  ) : (
+                    <>
+                      <br />
+                      <span
+                        
+                      >
+                        Find any Two-Wheeler using multiple filtering options
+                       
+                      </span>
+                      <span> and Select the most suitable two-wheeler for you from
+                       </span>
+                    </>
+                  )}
                 </div>
               </Grid>
               <Grid

@@ -233,7 +233,7 @@ const Homepage = (props) => {
           <Grid style={{padding:'30px'}} container component="div" direction="row">
             <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
               <div
-                className="motorcycle-box-mobileView-shadow center-align"
+                className="vehicle-box-shadow center-align"
                 onMouseEnter={() => setBikeHover(true)}
                 onMouseLeave={() => setBikeHover(false)}
                 style={{ background: "white" }}
