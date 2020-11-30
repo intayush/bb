@@ -77,9 +77,13 @@
   text-align: center;
 }
 
-.mobileAdvantageIconLeft{
-  width:100px;
-  height:100px;
+
+.redLine{
+  width: 51px; height: 11px;margin-top: 10%;
+}
+.mobileAdvantageIconRight{
+  width:70px;
+  height:70px;
   border-radius: 50%;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17);
   background-color: #ffffff;
@@ -87,6 +91,7 @@
   z-index: 1;
   text-align: center;
 }
+
 .mobileAdvantageIconLeft{
 
   width:70px;
@@ -114,6 +119,7 @@
   margin-left: -6%;
   
 }
+
 
 .strong-presence {
   margin: 30% 0;

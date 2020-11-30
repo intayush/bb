@@ -27,6 +27,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Modal from "@material-ui/core/Modal";
 import closeIcon from "../../assets/Close.png";
 import advantageIcon from "../../assets/images/icons/advantage-icon-lt.png";
+import rightRedLine from "../../assets/images/icons/advantage-icon-rt.png";
 import mobiledivider from "../../assets/mobiledivider.png";
 
 const formValidator = (name, value) => {
@@ -100,6 +101,17 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "none",
     marginLeft: 10,
     top: 52,
+  },
+  submitmobileButton: {
+    position: "relative",
+    background: "#ff0000",
+    padding: "6px 30px",
+    borderRadius: 24,
+    height: 48,
+    fontSize: 20,
+    fontWeight: 600,
+    textTransform: "capitalize",
+    boxShadow: "none",
   },
   divider: {
     width: 1,
@@ -500,7 +512,7 @@ const BecomeFranchiseOwner = (props) => {
                     />
                   </Grid>
                 ) : (
-                  <Grid style={{textAlign:'center'}}  xs={12} sm={12}>
+                  <Grid style={{ textAlign: "center" }} xs={12} sm={12}>
                     <img alt="" src={mobiledivider} height="4" />
                     <img
                       height="98%"
@@ -956,7 +968,11 @@ const BecomeFranchiseOwner = (props) => {
                   </p>
                 )}
 
-                <img src={blackHeadingLines} alt="" width="57" height="4" />
+                {matches ? (
+                  <img src={blackHeadingLines} alt="" width="57" height="4" />
+                ) : (
+                  <img src={mobiledivider} alt="" />
+                )}
               </Grid>
               <form
                 action=""
@@ -1000,6 +1016,7 @@ const BecomeFranchiseOwner = (props) => {
                             &nbsp;&nbsp;(eg. Varunam Reddy)
                           </label>
                           <input
+                            style={{ height: "25px" }}
                             type="text"
                             name="name"
                             id="name"
@@ -1046,6 +1063,7 @@ const BecomeFranchiseOwner = (props) => {
                             &nbsp;&nbsp; (eg. +91 9999999999)
                           </label>
                           <input
+                            style={{ height: "25px" }}
                             type="text"
                             name="mobile"
                             className={
@@ -1097,6 +1115,7 @@ const BecomeFranchiseOwner = (props) => {
                             &nbsp;&nbsp;(eg. abc@gmail.com)
                           </label>
                           <input
+                            style={{ height: "25px" }}
                             type="text"
                             name="email"
                             id="email"
@@ -1149,6 +1168,7 @@ const BecomeFranchiseOwner = (props) => {
                             &nbsp;&nbsp;(eg. Pune, Kolkata)
                           </label>
                           <input
+                            style={{ height: "25px" }}
                             type="text"
                             name="city"
                             id="city"
@@ -1203,6 +1223,7 @@ const BecomeFranchiseOwner = (props) => {
                             &nbsp;&nbsp;(eg. 123, abc colony, Mumbai)
                           </label>
                           <input
+                            style={{ height: "25px" }}
                             type="text"
                             name="address"
                             id="address"
@@ -1257,6 +1278,7 @@ const BecomeFranchiseOwner = (props) => {
                             &nbsp;&nbsp;(eg. 110075)
                           </label>
                           <input
+                            style={{ height: "25px" }}
                             type="text"
                             name="pin"
                             id="pin"
@@ -1288,14 +1310,25 @@ const BecomeFranchiseOwner = (props) => {
                     lg={12}
                     className="center-align"
                   >
-                    <button
-                      type="submit"
-                      style={{ marginBottom: 60 }}
-                      className={classes.submitButton + " btn"}
-                      onClick={submitForm}
-                    >
-                      Share
-                    </button>
+                    {matches ? (
+                      <button
+                        type="submit"
+                        style={{ marginBottom: 60 }}
+                        className={classes.submitButton + " btn"}
+                        onClick={submitForm}
+                      >
+                        Share
+                      </button>
+                    ) : (
+                      <button
+                        type="submit"
+                        style={{ marginBottom: 5 }}
+                        className={classes.submitmobileButton + " btn"}
+                        onClick={submitForm}
+                      >
+                        Share
+                      </button>
+                    )}
                   </Grid>
                 </Grid>
               </form>
@@ -1319,7 +1352,19 @@ const BecomeFranchiseOwner = (props) => {
                 ) : (
                   <p className="mobileRedHead">Pre-Launch Support</p>
                 )}
-                <img style={{marginBottom:'10%'}} src={blackHeadingLines} alt="" />
+                {matches ? (
+                  <img
+                    style={{ marginBottom: "10%" }}
+                    src={blackHeadingLines}
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    style={{ marginBottom: "7%" }}
+                    alt=""
+                    src={mobiledivider}
+                  />
+                )}
 
                 {matches ? (
                   <Grid
@@ -1343,15 +1388,19 @@ const BecomeFranchiseOwner = (props) => {
                   </Grid>
                 ) : (
                   <Grid container component="div" direction="column">
-                    <div className="mobileAdvantageIconLeft">
-                      <img
-                        style={{ marginTop: "20%" }}
-                        height="40"
-                        width="40"
-                        src={strongOnlinePresence}
-                        alt=""
-                      />
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      <div className="mobileAdvantageIconLeft">
+                        <img
+                          style={{ marginTop: "20%" }}
+                          height="40"
+                          width="40"
+                          src={strongOnlinePresence}
+                          alt=""
+                        />
+                      </div>
+                      <img className="redLine" src={advantageIcon} alt="" />
                     </div>
+
                     <p className="mobileHeading">Strong Online Presence</p>
                   </Grid>
                 )}
@@ -1382,15 +1431,25 @@ const BecomeFranchiseOwner = (props) => {
                   </Grid>
                 ) : (
                   <Grid container component="div" direction="column">
-                    <div className="mobileAdvantageIconLeft">
-                      <img
-                        style={{ marginTop: "20%" }}
-                        height="40"
-                        width="40"
-                        src={strongOnlinePresence}
-                        alt=""
-                      />
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        marginLeft: "20%",
+                      }}
+                    >
+                      <img className="redLine" src={rightRedLine} />
+                      <div className="mobileAdvantageIconRight">
+                        <img
+                          style={{ marginTop: "20%" }}
+                          height="40"
+                          width="40"
+                          src={strongOnlinePresence}
+                          alt=""
+                        />
+                      </div>
                     </div>
+
                     <p className={mobileHeading}>
                       Showroom Branding & Exhaustive
                       <br />
@@ -1425,15 +1484,19 @@ const BecomeFranchiseOwner = (props) => {
                   </Grid>
                 ) : (
                   <Grid container component="div" direction="column">
-                    <div className="mobileAdvantageIconLeft">
-                      <img
-                        style={{ marginTop: "20%" }}
-                        height="40"
-                        width="40"
-                        src={strongOnlinePresence}
-                        alt=""
-                      />
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      <div className="mobileAdvantageIconLeft">
+                        <img
+                          style={{ marginTop: "20%" }}
+                          height="40"
+                          width="40"
+                          src={strongOnlinePresence}
+                          alt=""
+                        />
+                      </div>
+                      <img className="redLine" src={advantageIcon} alt="" />
                     </div>
+
                     <p className={mobileHeading}>
                       Training & Development for
                       <br />
@@ -1446,12 +1509,23 @@ const BecomeFranchiseOwner = (props) => {
 
               <Grid item xs={12} sm={12} md={5} lg={5} className="center-align">
                 {matches ? (
-                  <h4 className="center-align redhead">Pre-Launch Support</h4>
+                  <h4 className="center-align redhead">Post-Launch Support</h4>
                 ) : (
                   <p className="mobileRedHead">Post-Launch Support</p>
                 )}
-                <img style={{marginBottom:'10%'}} src={blackHeadingLines} alt="" />
-
+                {matches ? (
+                  <img
+                    style={{ marginBottom: "10%" }}
+                    src={blackHeadingLines}
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    style={{ marginBottom: "5%" }}
+                    src={mobiledivider}
+                    alt=""
+                  />
+                )}
                 {matches ? (
                   <Grid
                     container
@@ -1493,13 +1567,7 @@ const BecomeFranchiseOwner = (props) => {
                           />
                         </div>
 
-                        <img
-                          style={{ marginTop: "8%" }}
-                          width="70"
-                          height="15"
-                          src={advantageIcon}
-                          alt=""
-                        />
+                        <img className="redLine" src={advantageIcon} alt="" />
                       </>
                     </div>
 
@@ -1510,7 +1578,7 @@ const BecomeFranchiseOwner = (props) => {
                         fontWeight: "bold",
                       }}
                     >
-                     <p className={mobileHeading}>
+                      <p className={mobileHeading}>
                         Online Demand Generation
                         <br />& BTL Activities
                       </p>
@@ -1518,89 +1586,108 @@ const BecomeFranchiseOwner = (props) => {
                   </Grid>
                 )}
 
-                {matches?<Grid
-                  container
-                  component="div"
-                  direction="row"
-                  className="advantage1"
-                >
-                  <Grid item xs={8} sm={8} md={10} lg={10}>
-                    <h3 className={mobileHeading}>
-                      Tools and Technologies for
-                      <br />
-                      Business Efficiency
-                    </h3>
+                {matches ? (
+                  <Grid
+                    container
+                    component="div"
+                    direction="row"
+                    className="advantage1"
+                  >
+                    <Grid item xs={8} sm={8} md={10} lg={10}>
+                      <h3 className={mobileHeading}>
+                        Tools and Technologies for
+                        <br />
+                        Business Efficiency
+                      </h3>
+                    </Grid>
+                    <Grid item xs={4} sm={4} md={2} lg={2} className="icon">
+                      <div className="advantageIconRight">
+                        <img
+                          className="rupees"
+                          src={strongOnlinePresence}
+                          alt=""
+                        />
+                      </div>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={4} sm={4} md={2} lg={2} className="icon">
-                    <div className="advantageIconRight">
-                      <img
-                        className="rupees"
-                        src={strongOnlinePresence}
-                        alt=""
-                      />
+                ) : (
+                  <Grid container component="div" direction="column">
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        marginLeft: "20%",
+                      }}
+                    >
+                      <img src={rightRedLine} className="redLine" alt="" />
+                      <div className="mobileAdvantageIconRight">
+                        <img
+                          style={{ marginTop: "20%" }}
+                          height="40"
+                          width="40"
+                          src={strongOnlinePresence}
+                          alt=""
+                        />
+                      </div>
                     </div>
-                  </Grid>
-                </Grid>:<Grid container component="div" direction="column">
-                    <div className="mobileAdvantageIconLeft">
-                      <img
-                        style={{ marginTop: "20%" }}
-                        height="40"
-                        width="40"
-                        src={strongOnlinePresence}
-                        alt=""
-                      />
-                    </div>
+
                     <p className={mobileHeading}>
                       Tools and Technologies for
                       <br />
                       Business Efficiency
                     </p>
-                  </Grid>}
+                  </Grid>
+                )}
 
+                {matches ? (
+                  <Grid
+                    container
+                    component="div"
+                    direction="row"
+                    className="advantage"
+                  >
+                    <Grid item xs={4} sm={4} md={2} lg={2}>
+                      <div className="advantageIconLeft">
+                        <img
+                          className="rupees"
+                          src={strongOnlinePresence}
+                          alt=""
+                        />
+                      </div>
+                    </Grid>
+                    <Grid item xs={8} sm={8} md={10} lg={10}>
+                      <h3 className={mobileHeading}>
+                        Qualified Team & Dedicated
+                        <br />
+                        Call Center
+                      </h3>
+                    </Grid>
+                  </Grid>
+                ) : (
+                  <Grid container component="div" direction="column">
+                   
+                    <div style={{display:'flex',flexDirection:'row'}}>
+
+                          <div className="mobileAdvantageIconLeft">
+                            <img
+                              style={{ marginTop: "20%" }}
+                              height="40"
+                              width="40"
+                              src={strongOnlinePresence}
+                              alt=""
+                            />
+                          </div>
+                          <img src={advantageIcon} className="redLine" alt=""/>
+                    </div>
                   
-
-                  {matches?<Grid
-                  container
-                  component="div"
-                  direction="row"
-                  className="advantage"
-                >
-                  <Grid item xs={4} sm={4} md={2} lg={2}>
-                    <div className="advantageIconLeft">
-                      <img
-                        className="rupees"
-                        src={strongOnlinePresence}
-                        alt=""
-                      />
-                    </div>
-                  </Grid>
-                  <Grid item xs={8} sm={8} md={10} lg={10}>
-                    <h3 className={mobileHeading}>
-                      Qualified Team & Dedicated
-                      <br />
-                      Call Center
-                    </h3>
-                  </Grid>
-                </Grid>:<Grid container component="div" direction="column">
-                    <div className="mobileAdvantageIconLeft">
-                      <img
-                        style={{ marginTop: "20%" }}
-                        height="40"
-                        width="40"
-                        src={strongOnlinePresence}
-                        alt=""
-                      />
-                    </div>
                     <p className={mobileHeading}>
                       Qualified Team & Dedicated
                       <br />
                       Call Center
                     </p>
-                  </Grid>}
-                
-
+                  </Grid>
+                )}
               </Grid>
-
             </Grid>
           </div>
         </Grid>
