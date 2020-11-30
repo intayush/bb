@@ -464,16 +464,16 @@ const BecomeFranchiseOwner = (props) => {
                       <br />
                       For the buyer we ensure quality and make the process
                       smooth by offering
-                      <span className={classes.bold}>
-                        "Free 6 Months' Warranty"
+                      <span style={{fontWeight:'bold',marginLeft:'1%'}}>
+                        "Free 6 Months' Warranty ,"
                       </span>
-                      ,
-                      <span className={classes.bold}>
+                        <br/>
+                      <span style={{fontWeight:'bold'}}>
                         "Certified Two-Wheelers"
                       </span>
-                      , <span className={classes.bold}>"Low Cost EMI"</span>,
+                      , <span style={{fontWeight:'bold'}}>"Low Cost EMI"</span>,
                       <br />
-                      <span className={classes.bold}>
+                      <span style={{fontWeight:'bold'}}>
                         "Hassle-Free Document Transfer"
                       </span>
                       and more.
