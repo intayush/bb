@@ -397,7 +397,7 @@ const Homepage = (props) => {
           </Grid>
         </Grid>
       </div>
-      <div className="section-4">
+      {matches?<div className="section-4">
         <Grid
           container
           component="div"
@@ -479,7 +479,7 @@ const Homepage = (props) => {
             <div id="testimonialMessage"></div>
           </Grid>
         </Grid>
-      </div>
+      </div>:<></>}
       <Footer />
     </div>
   );
