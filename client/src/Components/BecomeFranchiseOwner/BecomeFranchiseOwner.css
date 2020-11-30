@@ -78,6 +78,37 @@
 }
 
 
+
+.mobilefranchiseAdvantage {
+  box-shadow: 0px 2px 4.8px 0.2px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+.mobilefranchiseAdvantage {
+  margin: 40px auto;
+  padding: 7px;
+}
+.mobilefranchiseAdvantage h2 {
+  color: #232c2b;
+}
+
+.mobilefranchiseAdvantage .franchiseAdvantageSec {
+  padding: 0 0;
+}
+.mobilefranchiseAdvantage .franchiseAdvantageSec .advantage {
+  padding: 4px 0px 10px 149px;
+}
+.mobilefranchiseAdvantage .franchiseAdvantageSec .advantage .advantageIconLeft {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17);
+  background-color: #ffffff;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+
 .redLine{
   width: 51px; height: 11px;margin-top: 10%;
 }

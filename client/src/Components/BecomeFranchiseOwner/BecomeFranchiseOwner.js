@@ -534,7 +534,7 @@ const BecomeFranchiseOwner = (props) => {
           lg={11}
           className="franchiseAdvantageSec"
         >
-          <div className={"franchiseAdvantage " + advantagePadding}>
+          <div className={matches?"franchiseAdvantage " + advantagePadding:"mobilefranchiseAdvantage "+advantagePadding}>
             {matches ? (
               <h2 className="center-align centerAdv">BikeBazaar Advantage</h2>
             ) : (
