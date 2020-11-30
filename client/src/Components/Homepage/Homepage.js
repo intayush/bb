@@ -57,47 +57,47 @@ const Homepage = (props) => {
   };
 
   const initCar = (direction) => {
-    // if (sliderState == null) {
-    //   var instance;
-    //   const testimonialMessages = [
-    //     {
-    //       name: "Hari Raj",
-    //       message:
-    //         "If anyone is looking for a pre owned bikes/scooty then bike bazaar is the right place to go... Awesome experience from team bike bazaar... Especially Subhojit and sandeep helped me a lot to find out the best vehicle which i was exactly looking for...i will always recommend bike bazaar..thankyou team.",
-    //     },
-    //     {
-    //       name: "Md Aquiluzzaman",
-    //       message:
-    //         "Wonderful experience from Bike Bazaar. All paper work done in front of me. Transparency at it's peak. Condition of the bike is absolutely fabulous. Also available at EMI which is quite impossible but Bike Bazaar did it. Also delivered the bike in one day. Absolutely beautiful experience. Recommend Bike Bazaar to everyone, they won't ever disappoint. I bet. Go for it.",
-    //     },
-    //     {
-    //       name: "Azhar Mirza",
-    //       message:
-    //         "Selling a pre-owned bikes is an extensive and uncertain process. One is never sure of their bike's real market value. Listing online leads to more time consumption, multiple calls, random meetings, price haggling etc. BikeBazaar makes selling a bike an easy, fair and quick experience.it offer an efficient and reliable way to bike owners to sell their bikes at the best price.",
-    //     },
-    //   ];
-    //   let carouselOptions = {
-    //     shift: -150,
-    //     padding: 600,
-    //     dist: -200,
-    //     onCycleTo: function (data) {
-    //       let index = data.getAttribute("index");
-    //       let message = testimonialMessages[index].message;
-    //       let name = testimonialMessages[index].name;
-    //       document.querySelector("#clientName").innerText = name;
-    //       document.querySelector("#testimonialMessage").innerText = message;
-    //     },
-    //   };
-    //   let testimonialCarousel = document.querySelectorAll(".carousel");
-    //   instance = M.Carousel.init(testimonialCarousel, carouselOptions);
-    //   changeSlider(instance);
-    // } else {
-    //   if (direction === "left") {
-    //     sliderState[0].prev();
-    //   } else {
-    //     sliderState[0].next();
-    //   }
-    // }
+    if (sliderState == null) {
+      var instance;
+      const testimonialMessages = [
+        {
+          name: "Hari Raj",
+          message:
+            "If anyone is looking for a pre owned bikes/scooty then bike bazaar is the right place to go... Awesome experience from team bike bazaar... Especially Subhojit and sandeep helped me a lot to find out the best vehicle which i was exactly looking for...i will always recommend bike bazaar..thankyou team.",
+        },
+        {
+          name: "Md Aquiluzzaman",
+          message:
+            "Wonderful experience from Bike Bazaar. All paper work done in front of me. Transparency at it's peak. Condition of the bike is absolutely fabulous. Also available at EMI which is quite impossible but Bike Bazaar did it. Also delivered the bike in one day. Absolutely beautiful experience. Recommend Bike Bazaar to everyone, they won't ever disappoint. I bet. Go for it.",
+        },
+        {
+          name: "Azhar Mirza",
+          message:
+            "Selling a pre-owned bikes is an extensive and uncertain process. One is never sure of their bike's real market value. Listing online leads to more time consumption, multiple calls, random meetings, price haggling etc. BikeBazaar makes selling a bike an easy, fair and quick experience.it offer an efficient and reliable way to bike owners to sell their bikes at the best price.",
+        },
+      ];
+      let carouselOptions = {
+        shift: -150,
+        padding: 600,
+        dist: -200,
+        onCycleTo: function (data) {
+          let index = data.getAttribute("index");
+          let message = testimonialMessages[index].message;
+          let name = testimonialMessages[index].name;
+          document.querySelector("#clientName").innerText = name;
+          document.querySelector("#testimonialMessage").innerText = message;
+        },
+      };
+      let testimonialCarousel = document.querySelectorAll(".carousel");
+      instance = M.Carousel.init(testimonialCarousel, carouselOptions);
+      changeSlider(instance);
+    } else {
+      if (direction === "left") {
+        sliderState[0].prev();
+      } else {
+        sliderState[0].next();
+      }
+    }
   };
 
   useEffect(() => {
