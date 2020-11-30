@@ -228,9 +228,9 @@ const HowItWorks = (props) => {
                     2. Visit BikeBazaar Store
                   </span>
                   {matches ? (
-                    <img src={visitIcon} width={300} alt="" />
+                    <img src={visitIcon} width="300" alt="" />
                   ) : (
-                    <img src={visitIcon} height="150" alt="" />
+                    <img src={visitIcon} height="140" alt="" />
                   )}
                   {matches ? (
                   <p className={classes.text}>
