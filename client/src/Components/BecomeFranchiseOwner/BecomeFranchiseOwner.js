@@ -545,7 +545,10 @@ const BecomeFranchiseOwner = (props) => {
               </div>
             )}
             <div className="center-align">
-              <img src={headingLines} alt="" width="57" height="3" />
+              {matches?<img src={headingLines} alt="" width="57" height="3" />
+
+              :<img alt="" src={mobiledivider} />}
+
             </div>
 
             {/* for giving the space */}
@@ -589,24 +592,23 @@ const BecomeFranchiseOwner = (props) => {
                   direction="row"
                   component="div"
                 >
-                  <div style={{ display: "flex" }}>
-                    <>
+                  <div style={{ display: "flex" ,flexDirection:'row'}}>
+                    
                       <div className="mobileAdvantageIconLeft">
                         <img
                           height="35"
                           style={{ marginTop: "25%" }}
                           src={strongOnlinePresence}
+                          alt=""
                         />
                       </div>
 
                       <img
-                        style={{ marginTop: "8%" }}
-                        width="70"
-                        height="15"
+                        className="redLine"
                         src={advantageIcon}
                         alt=""
                       />
-                    </>
+                    
                   </div>
 
                   <div
@@ -648,17 +650,15 @@ const BecomeFranchiseOwner = (props) => {
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      marginLeft: "16%",
+                      marginLeft: "20%",
                     }}
                   >
                     <img
-                      style={{ transform: "scaleX(-1)", marginTop: "10%" }}
-                      height="17"
-                      width="80"
-                      src={advantageIcon}
+                      src={rightRedLine}
+                      className="redLine"
                       alt=""
                     />
-                    <div className="mobileAdvantageIconLeftAlign">
+                    <div className="mobileAdvantageIconRight">
                       <img
                         height="35"
                         width="30"
@@ -699,7 +699,7 @@ const BecomeFranchiseOwner = (props) => {
               ) : (
                 <Grid component="div" direction="row" xs={12} sm={12}>
                   <div style={{ display: "flex" }}>
-                    <>
+                  
                       <div className="mobileAdvantageIconLeft">
                         <img
                           height="35"
@@ -709,13 +709,11 @@ const BecomeFranchiseOwner = (props) => {
                       </div>
 
                       <img
-                        style={{ marginTop: "8%" }}
-                        width="70"
-                        height="15"
+                        className="redLine"
                         src={advantageIcon}
                         alt=""
                       />
-                    </>
+                
                   </div>
 
                   <div
@@ -757,17 +755,15 @@ const BecomeFranchiseOwner = (props) => {
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      marginLeft: "16%",
+                      marginLeft: "20%",
                     }}
                   >
                     <img
-                      style={{ transform: "scaleX(-1)", marginTop: "10%" }}
-                      height="17"
-                      width="80"
-                      src={advantageIcon}
+                      className="redLine"
+                      src={rightRedLine}
                       alt=""
                     />
-                    <div className="mobileAdvantageIconLeftAlign">
+                    <div className="mobileAdvantageIconRight">
                       <img
                         height="40"
                         width="40"
@@ -819,7 +815,7 @@ const BecomeFranchiseOwner = (props) => {
                   component="div"
                 >
                   <div style={{ display: "flex" }}>
-                    <>
+                   
                       <div className="mobileAdvantageIconLeft">
                         <img
                           height="35"
@@ -829,13 +825,11 @@ const BecomeFranchiseOwner = (props) => {
                       </div>
 
                       <img
-                        style={{ marginTop: "8%" }}
-                        width="70"
-                        height="15"
+                        className="redLine"
                         src={advantageIcon}
                         alt=""
                       />
-                    </>
+                 
                   </div>
 
                   <div
@@ -902,17 +896,15 @@ const BecomeFranchiseOwner = (props) => {
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      marginLeft: "16%",
+                      marginLeft: "20%",
                     }}
                   >
                     <img
-                      style={{ transform: "scaleX(-1)", marginTop: "10%" }}
-                      height="17"
-                      width="80"
-                      src={advantageIcon}
+                      className="redLine"
+                      src={rightRedLine}
                       alt=""
                     />
-                    <div className="mobileAdvantageIconLeftAlign">
+                    <div className="mobileAdvantageIconRight">
                       <img
                         height="50"
                         width="50"
