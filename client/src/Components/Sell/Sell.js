@@ -2,39 +2,42 @@ import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import "./Sell.css";
-// import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
-import SellingProcess from '../SellingProcess/SellingProcess';
+import SellingProcess from "../SellingProcess/SellingProcess";
 import headingLines from "../../assets/heading-lines.svg";
-import blackHeadingLines from '../../assets/black-heading-lines.svg';
-import stepsToSell from '../../assets/steps-to-sell.svg';
+import blackHeadingLines from "../../assets/black-heading-lines.svg";
+import stepsToSell from "../../assets/steps-to-sell.svg";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
-// import Tooltip from "../UI/Tooltip/Tooltip";
 import axios from "axios";
 import isEmpty from "validator/lib/isEmpty";
 import isAlpha from "validator/lib/isAlpha";
-// import isMobilePhone from "validator/lib/isMobilePhone";
-// import isAlphaNumeric from "validator/lib/isAlphanumeric";
 import isAscii from "validator/lib/isAscii";
 import isNumeric from "validator/lib/isNumeric";
-import { makeStyles, withTheme } from "@material-ui/core/styles";
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import stepsToSellMobile from '../../assets/steps_to_sell_ mobile.jpg';
-import DeleteIcon from '@material-ui/icons/Delete';
-import Modal from '@material-ui/core/Modal';
+import { makeStyles } from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+// import stepsToSellMobile from "../../assets/steps_to_sell_ mobile.jpg";
+import shareTwoWheelerIcon from "../../assets/Icon-1.png";
+import inspectionIcon from "../../assets/Icons-2.png";
+import documentIcon from "../../assets/Icon-3.png";
+import instantPaymentIcon from "../../assets/Icon-4.png";
+import DeleteIcon from "@material-ui/icons/Delete";
+import Modal from "@material-ui/core/Modal";
 import closeIcon from "../../assets/Close.png";
+import Button from "@material-ui/core/Button";
+import AddIcon from '@material-ui/icons/Add';
+import mobiledivider from "../../assets/mobiledivider.png";
 
-const useStyles = makeStyles(theme => ({
+
+const useStyles = makeStyles((theme) => ({
   body: {
-    backgroundColor: '#f7f7f7'
+    backgroundColor: "#f7f7f7",
   },
   banner: {
     marginTop: theme.spacing(2),
-    
   },
   formContainer: {
     marginTop: theme.spacing(4),
@@ -42,193 +45,223 @@ const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(3),
-    boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
+    boxShadow: "0 0 4px 1px rgba(0, 0, 0, 0.2) !important",
     padding: theme.spacing(3),
     fontSize: 16,
     letterSpacing: 0,
-    color: '#000000',
-    lineHeight: '15px',
+    color: "#000000",
+    lineHeight: "15px",
+
   },
   paper1: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
-    boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.2) !important',
+    boxShadow: "0 0 4px 1px rgba(0, 0, 0, 0.2) !important",
     paddingTop: theme.spacing(3),
-    fontSize: 16,
     letterSpacing: 0,
-    color: '#000000',
-    lineHeight: '28px',
+    color: "#000000",
+
+  },
+
+  mobilePaper1: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+    boxShadow: "0 0 4px 1px rgba(0, 0, 0, 0.2) !important",
+    paddingTop: theme.spacing(3),
+    letterSpacing: 0,
+    color: "#000000",
+    width: '91%'
   },
   mapContainer: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(5),
     paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2)
+    paddingRight: theme.spacing(2),
   },
   formError: {
     color: "red",
-    fontSize: 13
+    fontSize: 13,
   },
-  bookAppointmentHeading:{
+  bookAppointmentHeading: {
     paddingTop: 30,
     paddingBottom: 15,
     fontWeight: 800,
     fontSize: 24,
-    color: '#232c2b'
+    color: "#232c2b",
+  },
+  mobileAppointmentHeading: {
+    paddingTop: 30,
+    paddingBottom: 15,
+    fontWeight: "bold",
+    fontSize: 15,
+    color: "#232c2b",
   },
   label: {
     fontWeight: 600,
     fontSize: 15,
-    letterSpacing: '0px',
-    color: '#232c2b'
+    letterSpacing: "0px",
+    color: "#232c2b",
   },
-  sellHeading:{
+  mobileLabel: {
+    fontWeight: 600,
+    fontSize: "12",
+    letterSpacing: "0px",
+    color: "#232c2b",
+  },
+  sellHeading: {
     paddingBottom: 13,
     fontSize: 24,
     fontWeight: 800,
-    color: '#ff0000',
-    textAlign: 'center'
+    color: "#ff0000",
+    textAlign: "center",
   },
-  sellHeadingMobile:{
+  sellHeadingMobile: {
     paddingBottom: 13,
-    fontSize: 19,
+    fontSize: 15,
     fontWeight: 800,
-    color: '#ff0000',
-    textAlign: 'center'
+    color: "#ff0000",
+    textAlign: "center",
   },
   line: {
-    textAlign: 'center'
+    textAlign: "center",
   },
-  steps:{
-    position: 'relative',
-    width:'100%',
-    height:550,
-    backgroundImage: 'url("'+stepsToSell+'")',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: '900px 360px',
+  steps: {
+    position: "relative",
+    width: "100%",
+    height: 550,
+    backgroundImage: 'url("' + stepsToSell + '")',
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "900px 360px",
     // paddingRight: theme.spacing(3),
     // paddingRight: '15%',
     padding: theme.spacing(1),
     marginTop: 50,
   },
-  stepOne:{
-    position: 'absolute',
+  stepOne: {
+    position: "absolute",
     top: 50,
     fontWeight: 600,
-    paddingRight: '18%',
-    paddingLeft: '22%'
+    paddingRight: "18%",
+    paddingLeft: "22%",
   },
-  stepTwo:{
-    position: 'absolute',
+  stepTwo: {
+    position: "absolute",
     left: 268,
     top: 30,
     fontWeight: 600,
-    paddingRight: '18%',
-    paddingLeft: '23%'
+    paddingRight: "18%",
+    paddingLeft: "23%",
   },
-  stepThree:{
-    position: 'absolute',
+  stepThree: {
+    position: "absolute",
     left: 517,
     fontWeight: 600,
-    paddingLeft: '23%',
-    paddingRight: '15%',
+    paddingLeft: "23%",
+    paddingRight: "15%",
   },
-  stepFour:{
-    position: 'absolute',
+  stepFour: {
+    position: "absolute",
     left: 716,
     top: -18,
     fontWeight: 600,
-    paddingLeft: '23%',
-    paddingRight: '15%',
+    paddingLeft: "23%",
+    paddingRight: "15%",
   },
-  advantageHeading:{
-    color: '#232c2b',
+  advantageHeading: {
+    color: "#232c2b",
     fontSize: 36,
     fontWeight: 800,
-    lineHeight: '55px'
+    lineHeight: "55px",
   },
-  advantageContainer:{
-    marginTop: 50
+  advantageContainer: {
+    marginTop: 50,
   },
-  advantageSubHeading:{
+  advantageSubHeading: {
     fontSize: 19,
-    fontWeight: 600
+    fontWeight: 600,
   },
-  advantageText:{
-    fontSize: 15
+  advantageText: {
+    fontSize: 15,
   },
   imageUploadButton: {
     borderRadius: 5,
     fontSize: 12,
     fontWeight: 600,
-    backgroundColor: '#2c3232',
-    boxShadow: 'none',
-    textTransform: 'capitalize',
+    backgroundColor: "#2c3232",
+    boxShadow: "none",
+    textTransform: "capitalize",
     padding: 8,
-    border: 'none',
-    letterSpacing: '0px',
-    color: 'white'
+    border: "none",
+    letterSpacing: "0px",
+    color: "white",
   },
   modalBoxSuccess: {
-    position: 'absolute',
-    width: '60%',
-    backgroundColor: 'green',
-    color: 'white',
-    border: '0 solid #fff',
+    position: "absolute",
+    width: "60%",
+    backgroundColor: "green",
+    color: "white",
+    border: "0 solid #fff",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     outline: 0,
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start'
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
   },
   modalBoxErr: {
-    position: 'absolute',
-    width: '60%',
-    backgroundColor: 'orange',
-    color: 'white',
-    border: '0 solid #fff',
+    position: "absolute",
+    width: "60%",
+    backgroundColor: "orange",
+    color: "white",
+    border: "0 solid #fff",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     outline: 0,
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start'
-  }
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+  },
+
 }));
 
 const formValidator = (name, value) => {
   switch (name) {
     case "name": {
-      const nameValue = value.replace(/ /g,'');
-      return !isAscii(nameValue) || value.length > 100 ? "Enter valid name" : "";
+      const nameValue = value.replace(/ /g, "");
+      return !isAscii(nameValue) || value.length > 100
+        ? "Enter valid name"
+        : "";
     }
     case "mobile": {
-      return value.length > 15 || !isNumeric(value) ? "Invalid Mobile Number" : "";
+      return value.length > 15 || !isNumeric(value)
+        ? "Invalid Mobile Number"
+        : "";
     }
-    case "city":{
-      const cityValue = value.replace(/ /g,'');
+    case "city": {
+      const cityValue = value.replace(/ /g, "");
       return !isAlpha(cityValue) ? "City name must only be Alphabetic" : "";
     }
     case "address": {
-      const addressValue = value.replace(/ /g,'');
-      return !isAscii(addressValue) || value.length > 100 ? "Enter valid address" : "";
+      const addressValue = value.replace(/ /g, "");
+      return !isAscii(addressValue) || value.length > 100
+        ? "Enter valid address"
+        : "";
     }
-    case "make": {  
-      const makeValue = value.replace(/ /g, '');
+    case "make": {
+      const makeValue = value.replace(/ /g, "");
       return !isAlpha(makeValue) ? "Make must conatin only aplhabets" : "";
     }
     case "model": {
       return !isAscii(value) || value.length > 50 ? "Enter valid Model" : "";
     }
-    case "variant":{
+    case "variant": {
       return !isAscii(value) || value.length > 50 ? "Enter valid variant" : "";
     }
     case "yom": {
-      return !isNumeric(value) || value.length > 4 ? "Enter valid year" : "" ;
+      return !isNumeric(value) || value.length > 4 ? "Enter valid year" : "";
     }
-    case "kmsdriven" :{
+    case "kmsdriven": {
       return !isAscii(value) ? "Kms. driven must be number" : "";
     }
     default: {
@@ -237,53 +270,53 @@ const formValidator = (name, value) => {
   }
 };
 
-const Sell = props => {
+const Sell = (props) => {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('lg'));
+  const matches = useMediaQuery(theme.breakpoints.up("lg"));
   const classes = useStyles();
 
-  useEffect(() =>{
+  useEffect(() => {
     try {
       window.scroll({
         top: 0,
         left: 0,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     } catch (error) {
       window.scrollTo(0, 0);
     }
-  },[])
+  }, []);
 
   const [formData, setFormData] = useState({
     name: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
     },
     city: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
     },
     make: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
     },
     yom: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
     },
     mobile: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
     },
     variant: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
     },
     // email: {
     //   value: "",
@@ -293,30 +326,30 @@ const Sell = props => {
     address: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
     },
     model: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
     },
     kmsdriven: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
     },
     promocode: {
       value: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
     },
     image: {
       images: [],
       imageNames: [],
       message: "",
       error: false,
-      errorMessage: ''
-    }
+      errorMessage: "",
+    },
   });
 
   const [previewImage, setPreviewImage] = useState([]);
@@ -341,9 +374,7 @@ const Sell = props => {
     setOpen(false);
     props.history.go(0);
   };
-  const [modalMesg, setModalMesg] = React.useState(
-    ""
-  )
+  const [modalMesg, setModalMesg] = React.useState("");
 
   const tooltip = (
     // <Tooltip
@@ -353,15 +384,30 @@ const Sell = props => {
     //   handleClose={handleClose}
     // />
     <Modal
-      style={{display: 'flex', justifyContent: 'center', alignItems: 'center', border: 'none'}}
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        border: "none",
+      }}
       open={open}
       onClose={handleModalClose}
       aria-labelledby="simple-modal-title"
       aria-describedby="simple-modal-description"
     >
-      <div className={successSubmit ? classes.modalBoxSuccess : classes.modalBoxErr}>
+      <div
+        className={
+          successSubmit ? classes.modalBoxSuccess : classes.modalBoxErr
+        }
+      >
         <h4>{modalMesg}</h4>
-        <img style={{marginLeft: '10px', cursor: 'pointer'}} onClick={handleModalClose} src={closeIcon} height="20"  alt="" />
+        <img
+          style={{ marginLeft: "10px", cursor: "pointer" }}
+          onClick={handleModalClose}
+          src={closeIcon}
+          height="20"
+          alt=""
+        />
       </div>
     </Modal>
   );
@@ -369,64 +415,72 @@ const Sell = props => {
   const removeImageHandler = (i) => {
     let imgs = formData.image.images;
     imgs.splice(i, 1);
-    let imgNames = imgs.map(img => img.name);
+    let imgNames = imgs.map((img) => img.name);
     let msg = `${imgs.length} valid image(s) selected`;
     setFormData({
       ...formData,
       image: {
         images: imgs,
         imageNames: imgNames,
-        message: msg
-      }
+        message: msg,
+      },
     });
-  }
+  };
 
   const selectFiles = (event, formData) => {
     let images = formData.image.images;
     for (let i = 0; i < event.target.files.length; i++) {
       images.push(event.target.files.item(i));
     }
-    images = images.filter(image => image.name.match(/\.(jpg|jpeg|png|tiff)$/));
-    if(images.length > 3){
-      images = images.slice(images.length-3, images.length);
+    images = images.filter((image) =>
+      image.name.match(/\.(jpg|jpeg|png|tiff)$/)
+    );
+    if (images.length > 3) {
+      images = images.slice(images.length - 3, images.length);
     }
     setPreviewImage(images);
-    let imgNames = images.map(image => image.name);
+    let imgNames = images.map((image) => image.name);
     let message = `${images.length} valid image(s) selected`;
     setFormData({
       ...formData,
       image: {
         images: images,
         imageNames: imgNames,
-        message: message
-      }
+        message: message,
+      },
     });
-  }
+  };
 
   const uploadImagesAndEmail = (formData) => {
-    const uploadImgs = formData.image.images.map(image => {
+    const uploadImgs = formData.image.images.map((image) => {
       const data = new FormData();
       data.append("image", image, image.name);
-      
-      return axios.post('/apis/leadDetail/tempUpload', data)
-      .then(response => {})
+
+      return axios
+        .post("/apis/leadDetail/tempUpload", data)
+        .then((response) => { });
     });
-    axios.all(uploadImgs).then(() => {
-      axios
-      .post("/apis/leadDetail/insertSellrequest", formData)
-      .then(response => {
-        setSuccessSubmit(true);
-        setOpen(true);
-        setModalMesg("Thank you. Your details have been saved. We will get back to you shortly.");
+    axios
+      .all(uploadImgs)
+      .then(() => {
+        axios
+          .post("/apis/leadDetail/insertSellrequest", formData)
+          .then((response) => {
+            setSuccessSubmit(true);
+            setOpen(true);
+            setModalMesg(
+              "Thank you. Your details have been saved. We will get back to you shortly."
+            );
+          })
+          .catch((err) => {
+            console.log(err);
+            setSuccessSubmit(false);
+            setOpen(true);
+            setModalMesg("Something went wrong, please try later.");
+          });
       })
-      .catch(err => {
-        console.log(err);
-        setSuccessSubmit(false);
-        setOpen(true);
-        setModalMesg("Something went wrong, please try later.");
-      })
-    }).catch(err => alert(err.message));
-  }
+      .catch((err) => alert(err.message));
+  };
 
   const validateAndUpdateFormdata = (event, formData) => {
     let targetValue = event.target.value;
@@ -447,8 +501,8 @@ const Sell = props => {
       [event.target.name]: {
         value: targetValue,
         error: error,
-        errorMessage: errorMessage
-      }
+        errorMessage: errorMessage,
+      },
     });
   };
 
@@ -471,22 +525,28 @@ const Sell = props => {
       [event.target.name]: {
         value: targetValue,
         error: error,
-        errorMessage: errorMessage
-      }
+        errorMessage: errorMessage,
+      },
     });
   };
 
-  const submitForm = async(event) => {
+  const submitForm = async (event) => {
     event.preventDefault();
     const formDataCopy = formData;
     let errorFlag = false;
-    Object.entries(formData).forEach(data => {
+    Object.entries(formData).forEach((data) => {
       let targetValue = data[1].value;
       let targetName = data[0];
       let errorMessage = "";
       let error = false;
-      if(targetName !== "image" && targetName !== "variant" && targetName !== "address" && targetName !== "kmsdriven" && targetName !== "promocode"){
-        if(targetValue === ""){
+      if (
+        targetName !== "image" &&
+        targetName !== "variant" &&
+        targetName !== "address" &&
+        targetName !== "kmsdriven" &&
+        targetName !== "promocode"
+      ) {
+        if (targetValue === "") {
           errorMessage = "This field is required";
           error = true;
         }
@@ -502,77 +562,151 @@ const Sell = props => {
       // }
       if (error) {
         errorFlag = true;
-      }      
+      }
     });
-    if(!errorFlag) {
+    if (!errorFlag) {
       uploadImagesAndEmail(formData);
     } else {
       setFormData({
         ...formData,
-        formDataCopy
+        formDataCopy,
       });
     }
   };
 
-  let stepsToSellSection = (matches) ? <Grid item Grid item xs={11} sm={11} md={11} lg={11}>
-            <Paper className={classes.paper1+ ' center-align'}>
-              <h3 className={classes.sellHeading}>Steps to Sell Your Two-Wheeler</h3>
-              <img alt="" src={blackHeadingLines} width="57" height="4"/>
-                <div className={classes.steps}>
-                  <div className={classes.stepOne}>Share Your<br/>Two-Wheeler's Details</div>
-                  <div className={classes.stepTwo}>Inspection by our<br/>Auto Expert</div>
-                  <div className={classes.stepThree}>Document<br/>Verification</div>
-                  <div className={classes.stepFour}>Instant Payment For<br/>Your Two-Wheeler</div>
-                </div>
-            </Paper>
-            {/* </Grid> */}
-          </Grid> :
-          // <Grid item xs={12} sm={12} md={8}>
-            <Paper className={classes.paper1+ ' center-align'}>
-                <h3 className={classes.sellHeadingMobile}>Steps to Sell Your Two-Wheeler</h3>
-                <img src={stepsToSellMobile} width="750" alt=""/>
-            </Paper>
-          // </Grid>;
+  let stepsToSellSection = matches ? (
+    <Grid item Grid item xs={11} sm={11} md={11} lg={11}>
+      <Paper className={classes.paper1 + " center-align"}>
+        <h3 className={classes.sellHeading}>Steps to Sell Your Two-Wheeler</h3>
+        <img alt="" src={blackHeadingLines} width="57" height="4" />
+        <div className={classes.steps}>
+          <div className={classes.stepOne}>
+            Share Your
+            <br />
+            Two-Wheeler's Details
+          </div>
+          <div className={classes.stepTwo}>
+            Inspection by our
+            <br />
+            Auto Expert
+          </div>
+          <div className={classes.stepThree}>
+            Document
+            <br />
+            Verification
+          </div>
+          <div className={classes.stepFour}>
+            Instant Payment For
+            <br />
+            Your Two-Wheeler
+          </div>
+        </div>
+      </Paper>
+
+    </Grid>
+  ) : (
+      <Paper className={classes.mobilePaper1 + " center-align"}>
+        <h3 className={classes.sellHeadingMobile}>
+          Steps to Sell Your Two-Wheeler
+      </h3>
+        <img alt="" src={mobiledivider} height="4" />
+        {/* Share your two wheelers details section */}
+        <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
+          <p style={{ fontSize: '13px', fontWeight: 'bold', color: '#232b2b' }}>Share Your <br />Two-Wheeler’s Details </p>
+          <img style={{ marginLeft: '35%' }} height="10%" width="25%" src={shareTwoWheelerIcon} alt="" />
+        </div>
+        {/* inspection section */}
+
+        <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
+          <p style={{ fontSize: '13px', fontWeight: 'bold', color: '#232b2b' }}>Inspection by our <br /> Auto Expert </p>
+          <img style={{ marginLeft: '35%' }} height="10%" width="25%" src={inspectionIcon} alt="" />
+        </div>
+
+        {/* document verification section */}
+
+        <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
+          <p style={{ fontSize: '13px', fontWeight: 'bold', color: '#232b2b' }}>Document <br /> Verification </p>
+          <img style={{ marginLeft: '35%' }} height="10%" width="25%" src={documentIcon} alt="" />
+        </div>
+
+        {/* instant payement method */}
+
+        <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
+          <p style={{ fontSize: '13px', fontWeight: 'bold', color: '#232b2b' }}>Instant Payment For <br />Your Two-Wheeler</p>
+          <img style={{ marginLeft: '35%', marginBottom: '10%' }} height="10%" width="25%" src={instantPaymentIcon} alt="" />
+        </div>
+
+      </Paper>
+    );
+
 
   return (
     <div id="Sell" className={classes.body}>
       {/* <Header /> */}
       <MainMenu />
       {tooltip}
-      <Grid container component="div" direction="row" justify="center"> 
-        <Grid item xs={11} md={11} sm={11} lg={11} className={classes.banner}>
-            <Banner navigation="Sell" heading="Sell any Two-Wheeler" text="" path={props.location.pathname}/>
-        </Grid>
-        {stepsToSellSection}
-        <Grid item xs={11} sm={11} md={11} lg={11} className="center-align">
-          <h3 className={classes.bookAppointmentHeading}>Book An Appointment</h3>
-          <img alt="" src={headingLines} width="57" height="4"/>
-        </Grid>
-        <Grid item xs={11} sm={11} md={11} lg={11}>
+
+      {matches ? (
+        <Grid container component="div" direction="row" justify="center">
+          <Grid item xs={11} md={11} sm={11} lg={11} className={classes.banner}>
+            <Banner
+              navigation="Sell"
+              heading="Sell any Two-Wheeler"
+              text=""
+              path={props.location.pathname}
+            />
+          </Grid>
+          {stepsToSellSection}
+          <Grid item xs={11} sm={11} md={11} lg={11} className="center-align">
+            <h3 className={classes.bookAppointmentHeading}>
+              Book An Appointment
+            </h3>
+            <img alt="" src={headingLines} width="57" height="4" />
+          </Grid>
+          <Grid item xs={11} sm={11} md={11} lg={11}>
             <Paper className={classes.paper}>
               <Grid container component="div" direction="row">
                 <Grid container component="div" direction="row">
                   <Grid item xs={12} sm={12} md={12} lg={12}>
-                    <form action="" id="shareYourDetailsForm" encType="multipart/form-data">
-                     {/* 1st row for Appointment Form */}
-                     <Grid container component="div" direction="row" justify="space-evenly">
-                        <Grid item xs={12} sm={12} md={12} lg={12} >
-                          <Grid container component="div" direction="row"  justify="space-evenly" >
+                    <form
+                      action=""
+                      id="shareYourDetailsForm"
+                      encType="multipart/form-data"
+                    >
+                      {/* 1st row for Appointment Form */}
+                      <Grid
+                        container
+                        component="div"
+                        direction="row"
+                        justify="space-evenly"
+                      >
+                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                          <Grid
+                            container
+                            component="div"
+                            direction="row"
+                            justify="space-evenly"
+                          >
                             <Grid item xs={12} md={12} sm={5} lg={5}>
                               <label htmlFor="name">
-                                <span className={classes.label}>Name:*</span>&nbsp;&nbsp;(eg. Varunam Reddy)
+                                <span className={classes.label}>Name:*</span>
+                                &nbsp;&nbsp;(eg. Varunam Reddy)
                               </label>
-                              <input type="text" name="name" id="name"
-                                onBlur={event =>
+                              <input
+                                type="text"
+                                name="name"
+                                id="name"
+                                onBlur={(event) =>
                                   validateAndUpdateFormdata(event, formData)
                                 }
                                 className={
                                   formData.name.error
                                     ? "invalid"
                                     : formData.name.value
-                                    ? "valid"
-                                    : ""
-                                }/>
+                                      ? "valid"
+                                      : ""
+                                }
+                              />
                               {formData.name.error && (
                                 <p className={classes.formError}>
                                   {formData.name.errorMessage}
@@ -581,19 +715,26 @@ const Sell = props => {
                             </Grid>
                             <Grid item xs={12} sm={12} md={5} lg={5}>
                               <label htmlFor="mobile">
-                                <span  className={classes.label}>Mobile No:*</span>&nbsp;&nbsp;(eg. +91 9999999999)
+                                <span className={classes.label}>
+                                  Mobile No:*
+                                </span>
+                                &nbsp;&nbsp;(eg. +91 9999999999)
                               </label>
-                              <input type="text" name="mobile" required
-                                onBlur={event =>
+                              <input
+                                type="text"
+                                name="mobile"
+                                required
+                                onBlur={(event) =>
                                   validateAndUpdateFormdata(event, formData)
                                 }
                                 className={
                                   formData.mobile.error
                                     ? "invalid"
                                     : formData.mobile.value
-                                    ? "valid"
-                                    : ""
-                                }/>
+                                      ? "valid"
+                                      : ""
+                                }
+                              />
                               {formData.mobile.error && (
                                 <p className={classes.formError}>
                                   {formData.mobile.errorMessage}
@@ -603,97 +744,135 @@ const Sell = props => {
                           </Grid>
                         </Grid>
                       </Grid>
-                      
+
                       {/* 2nd row for Appointment Form */}
-                      <Grid container component="div" direction="row" justify="space-evenly">
-                        <Grid item xs={12} sm={12} md={12} lg={12} >
-                          <Grid container component="div" direction="row"  justify="space-evenly" >
+                      <Grid
+                        container
+                        component="div"
+                        direction="row"
+                        justify="space-evenly"
+                      >
+                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                          <Grid
+                            container
+                            component="div"
+                            direction="row"
+                            justify="space-evenly"
+                          >
                             <Grid item xs={12} sm={12} md={5} lg={5}>
-                                <label htmlFor="city">
-                                  <span  className={classes.label}>City:*</span>&nbsp;&nbsp;(eg. Pune, Kolkata)
-                                </label>
-                                <input type="text" name="city" id="city"
-                                  onBlur={event =>
-                                    validateAndUpdateFormdata(event, formData)
-                                  }
-                                  className={
-                                    formData.city.error
-                                      ? "invalid"
-                                      : formData.city.value
+                              <label htmlFor="city">
+                                <span className={classes.label}>City:*</span>
+                                &nbsp;&nbsp;(eg. Pune, Kolkata)
+                              </label>
+                              <input
+                                type="text"
+                                name="city"
+                                id="city"
+                                onBlur={(event) =>
+                                  validateAndUpdateFormdata(event, formData)
+                                }
+                                className={
+                                  formData.city.error
+                                    ? "invalid"
+                                    : formData.city.value
                                       ? "valid"
                                       : ""
-                                  }/>
-                                {formData.city.error && (
-                                  <p className={classes.formError}>
-                                    {formData.city.errorMessage}
-                                  </p>
-                                )}
+                                }
+                              />
+                              {formData.city.error && (
+                                <p className={classes.formError}>
+                                  {formData.city.errorMessage}
+                                </p>
+                              )}
                             </Grid>
                             <Grid item xs={12} sm={12} md={5} lg={5}>
                               <label htmlFor="address">
-                                <span  className={classes.label}>Address:</span>&nbsp;&nbsp;(eg. 123, abc colony, Mumbai)
+                                <span className={classes.label}>Address:</span>
+                                &nbsp;&nbsp;(eg. 123, abc colony, Mumbai)
                               </label>
-                              <textarea name="address"
-                                onBlur={event =>
+                              <textarea
+                                name="address"
+                                onBlur={(event) =>
                                   updateFormdata(event, formData)
                                 }
                                 className={
                                   formData.address.error
                                     ? "invalid materialize-textarea"
                                     : formData.address.value
-                                    ? "valid materialize-textarea"
-                                    : "materialize-textarea"
-                                }></textarea>
-                                {formData.address.error && (
+                                      ? "valid materialize-textarea"
+                                      : "materialize-textarea"
+                                }
+                              ></textarea>
+                              {formData.address.error && (
                                 <p className={classes.formError}>
                                   {formData.address.errorMessage}
                                 </p>
-                                )}
+                              )}
                             </Grid>
                           </Grid>
                         </Grid>
                       </Grid>
-                      
+
                       {/* 3rd row for Appointment Form */}
-                      <Grid container component="div" direction="row" justify="space-evenly">
-                        <Grid item xs={12} sm={12} md={12} lg={12} >
-                          <Grid container component="div" direction="row"  justify="space-evenly" >
+                      <Grid
+                        container
+                        component="div"
+                        direction="row"
+                        justify="space-evenly"
+                      >
+                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                          <Grid
+                            container
+                            component="div"
+                            direction="row"
+                            justify="space-evenly"
+                          >
                             <Grid item xs={12} sm={12} md={5} lg={5}>
-                                <label htmlFor="make">
-                                  <span  className={classes.label}>Make:*</span>&nbsp;&nbsp;(eg. Honda, Bajaj)
-                                </label>
-                                <input type="text" name="make" required
-                                  onBlur={event =>
-                                    validateAndUpdateFormdata(event, formData)
-                                  }
-                                  className={
-                                    formData.make.error
-                                      ? "invalid"
-                                      : formData.make.value
+                              <label htmlFor="make">
+                                <span className={classes.label}>Make:*</span>
+                                &nbsp;&nbsp;(eg. Honda, Bajaj)
+                              </label>
+                              <input
+                                type="text"
+                                name="make"
+                                required
+                                onBlur={(event) =>
+                                  validateAndUpdateFormdata(event, formData)
+                                }
+                                className={
+                                  formData.make.error
+                                    ? "invalid"
+                                    : formData.make.value
                                       ? "valid"
                                       : ""
-                                  }/>
-                                {formData.make.error && (
-                                  <p className={classes.formError}>
-                                    {formData.make.errorMessage}
-                                  </p>
-                                )}
+                                }
+                              />
+                              {formData.make.error && (
+                                <p className={classes.formError}>
+                                  {formData.make.errorMessage}
+                                </p>
+                              )}
                             </Grid>
                             <Grid item xs={12} sm={12} md={5} lg={5}>
                               <label htmlFor="model">
-                                <span  className={classes.label}>Model:*</span>&nbsp;&nbsp;(eg. Activa, Pulsar)
+                                <span className={classes.label}>Model:*</span>
+                                &nbsp;&nbsp;(eg. Activa, Pulsar)
                               </label>
-                              <input type="text" name="model" required
-                                onBlur={event =>
+                              <input
+                                type="text"
+                                name="model"
+                                required
+                                onBlur={(event) =>
                                   validateAndUpdateFormdata(event, formData)
                                 }
                                 className={
                                   formData.model.error
                                     ? "invalid"
                                     : formData.model.value
-                                    ? "valid"
-                                    : ""
-                                }/>
+                                      ? "valid"
+                                      : ""
+                                }
+                              />
                               {formData.model.error && (
                                 <p className={classes.formError}>
                                   {formData.model.errorMessage}
@@ -703,46 +882,69 @@ const Sell = props => {
                           </Grid>
                         </Grid>
                       </Grid>
-                      
+
                       {/* 4nd row for Appointment Form */}
-                      <Grid container component="div" direction="row" justify="space-evenly">
-                        <Grid item xs={12} sm={12} md={12} lg={12} >
-                          <Grid container component="div" direction="row"  justify="space-evenly" >
+                      <Grid
+                        container
+                        component="div"
+                        direction="row"
+                        justify="space-evenly"
+                      >
+                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                          <Grid
+                            container
+                            component="div"
+                            direction="row"
+                            justify="space-evenly"
+                          >
                             <Grid item xs={12} sm={12} md={5} lg={5}>
-                                <label htmlFor="variant">
-                                  <span  className={classes.label}>Variant:</span>&nbsp;&nbsp;(eg. 150cc std)
-                                </label>
-                                <input type="text" name="variant" id="variant"
-                                  onBlur={event =>
-                                    updateFormdata(event, formData)}
-                                    className={
-                                      formData.variant.error
-                                        ? "invalid"
-                                        : formData.variant.value
-                                        ? "valid"
-                                        : ""
-                                    }/>
-                                  {formData.variant.error && (
-                                    <p className={classes.formError}>
-                                      {formData.variant.errorMessage}
-                                    </p>
-                                  )}
+                              <label htmlFor="variant">
+                                <span className={classes.label}>Variant:</span>
+                                &nbsp;&nbsp;(eg. 150cc std)
+                              </label>
+                              <input
+                                type="text"
+                                name="variant"
+                                id="variant"
+                                onBlur={(event) =>
+                                  updateFormdata(event, formData)
+                                }
+                                className={
+                                  formData.variant.error
+                                    ? "invalid"
+                                    : formData.variant.value
+                                      ? "valid"
+                                      : ""
+                                }
+                              />
+                              {formData.variant.error && (
+                                <p className={classes.formError}>
+                                  {formData.variant.errorMessage}
+                                </p>
+                              )}
                             </Grid>
                             <Grid item xs={12} sm={12} md={5} lg={5}>
                               <label htmlFor="kmsdriven">
-                                <span  className={classes.label}>KMs Driven:</span>&nbsp;&nbsp;(eg. 40,0000 km)
+                                <span className={classes.label}>
+                                  KMs Driven:
+                                </span>
+                                &nbsp;&nbsp;(eg. 40,0000 km)
                               </label>
-                              <input type="text" name="kmsdriven" id="kmsdriven"
-                                onBlur={event =>
+                              <input
+                                type="text"
+                                name="kmsdriven"
+                                id="kmsdriven"
+                                onBlur={(event) =>
                                   updateFormdata(event, formData)
                                 }
                                 className={
                                   formData.kmsdriven.error
                                     ? "invalid"
                                     : formData.kmsdriven.value
-                                    ? "valid"
-                                    : ""
-                                }/>
+                                      ? "valid"
+                                      : ""
+                                }
+                              />
                               {formData.kmsdriven.error && (
                                 <p className={classes.formError}>
                                   {formData.kmsdriven.errorMessage}
@@ -752,49 +954,70 @@ const Sell = props => {
                           </Grid>
                         </Grid>
                       </Grid>
-                      
+
                       {/* 5nd row for Appointment Form */}
-                      <Grid container component="div" direction="row" justify="space-evenly">
-                        <Grid item xs={12} sm={12} md={12} lg={12} >
-                          <Grid container component="div" direction="row"  justify="space-evenly" >
+                      <Grid
+                        container
+                        component="div"
+                        direction="row"
+                        justify="space-evenly"
+                      >
+                        <Grid item xs={12} sm={12} md={12} lg={12}>
+                          <Grid
+                            container
+                            component="div"
+                            direction="row"
+                            justify="space-evenly"
+                          >
                             <Grid item xs={12} sm={12} md={5} lg={5}>
-                                <label htmlFor="yom">
-                                  <span  className={classes.label}>Year of Manufacture:*</span>&nbsp;&nbsp;(eg. 2013)
-                                </label>
-                                <input
-                                  type="text"
-                                  name="yom"
-                                  onBlur={event =>
-                                    validateAndUpdateFormdata(event, formData)
-                                  }
-                                  className={
-                                    formData.yom.error
-                                      ? "invalid"
-                                      : formData.yom.value
+                              <label htmlFor="yom">
+                                <span className={classes.label}>
+                                  Year of Manufacture:*
+                                </span>
+                                &nbsp;&nbsp;(eg. 2013)
+                              </label>
+                              <input
+                                type="text"
+                                name="yom"
+                                onBlur={(event) =>
+                                  validateAndUpdateFormdata(event, formData)
+                                }
+                                className={
+                                  formData.yom.error
+                                    ? "invalid"
+                                    : formData.yom.value
                                       ? "valid"
                                       : ""
-                                  }/>
-                                {formData.yom.error && (
-                                  <p className={classes.formError}>
-                                    {formData.yom.errorMessage}
-                                  </p>
-                                )}
+                                }
+                              />
+                              {formData.yom.error && (
+                                <p className={classes.formError}>
+                                  {formData.yom.errorMessage}
+                                </p>
+                              )}
                             </Grid>
                             <Grid item xs={12} sm={12} md={5} lg={5}>
                               <label htmlFor="promocode">
-                                <span  className={classes.label}>Promocode:</span>&nbsp;&nbsp;(If applicable)
+                                <span className={classes.label}>
+                                  Promocode:
+                                </span>
+                                &nbsp;&nbsp;(If applicable)
                               </label>
-                              <input type="text" name="promocode" id="promocode"
-                                onBlur={event =>
+                              <input
+                                type="text"
+                                name="promocode"
+                                id="promocode"
+                                onBlur={(event) =>
                                   updateFormdata(event, formData)
                                 }
                                 className={
                                   formData.promocode.error
                                     ? "invalid"
                                     : formData.promocode.value
-                                    ? "valid"
-                                    : ""
-                                }/>
+                                      ? "valid"
+                                      : ""
+                                }
+                              />
                               {formData.promocode.error && (
                                 <p className={classes.formError}>
                                   {formData.promocode.errorMessage}
@@ -804,52 +1027,107 @@ const Sell = props => {
                           </Grid>
                         </Grid>
                       </Grid>
-                      <Grid container component="div" direction="row" justify="space-evenly">
-                        <Grid item xs={12} sm={12} md={5} lg={5}>
-                      </Grid>
-                      <Grid container component="div" direction="row" justify="space-evenly" className={classes.banner+' form-group'}>
-                              <Grid item xs={11} sm={11} md={11} lg={11}>
-                                <label className="fieldname">
-                                    <input type="checkbox" className="filled-in" defaultChecked />
-                                    <span>Interested in Exchange</span>
-                                </label>
-                              </Grid>
+                      <Grid
+                        container
+                        component="div"
+                        direction="row"
+                        justify="space-evenly"
+                      >
+                        <Grid item xs={12} sm={12} md={5} lg={5}></Grid>
+                        <Grid
+                          container
+                          component="div"
+                          direction="row"
+                          justify="space-evenly"
+                          className={classes.banner + " form-group"}
+                        >
+                          <Grid item xs={11} sm={11} md={11} lg={11}>
+                            <label className="fieldname">
+                              <input
+                                type="checkbox"
+                                className="filled-in"
+                                defaultChecked
+                              />
+                              <span>Interested in Exchange</span>
+                            </label>
                           </Grid>
-                          <Grid container component="div" direction="row" justify="space-evenly">
-                            <Grid item xs={11} sm={11} md={11} lg={11}>
-                              <label htmlFor="image">
-                                <span className={classes.label}> Upload images </span>&nbsp;&nbsp;(Images should be in jpeg, png or tiff formats only)
-                              </label>
-                              <br />
-                              <input 
-                               title=""
-                               className="form-control transparent" 
-                               type="file"
-                               onChange={(event)=>selectFiles(event, formData)} 
-                               multiple
-                               />
-                              <br />
-                              { formData.image.message? <p className="text-info">{formData.image.message}</p>: ''}
-                              {/* {formData.image.error && (
+                        </Grid>
+                        <Grid
+                          container
+                          component="div"
+                          direction="row"
+                          justify="space-evenly"
+                        >
+                          <Grid item xs={11} sm={11} md={11} lg={11}>
+                            <label htmlFor="image">
+                              <span className={classes.label}>
+                                Upload images
+                              </span>
+                              &nbsp;&nbsp;(Images should be in jpeg, png or tiff
+                              formats only)
+                            </label>
+                            <br />
+                            <input
+                              title=""
+                              className="form-control transparent"
+                              type="file"
+                              onChange={(event) => selectFiles(event, formData)}
+                              multiple
+                            />
+                            <br />
+                            {formData.image.message ? (
+                              <p className="text-info">
+                                {formData.image.message}
+                              </p>
+                            ) : (
+                                ""
+                              )}
+                            {/* {formData.image.error && (
                                 <p className={classes.formError}>
                                   {formData.image.errorMessage}
                                 </p>
                               )} */}
-                              <div className={matches ? "preview-image-container" : "preview-image-container-mobile"}>
-                                {previewImage.map((file, _i)=>(
-                                  <div key={_i} className="image-preview">
-                                    <img src={URL.createObjectURL(file)} width={200} height={150} />
-                                    <span title="Remove image"><DeleteIcon className="delete-icon" onClick={() => removeImageHandler(_i)} /></span>
-                                  </div>
-                                  ))}
-                              </div>  
-                            </Grid> 
+                            <div
+                              className={
+                                matches
+                                  ? "preview-image-container"
+                                  : "preview-image-container-mobile"
+                              }
+                            >
+                              {previewImage.map((file, _i) => (
+                                <div key={_i} className="image-preview">
+                                  <img
+                                    src={URL.createObjectURL(file)}
+                                    width={200}
+                                    height={150}
+                                  />
+                                  <span title="Remove image">
+                                    <DeleteIcon
+                                      className="delete-icon"
+                                      onClick={() => removeImageHandler(_i)}
+                                    />
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
                           </Grid>
                         </Grid>
+                      </Grid>
                       <Grid container component="div" direction="row">
-                        <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
+                        <Grid
+                          item
+                          xs={12}
+                          sm={12}
+                          md={12}
+                          lg={12}
+                          className="center-align"
+                        >
                           <div className="form-group">
-                            <button type="button" className="btn" onClick={submitForm} >
+                            <button
+                              type="button"
+                              className="btn"
+                              onClick={submitForm}
+                            >
                               Sell Your Vehicle
                             </button>
                             {/* <button type="button" onClick={handleOpen}>
@@ -865,28 +1143,907 @@ const Sell = props => {
             </Paper>
           </Grid>
           <Grid item xs={11} sm={11} md={11} lg={11}>
-            <SellingProcess heading="BikeBazaar Advantage"/>
+            <SellingProcess heading="BikeBazaar Advantage" />
           </Grid>
         </Grid>
+      ) : (
+          //mobile View sell page
+          <Grid container component="div" direction="row" justify="center">
+            <Grid item xs={11} md={11} sm={11} lg={11} className={classes.banner}>
+              <Banner
+                navigation="Sell"
+                heading="Sell any Two-Wheeler"
+                text=""
+                path={props.location.pathname}
+              />
+            </Grid>
+            {stepsToSellSection}
+            <Grid item xs={11} sm={11} md={11} lg={11} className="center-align">
+              <h3 className={classes.mobileAppointmentHeading}>
+                Book An Appointment
+            </h3>
+              <img alt="" src={mobiledivider} height="4" />
+            </Grid>
+            <Grid item xs={11} sm={11} md={11} lg={11}>
+              <Paper className={classes.paper}>
+                <Grid container component="div" direction="row">
+                  <Grid container component="div" direction="row">
+                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                      <form
+                        action=""
+                        id={
+                          matches
+                            ? "shareYourDetailsForm"
+                            : "shareYourDetailsFormMobile"
+                        }
+                        encType="multipart/form-data"
+                      >
+                        {/* 1st row for Appointment Form */}
+                        <Grid
+                          container
+                          component="div"
+                          direction="row"
+                          justify="space-evenly"
+                        >
+                          <Grid item xs={12} sm={12} md={12} lg={12}>
+                            <Grid
+                              container
+                              component="div"
+                              direction="row"
+                              justify="space-evenly"
+                            >
+                              {matches ? (
+                                <Grid item xs={12} md={12} sm={5} lg={5}>
+                                  <label htmlFor="name">
+                                    <span className={classes.label}>Name:*</span>
+                                  &nbsp;&nbsp;(eg. Varunam Reddy)
+                                </label>
+                                  <input
+                                    type="text"
+                                    name="name"
+                                    id="name"
+                                    onBlur={(event) =>
+                                      validateAndUpdateFormdata(event, formData)
+                                    }
+                                    className={
+                                      formData.name.error
+                                        ? "invalid"
+                                        : formData.name.value
+                                          ? "valid"
+                                          : ""
+                                    }
+                                  />
+                                  {formData.name.error && (
+                                    <p className={classes.formError}>
+                                      {formData.name.errorMessage}
+                                    </p>
+                                  )}
+                                </Grid>
+                              ) : (
+                                  <Grid item xs={12} md={12}>
+                                    <label htmlFor="name">
+                                      <span
+                                        style={{
+                                          fontSize: "12.5px",
+                                          fontWeight: "bold",
+                                          color: "black",
+                                        }}
+                                      >
+                                        Name:*
+                                  </span>
+                                  &nbsp;&nbsp;(eg. Varunam Reddy)
+                                </label>
+                                    <input
+                                      style={{ height: '28px' }}
+                                      type="text"
+                                      name="name"
+                                      id="name"
+                                      onBlur={(event) =>
+                                        validateAndUpdateFormdata(event, formData)
+                                      }
+                                      className={
+                                        formData.name.error
+                                          ? "invalid"
+                                          : formData.name.value
+                                            ? "valid"
+                                            : ""
+                                      }
+                                    />
+                                    {formData.name.error && (
+                                      <p className={classes.formError}>
+                                        {formData.name.errorMessage}
+                                      </p>
+                                    )}
+                                  </Grid>
+                                )}
+
+                              {matches ? (
+                                <Grid item xs={12} sm={12} md={5} lg={5}>
+                                  <label htmlFor="mobile">
+                                    <span className={classes.label}>
+                                      Mobile No:*
+                                  </span>
+                                  &nbsp;&nbsp;(eg. +91 9999999999)
+                                </label>
+                                  <input
+                                    type="text"
+                                    name="mobile"
+                                    required
+                                    onBlur={(event) =>
+                                      validateAndUpdateFormdata(event, formData)
+                                    }
+                                    className={
+                                      formData.mobile.error
+                                        ? "invalid"
+                                        : formData.mobile.value
+                                          ? "valid"
+                                          : ""
+                                    }
+                                  />
+                                  {formData.mobile.error && (
+                                    <p className={classes.formError}>
+                                      {formData.mobile.errorMessage}
+                                    </p>
+                                  )}
+                                </Grid>
+                              ) : (
+                                  <Grid item xs={12} sm={12} md={5} lg={5}>
+                                    <label htmlFor="mobile">
+                                      <span className={classes.label}>
+                                        Mobile No:*
+                                  </span>
+                                  &nbsp;&nbsp;(eg. +91 9999999999)
+                                </label>
+                                    <input
+                                      style={{ height: '28px' }}
+                                      type="text"
+                                      name="mobile"
+                                      required
+                                      onBlur={(event) =>
+                                        validateAndUpdateFormdata(event, formData)
+                                      }
+                                      className={
+                                        formData.mobile.error
+                                          ? "invalid"
+                                          : formData.mobile.value
+                                            ? "valid"
+                                            : ""
+                                      }
+                                    />
+                                    {formData.mobile.error && (
+                                      <p className={classes.formError}>
+                                        {formData.mobile.errorMessage}
+                                      </p>
+                                    )}
+                                  </Grid>
+                                )}
+                            </Grid>
+                          </Grid>
+                        </Grid>
+
+                        {/* 2nd row for Appointment Form */}
+                        <Grid
+                          container
+                          component="div"
+                          direction="row"
+                          justify="space-evenly"
+                        >
+                          <Grid item xs={12} sm={12} md={12} lg={12}>
+                            <Grid
+                              container
+                              component="div"
+                              direction="row"
+                              justify="space-evenly"
+                            >
+                              <Grid item xs={12} sm={12} md={5} lg={5}>
+                                <label htmlFor="city">
+                                  <span className={classes.label}>City:*</span>
+                                &nbsp;&nbsp;(eg. Pune, Kolkata)
+                              </label>
+                                <input
+                                  style={{ height: '28px' }}
+                                  type="text"
+                                  name="city"
+                                  id="city"
+                                  onBlur={(event) =>
+                                    validateAndUpdateFormdata(event, formData)
+                                  }
+                                  className={
+                                    formData.city.error
+                                      ? "invalid"
+                                      : formData.city.value
+                                        ? "valid"
+                                        : ""
+                                  }
+                                />
+                                {formData.city.error && (
+                                  <p className={classes.formError}>
+                                    {formData.city.errorMessage}
+                                  </p>
+                                )}
+                              </Grid>
+
+                              {matches ? (
+                                <Grid item xs={12} sm={12} md={5} lg={5}>
+                                  <label htmlFor="address">
+                                    <span className={classes.label}>
+                                      Address:
+                                  </span>
+                                  &nbsp;&nbsp;(eg. 123, abc colony, Mumbai)
+                                </label>
+                                  <textarea
+
+                                    name="address"
+                                    onBlur={(event) =>
+                                      updateFormdata(event, formData)
+                                    }
+                                    className={
+                                      formData.address.error
+                                        ? "invalid materialize-textarea"
+                                        : formData.address.value
+                                          ? "valid materialize-textarea"
+                                          : "materialize-textarea"
+                                    }
+                                  ></textarea>
+                                  {formData.address.error && (
+                                    <p className={classes.formError}>
+                                      {formData.address.errorMessage}
+                                    </p>
+                                  )}
+                                </Grid>
+                              ) : (
+                                  <Grid item xs={12} sm={12} md={5} lg={5}>
+                                    <label htmlFor="address">
+                                      <span className={classes.mobileLabel}>
+                                        Address:
+                                  </span>
+                                  &nbsp;(eg. 123, abc colony, Mumbai)
+                                </label>
+                                    <input
+                                      style={{ height: '28px' }}
+                                      name="address"
+                                      onBlur={(event) =>
+                                        updateFormdata(event, formData)
+                                      }
+                                      className={
+                                        formData.address.error
+                                          ? "invalid materialize-textarea"
+                                          : formData.address.value
+                                            ? "valid materialize-textarea"
+                                            : "materialize-textarea"
+                                      }
+                                    ></input>
+                                    {formData.address.error && (
+                                      <p className={classes.formError}>
+                                        {formData.address.errorMessage}
+                                      </p>
+                                    )}
+                                  </Grid>
+                                )}
+                            </Grid>
+                          </Grid>
+                        </Grid>
+
+                        {/* 3rd row for Appointment Form */}
+                        <Grid
+                          container
+                          component="div"
+                          direction="row"
+                          justify="space-evenly"
+                        >
+                          <Grid item xs={12} sm={12} md={12} lg={12}>
+                            <Grid
+                              container
+                              component="div"
+                              direction="row"
+                              justify="space-evenly"
+                            >
+                              {matches ? <Grid item xs={12} sm={12} md={5} lg={5}>
+                                <label htmlFor="make">
+                                  <span className={classes.label}>Make:*</span>
+                                &nbsp;&nbsp;(eg. Honda, Bajaj)
+                              </label>
+                                <input
+                                  type="text"
+                                  name="make"
+                                  required
+                                  onBlur={(event) =>
+                                    validateAndUpdateFormdata(event, formData)
+                                  }
+                                  className={
+                                    formData.make.error
+                                      ? "invalid"
+                                      : formData.make.value
+                                        ? "valid"
+                                        : ""
+                                  }
+                                />
+                                {formData.make.error && (
+                                  <p className={classes.formError}>
+                                    {formData.make.errorMessage}
+                                  </p>
+                                )}
+                              </Grid> : <Grid item xs={12} sm={12} md={5} lg={5}>
+                                  <label htmlFor="make">
+                                    <span className={classes.label}>Make:*</span>
+                                &nbsp;&nbsp;(eg. Honda, Bajaj)
+                              </label>
+                                  <input
+                                    style={{ height: '28px' }}
+                                    type="text"
+                                    name="make"
+                                    required
+                                    onBlur={(event) =>
+                                      validateAndUpdateFormdata(event, formData)
+                                    }
+                                    className={
+                                      formData.make.error
+                                        ? "invalid"
+                                        : formData.make.value
+                                          ? "valid"
+                                          : ""
+                                    }
+                                  />
+                                  {formData.make.error && (
+                                    <p className={classes.formError}>
+                                      {formData.make.errorMessage}
+                                    </p>
+                                  )}
+                                </Grid>}
+
+
+                              {matches ? <Grid item xs={12} sm={12} md={5} lg={5}>
+                                <label htmlFor="model">
+                                  <span className={classes.label}>Model:*</span>
+                                &nbsp;&nbsp;(eg. Activa, Pulsar)
+                              </label>
+                                <input
+                                  type="text"
+                                  name="model"
+                                  required
+                                  onBlur={(event) =>
+                                    validateAndUpdateFormdata(event, formData)
+                                  }
+                                  className={
+                                    formData.model.error
+                                      ? "invalid"
+                                      : formData.model.value
+                                        ? "valid"
+                                        : ""
+                                  }
+                                />
+                                {formData.model.error && (
+                                  <p className={classes.formError}>
+                                    {formData.model.errorMessage}
+                                  </p>
+                                )}
+                              </Grid> : <Grid item xs={12} sm={12} md={5} lg={5}>
+                                  <label htmlFor="model">
+                                    <span className={classes.label}>Model:*</span>
+                                &nbsp;&nbsp;(eg. Activa, Pulsar)
+                              </label>
+                                  <input
+                                    style={{ height: '28px' }}
+                                    type="text"
+                                    name="model"
+                                    required
+                                    onBlur={(event) =>
+                                      validateAndUpdateFormdata(event, formData)
+                                    }
+                                    className={
+                                      formData.model.error
+                                        ? "invalid"
+                                        : formData.model.value
+                                          ? "valid"
+                                          : ""
+                                    }
+                                  />
+                                  {formData.model.error && (
+                                    <p className={classes.formError}>
+                                      {formData.model.errorMessage}
+                                    </p>
+                                  )}
+                                </Grid>}
+                            </Grid>
+                          </Grid>
+                        </Grid>
+
+                        {/* 4nd row for Appointment Form */}
+                        <Grid
+                          container
+                          component="div"
+                          direction="row"
+                          justify="space-evenly"
+                        >
+                          <Grid item xs={12} sm={12} md={12} lg={12}>
+                            <Grid
+                              container
+                              component="div"
+                              direction="row"
+                              justify="space-evenly"
+                            >
+                              {matches ? <Grid item xs={12} sm={12} md={5} lg={5}>
+                                <label htmlFor="variant">
+                                  <span className={classes.label}>Variant:</span>
+                                &nbsp;&nbsp;(eg. 150cc std)
+                              </label>
+                                <input
+                                  type="text"
+                                  name="variant"
+                                  id="variant"
+                                  onBlur={(event) =>
+                                    updateFormdata(event, formData)
+                                  }
+                                  className={
+                                    formData.variant.error
+                                      ? "invalid"
+                                      : formData.variant.value
+                                        ? "valid"
+                                        : ""
+                                  }
+                                />
+                                {formData.variant.error && (
+                                  <p className={classes.formError}>
+                                    {formData.variant.errorMessage}
+                                  </p>
+                                )}
+                              </Grid> : <Grid item xs={12} sm={12} md={5} lg={5}>
+                                  <label htmlFor="variant">
+                                    <span className={classes.label}>Variant:</span>
+                                &nbsp;&nbsp;(eg. 150cc std)
+                              </label>
+                                  <input
+                                    style={{ height: '28px' }}
+                                    type="text"
+                                    name="variant"
+                                    id="variant"
+                                    onBlur={(event) =>
+                                      updateFormdata(event, formData)
+                                    }
+                                    className={
+                                      formData.variant.error
+                                        ? "invalid"
+                                        : formData.variant.value
+                                          ? "valid"
+                                          : ""
+                                    }
+                                  />
+                                  {formData.variant.error && (
+                                    <p className={classes.formError}>
+                                      {formData.variant.errorMessage}
+                                    </p>
+                                  )}
+                                </Grid>}
+
+                              {matches ? <Grid item xs={12} sm={12} md={5} lg={5}>
+                                <label htmlFor="kmsdriven">
+                                  <span className={classes.label}>
+                                    KMs Driven:
+                                </span>
+                                &nbsp;&nbsp;(eg. 40,0000 km)
+                              </label>
+                                <input
+                                  type="text"
+                                  name="kmsdriven"
+                                  id="kmsdriven"
+                                  onBlur={(event) =>
+                                    updateFormdata(event, formData)
+                                  }
+                                  className={
+                                    formData.kmsdriven.error
+                                      ? "invalid"
+                                      : formData.kmsdriven.value
+                                        ? "valid"
+                                        : ""
+                                  }
+                                />
+                                {formData.kmsdriven.error && (
+                                  <p className={classes.formError}>
+                                    {formData.kmsdriven.errorMessage}
+                                  </p>
+                                )}
+                              </Grid> : <Grid item xs={12} sm={12} md={5} lg={5}>
+                                  <label htmlFor="kmsdriven">
+                                    <span className={classes.label}>
+                                      KMs Driven:
+                                </span>
+                                &nbsp;&nbsp;(eg. 40,0000 km)
+                              </label>
+                                  <input
+                                    style={{ height: '28px' }}
+                                    type="text"
+                                    name="kmsdriven"
+                                    id="kmsdriven"
+                                    onBlur={(event) =>
+                                      updateFormdata(event, formData)
+                                    }
+                                    className={
+                                      formData.kmsdriven.error
+                                        ? "invalid"
+                                        : formData.kmsdriven.value
+                                          ? "valid"
+                                          : ""
+                                    }
+                                  />
+                                  {formData.kmsdriven.error && (
+                                    <p className={classes.formError}>
+                                      {formData.kmsdriven.errorMessage}
+                                    </p>
+                                  )}
+                                </Grid>}
+                            </Grid>
+                          </Grid>
+                        </Grid>
+
+                        {/* 5nd row for Appointment Form */}
+                        <Grid
+                          container
+                          component="div"
+                          direction="row"
+                          justify="space-evenly"
+                        >
+                          <Grid item xs={12} sm={12} md={12} lg={12}>
+                            <Grid
+                              container
+                              component="div"
+                              direction="row"
+                              justify="space-evenly"
+                            >
+                              {matches ? <Grid item xs={12} sm={12} md={5} lg={5}>
+                                <label htmlFor="yom">
+                                  <span className={classes.label}>
+                                    Year of Manufacture:*
+                                </span>
+                                &nbsp;&nbsp;(eg. 2013)
+                              </label>
+                                <input
+                                  type="text"
+                                  name="yom"
+                                  onBlur={(event) =>
+                                    validateAndUpdateFormdata(event, formData)
+                                  }
+                                  className={
+                                    formData.yom.error
+                                      ? "invalid"
+                                      : formData.yom.value
+                                        ? "valid"
+                                        : ""
+                                  }
+                                />
+                                {formData.yom.error && (
+                                  <p className={classes.formError}>
+                                    {formData.yom.errorMessage}
+                                  </p>
+                                )}
+                              </Grid> : <Grid item xs={12} sm={12} md={5} lg={5}>
+                                  <label htmlFor="yom">
+                                    <span className={classes.label}>
+                                      Year of Manufacture:*
+                                </span>
+                                &nbsp;&nbsp;(eg. 2013)
+                              </label>
+                                  <input
+                                    style={{ height: '28px' }}
+                                    type="text"
+                                    name="yom"
+                                    onBlur={(event) =>
+                                      validateAndUpdateFormdata(event, formData)
+                                    }
+                                    className={
+                                      formData.yom.error
+                                        ? "invalid"
+                                        : formData.yom.value
+                                          ? "valid"
+                                          : ""
+                                    }
+                                  />
+                                  {formData.yom.error && (
+                                    <p className={classes.formError}>
+                                      {formData.yom.errorMessage}
+                                    </p>
+                                  )}
+                                </Grid>}
+
+
+                              {matches ? <Grid item xs={12} sm={12} md={5} lg={5}>
+                                <label htmlFor="promocode">
+                                  <span className={classes.label}>
+                                    Promocode:
+                                </span>
+                                &nbsp;&nbsp;(If applicable)
+                              </label>
+                                <input
+                                  type="text"
+                                  name="promocode"
+                                  id="promocode"
+                                  onBlur={(event) =>
+                                    updateFormdata(event, formData)
+                                  }
+                                  className={
+                                    formData.promocode.error
+                                      ? "invalid"
+                                      : formData.promocode.value
+                                        ? "valid"
+                                        : ""
+                                  }
+                                />
+                                {formData.promocode.error && (
+                                  <p className={classes.formError}>
+                                    {formData.promocode.errorMessage}
+                                  </p>
+                                )}
+                              </Grid> : <Grid item xs={12} sm={12} md={5} lg={5}>
+                                  <label htmlFor="promocode">
+                                    <span className={classes.label}>
+                                      Promocode:
+                                </span>
+                                &nbsp;&nbsp;(If applicable)
+                              </label>
+                                  <input
+                                    style={{ height: '28px' }}
+                                    type="text"
+                                    name="promocode"
+                                    id="promocode"
+                                    onBlur={(event) =>
+                                      updateFormdata(event, formData)
+                                    }
+                                    className={
+                                      formData.promocode.error
+                                        ? "invalid"
+                                        : formData.promocode.value
+                                          ? "valid"
+                                          : ""
+                                    }
+                                  />
+                                  {formData.promocode.error && (
+                                    <p className={classes.formError}>
+                                      {formData.promocode.errorMessage}
+                                    </p>
+                                  )}
+                                </Grid>}
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                        <Grid
+                          container
+                          component="div"
+                          direction="row"
+                          justify="space-evenly"
+                        >
+                          <Grid item xs={12} sm={12} md={5} lg={5}></Grid>
+                          <Grid
+                            container
+                            component="div"
+                            direction="row"
+                            justify="space-evenly"
+                            className={classes.banner + " form-group"}
+                          >
+                            {matches ? (
+                              <Grid item xs={11} sm={11} md={11} lg={11}>
+                                <label className="fieldname">
+                                  <input
+                                    type="checkbox"
+                                    className="filled-in"
+                                    defaultChecked
+                                  />
+                                  <span>Interested in Exchange</span>
+                                </label>
+                              </Grid>
+                            ) : (
+                                <Grid item xs={11} sm={11} md={11} lg={11}>
+                                  <label className="fieldname">
+                                    <input
+                                      type="checkbox"
+                                      className="filled-in"
+                                      defaultChecked
+                                    />
+                                    <span
+                                      style={{
+                                        color: "#232c2b",
+                                        fontWeight: "500",
+                                      }}
+                                    >
+                                      Interested in Exchange
+                                </span>
+                                  </label>
+                                </Grid>
+                              )}
+                          </Grid>
+                          <Grid
+                            container
+                            component="div"
+                            direction="row"
+                            justify="space-evenly"
+                          >
+                            <Grid item xs={11} sm={11} md={11} lg={11}>
+                              {matches ? (
+                                <>
+                                  <label htmlFor="image">
+                                    <span className={classes.label}>
+                                      Upload images
+                                  </span>
+                                  &nbsp;&nbsp;(Images should be in jpeg, png or
+                                  tiff formats only)
+                                </label>
+                                  <br />
+                                  <input
+                                    title=""
+                                    className="form-control transparent"
+                                    type="file"
+                                    onChange={(event) =>
+                                      selectFiles(event, formData)
+                                    }
+                                    multiple
+                                  />
+                                </>
+                              ) : (
+                                  <div
+                                    style={{
+                                      display: "flex",
+                                      flexDirection: "column",
+                                    }}
+                                  >
+                                    <div
+                                      style={{
+                                        width: "100%",
+                                        display: "flex",
+                                        flexDirection: "row",
+                                      }}
+                                    >
+                                      <span
+                                        style={{
+                                          fontSize: "12px",
+                                          fontWeight: "bold",
+                                        }}
+                                      >
+                                        Upload images
+                                  </span>
+                                      <span
+                                        style={{
+                                          fontSize: "12px",
+                                          marginLeft: "1%",
+                                        }}
+                                      >
+                                        (images should be in
+                                  </span>
+                                    </div>
+                                    <span style={{ fontSize: "12px" }}>
+                                      jpeg,png or tiff formats only
+                                </span>
+                                    <div style={{ display: 'flex', flexDirection: 'row', marginTop: '2%' }}>
+                                      <Button
+                                        style={{
+                                          height: "26px",
+                                          width: "164px",
+                                          backgroundColor: "#232c2b",
+                                        }}
+                                        component="label"
+                                        variant="contained"
+                                      >
+                                        <span
+                                          style={{
+                                            color: "white",
+                                            fontSize: "10px",
+                                            fontWeight: "600",
+                                          }}
+                                        >
+                                          Upload images here
+                                    </span>
+                                        <input
+                                          className="form-control transparent"
+                                          type="file"
+                                          onChange={(event) =>
+                                            selectFiles(event, formData)
+                                          }
+                                          multiple
+                                          type="file"
+                                          hidden
+                                        />
+                                      </Button>
+
+                                      <div style={{ borderRadius: '5px', height: '27px', width: '35px', backgroundColor: '#e9e9e9', marginLeft: '2%', justifyContent: 'center' }}><AddIcon style={{ marginTop: '2%', marginLeft: '18%' }} /></div>
+                                    </div>
+                                  </div>
+                                )}
+
+                              <br />
+                              {formData.image.message ? (
+                                <p className="text-info">
+                                  {formData.image.message}
+                                </p>
+                              ) : (
+                                  ""
+                                )}
+                              {/* {formData.image.error && (
+                                <p className={classes.formError}>
+                                  {formData.image.errorMessage}
+                                </p>
+                              )} */}
+                              <div
+                                className={
+                                  matches
+                                    ? "preview-image-container"
+                                    : "preview-image-container-mobile"
+                                }
+                              >
+                                {previewImage.map((file, _i) => (
+                                  <div key={_i} className="image-preview">
+                                    <img
+                                      src={URL.createObjectURL(file)}
+                                      width={200}
+                                      height={150}
+                                    />
+                                    <span title="Remove image">
+                                      <DeleteIcon
+                                        className="delete-icon"
+                                        onClick={() => removeImageHandler(_i)}
+                                      />
+                                    </span>
+                                  </div>
+                                ))}
+                              </div>
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                        <Grid container component="div" direction="row">
+                          <Grid
+                            item
+                            xs={12}
+                            sm={12}
+                            md={12}
+                            lg={12}
+                            className="center-align"
+                          >
+                            {matches ? <div className="form-group">
+                              <button
+                                type="button"
+                                className="btn"
+                                onClick={submitForm}
+                              >
+                                Sell Your Vehicle
+                            </button>
+                              {/* <button type="button" onClick={handleOpen}>
+                              Open Modal
+                            </button> */}
+                          
+                          </div> : <Button onClick={submitForm} style={{
+                                width: "208px",
+                                height: "45px",
+                                borderRadius: "22px",
+                                backgroundColor: "#ff0000"
+                              }}>
+
+                                <p style={{ color: 'white', fontWeight: 'bold', fontSize: '14px' }}>Sell Your Vehicle</p> </Button>}
+                          </Grid>
+                        </Grid>
+                      </form>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </Paper>
+            </Grid>
+            <Grid item xs={11} sm={11} md={11} lg={11}>
+              <SellingProcess heading="BikeBazaar Advantage" />
+            </Grid>
+          </Grid>
+        )}
+
       <Footer />
     </div>
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    filter: state.vehicleDetails.filter
+    filter: state.vehicleDetails.filter,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     kmFilter: (category, filterdata) =>
-      dispatch(actions.getVehicles(category, filterdata))
+      dispatch(actions.getVehicles(category, filterdata)),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Sell);
+export default connect(mapStateToProps, mapDispatchToProps)(Sell);

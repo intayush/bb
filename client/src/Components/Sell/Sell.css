@@ -12,6 +12,10 @@
   margin-top: 10px;
 }
 
+#shareYourDetailsFormMobile{
+padding:1%
+}
+
 #shareYourDetailsForm {
   padding:  50px 40px 15px 40px;
 }
@@ -71,8 +75,9 @@ label{
 }
 .preview-image-container {
   display: flex;
-  justify-content: flex-start;
+ justify-content: space-between;
   align-items: center;
+  flex-direction: row;
 }
 .preview-image-container-mobile {
   display: flex;
