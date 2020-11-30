@@ -288,7 +288,7 @@ const Footer = () => {
               height="14"
               alt=""
             />
-            <span style={{ marginLeft: "1%",fontSize:'13px' }}>8956853498</span>
+            <span style={{ marginLeft: "2%",fontSize:'13px' }}>8956853498</span>
           </div>
           <div
             style={{
