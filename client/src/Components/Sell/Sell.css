@@ -13,7 +13,9 @@
 }
 
 #shareYourDetailsFormMobile{
-padding:1%
+padding:1%;
+max-height: 590px;
+overflow-y:scroll
 }
 
 #shareYourDetailsForm {
@@ -23,6 +25,7 @@ padding:1%
   .form-group
   input[type="text"]:not(.browser-default):focus:not([readonly]) {
   box-shadow: none;
+
 }
 #shareYourDetailsForm .form-group .btn {
   background: #ff0000;
