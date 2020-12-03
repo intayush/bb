@@ -13,7 +13,9 @@
 }
 
 #shareYourDetailsFormMobile{
-padding:1%
+padding:1%;
+max-height: 590px;
+overflow-y:scroll
 }
 
 #shareYourDetailsForm {
