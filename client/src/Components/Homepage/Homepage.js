@@ -10,6 +10,7 @@ import bikeGIF from "../../assets/Motorcycle-GIF.gif";
 import scooterGIF from "../../assets/Scooter-GIF.gif";
 import highEndBikeGIF from "../../assets/High-End-Motorcycle-GIF.gif";
 import bannerImg from "../../assets/banner.png";
+
 import headingLines from "../../assets/heading-lines.svg";
 import bikeStill from "../../assets/motorcycle.svg";
 import scooterStill from "../../assets/scooter.svg";
@@ -30,10 +31,18 @@ import { CHANGE_CATEGORY } from "../../store/actions/actionTypes";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 
+
+
+
 const Homepage = (props) => {
+ 
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
-
+  const changeSliders = matches ? "sliders" : "mobile-sliders";
+  const changeSlides = matches ? "slide" : "mobile-slide";
+  const changeCaptions = matches ? "captions" : "mobile-captions";
+  const changeHeadings = matches ? "headings" : "mobile-headings";
+  const changeLogo = matches ? "tick-icon" : "mobile-tick-icon";
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const [bikeHover, setBikeHover] = useState(false);
@@ -104,6 +113,8 @@ const Homepage = (props) => {
     let topSlider = document.querySelectorAll(".slider");
     M.Slider.init(topSlider, {});
     initCar();
+    
+    
     //dispatch({ type: HOMEPAGE_LOAD });
   }, []);
 
@@ -111,38 +122,48 @@ const Homepage = (props) => {
     <div className="App">
       {/* <Header /> */}
       <MainMenu />
-      <div className="slider hide-on-small-only">
-        <ul className="slides">
-          <li>
-            <img alt="" src={bannerImg} />
-            <div className="caption left-align">
-              <h3 className="heading">
+     <div className ={changeSliders}>
+        <div className = {changeSlides}>
+          
+        <img
+                  style={{ position:"relative", zoom: "1" }}
+                  src={bannerImg}
+                  width={matches ? "100%" : "100%"}
+                  height={matches ? "500px" : "200px"}
+                  objectFit={matches ? "" : "contain"}
+                  alt=""
+                />
+            <div className={ changeCaptions + " left-align"}>
+              <h3 className= {changeHeadings}>
                 India's Favourite Place to Buy
                 <br />
                 Pre-owned Two-wheelers
               </h3>
               <h4 className="text-white">
-                <img alt="" src={logo} className="tick-icon" />
+                <img alt="" src={logo} className={changeLogo}/>
                 <span>
                   <span className="bold">Certified</span> Two-wheeler
                 </span>
               </h4>
               <h4 className="text-white">
-                <img alt="" src={logo} className="tick-icon" />
+                <img alt="" src={logo} className={changeLogo} />
                 <span>
                   6 Months' <span className="bold">Warranty</span>
                 </span>
               </h4>
               <h4 className="text-white">
-                <img alt="" src={logo} className="tick-icon" />
+                <img alt="" src={logo} className={changeLogo}/>
                 <span>
                   Low Cost <span className="bold">EMI</span>
                 </span>
               </h4>
             </div>
-          </li>
-        </ul>
-      </div>
+          </div>
+       </div>
+      
+      
+       
+      
       <div className="section-2">
         {matches ? (
           <>
