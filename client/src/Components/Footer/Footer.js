@@ -82,7 +82,7 @@ const Footer = ({ props }) => {
             <div className="verticalLine"></div>
             <Grid item md={4}>
               <p
-                style={{ marginBottom: "4%", marginLeft: "8%" }}
+                style={{ marginBottom: "4%", marginLeft: "9%" }}
                 className={classes.text}
               >
                 Quick Links
