@@ -185,7 +185,7 @@ const LocationDropDown = ({ matches, classes }) => {
           style: {
             backgroundColor: "black",
             marginRight: "5%",
-            width: "30%",
+            width: "24%",
             scrollbarWidth: "thin",
           },
         }}
@@ -294,7 +294,7 @@ const HamburgerDropdown = ({ matches }) => {
             width: "80%",
             marginTop: "-10%",
             marginLeft: "6%",
-            height: "75%",
+            height: "65%",
             overflowY: "hidden",
           },
         }}
