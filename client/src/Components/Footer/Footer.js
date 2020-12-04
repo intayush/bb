@@ -14,7 +14,6 @@ import { Link } from "react-router-dom";
 import { CHANGE_CATEGORY } from "../../store/actions/actionTypes";
 import { useDispatch } from "react-redux";
 import "./Footer.css";
-import { BIKE } from "../../shared/constants/category";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -147,9 +146,7 @@ const Footer = ({ props }) => {
                   }}
                 >
                   <p onClick={categoryHandler} className={classes.columnsText}>
-                   
-                    <span style={{pointer:'cursor'}}>Buy</span>
-                   
+                    <span style={{ pointer: "cursor" }}>Buy</span>
                   </p>
                   <p className={classes.columnsText}>
                     <Link style={{ letterSpacing: "0px" }} to="/sell">
@@ -169,7 +166,6 @@ const Footer = ({ props }) => {
                       style={{ letterSpacing: "0px" }}
                       to="/becomefranchiseowner"
                     >
-                     
                       Become a Franchise Owner
                     </Link>
                   </p>
@@ -257,19 +253,27 @@ const Footer = ({ props }) => {
                       marginTop: "3%",
                     }}
                   >
-                    <img src={faceBookIcon} />
-                    <img
-                      style={{ marginLeft: "2%", cursor: "pointer" }}
-                      src={instagramIcon}
-                    />
-                    <img
-                      style={{ marginLeft: "2%", cursor: "pointer" }}
-                      src={linkedinIcon}
-                    />
-                    <img
-                      style={{ marginLeft: "2%", cursor: "pointer" }}
-                      src={twitterIcon}
-                    />
+                    <a href="https://www.facebook.com/BikeBazaaar">
+                      <img src={faceBookIcon} />
+                    </a>
+                    <a href="https://www.instagram.com/bikebazaaar/">
+                      <img
+                        style={{ marginLeft: "2%", cursor: "pointer" }}
+                        src={instagramIcon}
+                      />
+                    </a>
+                    <a href="https://www.linkedin.com/company/bikebazaar">
+                      <img
+                        style={{ marginLeft: "2%", cursor: "pointer" }}
+                        src={linkedinIcon}
+                      />
+                    </a>
+                    <a href="https://twitter.com/BikeBazaaar">
+                      <img
+                        style={{ marginLeft: "2%", cursor: "pointer" }}
+                        src={twitterIcon}
+                      />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -378,7 +382,6 @@ const Footer = ({ props }) => {
                 onClick={categoryHandler}
                 style={{ fontSize: "10px ", color: "white" }}
               >
-                {" "}
                 Buy
               </span>
               <br />
@@ -481,37 +484,47 @@ const Footer = ({ props }) => {
                 marginTop: "1%",
               }}
             >
-              <img
-                src={faceBookIcon}
-                style={{ height: "13px", width: "16px" }}
-              />
-              <img
-                style={{
-                  marginLeft: "8%",
-                  cursor: "pointer",
-                  height: "13px",
-                  width: "16px",
-                }}
-                src={instagramIcon}
-              />
-              <img
-                style={{
-                  marginLeft: "10%",
-                  cursor: "pointer",
-                  height: "13px",
-                  width: "16px",
-                }}
-                src={linkedinIcon}
-              />
-              <img
-                style={{
-                  marginLeft: "10%",
-                  cursor: "pointer",
-                  height: "13px",
-                  width: "16px",
-                }}
-                src={twitterIcon}
-              />
+              <a href="https://www.facebook.com/BikeBazaaar">
+                <img
+                  src={faceBookIcon}
+                  style={{ height: "13px", width: "16px" }}
+                />
+              </a>
+
+              <a href="https://www.instagram.com/bikebazaaar/">
+                <img
+                  style={{
+                    marginLeft: "8%",
+                    cursor: "pointer",
+                    height: "13px",
+                    width: "16px",
+                  }}
+                  src={instagramIcon}
+                />
+              </a>
+
+              <a href="https://www.linkedin.com/company/bikebazaar">
+                <img
+                  style={{
+                    marginLeft: "10%",
+                    cursor: "pointer",
+                    height: "13px",
+                    width: "16px",
+                  }}
+                  src={linkedinIcon}
+                />
+              </a>
+              <a href="https://twitter.com/BikeBazaaar">
+                <img
+                  style={{
+                    marginLeft: "10%",
+                    cursor: "pointer",
+                    height: "13px",
+                    width: "16px",
+                  }}
+                  src={twitterIcon}
+                />
+              </a>
             </div>
           </div>
         </div>
