@@ -11,7 +11,10 @@ import instagramIcon from "../../assets/instagram-icon.svg";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import {Link} from "react-router-dom";
+import {CHANGE_CATEGORY} from "../../store/actions/actionTypes";
+import {useDispatch} from "react-redux";
 import "./Footer.css";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,12 +49,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Footer = () => {
+const Footer = ({props}) => {
+
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
+  const dispatch=useDispatch();
+  const footerCss=matches?"footer":"mobilefooter";
 
-  const footerCss=matches?"footer":"mobilefooter"
+  const categoryHandler=()=>{
+
+    dispatch({type:CHANGE_CATEGORY,payload:1});
+    props.history.push("/category/" + "bike");
+  }
+
   return (
     <div className={footerCss}>
       {matches ? (
@@ -260,7 +271,7 @@ const Footer = () => {
                   <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/contact">Contact Us</Link></span>
             </div><Link to=""></Link>
             <div style={{ display: "flex-start", flexDirection: "column" ,marginLeft:'20%'}}>
-                  <span style={{ fontSize:'10px '}}> <Link style={{color:'white',letterSpacing:'0px'}} to="/buy">Buy</Link></span><br/>
+                  <span onClick={categoryHandler} style={{ fontSize:'10px ',color:'white'}}> Buy</span><br/>
                   <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/sell">Sell</Link></span><br/>
                   <span style={{fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/vehicledetails/locate-store">Locate Store</Link></span><br/>
                   <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/becomefranchiseowner">Become a Franchise Owner</Link></span><br/>

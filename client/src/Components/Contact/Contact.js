@@ -88,7 +88,12 @@ const useStyles = makeStyles(theme => ({
     fontSize: 16,
     letterSpacing: '0.83px'
   },
-  mobileLabel:{},
+
+  mobileLabel:{
+    fontWeight: 600,
+    fontSize: 13,
+
+  },
   submit:{
     background: '#ff0000',
     padding: '6px 30px',
@@ -100,6 +105,16 @@ const useStyles = makeStyles(theme => ({
     boxShadow: 'none',
     marginLeft: 10,
     marginTop: 10
+  },
+  mobileViewSubmitbtn:{
+    background: '#ff0000',
+    padding: '6px 30px',
+    borderRadius: 24,
+    height: 48,
+    fontSize: 18,
+    fontWeight: 600,  
+    textTransform: 'capitalize',
+    boxShadow: 'none',
   },
   modalBoxSuccess: {
     position: 'absolute',
@@ -441,16 +456,17 @@ const Contact = props => {
               <Paper elevation={3} className={matches?classes.paper2:classes.mobilepaper2}>
                 <div className="center-align">
                   {matches? <h5 className="contact-heading">Contact Form</h5>:<p style={{fontSize:'15px',fontWeight:'bold',color:'#ff0000'}}>Contact Us</p>}
-                  <img src={matches?headingLines:mobiledivider} alt="" className="heading-line" />
+                  <img src={matches?headingLines:mobiledivider} style={matches?{marginBottom:'10px'}:{marginBottom:'5px'}} alt="" className="heading-line" />
                 </div>
                 <div id="contactForm">
                   <form>
                     <Grid container component="div" direction="row">
                       <Grid item xs={11} sm={11} md={12} lg={12}>
                         <label htmlFor="name" className="black-text">
-                          <span className={classes.label}>Name:*</span>&nbsp;&nbsp;(eg. Varunam Reddy)
+                          {matches?<><span className={classes.label}>Name:*</span>&nbsp;&nbsp;(eg. Varunam Reddy)</>
+                          :<><span className={classes.mobileLabel}>Name:*</span>&nbsp;<span style={{fontSize:'13px'}}>(eg. Varunam Reddy)</span></>}
                         </label>
-                        <input
+                        {matches?<input
                           type="text"
                           name="name"
                           id="name"
@@ -465,7 +481,23 @@ const Contact = props => {
                               ? "valid"
                               : ""
                           }
-                        />
+                        />:<input
+                      style={{height:'24px'}}
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder=""
+                        onBlur={event =>
+                          validateAndUpdateFormdata(event, formData)
+                        }
+                        className={
+                          formData.name.error
+                            ? "invalid"
+                            : formData.name.value
+                            ? "valid"
+                            : ""
+                        }
+                      />}
                         {formData.name.error && (
                           <p className={classes.formError}>
                             {formData.name.errorMessage}
@@ -476,9 +508,12 @@ const Contact = props => {
                     <Grid container component="div" direction="row" justify="space-between" className={classes.banner}>
                       <Grid item xs={11} sm={12} md={5} lg={5}>
                         <label htmlFor="mobilno" className="black-text">
-                          <span  className={classes.label}>Mobile No:*</span>&nbsp;&nbsp;(eg. +91 9999999999)
+                          {/* <span  className={classes.label}>Mobile No:*</span>&nbsp;&nbsp;(eg. +91 9999999999) */}
+                              {matches?<><span className={classes.label}>Mobile No:*</span>&nbsp;&nbsp;(eg. +91 9999999999) </>
+                              :<><span className={classes.mobileLabel}>Mobile No:*</span>&nbsp;<span style={{fontSize:'13px'}}>(eg. +91 9999999999) </span></>}
                         </label>
-                        <input type="text" name="mobile" id="mobile" placeholder=""
+                        
+                        {matches?<input type="text" name="mobile" id="mobile" placeholder=""
                           onBlur={event =>
                             validateAndUpdateFormdata(event, formData)
                           }
@@ -488,18 +523,34 @@ const Contact = props => {
                               : formData.mobile.value
                               ? "valid"
                               : ""
-                          }/>
+                          }/>:<input
+                          style={{height:'24px',marginBottom:'6%'}}
+                          type="text" name="mobile" id="mobile" placeholder=""
+                          onBlur={event =>
+                            validateAndUpdateFormdata(event, formData)
+                          }
+                          className={
+                            formData.mobile.error
+                              ? "invalid"
+                              : formData.mobile.value
+                              ? "valid"
+                              : ""
+                          }/>}
                         {formData.mobile.error && (
                           <p className={classes.formError}>
                             {formData.mobile.errorMessage}
                           </p>
                         )}
                       </Grid>
+                          
                       <Grid item xs={11} sm={11} md={6} lg={6}>
                         <label htmlFor="email" className="black-text">
-                          <span className={classes.label}>Email*:</span>&nbsp;&nbsp;(eg. abc@gmail.com)
+                          {/* <span className={classes.label}>Email*:</span>&nbsp;&nbsp;(eg. abc@gmail.com) */}
+                          {matches?<><span className={classes.label}>Email:*</span>&nbsp;&nbsp;(eg. abc@gmail.com) </>
+                              :<><span className={classes.mobileLabel}>Email*:</span>&nbsp;<span style={{fontSize:'13px'}}>(eg. abc@gmail.com) </span></>}
                         </label>
-                        <input type="email" name="email" id="email" placeholder=""
+                        
+                        {matches?<input type="email" name="email" id="email" placeholder=""
                           onBlur={event =>
                             validateAndUpdateFormdata(event, formData)
                           }
@@ -510,7 +561,18 @@ const Contact = props => {
                               ? "valid"
                               : ""
                           }
-                        />
+                        />:<input style={{height:'24px'}} type="email" name="email" id="email" placeholder=""
+                        onBlur={event =>
+                          validateAndUpdateFormdata(event, formData)
+                        }
+                        className={
+                          formData.email.error
+                            ? "invalid"
+                            : formData.email.value
+                            ? "valid"
+                            : ""
+                        }
+                      />}
                         {formData.email.error && (
                           <p className={classes.formError}>
                             {formData.email.errorMessage}
@@ -518,26 +580,51 @@ const Contact = props => {
                         )}
                       </Grid>
                     </Grid>
+
+
                     <Grid container component="div" direction="row" className="interest-container">
                       <Grid item xs={12} sm={12} md={12} lg={12} className={classes.banner}>
-                      <p><span className={classes.label}>Interested In:*</span></p>
+                      {matches?<p><span className={classes.label}>Interested In:*</span></p>
+                      :<span style={{color:'black'}} className={classes.mobileLabel}>Interested In:*</span>}
                       <FormControl component="fieldset" style={{width: "100%"}}>
-                        <RadioGroup row aria-label="interest" name="interestedIn" value={interest} onChange={handleChange} style={{width:"100%", display: "flex", justifyContent:"space-between"}}>
+
+                        {matches?<RadioGroup row aria-label="interest" name="interestedIn" value={interest} onChange={handleChange} style={{width:"100%", display: "flex", justifyContent:"space-between"}}>
+                          
                           <FormControlLabel value="Buy" control={<BBRadio />} label="Buy" />
                           <FormControlLabel value="Sell" control={<BBRadio />} label="Sell" />
                           <FormControlLabel value="Franchise" control={<BBRadio />} label="Franchise" />
                           <FormControlLabel value="other" control={<BBRadio />} label="Other" />
                         </RadioGroup>
+                        :
+
+                        <RadioGroup row aria-label="interest" name="interestedIn" value={interest} onChange={handleChange} style={{width:"100%", display: "flex", justifyContent:"space-between"}}>
+                          <>  
+                            <div style={{display:'flex',flexDirection:'column'}}>
+                                    <FormControlLabel
+                                    value="Buy" control={<BBRadio />} label={<span style={{ fontSize: '12px' }}>Buy</span>}/>
+                                    <FormControlLabel value="Sell" control={<BBRadio  />} label={<span style={{ fontSize: '12px' }}>Sell</span>}/>
+                            </div>
+                            <div style={{display:'flex',flexDirection:'column'}}>
+                                    <FormControlLabel value="Franchise" control={<BBRadio />} label={<span style={{ fontSize: '12px' }}>Franchise</span>}/>
+                                    <FormControlLabel value="other" control={<BBRadio />} label={<span style={{ fontSize: '12px' }}>Other</span>}/>
+                            </div>
+                         
+                        
+                          </>
+                        </RadioGroup>}
                       </FormControl>
                       </Grid>
                     </Grid>
+
+
                     <Grid container component="div" direction="row" className={classes.banner}>
                       <Grid item xs={12} sm={12} md={12} lg={12}>
                         <label htmlFor="query" className="black-text">
-                          <span className={classes.label}>Query:</span> (Ask any query here, we will get back to you
-                          soon)
+                          {matches?<span className={classes.label}>Query:(Ask any query here, we will get back to you soon)</span> 
+                          :<><span className={classes.mobileLabel}>Query:</span> <span style={{fontSize:'12px'}}>(Ask any query here, we will get back to you
+                            soon)</span></>}
                         </label>
-                        <textarea id="query" name="query"
+                          {matches?    <textarea id="query" name="query"
                           onBlur={event =>
                             validateAndUpdateFormdata(event, formData)
                           }
@@ -548,7 +635,20 @@ const Contact = props => {
                               ? "valid materialize-textarea"
                               : "materialize-textarea"
                           }
-                        ></textarea>
+                        ></textarea>:    <input style={{height:'24px'}} id="query" name="query"
+                        onBlur={event =>
+                          validateAndUpdateFormdata(event, formData)
+                        }
+                        className={
+                          formData.query.error
+                            ? "invalid materialize-textarea"
+                            : formData.query.value
+                            ? "valid materialize-textarea"
+                            : "materialize-textarea"
+                        }
+                      ></input>}
+                    
+
                         {formData.query.error && (
                           <p className={classes.formError}>
                             {formData.query.errorMessage}
@@ -558,7 +658,8 @@ const Contact = props => {
                     </Grid>
                     <Grid container component="div" direction="row" className={classes.banner}>
                       <Grid item xs={12} sm={12} md={12} lg={12} className="center-align">
-                        <button type="button" className={classes.submit+' btn'} onClick={submitForm}>Share</button>
+                        {matches?<button type="button" className={classes.submit+' btn'} onClick={submitForm}>Share</button>
+                        :<button type="button" className={classes.mobileViewSubmitbtn+' btn'} onClick={submitForm}>Share</button>}
                       </Grid>
                     </Grid>
                   </form>

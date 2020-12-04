@@ -23,6 +23,8 @@ import BulkUpload from "./Components/BulkUpload/BulkUpload";
 import AdminSignIn from "./Components/AdminSection/AdminSignIn";
 import AdminHomePage from "./Components/AdminSection/AdminHomePage";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import mobileFilterPage from "./Components/CategoryPage/mobileFilterPage/mobileFilterPage";
+
 import * as actions from "./store/actions/index";
 import jwt_decode from "jwt-decode";
 
@@ -65,6 +67,7 @@ const App = () => {
       <Route path="/termsandconditions" component={TermsAndConditions} />
       <Route exact path="/blog/:id" component={BlogPost} />
       <Route exact path="/blog" component={BlogPostHome} />
+      <Route exact path="/mobileFilterPage" component={mobileFilterPage}/>
     </Switch>
   );
 };

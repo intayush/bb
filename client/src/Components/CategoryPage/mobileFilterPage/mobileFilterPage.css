@@ -1,0 +1,25 @@
+.container{
+    height: 100%;
+    width: 100%;
+}
+
+.bottomButtonsGroup{
+   
+        overflow: hidden;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        background-color: #fafafa;
+        border-top: 1px solid black;
+        height: 8%;
+        padding-top:4%;
+        padding-bottom: 4%;
+       
+}
+
+.innerContainer{
+    padding:4%
+}
