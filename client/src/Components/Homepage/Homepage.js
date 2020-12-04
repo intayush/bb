@@ -33,7 +33,6 @@ import { useTheme } from "@material-ui/core/styles";
 const Homepage = (props) => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
-
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const [bikeHover, setBikeHover] = useState(false);
@@ -480,7 +479,7 @@ const Homepage = (props) => {
           </Grid>
         </Grid>
       </div>:<></>}
-      <Footer />
+      <Footer props={props}/>
     </div>
   );
 };

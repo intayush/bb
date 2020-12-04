@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import { useSelector, useDispatch } from "react-redux";
 import "./CategoryPage.css";
@@ -16,11 +16,14 @@ import { Menu } from "../../shared/utility";
 import categoryData from "../../shared/mappings/category_data";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import MobileFooter from "./mobileFilterPage/mobileFooter/mobileFooter";
+import Modal from '@material-ui/core/Modal';
 
 const CategoryPage = (props) => {
   const dispatch = useDispatch();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
+  const [openSortByPopUp,setopenSortByPopUp]=useState(false); //for opening sort by modal in mobile view
   const { vehicles, filter, currentData, selectedCity } = useSelector(
     (state) => state.vehicleDetails
   );
@@ -121,6 +124,7 @@ const CategoryPage = (props) => {
     .join("-");
   let text =
     "Motorcycles are available at easy EMI starting at ₹2,000*. Your  dream bike is not a distant dream now.";
+
   return (
     <div id="CategoryPage">
       {/* <Header /> */}
@@ -142,7 +146,7 @@ const CategoryPage = (props) => {
         </Grid>
         <Grid item xs={11} md={11} sm={11} lg={11}>
           <Grid container component="div" direction="row">
-            <Navigation />
+            {matches?<Navigation />:<></>}
             <Grid
               item
               xs={12}
@@ -151,11 +155,11 @@ const CategoryPage = (props) => {
               lg={9}
               className={matches ? "ProductListSec" : "ProductListSec Mob"}
             >
-              <SortDropDown
+              {matches?<SortDropDown
                 title="Sort by"
                 list={Menu}
                 category={categoryData[props.match.params.category].id}
-              />
+              />:<></>}
               <Grid
                 container
                 direction="row"
@@ -165,11 +169,18 @@ const CategoryPage = (props) => {
                 {renderedVehicles}
               </Grid>
               {paginations}
+           
+              <Modal  
+              style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', border: 'none' }}
+              open={openSortByPopUp}>
+
+              </Modal>
             </Grid>
           </Grid>
         </Grid>
       </Grid>
       <Footer />
+     {matches?<></>:<MobileFooter/>}
     </div>
   );
 };

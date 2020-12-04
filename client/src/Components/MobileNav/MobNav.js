@@ -53,7 +53,6 @@ const StyledTextField = withStyles({
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
         borderColor: "transparent",
-        
       },
       "&:hover fieldset": {
         borderColor: "transparent",
@@ -84,10 +83,26 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     textAlign: "center",
   },
+  headerContent: {
+    display: "flex",
+    flexDirection: "row",
+    marginTop: "5px",
+    justifyContent: "space-between",
+  },
+  locationDropdown: {
+    width: "35%",
+    display: "flex",
+    justifyContent: "space-around",
+    alignItems: "center",
+    cursor: "pointer",
+    color: "black",
+    flexDirection: "row",
+    backgroundColor: "white",
+    borderRadius:'1px'
+  },
 }));
 
-
-const LocationDropDown = ({matches}) => {
+const LocationDropDown = ({ matches, classes }) => {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
   const [select, setSelect] = useState(true);
@@ -102,9 +117,8 @@ const LocationDropDown = ({matches}) => {
     setAnchorEl(null);
   };
 
-  const handleCityChange = (value,matches) => {
-  
-    if (value=== "Select City") {
+  const handleCityChange = (value, matches) => {
+    if (value === "Select City") {
       dispatch({ type: CHANGE_CITY, payload: "" });
     } else {
       dispatch({ type: CHANGE_CITY, payload: value });
@@ -112,52 +126,48 @@ const LocationDropDown = ({matches}) => {
 
     handleClose();
     if (window.location.pathname === "/") {
-      
-      {matches? window.scrollTo({
-        top: 500,
-        behavior: "smooth",
-      }): window.scrollTo({
-        top: 400,
-        behavior: "smooth",
-      })}
-     
+      {
+        matches
+          ? window.scrollTo({
+              top: 500,
+              behavior: "smooth",
+            })
+          : window.scrollTo({
+              top: 150,
+              behavior: "smooth",
+            });
+      }
     }
   };
 
   return (
     <>
-      <div
-        style={{
-          height: 40,
-          width:"100%",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          cursor: "pointer",
-          color: "black",
-          flexDirection:'row'
-        }}
-        onClick={handleClick}
-      >
-       
-       <p style={{fontSize:'12px'}}>{selectedCity ? selectedCity : "Select City"}</p> 
+      <div className={classes.locationDropdown} onClick={handleClick}>
+        <span style={{ fontSize: "12px" }}>
+          {selectedCity ? selectedCity : "Select City"}
+        </span>
 
         <span onClick={handleClick}>
           {select ? (
             <ExpandMoreIcon
-              style={{ paddingTop: "5px", marginLeft:'20%',justifyContent: "center" }}
+              style={{
+                paddingTop: "5px",
+                marginLeft: "20%",
+                justifyContent: "center",
+              }}
             />
           ) : (
             <ChevronRightIcon
-              style={{ paddingTop: "5px", marginLeft:'20%',justifyContent: "center" }}
+              style={{
+                paddingTop: "5px",
+                marginLeft: "20%",
+                justifyContent: "center",
+              }}
             />
           )}
         </span>
-
-        {/* used for the side border */}
-        <div id="border-height"></div>
       </div>
-      
+
       <Menu
         id="customised-menu"
         anchorEl={anchorEl}
@@ -167,7 +177,7 @@ const LocationDropDown = ({matches}) => {
         getContentAnchorEl={null}
         anchorOrigin={{
           vertical: "bottom",
-          horizontal: "bottom",
+          horizontal: "center",
         }}
         transformOrigin={{ vertical: "top", horizontal: "center" }}
         MenuListProps={{ onMouseLeave: handleClose }}
@@ -177,50 +187,53 @@ const LocationDropDown = ({matches}) => {
             marginRight: "5%",
             width: "30%",
             scrollbarWidth: "thin",
-            marginTop:'12%'
           },
         }}
       >
-        <StyledMenuItem  onClick={() => handleCityChange("Select City",matches)}>
+        <StyledMenuItem
+          onClick={() => handleCityChange("Select City", matches)}
+        >
           Select City
         </StyledMenuItem>
-        <StyledMenuItem  onClick={() => handleCityChange("Aluva",matches)}>
+        <StyledMenuItem onClick={() => handleCityChange("Aluva", matches)}>
           Aluva
         </StyledMenuItem>
-        <StyledMenuItem onClick={() => handleCityChange("Kolkata",matches)}>
+        <StyledMenuItem onClick={() => handleCityChange("Kolkata", matches)}>
           Kolkata
         </StyledMenuItem>
-        <StyledMenuItem onClick={() => handleCityChange("Rajahmundry",matches)}>
+        <StyledMenuItem
+          onClick={() => handleCityChange("Rajahmundry", matches)}
+        >
           Rajahmundry
         </StyledMenuItem>
-        <StyledMenuItem  onClick={() => handleCityChange("Thrissur",matches)}>
+        <StyledMenuItem onClick={() => handleCityChange("Thrissur", matches)}>
           Thrissur
         </StyledMenuItem>
-        <StyledMenuItem  onClick={() => handleCityChange("Bangalore",matches)}>
+        <StyledMenuItem onClick={() => handleCityChange("Bangalore", matches)}>
           Bangalore
         </StyledMenuItem>
-        <StyledMenuItem  onClick={() => handleCityChange("Chennai",matches)}>
+        <StyledMenuItem onClick={() => handleCityChange("Chennai", matches)}>
           Chennai
         </StyledMenuItem>
-        <StyledMenuItem  onClick={() => handleCityChange("New Delhi",matches)}>
+        <StyledMenuItem onClick={() => handleCityChange("New Delhi", matches)}>
           New Delhi
         </StyledMenuItem>
-        <StyledMenuItem  onClick={() => handleCityChange("Gurgaon",matches)}>
+        <StyledMenuItem onClick={() => handleCityChange("Gurgaon", matches)}>
           Gurgaon
         </StyledMenuItem>
-        <StyledMenuItem onClick={() => handleCityChange("Hyderabad",matches)}>
+        <StyledMenuItem onClick={() => handleCityChange("Hyderabad", matches)}>
           Hyderabad
         </StyledMenuItem>
-        <StyledMenuItem onClick={() => handleCityChange("Jaipur",matches)}>
+        <StyledMenuItem onClick={() => handleCityChange("Jaipur", matches)}>
           Jaipur
         </StyledMenuItem>
-        <StyledMenuItem  onClick={() => handleCityChange("Mumbai",matches)}>
+        <StyledMenuItem onClick={() => handleCityChange("Mumbai", matches)}>
           Mumbai
-        </StyledMenuItem >
-        <StyledMenuItem  onClick={() => handleCityChange("Nagpur",matches)}>
+        </StyledMenuItem>
+        <StyledMenuItem onClick={() => handleCityChange("Nagpur", matches)}>
           Nagpur
         </StyledMenuItem>
-        <StyledMenuItem onClick={() => handleCityChange("Pune",matches)}>
+        <StyledMenuItem onClick={() => handleCityChange("Pune", matches)}>
           Pune
         </StyledMenuItem>
       </Menu>
@@ -228,7 +241,7 @@ const LocationDropDown = ({matches}) => {
   );
 };
 
-const HamburgerDropdown = () => {
+const HamburgerDropdown = ({ matches }) => {
   const [anchorEl, setAnchorEl] = useState();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -238,17 +251,31 @@ const HamburgerDropdown = () => {
   };
   return (
     <>
-      <img
-        style={{ marginTop: "5px" }}
-        height="15"
-        className="menu-icons"
-        aria-controls="hamburger-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-        src={hamburgerIcon}
-        alt=""
-      />
-        <Menu
+      {matches ? (
+        <img
+          style={{ marginTop: "5px" }}
+          height="15"
+          className="menu-icons"
+          aria-controls="hamburger-menu"
+          aria-haspopup="true"
+          onClick={handleClick}
+          src={hamburgerIcon}
+          alt=""
+        />
+      ) : (
+        <img
+          style={{ marginTop: "5px" }}
+          height="15"
+          width="22"
+          className="menu-icons"
+          aria-controls="hamburger-menu"
+          aria-haspopup="true"
+          onClick={handleClick}
+          src={hamburgerIcon}
+          alt=""
+        />
+      )}
+      <Menu
         id="hamburger-menu"
         anchorEl={anchorEl}
         keepMounted
@@ -266,9 +293,9 @@ const HamburgerDropdown = () => {
             backgroundColor: "#1d1d1d",
             width: "80%",
             marginTop: "-10%",
-            marginLeft:'6%',
-            height:'85%',
-            overflowY:'hidden'
+            marginLeft: "6%",
+            height: "75%",
+            overflowY: "hidden",
           },
         }}
       >
@@ -369,7 +396,7 @@ const HamburgerDropdown = () => {
 };
 
 const MobNav = () => {
-  const theme=useTheme();
+  const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
   const classes = useStyles();
@@ -395,23 +422,28 @@ const MobNav = () => {
 
   return (
     <div className={classes.header}>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          marginTop: "5px",
-          justifyContent: "space-between",
-        }}
-      >
-        <Link to="/">
-          <img
-            style={{ marginTop: "4px" }}
-            src={bikeBazaarLogo}
-            height="25"
-            alt=""
-          />
-        </Link>
-        <HamburgerDropdown />
+      <div className={classes.headerContent}>
+        {matches ? (
+          <Link to="/">
+            <img
+              style={{ marginTop: "4px" }}
+              src={bikeBazaarLogo}
+              height="25"
+              alt=""
+            />
+          </Link>
+        ) : (
+          <Link to="/">
+            <img
+              style={{ marginTop: "4px", width: "151px", height: "18px" }}
+              src={bikeBazaarLogo}
+              height="25"
+              alt=""
+            />
+          </Link>
+        )}
+        <LocationDropDown matches={matches} classes={classes} />
+        <HamburgerDropdown matches={matches} />
       </div>
 
       <div
@@ -425,12 +457,7 @@ const MobNav = () => {
       >
         <form id="searchForm" className="input-field">
           <Grid container component="div" className="search-container-main">
-            <Grid item xs={4} sm={4} >
-              <div id="searchLocation">
-                <LocationDropDown  matches={matches}/>
-              </div>
-            </Grid>
-            <Grid item xs={6} sm={6} >
+            <Grid item xs={10} sm={10}>
               <div className="arrow">
                 <Autocomplete
                   id="searchField"
@@ -439,15 +466,13 @@ const MobNav = () => {
                   options={searchTerm ? vehicleNames : []}
                   renderInput={(params) => (
                     <StyledTextField
-                      placeholder="Search Here"
+                      placeholder="Search Your Two-Wheeler"
                       onChange={updateState(params.inputProps.value)}
                       {...params}
                       style={{
                         paddingLeft: "20px !important",
                         margin: "0px",
-                        
                       }}
-                     
                       label=""
                       margin="normal"
                       variant="outlined"
@@ -458,38 +483,38 @@ const MobNav = () => {
             </Grid>
 
             {searchTerm && selectedCity ? (
-              <Grid item xs={2} sm={2} >
+              <Grid item xs={2} sm={2}>
                 <Link
                   to={`/category/bike?searchTerm=${searchTerm}&city=${selectedCity}`}
                 >
-                  <button
+                  <div
                     style={{
                       marginTop: "1px",
-                      width: "20% !important",
+                      width: "100% !important",
                       backgroundColor: "#1d1d1d",
-                      height:'50%'
+                      height: "50%",
                     }}
                     className="btn search-label-btn"
                     type="submit"
                   >
-                    <img src={searchIcon} height="10" width="10"  alt="" />
-                  </button>
+                    <img src={searchIcon} height="25" width="25" alt="" />
+                  </div>
                 </Link>
               </Grid>
             ) : (
               <Grid item xs={2} sm={2}>
                 <Link to={`/category/bike`}>
-                  <button
+                  <div
                     style={{
                       marginTop: "1px",
-                      width: "100%",
+                      width: "170%",
                       backgroundColor: "#1d1d1d",
                     }}
                     className="btn search-label-btn"
                     type="submit"
                   >
-                    <img src={searchIcon} height="25"  alt="" />
-                  </button>
+                    <img src={searchIcon} height="25" alt="" />
+                  </div>
                 </Link>
               </Grid>
             )}

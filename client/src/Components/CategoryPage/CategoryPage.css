@@ -5,6 +5,7 @@
 
 #CategoryPage{
   background-color: #f7f7f7;
+  position: relative;
 }
 *,
 ::after,
@@ -394,4 +395,7 @@ form {
 .bike-name h3{
   color: #000000;
 }
+
+
+
 
