@@ -38,14 +38,11 @@ const Homepage = (props) => {
  
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
-<<<<<<< HEAD
   const changeSliders = matches ? "sliders" : "mobile-sliders";
   const changeSlides = matches ? "slide" : "mobile-slide";
   const changeCaptions = matches ? "captions" : "mobile-captions";
   const changeHeadings = matches ? "headings" : "mobile-headings";
   const changeLogo = matches ? "tick-icon" : "mobile-tick-icon";
-=======
->>>>>>> 1100533bda67a9b53e9c7c8425887e9344ca0825
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const [bikeHover, setBikeHover] = useState(false);
