@@ -360,7 +360,7 @@ const Homepage = (props) => {
           </Grid>
         </Grid>
       </div>
-      <Footer />
+      <Footer props={props} />
     </div>
   );
 };
