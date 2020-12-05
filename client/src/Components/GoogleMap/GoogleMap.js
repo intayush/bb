@@ -17,6 +17,7 @@ const renderMarker = (map, maps, center, locationName) => {
 const GoogleMap = (props) => {
     return (
         <GoogleMapReact
+            
             bootstrapURLKeys={{ key: API_KEY }}
             defaultCenter={props.center}
             defaultZoom={props.zoom}

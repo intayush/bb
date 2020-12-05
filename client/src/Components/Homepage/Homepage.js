@@ -89,6 +89,7 @@ const Homepage = (props) => {
       };
       let testimonialCarousel = document.querySelectorAll(".carousel");
       instance = M.Carousel.init(testimonialCarousel, carouselOptions);
+      console.log('instance',instance)
       changeSlider(instance);
     } else {
       if (direction === "left") {
@@ -396,89 +397,7 @@ const Homepage = (props) => {
           </Grid>
         </Grid>
       </div>
-      {matches?<div className="section-4">
-        <Grid
-          container
-          component="div"
-          direction="row"
-          className="row center-align"
-          style={{ marginBottom: "0px" }}
-        >
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <h3>TESTIMONIALS</h3>
-            <img alt="" src={headingLines} width="57" height="4" />
-          </Grid>
-        </Grid>
-        <Grid container component="div" direction="row" className="row mb-0">
-          <Grid item xs={1} sm={1} md={1} lg={1}>
-            <div className="valign-wrapper arrow-container">
-              <button
-                className="btn-floating btn-large waves-effect waves-light white"
-                id="slideLeft"
-                onClick={() => initCar("left")}
-              >
-                <i className="material-icons icon-black">keyboard_arrow_left</i>
-                initCar
-              </button>
-            </div>
-          </Grid>
-          <Grid item xs={10} sm={10} md={10} lg={10} className="center-align">
-            <div className="carousel" style={{ minHeight: "300px" }}>
-              <a
-                className="carousel-item"
-                href="#one!"
-                index="0"
-                style={{ marginTop: "-10px" }}
-              >
-                <img alt="" className="circle" src={testimonial_hari} />
-              </a>
-              {/* <a className="carousel-item" href="#two!" index="1">
-                <img alt="" className="circle" src={testimonial2} />
-              </a> */}
-              <a
-                className="carousel-item"
-                href="#two!"
-                index="1"
-                style={{ marginTop: "-10px" }}
-              >
-                <img alt="" className="circle" src={testimonial_md} />
-              </a>
-              <a
-                className="carousel-item"
-                href="#three!"
-                index="2"
-                style={{ marginTop: "-10px" }}
-              >
-                <img alt="" className="circle" src={testimonial_azhar} />
-              </a>
-              {/* <a className="carousel-item" href="#five!" index="4">
-                <img alt="" className="circle" src={testimonial5} />
-              </a> */}
-            </div>
-          </Grid>
-          <Grid item xs={1} sm={1} md={1} lg={1}>
-            <div className="valign-wrapper arrow-container">
-              <button
-                className="btn-floating btn-large waves-effect waves-light white"
-                id="slideRight"
-                onClick={() => initCar("right")}
-              >
-                <i className="material-icons icon-black">
-                  keyboard_arrow_right
-                </i>
-              </button>
-            </div>
-          </Grid>
-        </Grid>
-        <Grid container component="div" direction="row" className="row">
-          <Grid item xs={12} sm={12} md={12} lg={12}>
-            <div className="center-align">
-              <h4 id="clientName"></h4>
-            </div>
-            <div id="testimonialMessage"></div>
-          </Grid>
-        </Grid>
-      </div>:<></>}
+      
       <Footer props={props}/>
     </div>
   );

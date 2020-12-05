@@ -89,22 +89,20 @@ function zipHelper() {
         if (err) {
           console.log(err);
         } else {
-
-          
           //getting the previous vehicles from database
           // const oldVehicles = await oldVehiclesDetails();
 
           // console.log("------->length",oldVehicles.length);
-        //   let newRecords=[];
+          //   let newRecords=[];
 
-        //   if (Array.isArray(oldVehicles) && oldVehicles.length) {
+          //   if (Array.isArray(oldVehicles) && oldVehicles.length) {
 
-        //    const newRecordsFromExcel=result.filter(item=>{
-        //       return !oldVehicles.some(el=>el.regnumber===item.registrationNumber)
-        //     })
-        //     newRecords.push(newRecordsFromExcel);
-        //     console.log("=====newRecords vehicles", newRecords);
-        // }
+          //    const newRecordsFromExcel=result.filter(item=>{
+          //       return !oldVehicles.some(el=>el.regnumber===item.registrationNumber)
+          //     })
+          //     newRecords.push(newRecordsFromExcel);
+          //     console.log("=====newRecords vehicles", newRecords);
+          // }
 
           dataUpload(result)
             .then(() => {
@@ -165,10 +163,7 @@ function imgMappingHelper(data) {
   });
 }
 
-
-
 async function dataUpload(data) {
-
   const regtoimagesMapping = await imgMappingHelper(data);
 
   //making the modified array keys and values

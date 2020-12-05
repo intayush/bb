@@ -294,7 +294,7 @@ const HamburgerDropdown = ({ matches }) => {
             width: "80%",
             marginTop: "-10%",
             marginLeft: "6%",
-            height: "75%",
+            height: "85%",
             overflowY: "hidden",
           },
         }}
@@ -457,7 +457,7 @@ const MobNav = () => {
       >
         <form id="searchForm" className="input-field">
           <Grid container component="div" className="search-container-main">
-            <Grid item xs={10} sm={10}>
+            <Grid item >
               <div className="arrow">
                 <Autocomplete
                   id="searchField"
@@ -483,7 +483,7 @@ const MobNav = () => {
             </Grid>
 
             {searchTerm && selectedCity ? (
-              <Grid item xs={2} sm={2}>
+              <Grid >
                 <Link
                   to={`/category/bike?searchTerm=${searchTerm}&city=${selectedCity}`}
                 >
@@ -502,7 +502,7 @@ const MobNav = () => {
                 </Link>
               </Grid>
             ) : (
-              <Grid item xs={2} sm={2}>
+              <Grid >
                 <Link to={`/category/bike`}>
                   <div
                     style={{
