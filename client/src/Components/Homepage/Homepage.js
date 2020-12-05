@@ -43,6 +43,7 @@ const Homepage = (props) => {
   const changeCaptions = matches ? "captions" : "mobile-captions";
   const changeHeadings = matches ? "headings" : "mobile-headings";
   const changeLogo = matches ? "tick-icon" : "mobile-tick-icon";
+  const changeImage = matches ? "bannerimage" : "mobile-bannerimage";
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const [bikeHover, setBikeHover] = useState(false);
@@ -123,16 +124,12 @@ const Homepage = (props) => {
       {/* <Header /> */}
       <MainMenu />
      <div className ={changeSliders}>
-        <div className = {changeSlides}>
-          
-        <img
-                  style={{ position:"relative", zoom: "1" }}
-                  src={bannerImg}
-                  width={matches ? "100%" : "100%"}
-                  height={matches ? "500px" : "200px"}
-                  objectFit={matches ? "" : "contain"}
-                  alt=""
-                />
+        <ul className = {changeSlides}>
+         <li>
+         <div className={changeImage}>
+
+         </div>
+       
             <div className={ changeCaptions + " left-align"}>
               <h3 className= {changeHeadings}>
                 India's Favourite Place to Buy
@@ -158,7 +155,8 @@ const Homepage = (props) => {
                 </span>
               </h4>
             </div>
-          </div>
+            </li>
+          </ul>
        </div>
       
       
