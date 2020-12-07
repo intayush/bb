@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
   locationDropdown: {
     width: "35%",
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     alignItems: "center",
     cursor: "pointer",
     color: "black",
@@ -185,7 +185,7 @@ const LocationDropDown = ({ matches, classes }) => {
           style: {
             backgroundColor: "black",
             marginRight: "5%",
-            width: "24%",
+            width: "30%",
             scrollbarWidth: "thin",
           },
         }}
@@ -294,7 +294,7 @@ const HamburgerDropdown = ({ matches }) => {
             width: "80%",
             marginTop: "-10%",
             marginLeft: "6%",
-            height: "65%",
+            height: "550px",
             overflowY: "hidden",
           },
         }}
@@ -453,19 +453,22 @@ const MobNav = () => {
           width: "100%",
           justifyContent: "space-between",
           paddingLeft: "12%",
+          paddingRight:'12%'
         }}
       >
         <form id="searchForm" className="input-field">
           <Grid container component="div" className="search-container-main">
-            <Grid item xs={10} sm={10}>
+           
+            <Grid item xs={10}>
               <div className="arrow">
                 <Autocomplete
                   id="searchField"
-                  style={{ border: "0px !important" }}
+                  style={{ border: "0px !important",width:"100%" }}
                   freeSolo
                   options={searchTerm ? vehicleNames : []}
                   renderInput={(params) => (
                     <StyledTextField
+                     
                       placeholder="Search Your Two-Wheeler"
                       onChange={updateState(params.inputProps.value)}
                       {...params}
@@ -483,14 +486,13 @@ const MobNav = () => {
             </Grid>
 
             {searchTerm && selectedCity ? (
-              <Grid item xs={2} sm={2}>
+              <Grid item >
                 <Link
                   to={`/category/bike?searchTerm=${searchTerm}&city=${selectedCity}`}
                 >
                   <div
                     style={{
                       marginTop: "1px",
-                      width: "100% !important",
                       backgroundColor: "#1d1d1d",
                       height: "50%",
                     }}
@@ -502,12 +504,11 @@ const MobNav = () => {
                 </Link>
               </Grid>
             ) : (
-              <Grid item xs={2} sm={2}>
+              <Grid item xs={2}>
                 <Link to={`/category/bike`}>
                   <div
                     style={{
                       marginTop: "1px",
-                      width: "170%",
                       backgroundColor: "#1d1d1d",
                     }}
                     className="btn search-label-btn"
@@ -526,4 +527,3 @@ const MobNav = () => {
 };
 
 export default MobNav;
-

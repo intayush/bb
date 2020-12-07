@@ -650,7 +650,9 @@ const BecomeFranchiseOwner = (props) => {
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      marginLeft: "20%",
+                      textAlign:'center',
+                      justifyContent:'center',
+                      paddingRight:'20%'
                     }}
                   >
                     <img
@@ -755,7 +757,8 @@ const BecomeFranchiseOwner = (props) => {
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      marginLeft: "20%",
+                      justifyContent:'center',
+                      paddingRight:'20%'
                     }}
                   >
                     <img
@@ -813,7 +816,7 @@ const BecomeFranchiseOwner = (props) => {
                   sm={12}
                   direction="row"
                   component="div"
-                >
+                   >
                   <div style={{ display: "flex" }}>
                    
                       <div className="mobileAdvantageIconLeft">
@@ -891,12 +894,15 @@ const BecomeFranchiseOwner = (props) => {
                   xs={12}
                   sm={12}
                   component="div"
+                  justify="center"
+                 
                 >
                   <div
                     style={{
                       display: "flex",
                       flexDirection: "row",
-                      marginLeft: "20%",
+                      justifyContent:'center',
+                      paddingRight:'20%'
                     }}
                   >
                     <img
@@ -1398,7 +1404,7 @@ const BecomeFranchiseOwner = (props) => {
                 )}
 
                 {matches ? (
-                  <Grid
+                  <Grid 
                     container
                     component="div"
                     direction="row"
@@ -1427,7 +1433,8 @@ const BecomeFranchiseOwner = (props) => {
                       style={{
                         display: "flex",
                         flexDirection: "row",
-                        marginLeft: "20%",
+                        justifyContent:'center',
+                        paddingRight:'20%'
                       }}
                     >
                       <img className="redLine" src={rightRedLine} />
@@ -1608,7 +1615,8 @@ const BecomeFranchiseOwner = (props) => {
                       style={{
                         display: "flex",
                         flexDirection: "row",
-                        marginLeft: "20%",
+                        justifyContent:'center',
+                        paddingRight:'20%'
                       }}
                     >
                       <img src={rightRedLine} className="redLine" alt="" />
