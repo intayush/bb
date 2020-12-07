@@ -1,5 +1,5 @@
 import React from "react";
-import FooterLogo from "./FooterLogo.svg";
+import FooterLogo from "../../assets/footerLogo.svg";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import callIcon from "../../assets/Phone.svg";
