@@ -44,7 +44,7 @@ const VehicleAdvantage = (props) => {
   ) : (
     <Grid container component="div" direction="row">
       <Grid style={{textAlign:'center',justifyContent:'center'}} direction="row" item xs={12} sm={12}>
-        <div  style={{ display: "flex" ,marginLeft:'20%'}}>
+        <div  style={{ display: "flex" ,justifyContent:'center',paddingRight:'10%'}}>
           
           <img
             style={{ marginTop: "16%"}}
@@ -113,7 +113,7 @@ const VehicleAdvantage = (props) => {
   ) : (
     <Grid container component="div" direction="row">
       <Grid item xs={12} sm={12}>
-        <div style={{ display: "flex", flexDirection: "row",marginLeft:'20%' }}>
+        <div style={{ display: "flex", flexDirection: "row",justifyContent:'center',paddingRight:'10%'}}>
           <img
             style={{ marginTop: "16%" }}
             height="10"

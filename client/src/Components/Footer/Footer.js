@@ -86,12 +86,15 @@ const Footer = ({props}) => {
               className="verticalLine"
             ></div>
             <Grid item md={4}>
-              <p
-                style={{ marginBottom: "4%", marginLeft: "8%" }}
-                className={classes.text}
-              >
-                Quick Links
-              </p>
+              <div style={{display:'flex',flexDirection:'column'}}>
+              <div>
+                  <p
+                    style={{ marginBottom: "4%", marginLeft: "8%" }}
+                    className={classes.text}
+                  >
+                    Quick Links
+                  </p>
+              </div>
               
               {/* for quick links two columns */}
               <div
@@ -132,6 +135,8 @@ const Footer = ({props}) => {
                   <p className={classes.columnsText}>Blog</p>
                 </div>
               </div>
+              </div>
+            
             </Grid>
             {/* creating vertical lines */}
             <div
@@ -189,7 +194,7 @@ const Footer = ({props}) => {
                     width="25"
                     alt=""
                   />
-                  <span style={{ marginLeft: "7%" }}>
+                  <span style={{ marginLeft: "8%" }}>
                     connect@bikebazaar.com
                   </span>
                 </div>
@@ -316,7 +321,7 @@ const Footer = ({props}) => {
               width="18"
               alt=""
             />
-            <span style={{ marginLeft: "5%",fontSize:'13px' }}>connect@bikebazaar.com</span>
+            <span style={{ marginLeft: "4%",fontSize:'13px' }}>connect@bikebazaar.com</span>
           </div>
           <div
             style={{
