@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import M from 'materialize-css';
 import * as actions from '../../store/actions/index';
-
+import '../Navigation/Navigation.css'
 class SortDropDown extends Component {
   constructor(props) {
     super(props);
@@ -51,26 +51,22 @@ class SortDropDown extends Component {
   render() {
     
     return (
-      <React.Fragment>
-		    <h5>One Step Closer to Your Dream Bike</h5>
-        <div className="input-field sortby" onClick={this.toggleList}>
+        <div className="sort-drop"  onClick={this.toggleList}>
           <select
             ref={(select) => {this.select = select}}
             onChange={this.selectOption}
             visible={this.state.visible}
             // defaultValue="">
             >
-            <option value="">Sort by</option>
-            <option value="price-asc">Price - Low to High</option>
-            <option value="price-desc">Price - High to Low</option>
-            <option value="myear-asc">Manufacturing Year - Low to High</option>
-            <option value="myear-desc">Manufacturing Year - High to Low</option>
-            <option value="kmdriven-asc">Kilometer - Low to High</option>
+              <option value="" >Sort by</option>
+              <option value="price-asc"  >Price - Low to High</option>
+              <option value="price-desc"  >Price - High to Low</option>
+              <option value="myear-asc">Manufacturing Year - Low to High</option>
+              <option value="myear-desc">Manufacturing Year - High to Low</option>
+              <option value="kmdriven-asc"  >Kilometer - Low to High</option>
           </select>
         </div>
 
-      <br className="clr" />
-      </React.Fragment>
     );
   }
 }

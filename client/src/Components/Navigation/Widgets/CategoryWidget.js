@@ -25,7 +25,7 @@ const useStyle = makeStyles({
 
 const CategoryWidget = React.memo((props) => {
   const dispatch = useDispatch();
-
+  console.log(props, "RPOPOSPOSPOSPOSPSOPOP")
   let [selectedCategory, setSelectedCategory] = useState(props.category);
 
   const handleChange = (event) => {
