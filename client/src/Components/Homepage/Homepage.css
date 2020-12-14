@@ -124,10 +124,26 @@ section-3 {
   border-radius: 100px;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.6);
 }
+.mobilegola {
+  background-color: white;
+  width: 58px;
+  height: 58px;
+  justify-content: center;
+  border-radius: 100px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.6);
+}
 .gola-2 {
   background-color: white;
   width: 108px;
   height: 108px;
+  justify-content: center;
+  border-radius: 100px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.6);
+}
+.mobilegola-2{
+  background-color: white;
+  width: 58px;
+  height: 58px;
   justify-content: center;
   border-radius: 100px;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.6);
@@ -138,7 +154,12 @@ section-3 {
   padding: 0px 30px; 
   font-weight: 500;
 }
-
+.mobile-advantage-subtitle {
+  margin: 5px 0px 15px 25px;
+  font-size: 13px;
+  padding: 0px 2px;
+  font-weight: 500;
+}
 .arrow-container {
   height: 350px;
   justify-content: center;
@@ -282,6 +303,7 @@ i.icon-black {
   justify-content: center;
   margin-bottom: 8px;
 }
+
 #clientName {
   font-weight: 700;
   font-size: 20px;
@@ -409,6 +431,11 @@ i.icon-black {
 .advantage-subtitle-1{
   padding: 0px 30px;
   margin-top: 5px;
+}
+.mobile-advantage-subtitle-1{
+  padding: 0px 30px;
+  margin-top: 5px;
+  
 }
 
 .floatRight {

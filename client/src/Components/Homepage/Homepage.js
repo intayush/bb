@@ -109,7 +109,7 @@ const Homepage = (props) => {
       }
     }
   };
-
+  
   useEffect(() => {
     let topSlider = document.querySelectorAll(".slider");
     M.Slider.init(topSlider, {});
@@ -118,6 +118,7 @@ const Homepage = (props) => {
     
     //dispatch({ type: HOMEPAGE_LOAD });
   }, []);
+ 
 
   return (
     <div className="App">
@@ -320,7 +321,7 @@ const Homepage = (props) => {
             lg={12}
             className="center-align section-3-heading"
           >
-            <h3>BIKEBAZAAR ADVANTAGE</h3>
+           { matches ? (<h3>BIKEBAZAAR ADVANTAGE</h3>) : (<h3 style={{fontSize:"18px"}}>BIKEBAZAAR ADVANTAGE</h3>) }
             <img alt="" src={headingLines} width="57" height="4" />
           </Grid>
         </Grid>
@@ -331,45 +332,66 @@ const Homepage = (props) => {
           className="row padHorizontal5"
         >
           <Grid item xs={12} sm={12} md={4} lg={4}>
-            <div className="gola-wrapper">
+          { matches ? (<div className="gola-wrapper">
               <div className="gola valign-wrapper">
                 <img alt="" src={certifiedAutoExperts} height="69" width="69" />
               </div>
-            </div>
+            </div>) : (<div className="gola-wrapper">
+              <div className="mobilegola valign-wrapper">
+                <img alt="" src={certifiedAutoExperts} height="39" width="39" />
+              </div>
+            </div>)}
             <div className="center-align">
-              <h5>Certified by Auto Experts</h5>
-              <p className="advantage-subtitle-1">
+             { matches ? (<h5>Certified by Auto Experts</h5>) : (<h5 style={{fontSize:"14px"}}>Certified by Auto Experts</h5>)}
+             { matches ?  <p className="advantage-subtitle-1">
                 Every bike goes through a thorough inspection and is certified
                 by our team of Auto Experts
-              </p>
+              </p> : <p className="mobile-advantage-subtitle">
+                Every bike goes through a thorough inspection and is certified
+                by our team of Auto Experts
+        </p> }
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4}>
-            <div className="gola-wrapper">
+          { matches ? (  <div className="gola-wrapper">
               <div className="gola valign-wrapper">
                 <img alt="" src={monthWarranty} height="69" width="69" />
               </div>
-            </div>
+            </div>) : (<div className="gola-wrapper">
+              <div className="mobilegola valign-wrapper">
+                <img alt="" src={monthWarranty} height="39" width="39" />
+              </div>
+            </div> )}
             <div className="center-align">
-              <h5>Free 6 Months' Warranty</h5>
-              <p className="advantage-subtitle-1">
+              { matches ? (<h5>Free 6 Months' Warranty</h5>) : (<h5 style={{fontSize:"14px"}}>Free 6 Months' Warranty</h5>)}
+              { matches ?   <p className="advantage-subtitle-1">
                 Get 6 Months' Warranty covering critical parts including engine
                 and gear box, extendable upto 12 months
-              </p>
+              </p> :  <p className="mobile-advantage-subtitle">
+                Get 6 Months' Warranty covering critical parts including engine
+                and gear box, extendable upto 12 months
+        </p> }
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4}>
-            <div className="gola-wrapper">
+           {matches ?  (<div className="gola-wrapper">
               <div className="gola valign-wrapper">
                 <img alt="" src={buyerProtection} height="69" width="69" />
               </div>
-            </div>
+            </div>) : (<div className="gola-wrapper">
+              <div className="mobilegola valign-wrapper">
+                <img alt="" src={buyerProtection} height="39" width="39" />
+              </div>
+            </div>)}
             <div className="center-align">
-              <h5>Verified Sellers</h5>
-              <p className="advantage-subtitle-1">
-                All BikeBazaar Two-Wheelers are procured through Verified
-                Sellers
-              </p>
+             { matches ? ( <h5>Buyer Protection</h5>) : (<h5 style={{fontSize:"14px"}}>Buyer Protection</h5>)}
+             { matches ? (<p className="advantage-subtitle-1">
+               Any unforeseen issue faced with in one week
+               of purchase is resolved for free.
+              </p>):(<p className="mobile-advantage-subtitle">
+              Any unforeseen issue faced with in one week
+               of purchase is resolved for free.
+              </p>)} 
             </div>
           </Grid>
         </Grid>
@@ -382,21 +404,29 @@ const Homepage = (props) => {
           style={{ paddingBottom: "20px" }}
         >
           <Grid item xs={12} sm={12} md={4} lg={5}>
+            { matches ? (
             <div className="gola-wrapper">
               <div className="gola-2 valign-wrapper">
                 <img alt="" src={lowCostEmi} height="69" width="69" />
               </div>
-            </div>
+            </div>) : (<div className="gola-wrapper">
+              <div className="mobilegola-2 valign-wrapper">
+                <img alt="" src={lowCostEmi} height="39" width="39" />
+              </div>
+            </div>)}
             <div className="center-align">
-              <h5>Low Cost EMI</h5>
-              <p className="advantage-subtitle">
+              { matches ? (<h5>Low Cost EMI</h5>) :(<h5 style={{fontSize:"14px"}}>Low Cost EMI</h5>)}
+              { matches ?   <p className="advantage-subtitle">
                 All vehicles are available at EMI starting at ₹ 2000*. Your
                 dream bike is not a distant dream now
-              </p>
+              </p> : <p className="mobile-advantage-subtitle">
+                All vehicles are available at EMI starting at ₹ 2000*. Your
+                dream bike is not a distant dream now
+            </p> }
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4}>
-            <div className="gola-wrapper">
+           { matches ? ( <div className="gola-wrapper">
               <div className="gola-2 valign-wrapper">
                 <img
                   alt=""
@@ -405,18 +435,30 @@ const Homepage = (props) => {
                   width="69"
                 />
               </div>
-            </div>
+            </div>) : (<div className="gola-wrapper">
+              <div className="mobilegola-2 valign-wrapper">
+                <img
+                  alt=""
+                  src={hassleFreeDocTransfer}
+                  height="39"
+                  width="39"
+                />
+              </div>
+            </div>)}
             <div className="center-align hfdc">
-              <h5>Hassle Free Document Transfer</h5>
-              <p className="advantage-subtitle">
+              { matches ? (<h5>Hassle Free Document Transfer</h5>) : (<h5 style={{fontSize:"14px"}}>Hassle Free Document Transfer</h5>)}
+             { matches ? <p className="advantage-subtitle">
                 Document transfer is facilitated and made easy for buyer and
                 seller
-              </p>
+              </p> : <p className="mobile-advantage-subtitle">
+                Document transfer is facilitated and made easy for buyer and
+                seller
+            </p> }
             </div>
           </Grid>
         </Grid>
       </div>
-      {matches?<div className="section-4">
+      <div className="section-4">
         <Grid
           container
           component="div"
@@ -429,7 +471,7 @@ const Homepage = (props) => {
             <img alt="" src={headingLines} width="57" height="4" />
           </Grid>
         </Grid>
-        <Grid container component="div" direction="row" className="row mb-0">
+       <Grid container component="div" direction="row" className="row mb-0">
           <Grid item xs={1} sm={1} md={1} lg={1}>
             <div className="valign-wrapper arrow-container">
               <button
@@ -443,15 +485,15 @@ const Homepage = (props) => {
             </div>
           </Grid>
           <Grid item xs={10} sm={10} md={10} lg={10} className="center-align">
-            <div className="carousel" style={{ minHeight: "300px" }}>
-              <a
+          <div className="carousel" style={{ minHeight: "300px" }}>
+             <a
                 className="carousel-item"
                 href="#one!"
                 index="0"
                 style={{ marginTop: "-10px" }}
               >
-                <img alt="" className="circle" src={testimonial_hari} />
-              </a>
+              <img alt="" className="circle" src={testimonial_hari}/>
+              </a> 
               {/* <a className="carousel-item" href="#two!" index="1">
                 <img alt="" className="circle" src={testimonial2} />
               </a> */}
@@ -498,7 +540,8 @@ const Homepage = (props) => {
             <div id="testimonialMessage"></div>
           </Grid>
         </Grid>
-      </div>:<></>}
+         
+      </div>
       <Footer props={props}/>
     </div>
   );
