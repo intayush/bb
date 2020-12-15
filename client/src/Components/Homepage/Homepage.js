@@ -305,9 +305,9 @@ const Homepage = (props) => {
             <img alt="" src={headingLines} width="57" height="4" />
           </Grid>
         </Grid>
-        <Grid container component="div" direction="row" className="row mb-0">
+        <Grid container component="div" direction="row" className="row mb-0 center-align">
           <Grid item xs={1} sm={1} md={1} lg={1}>
-            <div className="valign-wrapper arrow-container">
+            <div className="hide-on-small-only">
               <button
                 className="btn-floating btn-large waves-effect waves-light white"
                 id="slideLeft"
@@ -338,7 +338,7 @@ const Homepage = (props) => {
             </div>
           </Grid>
           <Grid item xs={1} sm={1} md={1} lg={1}>
-            <div className="valign-wrapper arrow-container">
+            <div className="hide-on-small-only">
               <button
                 className="btn-floating btn-large waves-effect waves-light white"
                 id="slideRight"
@@ -359,6 +359,35 @@ const Homepage = (props) => {
             <div id="testimonialMessage"></div>
           </Grid>
         </Grid>
+          <div className="hide-on-med-and-up">
+           <Grid container component="div" direction="row" className="row">
+               <Grid item xs={6} sm={6} md={6} lg={6}>
+                <div className="center-align">
+                  <button
+                    className="btn-floating btn-large waves-effect waves-light white"
+                    id=""
+                    onClick={() => initCar("left")}
+                  >
+                    <i className="material-icons icon-black">keyboard_arrow_left</i>
+                    initCar
+                  </button>
+                </div>
+               </Grid>
+               <Grid item xs={6} sm={6} md={6} lg={6}>
+                <div className="center-align">
+                  <button
+                    className="btn-floating btn-large waves-effect waves-light white"
+                    id=" "
+                    onClick={() => initCar("right")}
+                  >
+                    <i className="material-icons icon-black">
+                      keyboard_arrow_right
+                    </i>
+                  </button>
+                </div>
+              </Grid>
+           </Grid>
+          </div>
       </div>
       <Footer props={props} />
     </div>

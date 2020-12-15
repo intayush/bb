@@ -95,7 +95,7 @@ const Footer = ({props}) => {
                     Quick Links
                   </p>
               </div>
-              
+
               {/* for quick links two columns */}
               <div
                 style={{
@@ -126,23 +126,23 @@ const Footer = ({props}) => {
                     flexFlow: "column",
                   }}
                 >
-                  <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/buy">Buy</Link></p>
+                  <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/category/bike">Buy</Link></p>
                   <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/sell">Sell</Link></p>
                   <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/vehicledetails/locate-store">Locate Store</Link></p>
                   <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/becomefranchiseowner"> Become a Franchise Owner</Link>
-                   
+
                   </p>
                   <p className={classes.columnsText}>Blog</p>
                 </div>
               </div>
               </div>
-            
+
             </Grid>
             {/* creating vertical lines */}
             <div
               className="verticalLineRight"
             ></div>
-            
+
             <Grid item>
               <div
                 style={{
@@ -186,7 +186,7 @@ const Footer = ({props}) => {
                   <img
                     style={{
                       marginLeft: "1%",
-                     
+
                     }}
                     className="iconImg"
                     src={messageIcon}
@@ -329,7 +329,7 @@ const Footer = ({props}) => {
               flexDirection: "column",
               marginTop: "8%",
               wordSpacing: "3.5px",
-              
+
             }}
           >
             <p style={{ color: "white" ,fontWeight:'600'}}>Connect with us</p>

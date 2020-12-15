@@ -26,9 +26,8 @@ const CategoryPage = (props) => {
   );
 
 
-  console.log("=====currentData",currentData);
 
-  
+
   var category;
   var searchTerm;
   var stateFilterData = {
@@ -77,7 +76,7 @@ const CategoryPage = (props) => {
 
   const onPageChanged = (paginationData) => {
     const { currentPage, totalPages, pageLimit } = paginationData;
-   
+
     // console.log(paginationData.totalRecords)
     const offset = (currentPage - 1) * pageLimit;
     dispatch(actions.getPaginatedData(offset, pageLimit));
@@ -97,7 +96,7 @@ const CategoryPage = (props) => {
   );
 
 
-  
+
   if (vehicles.length && currentData[0] != "NA") {
     renderedVehicles = currentData.map((vehicle, index) => (
       <Card
@@ -121,7 +120,7 @@ const CategoryPage = (props) => {
     renderedVehicles = <h2>'No Vehicles Found!'</h2>;
   }
 
- 
+
   let navigation = categoryData[props.match.params.category].name
     .replace("Bike", "Motorcycle")
     .slice(0, -1)

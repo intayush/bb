@@ -27,7 +27,7 @@ const Pagination = (props) => {
   pageLimit = typeof pageLimit === "number" ? pageLimit : 12;
   totalRecords = typeof totalRecords === "number" ? totalRecords : 0;
 
-  console.log("totalRecords=====>", totalRecords);
+ 
 
   pageNeighbours =
     typeof pageNeighbours === "number"
@@ -141,7 +141,7 @@ const Pagination = (props) => {
         );
       })}
       <li className={rightButtonClass}>
-        
+
         <a href="#!" onClick={handleMoveRight}>
           <i className="material-icons">chevron_right</i>
         </a>

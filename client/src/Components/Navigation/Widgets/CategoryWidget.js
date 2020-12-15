@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -25,19 +26,18 @@ const useStyle = makeStyles({
 
 const CategoryWidget = React.memo((props) => {
   const dispatch = useDispatch();
-
+  let history = useHistory();
   let [selectedCategory, setSelectedCategory] = useState(props.category);
 
-  const handleChange = (event) => {
+  const handleChange = (e) => {
     let filterData = props.filter;
-    console.log("filter count", parseInt(event.target.value));
-    setSelectedCategory(parseInt(event.target.value));
-
+    // console.log("filter count", parseInt(event.target.value));
+    setSelectedCategory(parseInt(e.target.value));
     dispatch({
       type: CHANGE_CATEGORY,
-      payload: parseInt(event.target.value),
+      payload: parseInt(e.target.value),
     });
-    props.cityFilter(parseInt(event.target.value), filterData);
+    props.cityFilter(parseInt(e.target.value), filterData);
   };
 
   const handleChange2 = (categ) => {
@@ -57,9 +57,25 @@ const CategoryWidget = React.memo((props) => {
 
   let valued = " ( " + val(props.vehicles) + " ) ";
 
-  useEffect(() => {
-    handleChange2(props.category);
-  }, [props.category]);
+  // useEffect(() => {
+  //   handleChange2(props.category);
+  // }, [props.category]);
+
+
+
+ const filtering = [{
+                    type:"Motorcycle",
+                    url:"/category/bike"
+                   },
+                   {
+                    type:"Scooter",
+                    url:"/category/scooter"
+                   },
+                   {
+                    type:"High-end Motorcycle",
+                    url:"/category/high_end_bike"
+                  }]
+
 
   return (
     <div className="CityWidget">
@@ -78,52 +94,16 @@ const CategoryWidget = React.memo((props) => {
         <RadioGroup
           aria-label="category"
           name="category"
-          onChange={handleChange}
-        >
-          <ul className="cat-list">
-            {/* <Link to='/category/all'>
-              <li>
-                <FormControlLabel
-                  value="0"
-                  control={<BBRadio />}
-                  label= {`All ${selectedCategory === 0 ? valued : ""}` }
-                  checked={selectedCategory === 0}
-                />valued
-              </li>
-            </Link> */}
-            <Link to="/category/bike">
-              <li>
-                <FormControlLabel
-                  value="1"
-                  control={<BBRadio />}
-                  label={`Motorcycle ${selectedCategory === 1 ? valued : ""}`}
-                  checked={selectedCategory === 1}
-                />
-              </li>
-            </Link>
-            <Link to="/category/scooter">
-              <li>
-                <FormControlLabel
-                  value="2"
-                  control={<BBRadio />}
-                  label={`Scooter ${selectedCategory === 2 ? valued : ""}`}
-                  checked={selectedCategory === 2}
-                />
-              </li>
-            </Link>
-            <Link to="/category/high_end_bike">
-              <li>
-                <FormControlLabel
-                  value="3"
-                  control={<BBRadio />}
-                  label={`High-end Motorcycle ${
-                    selectedCategory === 3 ? valued : " "
-                  } `}
-                  checked={selectedCategory === 3}
-                />
-              </li>
-            </Link>
-          </ul>
+          onChange={handleChange} >
+           {filtering.map((item, i) => {
+                return <FormControlLabel
+                        value={i+1}
+                        onChange={() => history.push(item.url)}
+                        control={<BBRadio />}
+                        label={`${item.type} ${selectedCategory === i+1 ? valued : ""}`}
+                        checked={selectedCategory === i+1}
+                      />
+                })}
         </RadioGroup>
       </div>
     </div>

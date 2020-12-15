@@ -158,7 +158,7 @@ const VehicleData = (props) => {
     discountAmt = Math.ceil((props.data.discountPercent * props.data.price) / 100);
     discount = (
       <>
-        {/* <span style={{ color: 'black' }}>{props.data.discountPercent}% Off</span> */} 
+        {/* <span style={{ color: 'black' }}>{props.data.discountPercent}% Off</span> */}
         <span className="save">
           Save <strong>` </strong>
           {discountAmt}
@@ -220,6 +220,10 @@ const VehicleData = (props) => {
       axios
         .post("/apis/leadDetail/insertBuyRequest", formData)
         .then((response) => {
+         //  sending SMS
+
+
+
           props.history.push(`locate-store?store-id=${props.data.storeId}`, { message: "Thank you for reaching out to us. The location of the store is provided below:" });
           console.log(response);
         })

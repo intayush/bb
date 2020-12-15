@@ -44,7 +44,7 @@ body {
   height: 500px !important;
 }
 /* .slider > ul > li > img{
-  background-size: 1350px 480px !important; 
+  background-size: 1350px 480px !important;
 } */
 .slides h4 {
   font-size: 24px;
@@ -134,7 +134,7 @@ section-3 {
 .advantage-subtitle {
   margin: 5px 0 0 25px;
   font-size: 15px;
-  padding: 0px 30px; 
+  padding: 0px 30px;
   font-weight: 500;
 }
 
@@ -146,7 +146,7 @@ i.icon-black {
   color: black;
 }
 #testimonialMessage {
-  /* min-height: 146px; */
+  min-height: 200px!important;
   font-size: 16px;
   line-height: 35px;
   letter-spacing: 0.47px;
@@ -154,6 +154,22 @@ i.icon-black {
   padding: 0px 75px;
   text-align: center;
   /* margin-bottom: 25px; */
+}
+@media (max-width:767px) {
+  #testimonialMessage {
+    min-height: 246px!important;
+    font-size: 14px;
+    line-height: 35px;
+    letter-spacing: 0.47px;
+    font-weight: 400;
+    padding: 0px 15px;
+    text-align: center;
+    /* margin-bottom: 25px; */
+  }
+}
+.carousel-btn{
+  position: absolute;
+ background-color: yellow;
 }
 .footer {
   min-height: 208px;
@@ -327,6 +343,7 @@ i.icon-black {
 }
 
 .carousel {
+  overflow-x: hidden!important;
   max-height: 350px !important;
 }
 
@@ -370,6 +387,8 @@ i.icon-black {
 }
 #slideLeft,
 #slideRight {
+  /* margin-left: 30px;
+  margin-right: 30px; */
   margin-top: 110px;
 }
 .padHorizontal5{
