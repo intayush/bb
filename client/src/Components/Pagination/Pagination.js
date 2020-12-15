@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Pagination = (props) => {
+  const [currentPage, setcurrentPage] = useState();
+  const category = useSelector((state) => state.vehicleDetails.category);
+
   useEffect(() => {
     gotoPage(1);
-  }, []);
+  }, [category]);
 
-  const [currentPage, setcurrentPage] = useState(1);
+  const gotoPage = (page) => {
+    let currentPage = Math.max(0, Math.min(page, totalPages));
+    setcurrentPage(currentPage);
+  };
 
   const LEFT_PAGE = "LEFT";
   const RIGHT_PAGE = "RIGHT";
@@ -26,8 +33,6 @@ const Pagination = (props) => {
 
   pageLimit = typeof pageLimit === "number" ? pageLimit : 12;
   totalRecords = typeof totalRecords === "number" ? totalRecords : 0;
-
-  console.log("totalRecords=====>", totalRecords);
 
   pageNeighbours =
     typeof pageNeighbours === "number"
@@ -78,11 +83,6 @@ const Pagination = (props) => {
     totalPages: totalPages,
     pageLimit: pageLimit,
     totalRecords: totalRecords,
-  };
-
-  const gotoPage = (page) => {
-    let currentPage = Math.max(0, Math.min(page, totalPages));
-    setcurrentPage(currentPage);
   };
 
   useEffect(() => {
@@ -141,7 +141,6 @@ const Pagination = (props) => {
         );
       })}
       <li className={rightButtonClass}>
-        
         <a href="#!" onClick={handleMoveRight}>
           <i className="material-icons">chevron_right</i>
         </a>
