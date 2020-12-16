@@ -382,7 +382,7 @@ const Faq = (props) => {
                     inspect it on all the parameters crucial for you.
                   </ExpansionPanelDetails>
                 </ExpansionPanel>
-                <ExpansionPanel className={classes.collapsible}>
+                <ExpansionPanel   className={classes.collapsible}>
                   <ExpansionPanelSummary
                    style={{
                     fontSize: "11px",
@@ -424,7 +424,8 @@ const Faq = (props) => {
                  style={{
                   fontSize: "11px",
                   fontWeight: "bold",
-                  letterSpacing:'0px'
+                  letterSpacing:'0px',
+                  border:"none"
                 }}
                   className={classes.collapsible}
                 >

@@ -96,9 +96,9 @@ router.get("/getCategoryById", (req, res) => {
         }
       });
     }
-    
+  
     if (filterData.city !== "") {
-      console.log("filter city", filterData.city)
+      // console.log("filter city", filterData.city)
       mustArray.push({
         match_phrase: {
           city: `${filterData.city}*`
