@@ -80,19 +80,25 @@ const CategoryWidget = React.memo((props) => {
           name="category"
           onChange={handleChange}
         >
-          {filtering.map((item, i) => {
-            return (
-              <FormControlLabel
-                value={i + 1}
-                onChange={() => history.push(item.url)}
-                control={<BBRadio />}
-                label={`${item.type} ${
-                  selectedCategory === i + 1 ? valued : ""
-                }`}
-                checked={selectedCategory === i + 1}
-              />
-            );
-          })}
+          <ul>
+            {filtering.map((item, i) => {
+            
+              return (
+                <li style={{marginTop:'2%'}}>
+                     <FormControlLabel
+                  value={i + 1}
+                  onChange={() => history.push(item.url)}
+                  control={<BBRadio />}
+                  label={`${item.type} ${
+                    selectedCategory === i + 1 ? valued : ""
+                  }`}
+                  checked={selectedCategory === i + 1}
+                />
+                </li>
+             
+              );
+            })}
+          </ul>
         </RadioGroup>
       </div>
     </div>
