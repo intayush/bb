@@ -123,6 +123,15 @@ section-3 {
   border-radius: 100px;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.6);
 }
+.mobilegola {
+  background-color: white;
+  width: 58px;
+  height: 58px;
+  justify-content: center;
+  border-radius: 100px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.6);
+}
+
 .gola-2 {
   background-color: white;
   width: 108px;
@@ -131,10 +140,27 @@ section-3 {
   border-radius: 100px;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.6);
 }
+
+.mobilegola-2{
+  background-color: white;
+  width: 58px;
+  height: 58px;
+  justify-content: center;
+  border-radius: 100px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.6);
+}
+
 .advantage-subtitle {
   margin: 5px 0 0 25px;
   font-size: 15px;
   padding: 0px 30px; 
+  font-weight: 500;
+}
+
+.mobile-advantage-subtitle {
+  margin: 5px 0px 15px 25px;
+  font-size: 13px;
+  padding: 0px 2px;
   font-weight: 500;
 }
 

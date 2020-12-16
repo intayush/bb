@@ -25,8 +25,8 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0),
     padding: theme.spacing(3),
   },
-  mobilepaper:{
-    padding: '20px 16px 26px'
+  mobilepaper: {
+    padding: "20px 16px 26px",
   },
   faqHeading: {
     fontSize: 24,
@@ -53,8 +53,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
-
 
 const Faq = (props) => {
   const [showImage, setshowImage] = useState(false);
@@ -196,7 +194,6 @@ const Faq = (props) => {
                 </ExpansionPanel>
                 <ExpansionPanel className={classes.collapsible}>
                   <ExpansionPanelSummary
-                    
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1a-content"
                     className={classes.faqQuestion}
@@ -294,32 +291,38 @@ const Faq = (props) => {
                   className={classes.collapsible}
                 >
                   <ExpansionPanelSummary
-                    expandIcon={<ExpandMoreIcon style={{width:'20px'}} />}
+                    expandIcon={<ExpandMoreIcon style={{ width: "20px" }} />}
                     aria-controls="panel1a-content"
                     className={classes.faqQuestion}
                     style={{
                       color: "#ff0000",
                       fontSize: "11px",
                       fontWeight: "bold",
-                      letterSpacing:'0px'
+                      letterSpacing: "0px",
                     }}
                   >
                     How do I select a suitable two-wheeler for myself?
                   </ExpansionPanelSummary>
 
                   <ExpansionPanelDetails>
-                    <div style={{ display: "flex", flexDirection: "column" ,marginTop:'-4%'}}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        marginTop: "-4%",
+                      }}
+                    >
                       <span style={{ fontSize: "10px" }}>
                         Step 1: Select the category of the two-wheeler you want
                         to buy out of Motorcycles, Scooters and High-End
                         Motorcycles
                       </span>
-                      <span style={{ fontSize: "10px" ,marginTop:"3%"}}>
+                      <span style={{ fontSize: "10px", marginTop: "3%" }}>
                         Step 2: Use the filter for City, Manufacturing Year,
                         Budget, Brand and KMs driven for the chosen category of
                         the two-wheeler.
                       </span>
-                      <span style={{ fontSize: "10px",marginTop:'3%' }}>
+                      <span style={{ fontSize: "10px", marginTop: "3%" }}>
                         Step 3: You will be shown multiple options to select
                         from for the two-wheeler you want to buy, select any of
                         them to see further.
@@ -330,12 +333,12 @@ const Faq = (props) => {
 
                 <ExpansionPanel className={classes.collapsible}>
                   <ExpansionPanelSummary
-                   style={{
-                    fontSize: "11px",
-                    fontWeight: "bold",
-                    letterSpacing:'0px'
-                  }}
-                  expandIcon={<ExpandMoreIcon style={{width:'20px'}} />}
+                    style={{
+                      fontSize: "11px",
+                      fontWeight: "bold",
+                      letterSpacing: "0px",
+                    }}
+                    expandIcon={<ExpandMoreIcon style={{ width: "20px" }} />}
                     aria-controls="panel1a-content"
                     className={classes.faqQuestion}
                   >
@@ -359,12 +362,12 @@ const Faq = (props) => {
                   className={classes.collapsible}
                 >
                   <ExpansionPanelSummary
-                   style={{
-                    fontSize: "11px",
-                    fontWeight: "bold",
-                    letterSpacing:'0px'
-                  }}
-                  expandIcon={<ExpandMoreIcon style={{width:'20px'}} />}
+                    style={{
+                      fontSize: "11px",
+                      fontWeight: "bold",
+                      letterSpacing: "0px",
+                    }}
+                    expandIcon={<ExpandMoreIcon style={{ width: "20px" }} />}
                     aria-controls="panel1a-content"
                     className={classes.faqQuestion}
                   >
@@ -382,14 +385,14 @@ const Faq = (props) => {
                     inspect it on all the parameters crucial for you.
                   </ExpansionPanelDetails>
                 </ExpansionPanel>
-                <ExpansionPanel   className={classes.collapsible}>
+                <ExpansionPanel className={classes.collapsible}>
                   <ExpansionPanelSummary
-                   style={{
-                    fontSize: "11px",
-                    fontWeight: "bold",
-                    letterSpacing:'0px'
-                  }}
-                  expandIcon={<ExpandMoreIcon style={{width:'20px'}} />}
+                    style={{
+                      fontSize: "11px",
+                      fontWeight: "bold",
+                      letterSpacing: "0px",
+                    }}
+                    expandIcon={<ExpandMoreIcon style={{ width: "20px" }} />}
                     aria-controls="panel1a-content"
                     className={classes.faqQuestion}
                   >
@@ -421,21 +424,21 @@ const Faq = (props) => {
                   </ExpansionPanelDetails>
                 </ExpansionPanel>
                 <ExpansionPanel
-                 style={{
-                  fontSize: "11px",
-                  fontWeight: "bold",
-                  letterSpacing:'0px',
-                  border:"none"
-                }}
+                  style={{
+                    fontSize: "11px",
+                    fontWeight: "bold",
+                    letterSpacing: "0px",
+                    border: "none",
+                  }}
                   className={classes.collapsible}
                 >
                   <ExpansionPanelSummary
                     style={{
                       fontSize: "11px",
                       fontWeight: "bold",
-                      letterSpacing:'0px'
+                      letterSpacing: "0px",
                     }}
-                    expandIcon={<ExpandMoreIcon style={{width:'20px'}} />}
+                    expandIcon={<ExpandMoreIcon style={{ width: "20px" }} />}
                     aria-controls="panel1a-content"
                     className={classes.faqQuestion}
                   >
@@ -458,9 +461,9 @@ const Faq = (props) => {
                     style={{
                       fontSize: "11px",
                       fontWeight: "bold",
-                      letterSpacing:'0px'
+                      letterSpacing: "0px",
                     }}
-                    expandIcon={<ExpandMoreIcon style={{width:'20px'}} />}
+                    expandIcon={<ExpandMoreIcon style={{ width: "20px" }} />}
                     aria-controls="panel1a-content"
                     className={classes.faqQuestion}
                   >
@@ -480,12 +483,12 @@ const Faq = (props) => {
                 </ExpansionPanel>
                 <ExpansionPanel className={classes.collapsible}>
                   <ExpansionPanelSummary
-                     style={{
+                    style={{
                       fontSize: "11px",
                       fontWeight: "bold",
-                      letterSpacing:'0px'
+                      letterSpacing: "0px",
                     }}
-                    expandIcon={<ExpandMoreIcon style={{width:'20px'}} />}
+                    expandIcon={<ExpandMoreIcon style={{ width: "20px" }} />}
                     aria-controls="panel1a-content"
                     className={classes.faqQuestion}
                   >

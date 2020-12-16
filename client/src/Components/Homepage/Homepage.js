@@ -26,10 +26,14 @@ import M from "materialize-css";
 import Grid from "@material-ui/core/Grid";
 import * as CATEGORY from "../../shared/constants/category";
 import { CHANGE_CATEGORY } from "../../store/actions/actionTypes";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 // import { HOMEPAGE_LOAD } from "../../store/actions/actionTypes"
 
 const Homepage = (props) => {
   const dispatch = useDispatch();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
   const [searchTerm, setSearchTerm] = useState("");
   const [bikeHover, setBikeHover] = useState(false);
   const [scooterHover, setScooterHover] = useState(false);
@@ -193,7 +197,7 @@ const Homepage = (props) => {
       </div>
       <div className="section-3">
         <Grid container component="div" direction="row" className="advantageRow">
-          <Grid
+        <Grid
             item
             xs={12}
             sm={12}
@@ -201,51 +205,77 @@ const Homepage = (props) => {
             lg={12}
             className="center-align section-3-heading"
           >
-            <h3>BIKEBAZAAR ADVANTAGE</h3>
+           { matches ? (<h3>BIKEBAZAAR ADVANTAGE</h3>) : (<h3 style={{fontSize:"18px"}}>BIKEBAZAAR ADVANTAGE</h3>) }
             <img alt="" src={headingLines} width="57" height="4" />
           </Grid>
         </Grid>
-        <Grid container component="div" direction="row" className="row padHorizontal5">
+        <Grid
+          container
+          component="div"
+          direction="row"
+          className="row padHorizontal5"
+        >
           <Grid item xs={12} sm={12} md={4} lg={4}>
-            <div className="gola-wrapper">
+          { matches ? (<div className="gola-wrapper">
               <div className="gola valign-wrapper">
                 <img alt="" src={certifiedAutoExperts} height="69" width="69" />
               </div>
-            </div>
+            </div>) : (<div className="gola-wrapper">
+              <div className="mobilegola valign-wrapper">
+                <img alt="" src={certifiedAutoExperts} height="39" width="39" />
+              </div>
+            </div>)}
             <div className="center-align">
-              <h5>Certified by Auto Experts</h5>
-              <p className="advantage-subtitle-1">
+             { matches ? (<h5>Certified by Auto Experts</h5>) : (<h5 style={{fontSize:"14px"}}>Certified by Auto Experts</h5>)}
+             { matches ?  <p className="advantage-subtitle-1">
                 Every bike goes through a thorough inspection and is certified
                 by our team of Auto Experts
-              </p>
+              </p> : <p className="mobile-advantage-subtitle">
+                Every bike goes through a thorough inspection and is certified
+                by our team of Auto Experts
+        </p> }
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4}>
-            <div className="gola-wrapper">
+          { matches ? (  <div className="gola-wrapper">
               <div className="gola valign-wrapper">
                 <img alt="" src={monthWarranty} height="69" width="69" />
               </div>
-            </div>
+            </div>) : (<div className="gola-wrapper">
+              <div className="mobilegola valign-wrapper">
+                <img alt="" src={monthWarranty} height="39" width="39" />
+              </div>
+            </div> )}
             <div className="center-align">
-              <h5>Free 6 Months' Warranty</h5>
-              <p className="advantage-subtitle-1">
+              { matches ? (<h5>Free 6 Months' Warranty</h5>) : (<h5 style={{fontSize:"14px"}}>Free 6 Months' Warranty</h5>)}
+              { matches ?   <p className="advantage-subtitle-1">
                 Get 6 Months' Warranty covering critical parts including engine
                 and gear box, extendable upto 12 months
-              </p>
+              </p> :  <p className="mobile-advantage-subtitle">
+                Get 6 Months' Warranty covering critical parts including engine
+                and gear box, extendable upto 12 months
+        </p> }
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4}>
-            <div className="gola-wrapper">
+           {matches ?  (<div className="gola-wrapper">
               <div className="gola valign-wrapper">
                 <img alt="" src={buyerProtection} height="69" width="69" />
               </div>
-            </div>
+            </div>) : (<div className="gola-wrapper">
+              <div className="mobilegola valign-wrapper">
+                <img alt="" src={buyerProtection} height="39" width="39" />
+              </div>
+            </div>)}
             <div className="center-align">
-              <h5>Verified Sellers</h5>
-              <p className="advantage-subtitle-1">
-                All BikeBazaar Two-Wheelers are procured through Verified
-                Sellers
-              </p>
+             { matches ? ( <h5>Buyer Protection</h5>) : (<h5 style={{fontSize:"14px"}}>Buyer Protection</h5>)}
+             { matches ? (<p className="advantage-subtitle-1">
+               Any unforeseen issue faced with in one week
+               of purchase is resolved for free.
+              </p>):(<p className="mobile-advantage-subtitle">
+              Any unforeseen issue faced with in one week
+               of purchase is resolved for free.
+              </p>)} 
             </div>
           </Grid>
         </Grid>
@@ -255,24 +285,32 @@ const Homepage = (props) => {
           direction="row"
           className="row"
           justify="center"
-          style={{paddingBottom: '20px'}}
+          style={{ paddingBottom: "20px" }}
         >
           <Grid item xs={12} sm={12} md={4} lg={5}>
+            { matches ? (
             <div className="gola-wrapper">
               <div className="gola-2 valign-wrapper">
                 <img alt="" src={lowCostEmi} height="69" width="69" />
               </div>
-            </div>
+            </div>) : (<div className="gola-wrapper">
+              <div className="mobilegola-2 valign-wrapper">
+                <img alt="" src={lowCostEmi} height="39" width="39" />
+              </div>
+            </div>)}
             <div className="center-align">
-              <h5>Low Cost EMI</h5>
-              <p className="advantage-subtitle">
+              { matches ? (<h5>Low Cost EMI</h5>) :(<h5 style={{fontSize:"14px"}}>Low Cost EMI</h5>)}
+              { matches ?   <p className="advantage-subtitle">
                 All vehicles are available at EMI starting at ₹ 2000*. Your
                 dream bike is not a distant dream now
-              </p>
+              </p> : <p className="mobile-advantage-subtitle">
+                All vehicles are available at EMI starting at ₹ 2000*. Your
+                dream bike is not a distant dream now
+            </p> }
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4}>
-            <div className="gola-wrapper">
+           { matches ? ( <div className="gola-wrapper">
               <div className="gola-2 valign-wrapper">
                 <img
                   alt=""
@@ -281,13 +319,25 @@ const Homepage = (props) => {
                   width="69"
                 />
               </div>
-            </div>
+            </div>) : (<div className="gola-wrapper">
+              <div className="mobilegola-2 valign-wrapper">
+                <img
+                  alt=""
+                  src={hassleFreeDocTransfer}
+                  height="39"
+                  width="39"
+                />
+              </div>
+            </div>)}
             <div className="center-align hfdc">
-              <h5>Hassle Free Document Transfer</h5>
-              <p className="advantage-subtitle">
+              { matches ? (<h5>Hassle Free Document Transfer</h5>) : (<h5 style={{fontSize:"14px"}}>Hassle Free Document Transfer</h5>)}
+             { matches ? <p className="advantage-subtitle">
                 Document transfer is facilitated and made easy for buyer and
                 seller
-              </p>
+              </p> : <p className="mobile-advantage-subtitle">
+                Document transfer is facilitated and made easy for buyer and
+                seller
+            </p> }
             </div>
           </Grid>
         </Grid>
@@ -298,7 +348,7 @@ const Homepage = (props) => {
           component="div"
           direction="row"
           className="row center-align"
-          style={{marginBottom: "0px"}}
+          style={{ marginBottom: "0px" }}
         >
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <h3>TESTIMONIALS</h3>
