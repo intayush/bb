@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { connect, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import Homepage from "./Components/Homepage/Homepage";
 import CategoryPage from "./Components/CategoryPage/CategoryPage";
 import LocateStore from "./Components/LocateStore/LocateStore";
@@ -69,4 +69,4 @@ const App = () => {
   );
 };
 
-export default connect(null)(App);
+export default App;

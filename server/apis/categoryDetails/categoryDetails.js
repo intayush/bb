@@ -26,7 +26,7 @@ router.get("/getCategoryById", (req, res) => {
       }
     } else {
         if (req.query.category != 0) {
-          console.log("insider", req.query.category);
+      
           mustArray.push({
             match: {
               category: req.query.category

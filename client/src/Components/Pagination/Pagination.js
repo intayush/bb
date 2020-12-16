@@ -53,16 +53,13 @@ const Pagination = (props) => {
 
       const hasLeftSpill = startPage > 2;
       const hasRightSpill = totalPages - endPage > 1;
-      const spillOffset = totalNumbers - pages.length + 1;
 
       switch (true) {
         case hasLeftSpill && !hasRightSpill: {
-          const extraPages = range(startPage - spillOffset, startPage - 1);
           pages = [LEFT_PAGE, ...pages];
           break;
         }
         case !hasLeftSpill && hasRightSpill: {
-          const extraPages = range(endPage + 1, endPage + spillOffset);
           pages = [...pages, RIGHT_PAGE];
           break;
         }

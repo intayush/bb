@@ -21,12 +21,12 @@ const Card = (props) => {
     <Grid item component="div" lg={4} md={6} sm={12} xs={12} className="Prod">
       <Link to={"/vehicledetails/" + props.vehicleid}>
         <div className="Product">
-          {props.sold == "true" ? (
-            <div className="Product-image-container watermarked watermarkedCard">
+          {props.sold === "true" ? (
+            <div className="watermarked watermarkedCard">
               <img src={vehicleImagePath + props.image} height="230" alt="" />
             </div>
           ) : (
-            <div className="Product-image-container ">
+            <div >
               <img src={vehicleImagePath + props.image} height="230" alt="" />
             </div>
           )}
