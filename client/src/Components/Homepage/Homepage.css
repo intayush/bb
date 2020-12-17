@@ -2,10 +2,7 @@ body {
   font-family: "Montserrat", sans-serif;
   overflow-x: hidden;
 }
-.user-img{
- /* height: 150px!important;
- width: 150px!important; */
-}
+
 .heading {
   font-size: 32px;
   font-weight: 600;
@@ -161,9 +158,11 @@ i.icon-black {
 }
 
 @media (max-width:767px) {
- .carousel{
-   min-height: 250px!important;
- }
+  .carousel {
+    overflow-x: hidden!important;
+    min-height: 250px!important;
+    opacity: 1 !important;
+  }
    .carousel-item {
     opacity: 1 !important;
     width: 140px !important;
@@ -356,13 +355,15 @@ i.icon-black {
   margin-bottom: 0px !important;
 }
 
-.carousel {
-  overflow-x: hidden!important;
-  min-height: 280px!important;
+@media (min-width:767px) {
+  .carousel {
+    overflow-x: hidden!important;
+    min-height: 330px!important;
+  }
 }
 
 .carousel .carousel-item {
-  opacity: 1;
+  opacity: 1!important;
   width: 250px;
   height: 250px;
 }
