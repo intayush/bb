@@ -3,6 +3,8 @@ import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 import "./watermark.css";
 import { makeStyles } from "@material-ui/core/styles";
+import Carousel from 'react-material-ui-carousel'
+import {Paper, Button} from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   del: {
@@ -14,22 +16,42 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+
+
+
 const Card = (props) => {
   const classes = useStyles();
   const vehicleImagePath = "../../vehicles/";
+
+  function Item(props)
+  {
+      return (
+          <Paper>
+               <img src={vehicleImagePath + props.item} height="230" alt="" />
+          </Paper>
+      )
+  }
+
   return (
     <Grid item component="div" lg={4} md={6} sm={12} xs={12} className="Prod">
-      <Link to={"/vehicledetails/" + props.vehicleid}>
         <div className="Product">
           {props.sold == "true" ? (
             <div className="Product-image-container watermarked watermarkedCard">
               <img src={vehicleImagePath + props.image} height="230" alt="" />
             </div>
           ) : (
-            <div className="Product-image-container ">
-              <img src={vehicleImagePath + props.image} height="230" alt="" />
+            <div className="Product-image-container">
+              <Carousel
+              indicators={false}
+              autoPlay={false}
+              animation={"slide"}
+              navButtonsAlwaysVisible={true}
+              >
+                 {props.carouselImages.map((item, i) => <Item key={i} item={item} />)}
+              </Carousel>
             </div>
           )}
+          <Link to={"/vehicledetails/" + props.vehicleid}>
           <div className="detail">
             <div className="bike-name">
               <h3>{props.name} </h3>
@@ -62,8 +84,8 @@ const Card = (props) => {
             <br className="clr" />
             <p className="location">{props.loc}</p>
           </div>
+          </Link>
         </div>
-      </Link>
     </Grid>
   );
 };

@@ -25,3 +25,11 @@
   left: 20%;
   background-size: 400px 400px;
 }
+.MuiIconButton-root{
+  padding: 2px!important
+}
+.Carousel-button-25{
+  color: black!important;
+  opacity: 1!important;
+  background-color: white!important;
+}

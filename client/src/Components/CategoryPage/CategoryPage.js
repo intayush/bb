@@ -96,21 +96,22 @@ const CategoryPage = (props) => {
 
 
   if (vehicles.length && currentData[0] != "NA") {
-    renderedVehicles = currentData.map((vehicle, index) => (
-      <Card
-        key={index}
-        year={vehicle._source.myear}
-        kms={vehicle._source.kmdriven}
-        cc={vehicle._source.cc}
-        name={vehicle._source.name}
-        loc={vehicle._source.loc}
-        cost={vehicle._source.price}
-        vehicleid={vehicle._id}
-        image={vehicle._source.mimage}
-        sold={vehicle._source.sold}
-        discountPercent={vehicle._source.discountPercent}
-      />
-    ));
+    renderedVehicles = currentData.map((vehicle, index) => {
+      return <Card
+          key={index}
+          year={vehicle._source.myear}
+          kms={vehicle._source.kmdriven}
+          cc={vehicle._source.cc}
+          name={vehicle._source.name}
+          loc={vehicle._source.loc}
+          cost={vehicle._source.price}
+          vehicleid={vehicle._id}
+          carouselImages={vehicle._source.images}
+          image={vehicle._source.mimage}
+          sold={vehicle._source.sold}
+          discountPercent={vehicle._source.discountPercent}
+        />
+    });
     containerClass = vehicles.length > 12 ? "cardContainer" : "";
   }
 

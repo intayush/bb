@@ -19,8 +19,8 @@ import * as actions from "../../store/actions/index";
 const Navigation = (props) => {
   const[resetKm, setResetKm] = useState(0);
   const[filter_btn,showfilter] = useState(false);
-  
-  
+
+
   const whatFilters = () =>{
     return (
       <div>
@@ -62,7 +62,7 @@ const Navigation = (props) => {
   };
   return (
     <div>
-      {props.viewType==="mobile"&& 
+      {props.viewType==="mobile"&&
         (<div className="filter-display">
           <ButtonGroup  fullWidth={true}  variant="contained" color="default">
             <div className="filter-btns" style={{ borderRadius: 0}}>
@@ -75,7 +75,7 @@ const Navigation = (props) => {
             </Button>
           </ButtonGroup>
             <Dialog  fullScreen open={filter_btn} onClose={()=>showfilter(false)}>
-              <DialogContent>  
+              <DialogContent>
                   <div className="resetFilter"><h5><b>Filters</b></h5></div>
                     <div className="filterSec" style={{boxShadow:'none'}}>
                       {/* <CategoryWidget /> */}
@@ -85,7 +85,7 @@ const Navigation = (props) => {
               <div className="line"></div>
               <div className="dialog-action-area">
                 <button className="action-btn" onClick={()=>showfilter(false)}>Cancel</button>
-                <button className="action-btn" id="cancel-action">Apply</button> 
+                <button className="action-btn" id="cancel-action">Apply</button>
               </div>
           </Dialog>
         </div>
@@ -101,7 +101,7 @@ const Navigation = (props) => {
           </div>
         </Grid>
        )}
-    </div>   
+    </div>
   );
 };
 
@@ -127,5 +127,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Navigation);
-
-
