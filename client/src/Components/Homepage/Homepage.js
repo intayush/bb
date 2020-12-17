@@ -123,15 +123,12 @@ const Homepage = (props) => {
   return (
     <div className="App">
       {/* <Header /> */}
-      <MainMenu />
+       <MainMenu />
      <div className ={changeSliders}>
         <ul className = {changeSlides}>
          <li>
          <div className={changeImage}>
-
-         </div>
-       
-            <div className={ changeCaptions + " left-align"}>
+         <div className={ changeCaptions + " left-align"}>
               <h3 className= {changeHeadings}>
                 India's Favourite Place to Buy
                 <br />
@@ -156,10 +153,11 @@ const Homepage = (props) => {
                 </span>
               </h4>
             </div>
+            </div>
             </li>
           </ul>
-       </div>
-      
+       
+      </div>
       
        
       

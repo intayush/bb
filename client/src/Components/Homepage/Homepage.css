@@ -205,11 +205,12 @@ i.icon-black {
 .tick-icon {
   width: 1.1% !important;
   height: 3% !important;
+  margin-left:1%;
 }
 .mobile-tick-icon {
   margin-left: -25px;
-  width: 1.1% !important;
-  height: 3% !important;
+  width: 2.5% !important;
+  height: 4% !important;
   margin-right: 4px;
 }
 #topNav {
@@ -470,26 +471,27 @@ i.icon-black {
 }
  
 .captions{
-   background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3); 
   transform: translateX(0px) translateY(0px);
   top: 0px ;
   left: 0px ;
-  height:90% ;
+  height:580px;
   width: 100% ;
   position:absolute;
-
+  overflow: hidden;
 }
 .mobile-captions{
   background-color: rgba(0, 0, 0, 0.3);
   transform: translateX(0px) translateY(0px);
   top: 0px ;
   left: 0px ;
-  height:53% ;
+  height:339px ;
   width:100% ;
   position:absolute;
 }
  .text-white {
    color: white !important;
+   
  }
 
   .headings {
@@ -497,7 +499,7 @@ i.icon-black {
     font-weight: 600;
     margin-bottom: 150px;
     padding-left: 50px;
-    margin-top: 170px;
+    margin-top: 116px;
     color: white;
 }
 .mobile-headings{
@@ -537,7 +539,9 @@ i.icon-black {
   height:500px;
   width: 100%;
   background-position:center;
+  /* background-color: rgba(0, 0, 0, 0.3); */
 }
+
 .mobile-bannerimage{
   background-image: url('./../../assets/banner.png');
   background-size: cover;
