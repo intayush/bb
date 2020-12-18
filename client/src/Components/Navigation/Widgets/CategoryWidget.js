@@ -93,7 +93,7 @@ const CategoryWidget = React.memo((props) => {
             <ul>
               {filtering.map((item, i) => {
                 return (
-                  <li style={{ marginTop: "2%" }}>
+                  <li style={{ marginTop: "5%" }}>
                     <FormControlLabel
                       value={i + 1}
                       onChange={() => history.push(item.url)}
