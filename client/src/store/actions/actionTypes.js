@@ -24,3 +24,6 @@ export const BLOG_LIST = "BLOG_LIST";
 export const BLOG_BY_ID = "BLOG_BY_ID"; 
 
 export const CHANGE_CATEGORY = "CHANGE_CATEGORY";
+
+export const FILTER_CHANGE_CATEGORY = "FILTER_CATEGORY";
+

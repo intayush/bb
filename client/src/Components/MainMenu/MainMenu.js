@@ -8,10 +8,10 @@ import hamburgerIcon from "../../assets/Hamburger_Icon.png";
 import callIcon from "../../assets/Phone.svg";
 import messageIcon from "../../assets/message.png";
 import closeIcon from "../../assets/Close.png";
-import faceBookIcon from '../../assets/facebook-icon.svg';
-import twitterIcon from '../../assets/twitter-icon.svg';
-import linkedinIcon from '../../assets/linkedin-icon.svg';
-import instagramIcon from '../../assets/instagram-icon.svg';
+import faceBookIcon from "../../assets/facebook-icon.svg";
+import twitterIcon from "../../assets/twitter-icon.svg";
+import linkedinIcon from "../../assets/linkedin-icon.svg";
+import instagramIcon from "../../assets/instagram-icon.svg";
 import selectedTyre from "../../assets/SelectedPageTyre.svg";
 import Grid from "@material-ui/core/Grid";
 import M from "materialize-css";
@@ -201,16 +201,13 @@ const LocationDropDown = () => {
     setAnchorEl(null);
   };
 
-  const handleCityChange = (event) => {
-    event.preventDefault();
-
-    console.log(event.target.value);
-
-    //console.log(value);
-    if (event.target.value === "Select City") {
+  const handleCityChange = (value) => {
+   
+    console.log()
+    if (value === "Select City") {
       dispatch({ type: CHANGE_CITY, payload: "" });
     } else {
-      dispatch({ type: CHANGE_CITY, payload: event.target.value });
+      dispatch({ type: CHANGE_CITY, payload: value });
     }
 
     handleClose();
@@ -232,7 +229,6 @@ const LocationDropDown = () => {
           alignItems: "center",
           cursor: "pointer",
           color: "black",
-          flexDirection: "row",
         }}
         onClick={handleClick}
       >
@@ -243,39 +239,11 @@ const LocationDropDown = () => {
           src={locationLogo}
           alt=""
         />
-
-        {/* look for this span className as well ---comment by prabhjot  */}
-
-        {/* <span className="span-select-city"></span> */}
-        {/* {selectedCity ? selectedCity : "Select City"} */}
-        <FormControl>
-          <Select
-            onChange={(e) => handleCityChange(e)}
-            className="nav_dropdown"
-            disableUnderline
-            native
-            defaultValue=""
-            id="grouped-native-select"
-          >
-            <option value="Select City">Select City</option>
-            <option value="Aluva">Aluva</option>
-            <option value="Kolkata">Kolkata</option>
-            <option value="Rajahmundry">Rajahmundry</option>
-            <option value="Thrissur">Thrissur</option>
-            <option value="Bangalore">Bangalore</option>
-            <option value="Chennai">Chennai</option>
-            <option value="New Delhi">New Delhi</option>
-            <option value="Gurgaon">Gurgaon</option>
-            <option value="Hyderabad">Hyderabad</option>
-            <option value=" Jaipur">Jaipur</option>
-            <option value="Mumbai">Mumbai</option>
-            <option value="Nagpur">Nagpur</option>
-            <option value="Pune">Pune</option>
-          </Select>
-        </FormControl>
-
+        <span className="span-select-city">
+          {selectedCity ? selectedCity : "Select City"}
+        </span>
         <span onClick={handleClick}>
-          {/* {select ? (
+          {select ? (
             <ExpandMoreIcon
               style={{ paddingTop: "5px", justifyContent: "center" }}
             />
@@ -283,79 +251,76 @@ const LocationDropDown = () => {
             <ChevronRightIcon
               style={{ paddingTop: "5px", justifyContent: "center" }}
             />
-          )} */}
+          )}
         </span>
-
-        {/* used for the side border */}
         <div id="border-height"></div>
       </span>
 
-      {/* <Menu
-      id="customised-menu"
-      anchorEl={anchorEl}
-      keepMounted
-      open={Boolean(anchorEl)}
-      onClose={handleClose}
-      getContentAnchorEl={null}
-      anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "center",
-      }}
-      transformOrigin={{ vertical: "top", horizontal: "center" }}
-      MenuListProps={{ onMouseLeave: handleClose }}
-      PaperProps={{
-        style: {
-          backgroundColor: "black",
-          marginLeft: "-0.1%",
-          width: "12%",
-          scrollbarWidth: "thin"
-        },
-      }}
-    >
-
-      <StyledMenuItem onClick={() => handleCityChange("Select City")}>
-        Select City
-      </StyledMenuItem>
-      <StyledMenuItem onClick={() => handleCityChange("Aluva")}>
-        Aluva
-      </StyledMenuItem>
-      <StyledMenuItem onClick={() => handleCityChange("Kolkata")}>
-        Kolkata
-      </StyledMenuItem>
-      <StyledMenuItem onClick={() => handleCityChange("Rajahmundry")}>
-        Rajahmundry
-      </StyledMenuItem>
-      <StyledMenuItem onClick={() => handleCityChange("Thrissur")}>
-        Thrissur
-      </StyledMenuItem>
-      <StyledMenuItem onClick={() => handleCityChange("Bangalore")}>
-        Bangalore
-      </StyledMenuItem>
-      <StyledMenuItem onClick={() => handleCityChange("Chennai")}>
-        Chennai
-      </StyledMenuItem>
-      <StyledMenuItem onClick={() => handleCityChange("New Delhi")}>
-        New Delhi
-      </StyledMenuItem>
-      <StyledMenuItem onClick={() => handleCityChange("Gurgaon")}>
-        Gurgaon
-      </StyledMenuItem>
-      <StyledMenuItem onClick={() => handleCityChange("Hyderabad")}>
-        Hyderabad
-      </StyledMenuItem>
-      <StyledMenuItem onClick={() => handleCityChange("Jaipur")}>
-        Jaipur
-      </StyledMenuItem>
-      <StyledMenuItem onClick={() => handleCityChange("Mumbai")}>
-        Mumbai
-      </StyledMenuItem>
-      <StyledMenuItem onClick={() => handleCityChange("Nagpur")}>
-        Nagpur
-      </StyledMenuItem>
-      <StyledMenuItem onClick={() => handleCityChange("Pune")}>
-        Pune
-      </StyledMenuItem>
-    </Menu> */}
+      <Menu
+        id="customised-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+        getContentAnchorEl={null}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
+        transformOrigin={{ vertical: "top", horizontal: "center" }}
+        MenuListProps={{ onMouseLeave: handleClose }}
+        PaperProps={{
+          style: {
+            backgroundColor: "black",
+            marginLeft: "-0.1%",
+            width: "11.72%",
+            scrollbarWidth: "thin",
+          },
+        }}
+      >
+        <StyledMenuItem onClick={() => handleCityChange("Select City")}>
+          Select City
+        </StyledMenuItem>
+        <StyledMenuItem onClick={() => handleCityChange("Aluva")}>
+          Aluva
+        </StyledMenuItem>
+        <StyledMenuItem onClick={() => handleCityChange("Kolkata")}>
+          Kolkata
+        </StyledMenuItem>
+        <StyledMenuItem onClick={() => handleCityChange("Rajahmundry")}>
+          Rajahmundry
+        </StyledMenuItem>
+        <StyledMenuItem onClick={() => handleCityChange("Thrissur")}>
+          Thrissur
+        </StyledMenuItem>
+        <StyledMenuItem onClick={() => handleCityChange("Bangalore")}>
+          Bangalore
+        </StyledMenuItem>
+        <StyledMenuItem onClick={() => handleCityChange("Chennai")}>
+          Chennai
+        </StyledMenuItem>
+        <StyledMenuItem onClick={() => handleCityChange("New Delhi")}>
+          New Delhi
+        </StyledMenuItem>
+        <StyledMenuItem onClick={() => handleCityChange("Gurgaon")}>
+          Gurgaon
+        </StyledMenuItem>
+        <StyledMenuItem onClick={() => handleCityChange("Hyderabad")}>
+          Hyderabad
+        </StyledMenuItem>
+        <StyledMenuItem onClick={() => handleCityChange("Jaipur")}>
+          Jaipur
+        </StyledMenuItem>
+        <StyledMenuItem onClick={() => handleCityChange("Mumbai")}>
+          Mumbai
+        </StyledMenuItem>
+        <StyledMenuItem onClick={() => handleCityChange("Nagpur")}>
+          Nagpur
+        </StyledMenuItem>
+        <StyledMenuItem onClick={() => handleCityChange("Pune")}>
+          Pune
+        </StyledMenuItem>
+      </Menu>
     </>
   );
 };
@@ -455,34 +420,31 @@ const HamburgerDropdown = () => {
             connect@bikebazaar.com
           </a>
         </StyledMenuItem>
-        <hr className="small-hr" />
+        <hr className="small-hr" style={{ width: "37%", marginLeft: "10%" }} />
         <MenuItem>
-          <div style={{ marginLeft: "20px" }}>
+          <div style={{ marginLeft: "4%" }}>
             <a href="https://www.facebook.com/BikeBazaaar">
-              {/* <a href="https://www.facebook.com/BikeBazaaar"> */}
-              <img className="social-icon-img" src={faceBookIcon} alt="" />
-
+              <img
+                className="social-icon-img"
+                src={faceBookIcon}
+                style={{ marginLeft: "15px" }}
+                alt=""
+              />
             </a>
           </div>
-
           <div style={{ marginLeft: "20px" }}>
-            <a href="https://www.instagram.com/bikebazaaar/">
-
-              <img className="social-icon-img" src={instagramIcon} alt="" />
+            <a href="https://twitter.com/BikeBazaaar">
+              <img className="social-icon-img" src={twitterIcon} alt="" />
             </a>
           </div>
-
           <div style={{ marginLeft: "20px" }}>
             <a href="https://www.linkedin.com/company/bikebazaar">
               <img className="social-icon-img" src={linkedinIcon} alt="" />
-
             </a>
           </div>
           <div style={{ marginLeft: "20px" }}>
-
-
-            <a href="https://twitter.com/BikeBazaaar">
-              <img className="social-icon-img" src={twitterIcon} alt="" />
+            <a href="https://www.instagram.com/bikebazaaar/">
+              <img className="social-icon-img" src={instagramIcon} alt="" />
             </a>
           </div>
         </MenuItem>
@@ -591,29 +553,10 @@ const MainMenu = (props) => {
                         />
                       </div>
                     </Grid>
-
-
-                    { searchTerm && selectedCity ? <Grid item xs={2} sm={2} md={2} lg={2}>
-
-                      <Link
-                        to={`/category/bike?searchTerm=${searchTerm}&city=${selectedCity}`}
-                      >
-                        <button
-                          style={{
-                            marginTop: "1px",
-                            width: "100%",
-                            backgroundColor: "#1d1d1d",
-                          }}
-                          className="btn search-label-btn"
-                          type="submit"
-                        >
-                          <img src={searchIcon} height="25" alt="" />
-                        </button>
-                      </Link>
-
-                    </Grid> : <Grid item xs={2} sm={2} md={2} lg={2}>
+                    {searchTerm && selectedCity ? (
+                      <Grid item xs={2} sm={2} md={2} lg={2}>
                         <Link
-                          to={`/category/bike`}
+                          to={`/category/bike?searchTerm=${searchTerm}&city=${selectedCity}`}
                         >
                           <button
                             style={{
@@ -627,8 +570,24 @@ const MainMenu = (props) => {
                             <img src={searchIcon} height="25" alt="" />
                           </button>
                         </Link>
-                      </Grid>}
-
+                      </Grid>
+                    ) : (
+                      <Grid item xs={2} sm={2} md={2} lg={2}>
+                        <Link to={`/category/bike`}>
+                          <button
+                            style={{
+                              marginTop: "1px",
+                              width: "100%",
+                              backgroundColor: "#1d1d1d",
+                            }}
+                            className="btn search-label-btn"
+                            type="submit"
+                          >
+                            <img src={searchIcon} height="25" alt="" />
+                          </button>
+                        </Link>
+                      </Grid>
+                    )}
                   </Grid>
                 </form>
               </Grid>

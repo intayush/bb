@@ -628,7 +628,7 @@ const AdminUpload = (props) => {
 
       setLoader(true);
 
-      if(uploaders!=undefined || undefined != null){
+      if(uploaders!=undefined || uploaders != null){
 
         axios
         .all(uploaders)

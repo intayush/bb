@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Pagination = (props) => {
+  const [currentPage, setcurrentPage] = useState();
+  const category = useSelector((state) => state.vehicleDetails.category);
+
   useEffect(() => {
     gotoPage(1);
-  }, []);
+  }, [category]);
 
-  const [currentPage, setcurrentPage] = useState(1);
+  const gotoPage = (page) => {
+    let currentPage = Math.max(0, Math.min(page, totalPages));
+    setcurrentPage(currentPage);
+  };
 
   const LEFT_PAGE = "LEFT";
   const RIGHT_PAGE = "RIGHT";
@@ -46,16 +53,13 @@ const Pagination = (props) => {
 
       const hasLeftSpill = startPage > 2;
       const hasRightSpill = totalPages - endPage > 1;
-      const spillOffset = totalNumbers - pages.length + 1;
 
       switch (true) {
         case hasLeftSpill && !hasRightSpill: {
-          const extraPages = range(startPage - spillOffset, startPage - 1);
           pages = [LEFT_PAGE, ...pages];
           break;
         }
         case !hasLeftSpill && hasRightSpill: {
-          const extraPages = range(endPage + 1, endPage + spillOffset);
           pages = [...pages, RIGHT_PAGE];
           break;
         }
@@ -76,11 +80,6 @@ const Pagination = (props) => {
     totalPages: totalPages,
     pageLimit: pageLimit,
     totalRecords: totalRecords,
-  };
-
-  const gotoPage = (page) => {
-    let currentPage = Math.max(0, Math.min(page, totalPages));
-    setcurrentPage(currentPage);
   };
 
   useEffect(() => {
@@ -139,7 +138,6 @@ const Pagination = (props) => {
         );
       })}
       <li className={rightButtonClass}>
-        
         <a href="#!" onClick={handleMoveRight}>
           <i className="material-icons">chevron_right</i>
         </a>

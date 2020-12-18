@@ -1,5 +1,5 @@
 import React from "react";
-import FooterLogo from "./FooterLogo.svg";
+import FooterLogo from "../../assets/footerLogo.svg";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import callIcon from "../../assets/Phone.svg";
@@ -86,13 +86,16 @@ const Footer = ({props}) => {
               className="verticalLine"
             ></div>
             <Grid item md={4}>
-              <p
-                style={{ marginBottom: "4%", marginLeft: "8%" }}
-                className={classes.text}
-              >
-                Quick Links
-              </p>
-              
+              <div style={{display:'flex',flexDirection:'column'}}>
+              <div>
+                  <p
+                    style={{ marginBottom: "4%", marginLeft: "8%" }}
+                    className={classes.text}
+                  >
+                    Quick Links
+                  </p>
+              </div>
+
               {/* for quick links two columns */}
               <div
                 style={{
@@ -123,21 +126,22 @@ const Footer = ({props}) => {
                     flexFlow: "column",
                   }}
                 >
-                  <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/buy">Buy</Link></p>
+                  <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/category/bike">Buy</Link></p>
                   <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/sell">Sell</Link></p>
                   <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/vehicledetails/locate-store">Locate Store</Link></p>
                   <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/becomefranchiseowner"> Become a Franchise Owner</Link>
-                   
+
                   </p>
                   <p className={classes.columnsText}>Blog</p>
                 </div>
               </div>
+              </div>
+
             </Grid>
             {/* creating vertical lines */}
             <div
               className="verticalLineRight"
             ></div>
-            
             <Grid item>
               <div
                 style={{
@@ -181,7 +185,6 @@ const Footer = ({props}) => {
                   <img
                     style={{
                       marginLeft: "1%",
-                     
                     }}
                     className="iconImg"
                     src={messageIcon}
@@ -189,7 +192,7 @@ const Footer = ({props}) => {
                     width="25"
                     alt=""
                   />
-                  <span style={{ marginLeft: "7%" }}>
+                  <span style={{ marginLeft: "8%" }}>
                     connect@bikebazaar.com
                   </span>
                 </div>
@@ -316,7 +319,7 @@ const Footer = ({props}) => {
               width="18"
               alt=""
             />
-            <span style={{ marginLeft: "5%",fontSize:'13px' }}>connect@bikebazaar.com</span>
+            <span style={{ marginLeft: "4%",fontSize:'13px' }}>connect@bikebazaar.com</span>
           </div>
           <div
             style={{
@@ -324,7 +327,6 @@ const Footer = ({props}) => {
               flexDirection: "column",
               marginTop: "8%",
               wordSpacing: "3.5px",
-              
             }}
           >
             <p style={{ color: "white" ,fontWeight:'600'}}>Connect with us</p>

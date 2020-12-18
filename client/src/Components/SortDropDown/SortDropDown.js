@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import M from 'materialize-css';
 import * as actions from '../../store/actions/index';
+import '../Navigation/Navigation.css'
 
 class SortDropDown extends Component {
   constructor(props) {
@@ -39,9 +40,7 @@ class SortDropDown extends Component {
   selectOption(event) {
     let category  = this.props.category;
     let filterData = this.props.filter;
-
     let selectedFilter = event.target.value.split("-");
-
     filterData.sort.column = selectedFilter[0];
     filterData.sort.order = selectedFilter[1];
     this.props.getsortedData(category,filterData);
@@ -49,28 +48,26 @@ class SortDropDown extends Component {
   }
 
   render() {
-    
     return (
-      <React.Fragment>
-		    <h5>One Step Closer to Your Dream Bike</h5>
-        <div className="input-field sortby" onClick={this.toggleList}>
-          <select
-            ref={(select) => {this.select = select}}
-            onChange={this.selectOption}
-            visible={this.state.visible}
-            // defaultValue="">
-            >
-            <option value="">Sort by</option>
-            <option value="price-asc">Price - Low to High</option>
-            <option value="price-desc">Price - High to Low</option>
-            <option value="myear-asc">Manufacturing Year - Low to High</option>
-            <option value="myear-desc">Manufacturing Year - High to Low</option>
-            <option value="kmdriven-asc">Kilometer - Low to High</option>
-          </select>
+        // <div className="sort-drop"  onClick={this.toggleList}>
+        <div className="sortContainer">
+          <div className={this.props.viewType==="mobile"?"sort-drop":"input-field sortby"}  onClick={this.toggleList}>
+            <select
+              ref={(select) => {this.select = select}}
+              onChange={this.selectOption}
+              visible={this.state.visible}
+              >
+                <option value="" >SORT BY</option>
+                <option value="price-asc"  >Price - Low to High</option>
+                <option value="price-desc"  >Price - High to Low</option>
+                <option value="myear-asc">Manufacturing Year - Low to High</option>
+                <option value="myear-desc">Manufacturing Year - High to Low</option>
+                <option value="kmdriven-asc"  >Kilometer - Low to High</option>
+            </select>
+          </div>
         </div>
+       
 
-      <br className="clr" />
-      </React.Fragment>
     );
   }
 }

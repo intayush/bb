@@ -32,7 +32,7 @@ const AdminListPage = (props) => {
         }
       })
   }
-  console.log(props);
+
   let vehicles = <Spinner />
   if (props.vehicles[0] !== "NA") {
     vehicles = props.vehicles.map((vehicle, index) => (

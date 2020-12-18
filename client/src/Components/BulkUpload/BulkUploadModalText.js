@@ -43,7 +43,7 @@ const ModalText = () => {
             <li> - <span className={classes.excel}>bhp: </span> Brake horse power</li>
             <li> - <span className={classes.excel}>category: </span> Category of the two-wheeler as follows: 1 for Bike, 2 for Scooter, 3 for High-end Bike</li>
             <li> - <span className={classes.excel}>mileage: </span> Mileage the two-wheeler gives</li>
-            <li> - <span className={classes.excel}>images: </span> comma separated list of names of the image files for each vehicle with the extension, for eg: Activa1.jpeg,Activa2.png</li>
+            <li> - <span className={classes.excel}>images: </span> All Images pertaining to one bike are to be placed inside the folder that is named as per the registration number of the bike</li>
             <li> - <span className={classes.excel}>storeId: </span> Store Id where the vehicle is up for sale as follows: 1 for Aluva, 2 for Kolakata, 3 for Rajahmundary</li>
             <li> - <span className={classes.excel}>discountPercent: </span> Discount in percent to be provided on the two-wheeler</li>
         </ul>
@@ -53,7 +53,7 @@ const ModalText = () => {
             <li> -"More details about the Two-wheeler" section will not be added through the bulk upload functionality.</li>
             <li> -Not for editing two-wheeler - please DO NOT use to edit any existing two-wheeler details. This functionality is only meant for the purpose of adding new two-wheelers.</li>
             <li> -If the particular bike details are already existing on the web app refrain from adding it again as it will create a duplicate entry.</li>
-            <li> -While uploading more then one records -please make sure that there should not be any special characters used in the folder's name.</li>
+            <li> -While uploading more then one records -please make sure that there should not be any special characters used in the folders name.</li>
         </ul>
     </>
 )};

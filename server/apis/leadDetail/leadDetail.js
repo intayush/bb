@@ -95,7 +95,8 @@ router.get("/createFranchiseIndex", (req, res) => {
               phone: { type: "text" },
               city: { type: "text" },
               address: { type: "text" },
-              pincode: { type: "integer" }
+              pincode: { type: "integer" },
+              currentBusiness:{type:"integer"}
             }
           }
         }
@@ -139,7 +140,7 @@ router.get("/createSellerIndex", (req, res) => {
 
 router.post("/insertFranchiseRequest", (req, res) => {
   let formData = req.body;
-  //console.log(formData);
+  // console.log("=====",formData);
   async function upload() {
     const dataset = [
       {
@@ -148,7 +149,9 @@ router.post("/insertFranchiseRequest", (req, res) => {
         phone: formData.mobile.value,
         city: formData.city.value,
         address: formData.address.value,
-        pincode: formData.pin.value
+        pincode: formData.pin.value,
+        currentBusiness:formData.currentBusiness.value
+
       }
     ];
     const data = dataset[0];
@@ -181,6 +184,10 @@ router.post("/insertFranchiseRequest", (req, res) => {
         <tr>
           <td> Date </td>
           <td> ${new Date()} </td>
+        </tr>
+        <tr>
+          <td>Current Business </td>
+          <td> ${data.currentBusiness}</td>
         </tr>
       </table>
     `;

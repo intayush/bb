@@ -9,7 +9,7 @@ const initialState = {
   currentPage: null,
   totalPages: null,
   vehicle: null,
-  category: 0,
+  category: null,
   selectedCity: "", //this will serve as city filter gets update on city widget
   filter: {
     sort: {
@@ -24,8 +24,9 @@ const initialState = {
     searchTerm: "*",
   },
 };
-
 const vehicles = (state, action) => {
+
+
   return updateObject(state, {
     filter: action.filterData,
     category: action.category,
@@ -42,13 +43,15 @@ const vehiclesNames = (state, action) => {
 };
 
 const getPaginatedData = (state, action) => {
-  let reversedVehicleList = [];
 
-  for (let i = state.vehicles.length - 1; i >= 0; i--) {
-    reversedVehicleList.push(state.vehicles[i]);
+  let reversedVehicleList=[];
+
+  for(let i=state.vehicles.length-1;i>=0;i--){
+
+    reversedVehicleList.push(state.vehicles[i])
   }
 
-  let currentData = reversedVehicleList.slice(
+  let currentData =reversedVehicleList.slice(
     action.offset,
     action.offset + action.pageLimit
   );
@@ -65,6 +68,7 @@ const getVehicleData = (state, action) => {
     vehicle: action.vehicleData,
   });
 };
+
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -102,15 +106,20 @@ const reducer = (state = initialState, action) => {
       };
 
     case actionTypes.CHANGE_CITY:
+
       const updatedFilter = state.filter;
       updatedFilter.city = action.payload;
       return {
         ...state,
         selectedCity: action.payload,
-        filter: updatedFilter,
-      };
+        filter: updatedFilter
+      }
 
-    case actionTypes.CHANGE_CATEGORY:
+      case actionTypes.CHANGE_CATEGORY:
+      // console.log({f
+      //   ...state,
+      //   category: action.payload
+      // })
       return {
         ...state,
         category: action.payload,

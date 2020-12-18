@@ -25,6 +25,7 @@ overflow-y:scroll
   .form-group
   input[type="text"]:not(.browser-default):focus:not([readonly]) {
   box-shadow: none;
+
 }
 #shareYourDetailsForm .form-group .btn {
   background: #ff0000;

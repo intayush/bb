@@ -9,8 +9,6 @@ import logo from "../../assets/logo.svg";
 import bikeGIF from "../../assets/Motorcycle-GIF.gif";
 import scooterGIF from "../../assets/Scooter-GIF.gif";
 import highEndBikeGIF from "../../assets/High-End-Motorcycle-GIF.gif";
-import bannerImg from "../../assets/banner.png";
-
 import headingLines from "../../assets/heading-lines.svg";
 import bikeStill from "../../assets/motorcycle.svg";
 import scooterStill from "../../assets/scooter.svg";
@@ -23,6 +21,8 @@ import hassleFreeDocTransfer from "../../assets/hassle_free_document_transfer.sv
 import testimonial_hari from "../../assets/Hari_Raj.png";
 import testimonial_md from "../../assets/Md_Aquiluzzaman.png";
 import testimonial_azhar from "../../assets/Azhar_Mirza.png";
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import M from "materialize-css";
 import Grid from "@material-ui/core/Grid";
 import * as CATEGORY from "../../shared/constants/category";
@@ -44,6 +44,7 @@ const Homepage = (props) => {
   const changeHeadings = matches ? "headings" : "mobile-headings";
   const changeLogo = matches ? "tick-icon" : "mobile-tick-icon";
   const changeImage = matches ? "bannerimage" : "mobile-bannerimage";
+  const changeBanner = matches ? "bannercolor" : "mobile-bannercolor"
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const [bikeHover, setBikeHover] = useState(false);
@@ -128,8 +129,8 @@ const Homepage = (props) => {
         <ul className = {changeSlides}>
          <li>
          <div className={changeImage}>
-         <div className={ changeCaptions + " left-align"}>
-              <h3 className= {changeHeadings}>
+           <div className={changeBanner}> 
+           <h3 className= {changeHeadings}>
                 India's Favourite Place to Buy
                 <br />
                 Pre-owned Two-wheelers
@@ -152,8 +153,9 @@ const Homepage = (props) => {
                   Low Cost <span className="bold">EMI</span>
                 </span>
               </h4>
-            </div>
-            </div>
+           </div>
+           </div>
+         
             </li>
           </ul>
        
@@ -469,9 +471,9 @@ const Homepage = (props) => {
             <img alt="" src={headingLines} width="57" height="4" />
           </Grid>
         </Grid>
-       <Grid container component="div" direction="row" className="row mb-0">
+        <Grid container component="div" direction="row" className="row mb-0 center-align">
           <Grid item xs={1} sm={1} md={1} lg={1}>
-            <div className="valign-wrapper arrow-container">
+            <div className="hide-on-small-only">
               <button
                 className="btn-floating btn-large waves-effect waves-light white"
                 id="slideLeft"
@@ -483,33 +485,18 @@ const Homepage = (props) => {
             </div>
           </Grid>
           <Grid item xs={10} sm={10} md={10} lg={10} className="center-align">
-          <div className="carousel" style={{ minHeight: "300px" }}>
-             <a
-                className="carousel-item"
-                href="#one!"
-                index="0"
-                style={{ marginTop: "-10px" }}
-              >
-              <img alt="" className="circle" src={testimonial_hari}/>
-              </a> 
+            <div className="carousel center-align">
+              <a className="carousel-item" href="#one!" index="0" style={{marginTop: "-10px"}}>
+                <img alt="" className="circle " src={testimonial_hari} />
+              </a>
               {/* <a className="carousel-item" href="#two!" index="1">
                 <img alt="" className="circle" src={testimonial2} />
               </a> */}
-              <a
-                className="carousel-item"
-                href="#two!"
-                index="1"
-                style={{ marginTop: "-10px" }}
-              >
-                <img alt="" className="circle" src={testimonial_md} />
+              <a className="carousel-item" href="#two!" index="1" style={{marginTop: "-10px"}}>
+                <img alt="" className="circle " src={testimonial_md} />
               </a>
-              <a
-                className="carousel-item"
-                href="#three!"
-                index="2"
-                style={{ marginTop: "-10px" }}
-              >
-                <img alt="" className="circle" src={testimonial_azhar} />
+              <a className="carousel-item" href="#three!" index="2" style={{marginTop: "-10px"}}>
+                <img alt="" className="circle " src={testimonial_azhar} />
               </a>
               {/* <a className="carousel-item" href="#five!" index="4">
                 <img alt="" className="circle" src={testimonial5} />
@@ -517,7 +504,7 @@ const Homepage = (props) => {
             </div>
           </Grid>
           <Grid item xs={1} sm={1} md={1} lg={1}>
-            <div className="valign-wrapper arrow-container">
+            <div className="hide-on-small-only">
               <button
                 className="btn-floating btn-large waves-effect waves-light white"
                 id="slideRight"
@@ -538,7 +525,13 @@ const Homepage = (props) => {
             <div id="testimonialMessage"></div>
           </Grid>
         </Grid>
-         
+          <div className="hide-on-med-and-up">
+              <div className="center-align row">
+                 <ArrowBackIcon onClick={() => initCar("left")} />
+                  <span className="dot"></span>
+                 <ArrowForwardIcon onClick={() => initCar("right")} />
+               </div>
+          </div>
       </div>
       <Footer props={props}/>
     </div>
