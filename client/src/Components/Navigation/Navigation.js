@@ -23,9 +23,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-
-
-
 const Navigation = (props) => {
 const dispatch = useDispatch();
 const[resetKm, setResetKm] = useState(0);
@@ -70,11 +67,6 @@ const clearAllFilters = () => {
   clearFilterData();
 };
 
-
-
-
-
-
  // Global state
 const [state, changeCategory] = useState({
                                       category :null, 
@@ -105,7 +97,6 @@ const handle_submit_category = () =>{
 
 
   // For years------------------------------------------------------------------------------------------------
-  
   if(state.years.size>0){
     for (var it = state.years.values(), val= null; val=it.next().value; ){
       let position = filterData.myear.indexOf(val);
@@ -137,9 +128,10 @@ const handle_submit_category = () =>{
   // For City------------------------------------------------------------------------------------------------
   if(state.city){
     dispatch({ type: CHANGE_CITY, payload: state.city });
-    filterData.city = `${state.city}*`;
+    filterData.city = state.city;
     props.cityFilter(parseInt(state.category), filterData);
   }
+
   // //For Kilometer------------------------------------------------------------------------------------------------
   filterData.kmdriven = state.distance;
   props.kmFilter(state.category, filterData);
@@ -176,7 +168,7 @@ const handle_submit_category = () =>{
             {whatFilters()}
           </div>
         </Grid>
-       )}
+      )}
       <Dialog fullScreen open={filter_btn} style={{position:"fixed"}} onClose={()=>showfilter(false)} TransitionComponent={Transition}>
         <div className="resetFilter"><h5><b>Filters</b></h5></div>
           <div className="filterSec" style={{boxShadow:'none'}}>          
