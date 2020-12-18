@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { connect, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import { CHANGE_CATEGORY } from "../../../store/actions/actionTypes";
 import * as actions from "../../../store/actions/index";
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const BBRadio = withStyles({
   root: {
@@ -17,35 +20,27 @@ const BBRadio = withStyles({
   checked: {},
 })((props) => <Radio {...props} />);
 
-const useStyle = makeStyles({
-  countColor: {
-    color: "#ff0000",
-  },
-});
 
 const CategoryWidget = React.memo((props) => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
   const dispatch = useDispatch();
-  console.log(props, "RPOPOSPOSPOSPOSPSOPOP")
+  let history = useHistory();
+
+
   let [selectedCategory, setSelectedCategory] = useState(props.category);
+  const [mobile_category, setMobileCategory] = useState(props.default_category);
 
-  const handleChange = (event) => {
+  const handleChange = (e) => {
     let filterData = props.filter;
-    console.log("filter count", parseInt(event.target.value));
-    setSelectedCategory(parseInt(event.target.value));
-
+    setSelectedCategory(parseInt(e.target.value));
     dispatch({
       type: CHANGE_CATEGORY,
-      payload: parseInt(event.target.value),
+      payload: parseInt(e.target.value),
     });
-    props.cityFilter(parseInt(event.target.value), filterData);
+    props.cityFilter(parseInt(e.target.value), filterData);
   };
 
-  const handleChange2 = (categ) => {
-    let filterData = props.filter;
-    setSelectedCategory(categ);
-    dispatch({ type: CHANGE_CATEGORY, payload: categ });
-    props.cityFilter(categ, filterData);
-  };
 
   const val = (value) => {
     if (value[0] === "NA") {
@@ -54,77 +49,68 @@ const CategoryWidget = React.memo((props) => {
       return Object.keys(props.vehicles).length;
     }
   };
-
   let valued = " ( " + val(props.vehicles) + " ) ";
 
-  useEffect(() => {
-    handleChange2(props.category);
-  }, [props.category]);
+  // useEffect(() => {
+  //   handleChange2(props.category);
+  // }, [props.category]);
+
+  const filtering = [
+    {
+      type: "Motorcycle",
+      url: "/category/bike",
+    },
+    {
+      type: "Scooter",
+      url: "/category/scooter",
+    },
+    {
+      type: "High-end Motorcycle",
+      url: "/category/high_end_bike",
+    },
+  ];
+
+  
+  const handler = (event) =>{
+    setMobileCategory(event.target.value);
+    props.handleChangeCategory({...props.globalState,category : event.target.value});
+  }
 
   return (
+
     <div className="CityWidget">
       <h3 className="WidgetTitle">
-        <a
-          data-toggle="collapse"
-          href="#widget-body-1"
-          role="button"
-          aria-expanded="true"
-          aria-controls="widget-body-1"
-        >
-          Category
-        </a>
+        <a data-toggle="collapse" href="#widget-body-1" role="button" aria-expanded="true" aria-controls="widget-body-1">Category</a>
       </h3>
       <div className="WidgetBody">
-        <RadioGroup
-          aria-label="category"
-          name="category"
-          onChange={handleChange}
-        >
-          <ul className="cat-list">
-            {/* <Link to='/category/all'>
-              <li>
-                <FormControlLabel
-                  value="0"
-                  control={<BBRadio />}
-                  label= {`All ${selectedCategory === 0 ? valued : ""}` }
-                  checked={selectedCategory === 0}
-                />valued
-              </li>
-            </Link> */}
-            <Link to="/category/bike">
-              <li>
-                <FormControlLabel
-                  value="1"
-                  control={<BBRadio />}
-                  label={`Motorcycle ${selectedCategory === 1 ? valued : ""}`}
-                  checked={selectedCategory === 1}
-                />
-              </li>
-            </Link>
-            <Link to="/category/scooter">
-              <li>
-                <FormControlLabel
-                  value="2"
-                  control={<BBRadio />}
-                  label={`Scooter ${selectedCategory === 2 ? valued : ""}`}
-                  checked={selectedCategory === 2}
-                />
-              </li>
-            </Link>
-            <Link to="/category/high_end_bike">
-              <li>
-                <FormControlLabel
-                  value="3"
-                  control={<BBRadio />}
-                  label={`High-end Motorcycle ${
-                    selectedCategory === 3 ? valued : " "
-                  } `}
-                  checked={selectedCategory === 3}
-                />
-              </li>
-            </Link>
+      {matches?<RadioGroup aria-label="category" name="category" onChange={handleChange}>
+
+          <ul>   
+            {(filtering.map((item, i) => {
+              return (
+                    <li style={{marginTop:'2%'}}>
+                        <FormControlLabel
+                          value={i + 1}
+                          onChange={() => history.push(item.url)}
+                          control={<BBRadio />}
+                          label={`${item.type} ${
+                            selectedCategory === i + 1 ? valued : ""
+                          }`}
+                          checked={selectedCategory === i + 1}
+                        />
+                    </li>
+                );
+              })
+            )}
           </ul>
         </RadioGroup>
+        :
+      <RadioGroup value={mobile_category} onChange={handler}>
+        <FormControlLabel value="1" control={<BBRadio />} label="Motorcycle" checked={mobile_category==="1"}/>
+        <FormControlLabel value="2" control={<BBRadio />} label="Scooter" checked={mobile_category==="2"}/>
+        <FormControlLabel value="3" control={<BBRadio />} label="High-end Motorcycle" checked={mobile_category==="3"}/>
+      </RadioGroup>
+      }
       </div>
     </div>
   );
@@ -135,7 +121,6 @@ const mapStateToProps = (state) => {
     filter: state.vehicleDetails.filter,
     category: state.vehicleDetails.category,
     vehicles: state.vehicleDetails.vehicles,
-    category: state.vehicleDetails.category,
   };
 };
 const mapDispatchToProps = (dispatch) => {

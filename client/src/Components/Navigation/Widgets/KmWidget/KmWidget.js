@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import Slider from "react-rangeslider";
 import { connect } from "react-redux";
 import * as actions from "../../../../store/actions/index";
-
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import "./KmWidget.css";
 
 class KmWidget extends Component {
@@ -10,10 +11,18 @@ class KmWidget extends Component {
     super(props);
     this.inputRef = React.createRef();
     this.state = {
-      slideValue: 100000
+      slideValue: 100000,
+      matches : false,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleChangeMobile = this.handleChangeMobile.bind(this);
   }
+  componentDidMount(){
+    
+    this.setState({matches:this.props.viewType});
+    this.setState({slideValueMobile:this.props.default_value})
+  }
+
   componentDidUpdate(props) {
     if(props.reset === 1) {
       this.setState({
@@ -22,14 +31,14 @@ class KmWidget extends Component {
     }
   }
   handleChange(event) {
-    this.setState({
-      slideValue: event
-    });
-
+    this.setState({slideValue: event});
     let category = this.props.category;
     let filterData = this.props.filter;
     filterData.kmdriven = event;
     this.props.kmFilter(category, filterData);
+  }
+  handleChangeMobile(event){
+    this.props.handleChangeCategory({...this.props.globalState, distance:event});
   }
 
   render() {
@@ -54,14 +63,25 @@ class KmWidget extends Component {
             <div className="MaxRange">1,00,000 KMs</div>
             <br className="clr" />
           </div>
-          <Slider
-            value={this.state.slideValue}
-            onChange={this.handleChange}
-            min={5000}
-            max={100000}
-            step={5000}
-            tooltip={false}
-          />
+          {this.state.matches==="web"
+            ?(<Slider
+                value={this.state.slideValue}
+                onChange={this.handleChange}
+                min={5000}
+                max={100000}
+                step={5000}
+                tooltip={false}/>
+            )
+            :(<Slider
+                value={this.props.default_value}
+                onChange={this.handleChangeMobile}
+                min={5000}
+                max={100000}
+                step={5000}
+                tooltip={false}
+            />
+            )
+          }
           <br className="clr" />
           <div className="rangeOut">
             Upto <output id="js-output">{this.state.slideValue}</output> KMs

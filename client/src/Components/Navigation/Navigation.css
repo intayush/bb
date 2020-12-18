@@ -287,6 +287,7 @@
     width: auto;
     float: none;
     margin: 0 15px;
+   
   }
   .ProductListSec h5 {
     float: none;
@@ -319,13 +320,6 @@
 
 }
 
-.dialog-action-area{
-  background-color: #F8F8F8;
-  box-shadow: 10px;
-  padding-top:5px;
-  text-align: center;
-  
-}
 
 .line{
   width: 100%;
@@ -333,6 +327,7 @@
 }
 
 .action-btn{
+  margin-top:10px;
   border-radius: 25px;
   width: 120px;
   height: 30px;
@@ -342,6 +337,7 @@
   font-weight: bold;
   letter-spacing: 0.2ex;
   margin-bottom: 10px;
+  margin-left: 20px;
 }
 
 
@@ -349,10 +345,11 @@
   background-color: red;
   color: white;
   border: none;
+ 
 }
 
 #cancel-action{
-  margin-left:30px;
+  margin-left:40px;
   
 }
 
@@ -371,7 +368,32 @@
 
 .sort-drop input{
  letter-spacing: 0px;
- font-size: 15px;
- 
+}
 
+.selectCategory input[type="radio"]:checked + label {
+  color: green;
+}
+
+.sortContainer{
+  padding-bottom:60px;
+}
+
+.sort-btn-display{
+  max-height: 40px;
+  width: 100%;
+  padding-left: 0px;
+  padding-top: 0px;
+}
+
+.sortDis{
+  font-size: 5px;
+  outline: none;
+  border: none;
+  
+}
+
+.filter-bottom-bar{
+  top:'auto';
+   bottom:0;
+   background-color: #F8F8F8
 }
