@@ -10,6 +10,7 @@ import bikeGIF from "../../assets/Motorcycle-GIF.gif";
 import scooterGIF from "../../assets/Scooter-GIF.gif";
 import highEndBikeGIF from "../../assets/High-End-Motorcycle-GIF.gif";
 import bannerImg from "../../assets/banner.png";
+
 import headingLines from "../../assets/heading-lines.svg";
 import bikeStill from "../../assets/motorcycle.svg";
 import scooterStill from "../../assets/scooter.svg";
@@ -26,54 +27,65 @@ import M from "materialize-css";
 import Grid from "@material-ui/core/Grid";
 import * as CATEGORY from "../../shared/constants/category";
 import { CHANGE_CATEGORY } from "../../store/actions/actionTypes";
-import { useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 // import { HOMEPAGE_LOAD } from "../../store/actions/actionTypes"
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { useTheme } from "@material-ui/core/styles";
+
+
+
 
 const Homepage = (props) => {
-  const dispatch = useDispatch();
+ 
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
+  const changeSliders = matches ? "sliders" : "mobile-sliders";
+  const changeSlides = matches ? "slide" : "mobile-slide";
+  const changeCaptions = matches ? "captions" : "mobile-captions";
+  const changeHeadings = matches ? "headings" : "mobile-headings";
+  const changeLogo = matches ? "tick-icon" : "mobile-tick-icon";
+  const changeImage = matches ? "bannerimage" : "mobile-bannerimage";
+  const changeBanner = matches ? "bannercolor" : "mobile-bannercolor"
+  const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const [bikeHover, setBikeHover] = useState(false);
   const [scooterHover, setScooterHover] = useState(false);
   const [highEndBikeHover, setHighEndBikeHover] = useState(false);
-  const updateState = event => {
+  const updateState = (event) => {
     setSearchTerm(event.target.value);
   };
   const [sliderState, changeSlider] = useState(null);
   useEffect(() => {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   }, []);
 
   const handleCategoryClick = (category) => {
     let category_id = 0;
-    if(category === "bike") category_id = 1;
+    if (category === "bike") category_id = 1;
     else if (category === "scooter") category_id = 2;
     else category_id = 3;
     dispatch({ type: CHANGE_CATEGORY, payload: category_id });
-    props.history.push('/category/' + category);
-  }
+    props.history.push("/category/" + category);
+  };
 
-  const initCar = direction => {
+  const initCar = (direction) => {
     if (sliderState == null) {
       var instance;
       const testimonialMessages = [
         {
           name: "Hari Raj",
           message:
-            "If anyone is looking for a pre owned bikes/scooty then bike bazaar is the right place to go... Awesome experience from team bike bazaar... Especially Subhojit and sandeep helped me a lot to find out the best vehicle which i was exactly looking for...i will always recommend bike bazaar..thankyou team."
+            "If anyone is looking for a pre owned bikes/scooty then bike bazaar is the right place to go... Awesome experience from team bike bazaar... Especially Subhojit and sandeep helped me a lot to find out the best vehicle which i was exactly looking for...i will always recommend bike bazaar..thankyou team.",
         },
         {
           name: "Md Aquiluzzaman",
           message:
-            "Wonderful experience from Bike Bazaar. All paper work done in front of me. Transparency at it's peak. Condition of the bike is absolutely fabulous. Also available at EMI which is quite impossible but Bike Bazaar did it. Also delivered the bike in one day. Absolutely beautiful experience. Recommend Bike Bazaar to everyone, they won't ever disappoint. I bet. Go for it."
+            "Wonderful experience from Bike Bazaar. All paper work done in front of me. Transparency at it's peak. Condition of the bike is absolutely fabulous. Also available at EMI which is quite impossible but Bike Bazaar did it. Also delivered the bike in one day. Absolutely beautiful experience. Recommend Bike Bazaar to everyone, they won't ever disappoint. I bet. Go for it.",
         },
         {
           name: "Azhar Mirza",
           message:
-            "Selling a pre-owned bikes is an extensive and uncertain process. One is never sure of their bike's real market value. Listing online leads to more time consumption, multiple calls, random meetings, price haggling etc. BikeBazaar makes selling a bike an easy, fair and quick experience.it offer an efficient and reliable way to bike owners to sell their bikes at the best price."
-        }
+            "Selling a pre-owned bikes is an extensive and uncertain process. One is never sure of their bike's real market value. Listing online leads to more time consumption, multiple calls, random meetings, price haggling etc. BikeBazaar makes selling a bike an easy, fair and quick experience.it offer an efficient and reliable way to bike owners to sell their bikes at the best price.",
+        },
       ];
       let carouselOptions = {
         shift: -150,
@@ -85,7 +97,7 @@ const Homepage = (props) => {
           let name = testimonialMessages[index].name;
           document.querySelector("#clientName").innerText = name;
           document.querySelector("#testimonialMessage").innerText = message;
-        }
+        },
       };
       let testimonialCarousel = document.querySelectorAll(".carousel");
       instance = M.Carousel.init(testimonialCarousel, carouselOptions);
@@ -98,106 +110,210 @@ const Homepage = (props) => {
       }
     }
   };
-
+  
   useEffect(() => {
     let topSlider = document.querySelectorAll(".slider");
     M.Slider.init(topSlider, {});
     initCar();
+    
+    
     //dispatch({ type: HOMEPAGE_LOAD });
   }, []);
+ 
 
   return (
     <div className="App">
       {/* <Header /> */}
-      <MainMenu />
-      <div className="slider hide-on-small-only">
-        <ul className="slides">
-          <li>
-            <img alt="" src={bannerImg} />
-            <div className="caption left-align">
-              <h3 className="heading">
-                India's Favourite Place to Buy<br />Pre-owned Two-wheelers
+       <MainMenu />
+     <div className ={changeSliders}>
+        <ul className = {changeSlides}>
+         <li>
+         <div className={changeImage}>
+           <div className={changeBanner}> 
+           <h3 className= {changeHeadings}>
+                India's Favourite Place to Buy
+                <br />
+                Pre-owned Two-wheelers
               </h3>
               <h4 className="text-white">
-                <img alt="" src={logo} className="tick-icon" />
+                <img alt="" src={logo} className={changeLogo}/>
                 <span>
                   <span className="bold">Certified</span> Two-wheeler
                 </span>
               </h4>
               <h4 className="text-white">
-                <img alt="" src={logo} className="tick-icon" />
+                <img alt="" src={logo} className={changeLogo} />
                 <span>
-                  6 Months'{" "} <span className="bold">Warranty</span>
+                  6 Months' <span className="bold">Warranty</span>
                 </span>
               </h4>
               <h4 className="text-white">
-                <img alt="" src={logo} className="tick-icon" />
+                <img alt="" src={logo} className={changeLogo}/>
                 <span>
                   Low Cost <span className="bold">EMI</span>
                 </span>
               </h4>
-              {/* <div className="carousel-search-container">
-                <div className="carousel-location-btn">
-                  <img alt="" src={locationIcon} width="23" height="20" />
-                  <div className="loc-text">Aluva</div>
-                </div>
-                <div className="carousel-search-box">
-                  <input
-                    type="text"
-                    name="location-search"
-                    placeholder="Search Your Two-wheeler"
-                    value={searchTerm}
-                    onChange={updateState}
-                  />
-                </div>
-                <Link to={`/category/bike?searchTerm=${searchTerm}`}>
-                  <button className="carousel-search-label" type="button">
-                    <img alt="" src={searchIcon} width="40" height="44" />
-                  </button>
-                </Link>
-              </div> */}
-            </div>
-          </li>
-        </ul>
+           </div>
+           </div>
+         
+            </li>
+          </ul>
+       
       </div>
+      
+       
+      
       <div className="section-2">
-        <Grid container component="div" direction="row" className="row">
-          <Grid
-            item
-            xs={12}
-            md={12}
-            sm={12}
-            lg={12}
-            className="center-align section-2-heading"
-          >
-            <h3>WHAT ARE YOU LOOKING FOR?</h3>
-            <img alt="" src={headingLines} width="57" height="4" />
+        {matches ? (
+          <>
+            <Grid container component="div" direction="row" className="row">
+              <Grid
+                item
+                xs={12}
+                md={12}
+                sm={12}
+                lg={12}
+                className="center-align section-2-heading"
+              >
+                <h3>WHAT ARE YOU LOOKING FOR?</h3>
+                <img alt="" src={headingLines} width="57" height="4" />
+              </Grid>
+            </Grid>
+            <Grid container component="div" direction="row">
+              <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
+                <div
+                  className="box-shadow center-align"
+                  onMouseEnter={() => setBikeHover(true)}
+                  onMouseLeave={() => setBikeHover(false)}
+                  style={{ background: "white" }}
+                  onClick={() => handleCategoryClick(CATEGORY.BIKE)}
+                >
+                  <img
+                    alt=""
+                    src={bikeHover ? bikeGIF : bikeStill}
+                    height="170"
+                    width="290"
+                  />
+                  <h5>Motorcycle</h5>
+                </div>
+              </Grid>
+              <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
+                <div
+                  className="box-shadow center-align"
+                  onMouseEnter={() => setScooterHover(true)}
+                  onMouseLeave={() => setScooterHover(false)}
+                  style={{ background: "white" }}
+                  onClick={() => handleCategoryClick(CATEGORY.SCOOTER)}
+                >
+                  <img
+                    alt=""
+                    src={scooterHover ? scooterGIF : scooterStill}
+                    height="170"
+                    width="290"
+                  />
+                  <h5>Scooter</h5>
+                </div>
+              </Grid>
+              <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
+                <div
+                  className="box-shadow center-align"
+                  onMouseEnter={() => setHighEndBikeHover(true)}
+                  onMouseLeave={() => setHighEndBikeHover(false)}
+                  style={{ background: "white" }}
+                  onClick={() => handleCategoryClick(CATEGORY.HIGH_END_BIKE)}
+                >
+                  <img
+                    alt=""
+                    src={highEndBikeHover ? highEndBikeGIF : highEndStill}
+                    height="170"
+                    width="290"
+                  />
+                  <h5>High-End Motorcycle</h5>
+                </div>
+              </Grid>
+            </Grid>
+          </>
+        ) : (
+          <>  
+
+             <Grid container component="div" direction="row" className="column">
+              <Grid
+                item
+                xs={12}
+                md={12}
+                sm={12}
+                lg={12}
+                className="center-align"
+                style={{marginTop:'2%'}}
+              >
+                <span style={{fontSize:'18px',fontWeight:"bold"}}>WHAT ARE YOU LOOKING FOR?</span><br/>
+                <img alt="" src={headingLines} width="57" height="4" />
+              </Grid>
+            </Grid>
+          <Grid style={{padding:'30px'}} container component="div" direction="row">
+            <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
+              <div
+                className="vehicle-box-shadow center-align"
+                onMouseEnter={() => setBikeHover(true)}
+                onMouseLeave={() => setBikeHover(false)}
+                style={{ background: "white" }}
+                onClick={() => handleCategoryClick(CATEGORY.BIKE)}
+              >
+                <img
+                  alt=""
+                  src={bikeHover ? bikeGIF : bikeStill}
+                  height="170"
+                  width="290"
+                />
+                <h5>Motorcycle</h5>
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
+              <div
+                className="vehicle-box-shadow center-align"
+                onMouseEnter={() => setScooterHover(true)}
+                onMouseLeave={() => setScooterHover(false)}
+                style={{ background: "white" }}
+                onClick={() => handleCategoryClick(CATEGORY.SCOOTER)}
+              >
+                <img
+                  alt=""
+                  src={scooterHover ? scooterGIF : scooterStill}
+                  height="170"
+                  width="290"
+                />
+                <h5>Scooter</h5>
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
+              <div
+                className="vehicle-box-shadow center-align"
+                onMouseEnter={() => setHighEndBikeHover(true)}
+                onMouseLeave={() => setHighEndBikeHover(false)}
+                style={{ background: "white" }}
+                onClick={() => handleCategoryClick(CATEGORY.HIGH_END_BIKE)}
+              >
+                <img
+                  alt=""
+                  src={highEndBikeHover ? highEndBikeGIF : highEndStill}
+                  height="170"
+                  width="290"
+                />
+                <h5>High-End Motorcycle</h5>
+              </div>
+            </Grid>
           </Grid>
-        </Grid>
-        <Grid container component="div" direction="row">
-          <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
-            <div className="box-shadow center-align" onMouseEnter={() => setBikeHover(true)} onMouseLeave={() => setBikeHover(false)} style={{background:'white'}} onClick={() => handleCategoryClick(CATEGORY.BIKE)}>
-              <img alt="" src={bikeHover ?bikeGIF  : bikeStill} height="170" width="290"/>
-              <h5>Motorcycle</h5>
-            </div>
-          </Grid>
-          <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
-            <div className="box-shadow center-align" onMouseEnter={() => setScooterHover(true)} onMouseLeave={() => setScooterHover(false)} style={{background:'white'}} onClick={() => handleCategoryClick(CATEGORY.SCOOTER)}>
-              <img alt="" src={scooterHover ? scooterGIF :  scooterStill} height="170" width="290" />
-              <h5>Scooter</h5>
-            </div>
-          </Grid>
-          <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
-            <div className="box-shadow center-align" onMouseEnter={() => setHighEndBikeHover(true)} onMouseLeave={() => setHighEndBikeHover(false)} style={{background:'white'}} onClick={() => handleCategoryClick(CATEGORY.HIGH_END_BIKE)}>
-              <img alt="" src={highEndBikeHover ? highEndBikeGIF  : highEndStill} height="170" width="290" />
-              <h5>High-End Motorcycle</h5>
-            </div>
-          </Grid>
-        </Grid>
+          </>
+        )}
       </div>
       <div className="section-3">
-        <Grid container component="div" direction="row" className="advantageRow">
         <Grid
+          container
+          component="div"
+          direction="row"
+          className="advantageRow"
+        >
+          <Grid
             item
             xs={12}
             sm={12}
@@ -355,7 +471,7 @@ const Homepage = (props) => {
             <img alt="" src={headingLines} width="57" height="4" />
           </Grid>
         </Grid>
-        <Grid container component="div" direction="row" className="row mb-0">
+       <Grid container component="div" direction="row" className="row mb-0">
           <Grid item xs={1} sm={1} md={1} lg={1}>
             <div className="valign-wrapper arrow-container">
               <button
@@ -369,17 +485,32 @@ const Homepage = (props) => {
             </div>
           </Grid>
           <Grid item xs={10} sm={10} md={10} lg={10} className="center-align">
-            <div className="carousel" style={{minHeight: "300px"}}>
-              <a className="carousel-item" href="#one!" index="0" style={{marginTop: "-10px"}}>
-                <img alt="" className="circle" src={testimonial_hari} />
-              </a>
+          <div className="carousel" style={{ minHeight: "300px" }}>
+             <a
+                className="carousel-item"
+                href="#one!"
+                index="0"
+                style={{ marginTop: "-10px" }}
+              >
+              <img alt="" className="circle" src={testimonial_hari}/>
+              </a> 
               {/* <a className="carousel-item" href="#two!" index="1">
                 <img alt="" className="circle" src={testimonial2} />
               </a> */}
-              <a className="carousel-item" href="#two!" index="1" style={{marginTop: "-10px"}}>
+              <a
+                className="carousel-item"
+                href="#two!"
+                index="1"
+                style={{ marginTop: "-10px" }}
+              >
                 <img alt="" className="circle" src={testimonial_md} />
               </a>
-              <a className="carousel-item" href="#three!" index="2" style={{marginTop: "-10px"}}>
+              <a
+                className="carousel-item"
+                href="#three!"
+                index="2"
+                style={{ marginTop: "-10px" }}
+              >
                 <img alt="" className="circle" src={testimonial_azhar} />
               </a>
               {/* <a className="carousel-item" href="#five!" index="4">
@@ -409,8 +540,9 @@ const Homepage = (props) => {
             <div id="testimonialMessage"></div>
           </Grid>
         </Grid>
+         
       </div>
-      <Footer props={props} />
+      <Footer props={props}/>
     </div>
   );
 };
