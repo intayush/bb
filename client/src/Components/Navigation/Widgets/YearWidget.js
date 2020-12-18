@@ -18,6 +18,8 @@ const YearWidget = props => {
 
   const yearArray = [];
 
+ 
+
   for (let i = props.endYear; i >= props.startYear; i--) {
     yearArray.push(
       <li key={i}>

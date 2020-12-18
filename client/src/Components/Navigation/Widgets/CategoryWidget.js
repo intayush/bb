@@ -46,20 +46,21 @@ const CategoryWidget = React.memo((props) => {
   //   handleChange2(props.category);
   // }, [props.category]);
 
-  const filtering = [
-    {
-      type: "Motorcycle",
-      url: "/category/bike",
-    },
-    {
-      type: "Scooter",
-      url: "/category/scooter",
-    },
-    {
-      type: "High-end Motorcycle",
-      url: "/category/high_end_bike",
-    },
-  ];
+
+
+ const filtering = [{
+                    type:"Motorcycle",
+                    url:"/category/bike"
+                   },
+                   {
+                    type:"Scooter",
+                    url:"/category/scooter"
+                   },
+                   {
+                    type:"High-end Motorcycle",
+                    url:"/category/high_end_bike"
+                  }]
+
 
   return (
     <div className="CityWidget">
@@ -84,7 +85,7 @@ const CategoryWidget = React.memo((props) => {
             {filtering.map((item, i) => {
             
               return (
-                <li style={{marginTop:'2%'}}>
+                <li style={{marginTop:'5%',marginBottom:'5%'}}>
                      <FormControlLabel
                   value={i + 1}
                   onChange={() => history.push(item.url)}

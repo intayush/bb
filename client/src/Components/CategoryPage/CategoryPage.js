@@ -7,8 +7,8 @@ import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
 import Navigation from "../Navigation/Navigation";
+import SortDropDownPage from "../SortDropDown/SortDropDown";
 import Card from "../Card/Card";
-import SortDropDown from "../SortDropDown/SortDropDown";
 import Pagination from "../Pagination/Pagination";
 import * as actions from "../../store/actions/index";
 import Spinner from "../../Components/UI/Spinner/Spinner";
@@ -16,20 +16,21 @@ import { Menu } from "../../shared/utility";
 import categoryData from "../../shared/mappings/category_data";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-
+import getSize from '../sizeDetect';
 const CategoryPage = (props) => {
   const dispatch = useDispatch();
+  const {width} = getSize();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
-  const { vehicles, filter, currentData, selectedCity } = useSelector(
+  const { vehicles, filter, currentData, selectedCity , selectedBudget} = useSelector(
     (state) => state.vehicleDetails
   );
-
   var category;
   var searchTerm;
   var stateFilterData = {
     ...filter,
     city: selectedCity,
+
   };
 
   const [totalRecords, setTotalRecords] = useState(
@@ -90,21 +91,22 @@ const CategoryPage = (props) => {
   );
 
   if (vehicles.length && currentData[0] != "NA") {
-    renderedVehicles = currentData.map((vehicle, index) => (
-      <Card
-        key={index}
-        year={vehicle._source.myear}
-        kms={vehicle._source.kmdriven}
-        cc={vehicle._source.cc}
-        name={vehicle._source.name}
-        loc={vehicle._source.loc}
-        cost={vehicle._source.price}
-        vehicleid={vehicle._id}
-        image={vehicle._source.mimage}
-        sold={vehicle._source.sold}
-        discountPercent={vehicle._source.discountPercent}
-      />
-    ));
+    renderedVehicles = currentData.map((vehicle, index) => {
+      return <Card
+          key={index}
+          year={vehicle._source.myear}
+          kms={vehicle._source.kmdriven}
+          cc={vehicle._source.cc}
+          name={vehicle._source.name}
+          loc={vehicle._source.loc}
+          cost={vehicle._source.price}
+          vehicleid={vehicle._id}
+          carouselImages={vehicle._source.images}
+          image={vehicle._source.mimage}
+          sold={vehicle._source.sold}
+          discountPercent={vehicle._source.discountPercent}
+        />
+    });
     containerClass = vehicles.length > 12 ? "cardContainer" : "";
   }
 
@@ -145,7 +147,7 @@ const CategoryPage = (props) => {
         </Grid>
         <Grid item xs={11} md={11} sm={11} lg={11}>
           <Grid container component="div" direction="row">
-            <Navigation />
+            <Navigation viewType={width>600?"web":"mobile"}/>
             <Grid
               item
               xs={12}
@@ -154,11 +156,12 @@ const CategoryPage = (props) => {
               lg={9}
               className={matches ? "ProductListSec" : "ProductListSec Mob"}
             >
-              <SortDropDown
-                title="Sort by"
-                list={Menu}
-                category={categoryData[props.match.params.category].id}
-              />
+              {(width>600)&&(
+                <SortDropDownPage
+                  title="Sort by"
+                  list={Menu}
+                  category={categoryData[props.match.params.category].id}
+              />)}
               <Grid
                 container
                 direction="row"
