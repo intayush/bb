@@ -156,12 +156,14 @@ const CategoryPage = (props) => {
               lg={9}
               className={matches ? "ProductListSec" : "ProductListSec Mob"}
             >
-              {(width>600)&&(
-                <SortDropDownPage
+              
+               {(width>600)&&(<SortDropDownPage
                   title="Sort by"
                   list={Menu}
                   category={categoryData[props.match.params.category].id}
-              />)}
+                  viewType ={width>600?"web":"mobile"} />
+               )}
+          
               <Grid
                 container
                 direction="row"

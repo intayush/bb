@@ -24,9 +24,6 @@ const initialState = {
     searchTerm: "*"
   }
 };
-
-
-
 const vehicles = (state, action) => {
 
 
