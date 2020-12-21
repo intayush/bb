@@ -79,7 +79,7 @@ const BudgetWidget = props => {
                 type="checkbox"
                 className="filled-in"
                 value={props.budget[i] === 0 ? props.budget[i] : ((props.budget[i] + 1)+"-"+(props.budget[i + 1]))}
-                checked={budget_present.current && budget_present.current.has(props.budget[i] === 0 ? props.budget[i] : ((props.budget[i] + 1)+"-"+(props.budget[i + 1])))?true:false}
+                checked={budget_present.current&&budget_present.current.has(props.budget[i] === 0 ? props.budget[i] : ((props.budget[i] + 1)+"-"+(props.budget[i + 1])))?true:false}
                 onClick={() => {
                   selectCheckboxMobile(props.budget[i] === 0 ? props.budget[i] : ((props.budget[i] + 1)+"-"+(props.budget[i + 1])))
                 }}

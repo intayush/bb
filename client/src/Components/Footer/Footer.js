@@ -329,7 +329,8 @@ const Footer = ({props}) => {
               flexDirection: "column",
               marginTop: "8%",
               wordSpacing: "3.5px",
-
+              marginBottom:"30px",
+              
             }}
           >
             <p style={{ color: "white" ,fontWeight:'600'}}>Connect with us</p>
