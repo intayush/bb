@@ -329,6 +329,7 @@ const Footer = ({props}) => {
               flexDirection: "column",
               marginTop: "8%",
               wordSpacing: "3.5px",
+              marginBottom:"30px",
               
             }}
           >

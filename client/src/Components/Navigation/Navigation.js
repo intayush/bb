@@ -37,7 +37,7 @@ const whatFilters = () =>{
       <BudgetWidget clear={1} budget={[0, 15000, 25000, 35000, 45000, 55000, 100000]} />
       <BrandWidget brands={BRANDS}/>
       <YearWidget startYear={2005} endYear={2020} />
-      <KmWidget reset={resetKm}/>
+      <KmWidget viewType="web" reset={resetKm}/>
     </div>
   )
 }

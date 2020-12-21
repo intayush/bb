@@ -12,7 +12,8 @@ class KmWidget extends Component {
     this.inputRef = React.createRef();
     this.state = {
       slideValue: 100000,
-      matches : false,
+      matches : props.viewType,
+      slideValueMobile:100000,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeMobile = this.handleChangeMobile.bind(this);
@@ -38,6 +39,7 @@ class KmWidget extends Component {
     this.props.kmFilter(category, filterData);
   }
   handleChangeMobile(event){
+    this.setState({slideValueMobile:event})
     this.props.handleChangeCategory({...this.props.globalState, distance:event});
   }
 
@@ -84,9 +86,11 @@ class KmWidget extends Component {
           }
           <br className="clr" />
           <div className="rangeOut">
-            Upto <output id="js-output">{this.state.slideValue}</output> KMs
+            Upto <output id="js-output">{this.state.matches==="web"?this.state.slideValue : this.state.slideValueMobile}</output> KMs
           </div>
         </div>
+        <br></br>
+        <br></br>
       </div>
 
     );

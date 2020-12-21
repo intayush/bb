@@ -176,7 +176,7 @@ form {
   border: solid 2px #ffffff;
   background-color: #ff0000;
 }
-.ProductListSec .pagination li.dot a {
+.ProductListSec .pagination li.dot a{
   box-shadow: 0;
   border: none;
   background-color: transparent;
