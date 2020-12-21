@@ -59,3 +59,19 @@
   position: relative;
   object-fit: scale-down;
 }
+
+
+
+.mobilePriceSec{
+  display: block;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4.8px 0.2px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  padding-left:4%;
+  padding-right: 4%;
+}
+
+.mobile-vechileName{
+  font-size: 18px;
+  font-weight: bold;
+}
