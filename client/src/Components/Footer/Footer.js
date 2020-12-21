@@ -217,19 +217,23 @@ const Footer = ({props}) => {
                       marginTop: "3%",
                     }}
                   >
-                    <img src={faceBookIcon} />
+                   <a href="https://www.facebook.com/BikeBazaaar"> 
+                    <img src={faceBookIcon} /></a>
+                    <a href="https://www.instagram.com/bikebazaaar/" >
                     <img
                       style={{ marginLeft: "2%", cursor: "pointer" }}
                       src={instagramIcon}
-                    />
+                    /></a>
+                    <a href="https://www.linkedin.com/company/bikebazaar">
                     <img
                       style={{ marginLeft: "2%", cursor: "pointer" }}
                       src={linkedinIcon}
-                    />
+                    /></a>
+                    <a href="https://twitter.com/BikeBazaaar">
                     <img
                       style={{ marginLeft: "2%", cursor: "pointer" }}
                       src={twitterIcon}
-                    />
+                    /></a>
                   </div>
                 </div>
               </div>
@@ -340,19 +344,23 @@ const Footer = ({props}) => {
                 marginTop: "1%",
               }}
             >
-              <img src={faceBookIcon} style={{height:'13px',width:'16px'}} />
+               <a href="https://www.facebook.com/BikeBazaaar">
+              <img src={faceBookIcon} style={{height:'13px',width:'16px'}} /></a>
+              <a href="https://www.instagram.com/bikebazaaar/" >
               <img
                 style={{ marginLeft: "8%", cursor: "pointer",height:'13px',width:'16px' }}
                 src={instagramIcon}
-              />
+              /></a>
+               <a href="https://www.linkedin.com/company/bikebazaar">
               <img
                 style={{ marginLeft: "10%", cursor: "pointer",height:'13px',width:'16px' }}
                 src={linkedinIcon}
-              />
+              /></a>
+              <a href="https://twitter.com/BikeBazaaar" >
               <img
                  style={{ marginLeft: "10%", cursor: "pointer",height:'13px',width:'16px' }}
                 src={twitterIcon}
-              />
+              /></a>
             </div>
           </div>
         </div>

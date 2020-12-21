@@ -174,19 +174,28 @@ const VehicleAdvantage = (props) => {
     >
       <div className={containerStyle + " vehicleAdvantage " + advantagePadding}>
         {matches ? (
-          <h2 className="center-align">
-            {matches ? props.heading : props.heading}
-          </h2>
+          // <h2 className="center-align">
+          //   {matches ? props.heading : props.heading}
+          // </h2>
+          <h3
+          style={{
+            fontWeight: "bold",
+            fontSize: "18px",
+            textAlign: "center",
+          }}
+        >
+          BikeBazaar Brings Great Advantage for Buyers
+        </h3>
         ) : (
-          <p
+          <h3
             style={{
               fontWeight: "bold",
-              fontSize: "15px",
+              fontSize: "11px",
               textAlign: "center",
             }}
           >
             BikeBazaar Brings Great Advantage for Buyers
-          </p>
+          </h3>
         )}
 
         <div className="center-align">

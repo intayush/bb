@@ -10,6 +10,7 @@ import bikeGIF from "../../assets/Motorcycle-GIF.gif";
 import scooterGIF from "../../assets/Scooter-GIF.gif";
 import highEndBikeGIF from "../../assets/High-End-Motorcycle-GIF.gif";
 import headingLines from "../../assets/heading-lines.svg";
+import mobiledivider from "../../assets/mobiledivider.png";
 import bikeStill from "../../assets/motorcycle.svg";
 import scooterStill from "../../assets/scooter.svg";
 import highEndStill from "../../assets/high-end-motorcycle.svg";
@@ -176,7 +177,9 @@ const Homepage = (props) => {
                 className="center-align section-2-heading"
               >
                 <h3>WHAT ARE YOU LOOKING FOR?</h3>
+                <div className="center-align">
                 <img alt="" src={headingLines} width="57" height="4" />
+                </div>
               </Grid>
             </Grid>
             <Grid container component="div" direction="row">
@@ -247,7 +250,7 @@ const Homepage = (props) => {
                 style={{marginTop:'2%'}}
               >
                 <span style={{fontSize:'18px',fontWeight:"bold"}}>WHAT ARE YOU LOOKING FOR?</span><br/>
-                <img alt="" src={headingLines} width="57" height="4" />
+                <img alt="" src={mobiledivider}  height="4" />
               </Grid>
             </Grid>
           <Grid style={{padding:'30px'}} container component="div" direction="row">
@@ -322,7 +325,7 @@ const Homepage = (props) => {
             className="center-align section-3-heading"
           >
            { matches ? (<h3>BIKEBAZAAR ADVANTAGE</h3>) : (<h3 style={{fontSize:"18px"}}>BIKEBAZAAR ADVANTAGE</h3>) }
-            <img alt="" src={headingLines} width="57" height="4" />
+          { matches ? (<img alt="" src={headingLines} width="57" height="4" />) : (<img alt="" src={mobiledivider}  height="4" />)}
           </Grid>
         </Grid>
         <Grid
