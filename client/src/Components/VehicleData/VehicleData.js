@@ -26,7 +26,7 @@ import engineIcon from "../../assets/engineIcon.png";
 import kilometerIcon from "../../assets/kilometerIcon.png";
 import locationIcon from "../../assets/locationIcon.png";
 import personIcon from "../../assets/personIcon.png";
-
+import CustomCarousel from "./Carousel/Carousel";
 
 import "./VehicleData.css";
 
@@ -415,21 +415,22 @@ const VehicleData = (props) => {
           {matches ? (
             <></>
           ) : (
-            <MobileCarousel
-              timeout={{
-                appear: 0,
-                enter: 0,
-                exit: 0,
-              }}
-              indicators={false}
-              autoPlay={false}
-              animation={"slide"}
-              navButtonsAlwaysVisible={true}
-            >
-              {props.vehicle._source.images.map((item, i) => (
-                <Item key={i} item={item} />
-              ))} 
-            </MobileCarousel>
+            // <MobileCarousel
+            //   timeout={{
+            //     appear: 0,
+            //     enter: 0,
+            //     exit: 0,
+            //   }}
+            //   indicators={false}
+            //   autoPlay={false}
+            //   animation={"slide"}
+            //   navButtonsAlwaysVisible={true}
+            // >
+            //   {props.vehicle._source.images.map((item, i) => (
+            //     <Item key={i} item={item} />
+            //   ))} 
+            // </MobileCarousel>
+             <CustomCarousel imagePopUp={()=>setOpenImgPopup(true)} carouselImages={props.vehicle._source.images}/>
           )}
           {matches ? (
             <div className="PriceSec">
