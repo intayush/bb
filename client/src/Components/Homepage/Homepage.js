@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./Homepage.css";
-// import Header from "../Header/Header";
+import MobileCarousel from "./MobileCarousel/MobileCarousel";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import logo from "../../assets/logo.svg";
@@ -21,21 +20,14 @@ import hassleFreeDocTransfer from "../../assets/hassle_free_document_transfer.sv
 import testimonial_hari from "../../assets/Hari_Raj.png";
 import testimonial_md from "../../assets/Md_Aquiluzzaman.png";
 import testimonial_azhar from "../../assets/Azhar_Mirza.png";
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import M from "materialize-css";
 import Grid from "@material-ui/core/Grid";
 import * as CATEGORY from "../../shared/constants/category";
 import { CHANGE_CATEGORY } from "../../store/actions/actionTypes";
-// import { HOMEPAGE_LOAD } from "../../store/actions/actionTypes"
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 
-
-
-
 const Homepage = (props) => {
- 
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
   const changeSliders = matches ? "sliders" : "mobile-sliders";
@@ -44,7 +36,7 @@ const Homepage = (props) => {
   const changeHeadings = matches ? "headings" : "mobile-headings";
   const changeLogo = matches ? "tick-icon" : "mobile-tick-icon";
   const changeImage = matches ? "bannerimage" : "mobile-bannerimage";
-  const changeBanner = matches ? "bannercolor" : "mobile-bannercolor"
+  const changeBanner = matches ? "bannercolor" : "mobile-bannercolor";
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const [bikeHover, setBikeHover] = useState(false);
@@ -110,59 +102,53 @@ const Homepage = (props) => {
       }
     }
   };
-  
+
   useEffect(() => {
     let topSlider = document.querySelectorAll(".slider");
     M.Slider.init(topSlider, {});
     initCar();
-    
-    
+
     //dispatch({ type: HOMEPAGE_LOAD });
   }, []);
- 
 
   return (
     <div className="App">
       {/* <Header /> */}
-       <MainMenu />
-     <div className ={changeSliders}>
-        <ul className = {changeSlides}>
-         <li>
-         <div className={changeImage}>
-           <div className={changeBanner}> 
-           <h3 className= {changeHeadings}>
-                India's Favourite Place to Buy
-                <br />
-                Pre-owned Two-wheelers
-              </h3>
-              <h4 className="text-white">
-                <img alt="" src={logo} className={changeLogo}/>
-                <span>
-                  <span className="bold">Certified</span> Two-wheeler
-                </span>
-              </h4>
-              <h4 className="text-white">
-                <img alt="" src={logo} className={changeLogo} />
-                <span>
-                  6 Months' <span className="bold">Warranty</span>
-                </span>
-              </h4>
-              <h4 className="text-white">
-                <img alt="" src={logo} className={changeLogo}/>
-                <span>
-                  Low Cost <span className="bold">EMI</span>
-                </span>
-              </h4>
-           </div>
-           </div>
-         
-            </li>
-          </ul>
-       
+      <MainMenu />
+      <div className={changeSliders}>
+        <ul className={changeSlides}>
+          <li>
+            <div className={changeImage}>
+              <div className={changeBanner}>
+                <h3 className={changeHeadings}>
+                  India's Favourite Place to Buy
+                  <br />
+                  Pre-owned Two-wheelers
+                </h3>
+                <h4 className="text-white">
+                  <img alt="" src={logo} className={changeLogo} />
+                  <span>
+                    <span className="bold">Certified</span> Two-wheeler
+                  </span>
+                </h4>
+                <h4 className="text-white">
+                  <img alt="" src={logo} className={changeLogo} />
+                  <span>
+                    6 Months' <span className="bold">Warranty</span>
+                  </span>
+                </h4>
+                <h4 className="text-white">
+                  <img alt="" src={logo} className={changeLogo} />
+                  <span>
+                    Low Cost <span className="bold">EMI</span>
+                  </span>
+                </h4>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
-      
-       
-      
+
       <div className="section-2">
         {matches ? (
           <>
@@ -234,9 +220,8 @@ const Homepage = (props) => {
             </Grid>
           </>
         ) : (
-          <>  
-
-             <Grid container component="div" direction="row" className="column">
+          <>
+            <Grid container component="div" direction="row" className="column">
               <Grid
                 item
                 xs={12}
@@ -244,65 +229,73 @@ const Homepage = (props) => {
                 sm={12}
                 lg={12}
                 className="center-align"
-                style={{marginTop:'2%'}}
+                style={{ marginTop: "2%" }}
               >
-                <span style={{fontSize:'18px',fontWeight:"bold"}}>WHAT ARE YOU LOOKING FOR?</span><br/>
+                <span style={{ fontSize: "18px", fontWeight: "bold" }}>
+                  WHAT ARE YOU LOOKING FOR?
+                </span>
+                <br />
                 <img alt="" src={headingLines} width="57" height="4" />
               </Grid>
             </Grid>
-          <Grid style={{padding:'30px'}} container component="div" direction="row">
-            <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
-              <div
-                className="vehicle-box-shadow center-align"
-                onMouseEnter={() => setBikeHover(true)}
-                onMouseLeave={() => setBikeHover(false)}
-                style={{ background: "white" }}
-                onClick={() => handleCategoryClick(CATEGORY.BIKE)}
-              >
-                <img
-                  alt=""
-                  src={bikeHover ? bikeGIF : bikeStill}
-                  height="170"
-                  width="290"
-                />
-                <h5>Motorcycle</h5>
-              </div>
+            <Grid
+              style={{ padding: "30px" }}
+              container
+              component="div"
+              direction="row"
+            >
+              <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
+                <div
+                  className="vehicle-box-shadow center-align"
+                  onMouseEnter={() => setBikeHover(true)}
+                  onMouseLeave={() => setBikeHover(false)}
+                  style={{ background: "white" }}
+                  onClick={() => handleCategoryClick(CATEGORY.BIKE)}
+                >
+                  <img
+                    alt=""
+                    src={bikeHover ? bikeGIF : bikeStill}
+                    height="170"
+                    width="290"
+                  />
+                  <h5>Motorcycle</h5>
+                </div>
+              </Grid>
+              <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
+                <div
+                  className="vehicle-box-shadow center-align"
+                  onMouseEnter={() => setScooterHover(true)}
+                  onMouseLeave={() => setScooterHover(false)}
+                  style={{ background: "white" }}
+                  onClick={() => handleCategoryClick(CATEGORY.SCOOTER)}
+                >
+                  <img
+                    alt=""
+                    src={scooterHover ? scooterGIF : scooterStill}
+                    height="170"
+                    width="290"
+                  />
+                  <h5>Scooter</h5>
+                </div>
+              </Grid>
+              <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
+                <div
+                  className="vehicle-box-shadow center-align"
+                  onMouseEnter={() => setHighEndBikeHover(true)}
+                  onMouseLeave={() => setHighEndBikeHover(false)}
+                  style={{ background: "white" }}
+                  onClick={() => handleCategoryClick(CATEGORY.HIGH_END_BIKE)}
+                >
+                  <img
+                    alt=""
+                    src={highEndBikeHover ? highEndBikeGIF : highEndStill}
+                    height="170"
+                    width="290"
+                  />
+                  <h5>High-End Motorcycle</h5>
+                </div>
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
-              <div
-                className="vehicle-box-shadow center-align"
-                onMouseEnter={() => setScooterHover(true)}
-                onMouseLeave={() => setScooterHover(false)}
-                style={{ background: "white" }}
-                onClick={() => handleCategoryClick(CATEGORY.SCOOTER)}
-              >
-                <img
-                  alt=""
-                  src={scooterHover ? scooterGIF : scooterStill}
-                  height="170"
-                  width="290"
-                />
-                <h5>Scooter</h5>
-              </div>
-            </Grid>
-            <Grid item xs={12} sm={12} md={4} lg={4} className="flex-center">
-              <div
-                className="vehicle-box-shadow center-align"
-                onMouseEnter={() => setHighEndBikeHover(true)}
-                onMouseLeave={() => setHighEndBikeHover(false)}
-                style={{ background: "white" }}
-                onClick={() => handleCategoryClick(CATEGORY.HIGH_END_BIKE)}
-              >
-                <img
-                  alt=""
-                  src={highEndBikeHover ? highEndBikeGIF : highEndStill}
-                  height="170"
-                  width="290"
-                />
-                <h5>High-End Motorcycle</h5>
-              </div>
-            </Grid>
-          </Grid>
           </>
         )}
       </div>
@@ -321,7 +314,11 @@ const Homepage = (props) => {
             lg={12}
             className="center-align section-3-heading"
           >
-           { matches ? (<h3>BIKEBAZAAR ADVANTAGE</h3>) : (<h3 style={{fontSize:"18px"}}>BIKEBAZAAR ADVANTAGE</h3>) }
+            {matches ? (
+              <h3>BIKEBAZAAR ADVANTAGE</h3>
+            ) : (
+              <h3 style={{ fontSize: "18px" }}>BIKEBAZAAR ADVANTAGE</h3>
+            )}
             <img alt="" src={headingLines} width="57" height="4" />
           </Grid>
         </Grid>
@@ -332,66 +329,112 @@ const Homepage = (props) => {
           className="row padHorizontal5"
         >
           <Grid item xs={12} sm={12} md={4} lg={4}>
-          { matches ? (<div className="gola-wrapper">
-              <div className="gola valign-wrapper">
-                <img alt="" src={certifiedAutoExperts} height="69" width="69" />
+            {matches ? (
+              <div className="gola-wrapper">
+                <div className="gola valign-wrapper">
+                  <img
+                    alt=""
+                    src={certifiedAutoExperts}
+                    height="69"
+                    width="69"
+                  />
+                </div>
               </div>
-            </div>) : (<div className="gola-wrapper">
-              <div className="mobilegola valign-wrapper">
-                <img alt="" src={certifiedAutoExperts} height="39" width="39" />
+            ) : (
+              <div className="gola-wrapper">
+                <div className="mobilegola valign-wrapper">
+                  <img
+                    alt=""
+                    src={certifiedAutoExperts}
+                    height="39"
+                    width="39"
+                  />
+                </div>
               </div>
-            </div>)}
+            )}
             <div className="center-align">
-             { matches ? (<h5>Certified by Auto Experts</h5>) : (<h5 style={{fontSize:"14px"}}>Certified by Auto Experts</h5>)}
-             { matches ?  <p className="advantage-subtitle-1">
-                Every bike goes through a thorough inspection and is certified
-                by our team of Auto Experts
-              </p> : <p className="mobile-advantage-subtitle">
-                Every bike goes through a thorough inspection and is certified
-                by our team of Auto Experts
-        </p> }
+              {matches ? (
+                <h5>Certified by Auto Experts</h5>
+              ) : (
+                <h5 style={{ fontSize: "14px" }}>Certified by Auto Experts</h5>
+              )}
+              {matches ? (
+                <p className="advantage-subtitle-1">
+                  Every bike goes through a thorough inspection and is certified
+                  by our team of Auto Experts
+                </p>
+              ) : (
+                <p className="mobile-advantage-subtitle">
+                  Every bike goes through a thorough inspection and is certified
+                  by our team of Auto Experts
+                </p>
+              )}
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4}>
-          { matches ? (  <div className="gola-wrapper">
-              <div className="gola valign-wrapper">
-                <img alt="" src={monthWarranty} height="69" width="69" />
+            {matches ? (
+              <div className="gola-wrapper">
+                <div className="gola valign-wrapper">
+                  <img alt="" src={monthWarranty} height="69" width="69" />
+                </div>
               </div>
-            </div>) : (<div className="gola-wrapper">
-              <div className="mobilegola valign-wrapper">
-                <img alt="" src={monthWarranty} height="39" width="39" />
+            ) : (
+              <div className="gola-wrapper">
+                <div className="mobilegola valign-wrapper">
+                  <img alt="" src={monthWarranty} height="39" width="39" />
+                </div>
               </div>
-            </div> )}
+            )}
             <div className="center-align">
-              { matches ? (<h5>Free 6 Months' Warranty</h5>) : (<h5 style={{fontSize:"14px"}}>Free 6 Months' Warranty</h5>)}
-              { matches ?   <p className="advantage-subtitle-1">
-                Get 6 Months' Warranty covering critical parts including engine
-                and gear box, extendable upto 12 months
-              </p> :  <p className="mobile-advantage-subtitle">
-                Get 6 Months' Warranty covering critical parts including engine
-                and gear box, extendable upto 12 months
-        </p> }
+              {matches ? (
+                <h5>Free 6 Months' Warranty</h5>
+              ) : (
+                <h5 style={{ fontSize: "14px" }}>Free 6 Months' Warranty</h5>
+              )}
+              {matches ? (
+                <p className="advantage-subtitle-1">
+                  Get 6 Months' Warranty covering critical parts including
+                  engine and gear box, extendable upto 12 months
+                </p>
+              ) : (
+                <p className="mobile-advantage-subtitle">
+                  Get 6 Months' Warranty covering critical parts including
+                  engine and gear box, extendable upto 12 months
+                </p>
+              )}
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4}>
-           {matches ?  (<div className="gola-wrapper">
-              <div className="gola valign-wrapper">
-                <img alt="" src={buyerProtection} height="69" width="69" />
+            {matches ? (
+              <div className="gola-wrapper">
+                <div className="gola valign-wrapper">
+                  <img alt="" src={buyerProtection} height="69" width="69" />
+                </div>
               </div>
-            </div>) : (<div className="gola-wrapper">
-              <div className="mobilegola valign-wrapper">
-                <img alt="" src={buyerProtection} height="39" width="39" />
+            ) : (
+              <div className="gola-wrapper">
+                <div className="mobilegola valign-wrapper">
+                  <img alt="" src={buyerProtection} height="39" width="39" />
+                </div>
               </div>
-            </div>)}
+            )}
             <div className="center-align">
-             { matches ? ( <h5>Buyer Protection</h5>) : (<h5 style={{fontSize:"14px"}}>Buyer Protection</h5>)}
-             { matches ? (<p className="advantage-subtitle-1">
-               Any unforeseen issue faced with in one week
-               of purchase is resolved for free.
-              </p>):(<p className="mobile-advantage-subtitle">
-              Any unforeseen issue faced with in one week
-               of purchase is resolved for free.
-              </p>)} 
+              {matches ? (
+                <h5>Buyer Protection</h5>
+              ) : (
+                <h5 style={{ fontSize: "14px" }}>Buyer Protection</h5>
+              )}
+              {matches ? (
+                <p className="advantage-subtitle-1">
+                  Any unforeseen issue faced with in one week of purchase is
+                  resolved for free.
+                </p>
+              ) : (
+                <p className="mobile-advantage-subtitle">
+                  Any unforeseen issue faced with in one week of purchase is
+                  resolved for free.
+                </p>
+              )}
             </div>
           </Grid>
         </Grid>
@@ -404,56 +447,81 @@ const Homepage = (props) => {
           style={{ paddingBottom: "20px" }}
         >
           <Grid item xs={12} sm={12} md={4} lg={5}>
-            { matches ? (
-            <div className="gola-wrapper">
-              <div className="gola-2 valign-wrapper">
-                <img alt="" src={lowCostEmi} height="69" width="69" />
+            {matches ? (
+              <div className="gola-wrapper">
+                <div className="gola-2 valign-wrapper">
+                  <img alt="" src={lowCostEmi} height="69" width="69" />
+                </div>
               </div>
-            </div>) : (<div className="gola-wrapper">
-              <div className="mobilegola-2 valign-wrapper">
-                <img alt="" src={lowCostEmi} height="39" width="39" />
+            ) : (
+              <div className="gola-wrapper">
+                <div className="mobilegola-2 valign-wrapper">
+                  <img alt="" src={lowCostEmi} height="39" width="39" />
+                </div>
               </div>
-            </div>)}
+            )}
             <div className="center-align">
-              { matches ? (<h5>Low Cost EMI</h5>) :(<h5 style={{fontSize:"14px"}}>Low Cost EMI</h5>)}
-              { matches ?   <p className="advantage-subtitle">
-                All vehicles are available at EMI starting at ₹ 2000*. Your
-                dream bike is not a distant dream now
-              </p> : <p className="mobile-advantage-subtitle">
-                All vehicles are available at EMI starting at ₹ 2000*. Your
-                dream bike is not a distant dream now
-            </p> }
+              {matches ? (
+                <h5>Low Cost EMI</h5>
+              ) : (
+                <h5 style={{ fontSize: "14px" }}>Low Cost EMI</h5>
+              )}
+              {matches ? (
+                <p className="advantage-subtitle">
+                  All vehicles are available at EMI starting at ₹ 2000*. Your
+                  dream bike is not a distant dream now
+                </p>
+              ) : (
+                <p className="mobile-advantage-subtitle">
+                  All vehicles are available at EMI starting at ₹ 2000*. Your
+                  dream bike is not a distant dream now
+                </p>
+              )}
             </div>
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4}>
-           { matches ? ( <div className="gola-wrapper">
-              <div className="gola-2 valign-wrapper">
-                <img
-                  alt=""
-                  src={hassleFreeDocTransfer}
-                  height="69"
-                  width="69"
-                />
+            {matches ? (
+              <div className="gola-wrapper">
+                <div className="gola-2 valign-wrapper">
+                  <img
+                    alt=""
+                    src={hassleFreeDocTransfer}
+                    height="69"
+                    width="69"
+                  />
+                </div>
               </div>
-            </div>) : (<div className="gola-wrapper">
-              <div className="mobilegola-2 valign-wrapper">
-                <img
-                  alt=""
-                  src={hassleFreeDocTransfer}
-                  height="39"
-                  width="39"
-                />
+            ) : (
+              <div className="gola-wrapper">
+                <div className="mobilegola-2 valign-wrapper">
+                  <img
+                    alt=""
+                    src={hassleFreeDocTransfer}
+                    height="39"
+                    width="39"
+                  />
+                </div>
               </div>
-            </div>)}
+            )}
             <div className="center-align hfdc">
-              { matches ? (<h5>Hassle Free Document Transfer</h5>) : (<h5 style={{fontSize:"14px"}}>Hassle Free Document Transfer</h5>)}
-             { matches ? <p className="advantage-subtitle">
-                Document transfer is facilitated and made easy for buyer and
-                seller
-              </p> : <p className="mobile-advantage-subtitle">
-                Document transfer is facilitated and made easy for buyer and
-                seller
-            </p> }
+              {matches ? (
+                <h5>Hassle Free Document Transfer</h5>
+              ) : (
+                <h5 style={{ fontSize: "14px" }}>
+                  Hassle Free Document Transfer
+                </h5>
+              )}
+              {matches ? (
+                <p className="advantage-subtitle">
+                  Document transfer is facilitated and made easy for buyer and
+                  seller
+                </p>
+              ) : (
+                <p className="mobile-advantage-subtitle">
+                  Document transfer is facilitated and made easy for buyer and
+                  seller
+                </p>
+              )}
             </div>
           </Grid>
         </Grid>
@@ -471,9 +539,9 @@ const Homepage = (props) => {
             <img alt="" src={headingLines} width="57" height="4" />
           </Grid>
         </Grid>
-        <Grid container component="div" direction="row" className="row mb-0 center-align">
+        <Grid container component="div" direction="row" className="row mb-0">
           <Grid item xs={1} sm={1} md={1} lg={1}>
-            <div className="hide-on-small-only">
+            <div className="valign-wrapper arrow-container">
               <button
                 className="btn-floating btn-large waves-effect waves-light white"
                 id="slideLeft"
@@ -485,18 +553,18 @@ const Homepage = (props) => {
             </div>
           </Grid>
           <Grid item xs={10} sm={10} md={10} lg={10} className="center-align">
-            <div className="carousel center-align">
-              <a className="carousel-item" href="#one!" index="0" style={{marginTop: "-10px"}}>
-                <img alt="" className="circle " src={testimonial_hari} />
+            <div className="carousel" style={{ minHeight: "300px" }}>
+              <a className="carousel-item" href="#one!" index="0">
+                <img alt="" className="circle" src={testimonial_hari} />
               </a>
               {/* <a className="carousel-item" href="#two!" index="1">
                 <img alt="" className="circle" src={testimonial2} />
               </a> */}
-              <a className="carousel-item" href="#two!" index="1" style={{marginTop: "-10px"}}>
-                <img alt="" className="circle " src={testimonial_md} />
+              <a className="carousel-item" href="#two!" index="1">
+                <img alt="" className="circle" src={testimonial_md} />
               </a>
-              <a className="carousel-item" href="#three!" index="2" style={{marginTop: "-10px"}}>
-                <img alt="" className="circle " src={testimonial_azhar} />
+              <a className="carousel-item" href="#three!" index="2">
+                <img alt="" className="circle" src={testimonial_azhar} />
               </a>
               {/* <a className="carousel-item" href="#five!" index="4">
                 <img alt="" className="circle" src={testimonial5} />
@@ -504,7 +572,7 @@ const Homepage = (props) => {
             </div>
           </Grid>
           <Grid item xs={1} sm={1} md={1} lg={1}>
-            <div className="hide-on-small-only">
+            <div className="valign-wrapper arrow-container">
               <button
                 className="btn-floating btn-large waves-effect waves-light white"
                 id="slideRight"
@@ -525,15 +593,10 @@ const Homepage = (props) => {
             <div id="testimonialMessage"></div>
           </Grid>
         </Grid>
-          <div className="hide-on-med-and-up">
-              <div className="center-align row">
-                 <ArrowBackIcon onClick={() => initCar("left")} />
-                  <span className="dot"></span>
-                 <ArrowForwardIcon onClick={() => initCar("right")} />
-               </div>
-          </div>
       </div>
-      <Footer props={props}/>
+      
+       {matches?<></>:<MobileCarousel/>}       
+      <Footer props={props} />
     </div>
   );
 };

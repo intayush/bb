@@ -75,6 +75,8 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .ProductListSec .Product .detail ul.detailPoints li.cc { background: url(../images/icons/cc.png) 0 7px no-repeat; }
 .ProductListSec .Product .detail ul.detailPoints li.owner { background: url(../images/icons/owner.png) 0 7px no-repeat; }
 .ProductListSec .Product .detail ul.detailPoints li.location { background: url(../images/icons/location.png) 0 7px no-repeat;}
+
+
 .ProductListSec .pagination { text-align: center; }
 .ProductListSec .pagination li { height: 40px; padding: 0; }
 .ProductListSec .pagination li:last-child { margin-left:30px; }
@@ -109,6 +111,8 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .vehicleDetails .PriceSec span.del { font-size: 18px; color: #ff0000; text-decoration: line-through; }
 .vehicleDetails .PriceSec span.del strong { font-family: RupeeForadian; font-size: 21px; }
 .vehicleDetails .PriceSec span.save { font-size: 18px; color: #fff; background: #000; border-radius: 4px; font-weight: bold; }
+
+
 
 .vehicleDetails .ProductDetail { padding: 25px; border-bottom: #a8a9ab solid 1px; }
 .vehicleDetails .ProductDetail ul.detailPoints { list-style: none; }

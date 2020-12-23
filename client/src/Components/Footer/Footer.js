@@ -57,12 +57,6 @@ const Footer = ({props}) => {
   const dispatch=useDispatch();
   const footerCss=matches?"footer":"mobilefooter";
 
-  const categoryHandler=()=>{
-
-    dispatch({type:CHANGE_CATEGORY,payload:1});
-    props.history.push("/category/" + "bike");
-  }
-
   return (
     <div className={footerCss}>
       {matches ? (
@@ -132,7 +126,7 @@ const Footer = ({props}) => {
                   <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/becomefranchiseowner"> Become a Franchise Owner</Link>
 
                   </p>
-                  <p className={classes.columnsText}>Blog</p>
+                
                 </div>
               </div>
               </div>
@@ -274,13 +268,13 @@ const Footer = ({props}) => {
                   <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/privacypolicy">Privacy Policy</Link></span><br/>
                   <span style={{fontSize:'10px ' }}><Link style={{color:'white',letterSpacing:'0px'}} to="/termsandconditions">Terms & Conditions</Link></span><br/>
                   <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/contact">Contact Us</Link></span>
-            </div><Link to=""></Link>
+            </div>
             <div style={{ display: "flex-start", flexDirection: "column" ,marginLeft:'20%'}}>
-                  <span onClick={categoryHandler} style={{ fontSize:'10px ',color:'white'}}> Buy</span><br/>
+                  <span  style={{ fontSize:'10px ',color:'white'}}> <Link style={{letterSpacing:'0px',color:'white'}}to="/category/bike">Buy</Link></span><br/>
                   <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/sell">Sell</Link></span><br/>
                   <span style={{fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/vehicledetails/locate-store">Locate Store</Link></span><br/>
                   <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/becomefranchiseowner">Become a Franchise Owner</Link></span><br/>
-                  <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="">Blog</Link></span>
+                 
             </div>
           </div>
           <hr style={{ marginTop: "3%", marginBottom: "3%" }} />

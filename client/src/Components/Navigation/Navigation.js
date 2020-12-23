@@ -37,7 +37,7 @@ const Navigation = (props) => {
         />
         <BrandWidget brands={BRANDS} />
         <YearWidget startYear={2005} endYear={2020} />
-        <KmWidget reset={resetKm} />
+        <KmWidget viewType="web" reset={resetKm} />
       </div>
     );
   };
@@ -53,6 +53,7 @@ const Navigation = (props) => {
     props.manufactureDateFilter(category, filterData);
     props.kmFilter(category, filterData);
   };
+
   const clearAllFilters = () => {
     let check = document.getElementsByTagName("input");
     for (var i = 0; i < check.length; i++) {

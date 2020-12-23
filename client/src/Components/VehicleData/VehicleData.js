@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import MobileCarousel from "react-material-ui-carousel";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "../UI/Tooltip/Tooltip";
@@ -19,6 +20,13 @@ import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { BRANDS } from "../../shared/mappings/brands";
 import { MODELS } from "../../shared/mappings/bike_models";
+import { useSelector } from "react-redux";
+import calenderIcon from "../../assets/calenderIcon.png";
+import engineIcon from "../../assets/engineIcon.png";
+import kilometerIcon from "../../assets/kilometerIcon.png";
+import locationIcon from "../../assets/locationIcon.png";
+import personIcon from "../../assets/personIcon.png";
+
 import "./VehicleData.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -70,6 +78,8 @@ const formValidator = (name, value) => {
 };
 
 const VehicleData = (props) => {
+  const { vehicle } = useSelector((state) => state.vehicleDetails);
+
   let name =
     props.vehicle._source.model <= MODELS.length - 1 &&
     props.vehicle._source.brand <= BRANDS.length - 1
@@ -77,6 +87,7 @@ const VehicleData = (props) => {
         " " +
         MODELS[props.vehicle._source.model]
       : "NA";
+
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
@@ -175,6 +186,7 @@ const VehicleData = (props) => {
   let discount = null;
   let discountAmt = 0;
 
+
   if (props.data.discountPercent) {
     discountAmt = Math.ceil(
       (props.data.discountPercent * props.data.price) / 100
@@ -189,6 +201,25 @@ const VehicleData = (props) => {
       </>
     );
   }
+
+  
+  // for the mobile discount
+  let mobilediscount = null;
+  let mobilediscountAmt = 0;
+  if (props.data.discountPercent) {
+    mobilediscountAmt = Math.ceil(
+      (props.data.discountPercent * props.data.price) / 100
+    );
+    mobilediscount = (
+      <>
+        <span className="mobilesave">
+        <span style={{color:'white'}}>{props.data.discountPercent}% Off</span>
+         
+        </span>
+      </>
+    );
+  }
+
 
   const updateFormdata = (event, formData) => {
     let targetName = event.target.name;
@@ -262,7 +293,6 @@ const VehicleData = (props) => {
   };
 
   useEffect(() => {
-    // console.log("props.data.images", props.data);
     let vehicleId = {
       ...formData,
       vehicleid: {
@@ -274,6 +304,14 @@ const VehicleData = (props) => {
     setFormData(vehicleId);
     setSliderImages(props.data.images);
   }, [props.data.images]);
+
+  const Item = (props) => {
+    return (
+      <div  onClick={() => setOpenImgPopup(true)}>
+        <img src={vehicleImagePath + props.item} width="100%" height="230" alt="" />
+      </div>
+    );
+  };
 
   return (
     <Grid container component="div" direction="row">
@@ -369,12 +407,50 @@ const VehicleData = (props) => {
       )}
 
       <Grid item xs={12} md={12} sm={12} lg={6}>
-       
-          <div
-            className="vehicleDetails"
-            style={{ minHeight: "610px", borderRadius: "5px" }}
-          >
+        <div
+          className="vehicleDetails"
+          style={{ minHeight: "610px", borderRadius: "5px" }}
+        >
+          {matches ? (
+            <></>
+          ) : (
+            <MobileCarousel
+              timeout={{
+                appear: 0,
+                enter: 0,
+                exit: 0,
+              }}
+              indicators={false}
+              autoPlay={false}
+              animation={"slide"}
+              navButtonsAlwaysVisible={true}
+            >
+              {props.vehicle._source.images.map((item, i) => (
+                <Item key={i} item={item} />
+              ))}
+            </MobileCarousel>
+          )}
+          {matches ? (
             <div className="PriceSec">
+              <p className="price">
+                <strong>`</strong> {props.data.price - discountAmt}
+                {discount && (
+                  <span className="del">
+                    <strong> </strong> {props.data.price}
+                  </span>
+                )}
+              </p>
+              {discount}
+            </div>
+          ) : (
+            <>
+            <div
+              style={{ display: "inline-block",padding:"5px" }}
+            >
+              <span style={{ fontSize: "17px", fontWeight: "bold",paddingLeft:'5%' }}>
+                {name}
+              </span>
+              <div className="mobilePriceSec">
               <p className="price">
                 <strong>`</strong> {props.data.price - discountAmt}
                 {discount && (
@@ -383,8 +459,44 @@ const VehicleData = (props) => {
                   </span>
                 )}
               </p>
-              {discount}
+              {mobilediscount}
             </div>
+              <Grid
+                component="div"
+                container
+                xs={12}
+                md={12}
+                lg={12}
+                style={{paddingLeft:'6%'}}
+              >
+                <div style={{width:"45%",marginTop:'10%'}}>
+                 
+                  <ul>
+                    <li className="year"><img src={calenderIcon} alt="calenderIcon"/><span  className="cardText">{props.data.myear}</span></li>
+                    <li style={{width:'100px',marginTop:'10px'}} className="cc"><img src={engineIcon} alt="engineIcon"/><span  className="cardText">{props.data.cc}</span> CC</li>
+                  </ul>
+                </div>
+
+                <div style={{width:"45%",marginTop:'10%'}}>
+                 
+                  <ul style={{ marginLeft: "100%"}}>
+                    <li style={{width:'100px'}} className="km"><img src={kilometerIcon} alt="kilometerIcon"/><span className="cardText">{props.data.kmdriven}<span >KMs</span></span> </li>
+                    <li style={{width:'100px',marginTop:'10px'}} className="owner"><img src={personIcon} alt="ownerIcon"/><span className="cardText">{props.data.owner}</span></li>
+                  </ul>
+                </div>
+
+              </Grid>
+              
+            </div>
+            <hr className="horizontalLines"/>
+              <div style={{marginLeft:'5%',display:'flex',flexDirection:'row'}}>
+                  <img height="18" src={locationIcon} alt="locationIcon" /><span className="cardText">{props.data.city}</span>
+              </div>
+             
+            <hr className="horizontalLines"/>
+            </>
+          )}
+          {matches ? (
             <div className="ProductDetail">
               <ul className="detailPoints">
                 <li className="year">{props.data.myear}</li>
@@ -397,20 +509,30 @@ const VehicleData = (props) => {
               </ul>
               <br className="clr" />
             </div>
-            <div className="ProductForm">
-              <form method="post" action="" name="0" id="" className="">
-                <Grid
-                  container
-                  component="div"
-                  direction="row"
-                  className="form-group"
-                >
-                  <Grid item xs={12} md={12} sm={12} lg={3}>
+          ) : (
+            <></>
+          )}
+          <div className={matches?"ProductForm":"mobileProductForm"}>
+            <form method="post" action="" name="0" id="" className="">
+              <Grid
+                container
+                component="div"
+                direction="row"
+                className="form-group"
+              >
+                <Grid item xs={12} md={12} sm={12} lg={3}>
+                  {matches ? (
                     <label className="fieldname" htmlFor="txtOrgName">
                       Name* :
                     </label>
-                  </Grid>
-                  <Grid item xs={12} md={12} sm={12} lg={9}>
+                  ) : (
+                    <span style={{ fontSize: "14px", fontWeight: "bold" }}>
+                      Name*
+                    </span>
+                  )}
+                </Grid>
+                <Grid item xs={12} md={12} sm={12} lg={9}>
+                  {matches ? (
                     <input
                       type="text"
                       autoComplete="off"
@@ -428,25 +550,52 @@ const VehicleData = (props) => {
                           : ""
                       }
                     />
-                    {formData.name.error && (
-                      <p className={classes.formError}>
-                        {formData.name.errorMessage}
-                      </p>
-                    )}
-                  </Grid>
+                  ) : (
+                    <input
+                      style={{ height: "30px" }}
+                      type="text"
+                      autoComplete="off"
+                      className="name"
+                      name="name"
+                      id=""
+                      placeholder="Type Your Name"
+                      onBlur={(event) => updateFormdata(event, formData)}
+                      required
+                      className={
+                        formData.name.error
+                          ? "invalid"
+                          : formData.name.value
+                          ? "valid"
+                          : ""
+                      }
+                    />
+                  )}
+                  {formData.name.error && (
+                    <p className={classes.formError}>
+                      {formData.name.errorMessage}
+                    </p>
+                  )}
                 </Grid>
-                <Grid
-                  container
-                  component="div"
-                  direction="row"
-                  className="form-group"
-                >
-                  <Grid item xs={12} sm={12} md={3} lg={3}>
+              </Grid>
+              <Grid
+                container
+                component="div"
+                direction="row"
+                className="form-group"
+              >
+                <Grid item xs={12} sm={12} md={3} lg={3}>
+                  {matches ? (
                     <label className="fieldname" htmlFor="txtOrgName">
                       Phone No.* :
                     </label>
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={9} lg={9}>
+                  ) : (
+                    <span style={{ fontSize: "14px", fontWeight: "bold" }}>
+                      Phone No *
+                    </span>
+                  )}
+                </Grid>
+                <Grid item xs={12} sm={12} md={9} lg={9}>
+                  {matches ? (
                     <input
                       type="text"
                       autoComplete="off"
@@ -464,25 +613,52 @@ const VehicleData = (props) => {
                           : ""
                       }
                     />
-                    {formData.phone.error && (
-                      <p className={classes.formError}>
-                        {formData.phone.errorMessage}
-                      </p>
-                    )}
-                  </Grid>
+                  ) : (
+                    <input
+                      style={{ height: "30px" }}
+                      type="text"
+                      autoComplete="off"
+                      className="phone"
+                      name="phone"
+                      id=""
+                      placeholder="Type Your Contact Number"
+                      onBlur={(event) => updateFormdata(event, formData)}
+                      required
+                      className={
+                        formData.phone.error
+                          ? "invalid"
+                          : formData.phone.value
+                          ? "valid"
+                          : ""
+                      }
+                    />
+                  )}
+                  {formData.phone.error && (
+                    <p className={classes.formError}>
+                      {formData.phone.errorMessage}
+                    </p>
+                  )}
                 </Grid>
-                <Grid
-                  container
-                  component="div"
-                  direction="row"
-                  className="form-group"
-                >
-                  <Grid item xs={12} sm={12} md={3} lg={3}>
+              </Grid>
+              <Grid
+                container
+                component="div"
+                direction="row"
+                className="form-group"
+              >
+                <Grid item xs={12} sm={12} md={3} lg={3}>
+                  {matches ? (
                     <label className="fieldname" htmlFor="txtOrgName">
                       Email Id :
                     </label>
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={9} lg={9}>
+                  ) : (
+                    <span style={{ fontSize: "14px", fontWeight: "bold" }}>
+                      Email Id:
+                    </span>
+                  )}
+                </Grid>
+                <Grid item xs={12} sm={12} md={9} lg={9}>
+                  {matches ? (
                     <input
                       type="text"
                       className="email"
@@ -500,63 +676,85 @@ const VehicleData = (props) => {
                           : ""
                       }
                     />
-                    {formData.email.error && (
-                      <p className={classes.formError}>
-                        {formData.email.errorMessage}
-                      </p>
-                    )}
-                  </Grid>
+                  ) : (
+                    <input
+                      style={{ height: "30px" }}
+                      type="text"
+                      className="email"
+                      autoComplete="off"
+                      name="email"
+                      id=""
+                      placeholder="Type Your Email Id"
+                      onBlur={(event) => updateFormdata(event, formData)}
+                      required
+                      className={
+                        formData.email.error
+                          ? "invalid"
+                          : formData.email.value
+                          ? "valid"
+                          : ""
+                      }
+                    />
+                  )}
+
+                  {formData.email.error && (
+                    <p className={classes.formError}>
+                      {formData.email.errorMessage}
+                    </p>
+                  )}
                 </Grid>
+              </Grid>
+              <Grid
+                container
+                component="div"
+                direction="row"
+                className="form-group"
+                justify={matches ? "center" : ""}
+              >
                 <Grid
-                  container
-                  component="div"
-                  direction="row"
-                  className="form-group"
-                  justify="center"
+                  item
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  lg={12}
+                  style={matches ? { textAlign: "center" } : {}}
                 >
-                  <Grid
-                    item
-                    xs={9}
-                    sm={9}
-                    md={9}
-                    lg={9}
-                    style={{ textAlign: "center" }}
-                  >
-                    <label className="fieldname">
-                      <input
-                        type="checkbox"
-                        name="emi"
-                        className="filled-in"
-                        onClick={(event) => updateFormdata(event, formData)}
-                        defaultChecked
-                      />
+                  <label className="fieldname">
+                    <input
+                      type="checkbox"
+                      name="emi"
+                      className="filled-in"
+                      onClick={(event) => updateFormdata(event, formData)}
+                      defaultChecked
+                    />
+                    {matches ? (
                       <span>Interested in Low-Cost EMI Option</span>
-                    </label>
-                  </Grid>
+                    ) : (
+                      <span style={{ fontSize: "12px" }}>
+                        Interested in Low-Cost EMI Option
+                      </span>
+                    )}
+                  </label>
                 </Grid>
-                <Grid
-                  container
-                  component="div"
-                  direction="row"
-                  className="form-group"
-                  justify="center"
-                >
-                  <Grid item xs={9} sm={9} md={9} lg={9}>
-                    <div className="form-group" style={{ textAlign: "center" }}>
-                      <button
-                        type="button"
-                        className="btn"
-                        onClick={submitForm}
-                      >
-                        Get Store Details
-                      </button>
-                    </div>
-                  </Grid>
+              </Grid>
+              <Grid
+                container
+                component="div"
+                direction="row"
+                className="form-group"
+                justify="center"
+              >
+                <Grid item xs={9} sm={9} md={9} lg={9}>
+                  <div className="form-group" style={{ textAlign: "center" }}>
+                    <button type="button" className="btn" onClick={submitForm}>
+                      Get Store Details
+                    </button>
+                  </div>
                 </Grid>
-              </form>
-            </div>
+              </Grid>
+            </form>
           </div>
-        
+        </div>
       </Grid>
     </Grid>
   );

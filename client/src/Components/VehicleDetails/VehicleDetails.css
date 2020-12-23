@@ -139,6 +139,21 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .ProductForm .form-group input.email { background:#e9eaea url(../../assets/images/icons/email.png) 432px 9px no-repeat; }
 .ProductForm .form-group .btn { background: #ff0000; padding: 6px 30px; border-radius: 24px; height: 48px; font-size: 20px; font-weight: bold; text-transform: capitalize; box-shadow: none; margin-left: 10px; width: 236px;}
 
+
+.mobileProductForm { padding:15px 40px 15px 10px; }
+.mobileProductForm .form-group { margin:0px; }
+.mobileProductForm .form-group label.fieldname { font-size: 18px; padding: 6px 0 0 10px; font-size: bold!important; color: #232c2b; }
+.mobileProductForm .form-group label.fieldname span { font-size: 18px; padding-left: 30px; }
+.mobileProductForm .form-group input[type="text"] { width:100%;background: #e9eaea; height: 40px; border-radius: 4px; box-shadow: none; border: none; box-sizing: border-box; color: #333; padding: 5px 10px; }
+.mobileProductForm .form-group input[type="text"]::placeholder { color: #666; }
+.mobileProductForm .form-group input[type="text"]:not(.browser-default):focus:not([readonly]) {box-shadow:none;}
+.mobileProductForm .form-group input.name { background:#e9eaea url(../../assets/images/icons/name.png) 430px 9px no-repeat; }
+.mobileProductForm .form-group input.phone { background:#e9eaea url(../../assets/images/icons/mobile.png) 432px 9px no-repeat; }
+.mobileProductForm .form-group input.email { background:#e9eaea url(../../assets/images/icons/email.png) 432px 9px no-repeat; }
+.mobileProductForm .form-group .btn { background: #ff0000; padding: 6px 30px; border-radius: 24px; height: 48px; font-size: 20px; font-weight: bold; text-transform: capitalize; box-shadow: none; margin-left: 10px; width: 236px;}
+
+
+
 .vehicleSummarySec, .vehicleReportSec { padding: 50px 0 0 0!important; }
 .vehicleSummary, .vehicleReport { box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.17); background-color: #ffffff; border-radius: 5px; padding:40px; }
 .vehicleSummary h3 { font-size: 24px; color: #fe0000; font-weight: 800; margin-bottom: 15px; }

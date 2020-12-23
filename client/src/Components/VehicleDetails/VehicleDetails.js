@@ -37,6 +37,7 @@ const CATEGORY = [
 const VehicleDetails = (props) => {
     const classes = useStyles();
     
+    
     useEffect(() => {
         try {
             window.scroll({
