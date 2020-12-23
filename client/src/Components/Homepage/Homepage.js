@@ -242,7 +242,7 @@ const Homepage = (props) => {
               </Grid>
             </Grid>
             <Grid
-              style={{ padding: "30px" }}
+            
               container
               component="div"
               direction="row"
