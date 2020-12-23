@@ -238,7 +238,7 @@ const Homepage = (props) => {
                   WHAT ARE YOU LOOKING FOR?
                 </span>
                 <br />
-                <img alt="" src={headingLines} width="57" height="4" />
+                <img src={mobiledivider} height="5" width="15" alt=""/>
               </Grid>
             </Grid>
             <Grid
@@ -322,7 +322,7 @@ const Homepage = (props) => {
             ) : (
               <h3 style={{ fontSize: "18px" }}>BIKEBAZAAR ADVANTAGE</h3>
             )}
-            <img alt="" src={headingLines} width="57" height="4" />
+            {matches?<img alt="" src={headingLines} width="57" height="4" />:<img src={mobiledivider} height="5" width="15" alt="" />}
           </Grid>
         </Grid>
         <Grid
