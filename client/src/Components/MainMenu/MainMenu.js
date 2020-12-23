@@ -29,6 +29,10 @@ import TextField from "@material-ui/core/TextField";
 import * as actions from "../../store/actions/index";
 import _ from "lodash";
 import useDebounce from "./use-debounce";
+import Select from "@material-ui/core/Select";
+import FormControl from "@material-ui/core/FormControl";
+
+// --look for this chevron thing as well
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 
 const StyledMenuItem = withStyles({
@@ -214,7 +218,6 @@ const LocationDropDown = () => {
       });
     }
   };
-
 
   return (
     <>
@@ -513,6 +516,7 @@ const MainMenu = (props) => {
           <Grid item xs={6} sm={6} md={6} lg={6}>
             <Grid container component="div" direction="row">
               <Grid item xs={12} sm={12} md={12} lg={12}>
+
                 <form id="searchForm" className="input-field">
                   <Grid
                     container

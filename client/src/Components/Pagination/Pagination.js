@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import leftarrow from "../../assets/images/icons/next.svg";
+import rightarrow from "../../assets/images/icons/back.svg";
 
 const Pagination = (props) => {
   const [currentPage, setcurrentPage] = useState();
   const category = useSelector((state) => state.vehicleDetails.category);
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
   useEffect(() => {
     gotoPage(1);
@@ -110,11 +116,13 @@ const Pagination = (props) => {
     currentPage + pageNeighbours <= totalPages ? "" : "disabled";
 
   return (
-    <ul className="pagination">
+    <ul className={matches?"pagination":"mobilepagination"}>
       <li className={leftButtonClass}>
-        <a href="#!" onClick={handleMoveLeft}>
+      { matches ?  <a href="#!" onClick={handleMoveLeft}>
           <i className="material-icons">chevron_left</i>
-        </a>
+        </a> : <a href="#!" onClick={handleMoveLeft}>
+          <img style={{height:"8px",width:"8px"}} src={rightarrow}></img>
+        </a> }
       </li>
       {pages.map((page, index) => {
         if (page === LEFT_PAGE)
@@ -137,10 +145,13 @@ const Pagination = (props) => {
           </li>
         );
       })}
-      <li className={rightButtonClass}>
-        <a href="#!" onClick={handleMoveRight}>
+     <li className={rightButtonClass}>
+      { matches ? <a href="#!" onClick={handleMoveRight}>
           <i className="material-icons">chevron_right</i>
-        </a>
+        </a> :
+         <a href="#!" onClick={handleMoveRight}>
+        <img style={{height:"8px",width:"8px"}} src={leftarrow}></img>
+      </a> }
       </li>
     </ul>
   );

@@ -50,7 +50,7 @@ router.get("/createUser", (req, res) => {
     console.log(bulkResponse);
   }
   insertRoot().catch(console.log);
-  res.json({ msg: "Index Created Sucessfully" });
+  res.json({ msg: "createUser Index Created Sucessfully" });
 });
 
 //function to sign up
@@ -313,7 +313,7 @@ router.get("/createAdminUser", (req, res) => {
     console.log(bulkResponse);
   }
   insertRoot().catch(console.log);
-  res.json({ msg: "Admin Created Sucessfully" });
+  res.json({ msg: "createAdminUser Admin Created Sucessfully" });
 });
 
 router.post("/adminLogin", (req, res) => {

@@ -14,15 +14,15 @@ const initialState = {
   filter: {
     sort: {
       column: null,
-      order: null
+      order: null,
     },
     city: null,
     myear: [],
     budget: [],
     brand: [],
     kmdriven: 100000,
-    searchTerm: "*"
-  }
+    searchTerm: "*",
+  },
 };
 const vehicles = (state, action) => {
 
@@ -31,14 +31,14 @@ const vehicles = (state, action) => {
     filter: action.filterData,
     category: action.category,
     loading: false,
-    vehicles: action.vehicleList
+    vehicles: action.vehicleList,
   });
 };
 
 const vehiclesNames = (state, action) => {
   return updateObject(state, {
     loading: false,
-    vehicleNames: action.vehicleNames
+    vehicleNames: action.vehicleNames,
   });
 };
 
@@ -58,14 +58,14 @@ const getPaginatedData = (state, action) => {
 
   return updateObject(state, {
     loading: false,
-    currentData: currentData
+    currentData: currentData,
   });
 };
 
 const getVehicleData = (state, action) => {
   return updateObject(state, {
     loading: false,
-    vehicle: action.vehicleData
+    vehicle: action.vehicleData,
   });
 };
 
@@ -78,7 +78,7 @@ const reducer = (state = initialState, action) => {
       return getPaginatedData(state, action);
     case actionTypes.GET_VEHICLE_DATA:
       return getVehicleData(state, action);
-    case actionTypes.GET_VEHICLE_NAMES: 
+    case actionTypes.GET_VEHICLE_NAMES:
       return vehiclesNames(state, action);
     case actionTypes.HOMEPAGE_LOAD:
       return {
@@ -94,16 +94,17 @@ const reducer = (state = initialState, action) => {
         filter: {
           sort: {
             column: null,
-            order: null
+            order: null,
           },
           city: "Aluva",
           myear: [],
           budget: [],
           brand: [],
           kmdriven: 100000,
-          searchTerm: "*"
-        }
+          searchTerm: "*",
+        },
       };
+
     case actionTypes.CHANGE_CITY:
 
       const updatedFilter = state.filter;
@@ -121,8 +122,10 @@ const reducer = (state = initialState, action) => {
       // })
       return {
         ...state,
-        category: action.payload
-      }
+        category: action.payload,
+      };
+
+
     default:
       return state;
   }

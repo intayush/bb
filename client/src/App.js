@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import Homepage from "./Components/Homepage/Homepage";
 import CategoryPage from "./Components/CategoryPage/CategoryPage";
 import LocateStore from "./Components/LocateStore/LocateStore";
@@ -23,12 +23,14 @@ import BulkUpload from "./Components/BulkUpload/BulkUpload";
 import AdminSignIn from "./Components/AdminSection/AdminSignIn";
 import AdminHomePage from "./Components/AdminSection/AdminHomePage";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import mobileFilterPage from "./Components/CategoryPage/mobileFilterPage/mobileFilterPage";
+
 import * as actions from "./store/actions/index";
 import jwt_decode from "jwt-decode";
 
+
+
 const App = () => {
-
-
   //for admin login
   const dispatch = useDispatch();
   if (localStorage.getItem("adminJwtToken")) {
@@ -65,8 +67,9 @@ const App = () => {
       <Route path="/termsandconditions" component={TermsAndConditions} />
       <Route exact path="/blog/:id" component={BlogPost} />
       <Route exact path="/blog" component={BlogPostHome} />
+      <Route exact path="/mobileFilterPage" component={mobileFilterPage}/>
     </Switch>
   );
 };
 
-export default App;
+export default connect(null)(App);

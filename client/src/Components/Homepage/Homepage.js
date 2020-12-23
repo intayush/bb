@@ -9,6 +9,7 @@ import bikeGIF from "../../assets/Motorcycle-GIF.gif";
 import scooterGIF from "../../assets/Scooter-GIF.gif";
 import highEndBikeGIF from "../../assets/High-End-Motorcycle-GIF.gif";
 import headingLines from "../../assets/heading-lines.svg";
+import mobiledivider from "../../assets/mobiledivider.png";
 import bikeStill from "../../assets/motorcycle.svg";
 import scooterStill from "../../assets/scooter.svg";
 import highEndStill from "../../assets/high-end-motorcycle.svg";
@@ -162,7 +163,9 @@ const Homepage = (props) => {
                 className="center-align section-2-heading"
               >
                 <h3>WHAT ARE YOU LOOKING FOR?</h3>
+                <div className="center-align">
                 <img alt="" src={headingLines} width="57" height="4" />
+                </div>
               </Grid>
             </Grid>
             <Grid container component="div" direction="row">

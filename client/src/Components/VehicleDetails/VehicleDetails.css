@@ -66,7 +66,7 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .ProductListSec .sortby input.select-dropdown { background: url(../../assets/images/icons/drop-down.png) 100% / 15% no-repeat #fff; background-size: 24px 11px; }
 .ProductListSec .Prod { height: auto; padding: 0 14px 28px; }
 .ProductListSec .Product { border-radius: 4px; box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2); background-color: #ffffff; }
-.ProductListSec .Product:hover { box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.2); cursor: pointer; transition: 0.3s; }
+.ProductListSec .Product:hover { box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.2);transition: 0.3s; }
 .ProductListSec .Product img { max-width:100%; padding: 3px; }
 .ProductListSec .Product .detail { padding: 19px; }
 .ProductListSec .Product .detail h3 { font-size: 18px; padding-bottom: 0; font-weight: bold; }
@@ -81,6 +81,7 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .ProductListSec .Product .detail ul.detailPoints li.cc { background: url(../../assets/icons/engine-power.svg) 0 3px no-repeat; background-size: 20px 20px;}
 .ProductListSec .Product .detail ul.detailPoints li.owner { background: url(../../assets/icons/user.svg) 0 3px no-repeat; background-size: 20px 20px;}
 .ProductListSec .Product .detail p.location { background: url(../../assets/images/icons/location.png) 0 19px no-repeat; padding: 15px 0 0 18px; margin: 15px 0 0; border-top: #e5e5e5 solid 1px; color: #000000;}
+
 .ProductListSec .pagination { text-align: center; }
 .ProductListSec .pagination li { height: 40px; padding: 0; }
 .ProductListSec .pagination li:last-child { margin-left:30px; }
@@ -90,8 +91,40 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .ProductListSec .pagination li.active a { border-radius: 25px; color: #fff; box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2); border: solid 2px #ffffff; background-color: #ff0000; }
 .ProductListSec .pagination li.dot a { box-shadow:0; border:none; background-color:transparent; font-size: 30px; margin: 0; }
 
-.dropdown-content li > a, .dropdown-content li > span { color:#333; }
+/* pagination for the mobile page view */
+.ProductListSec .mobilepagination { text-align:center;display:flex;flex-direction: row;margin-left:40px; }
+.ProductListSec .mobilepagination li { height:40px; padding: 0; }
+.ProductListSec .mobilepagination li:last-child { margin-left:30px; }
+.ProductListSec .mobilepagination li a {
+  width: 30px!important;
+  height: 30px!important;
+  border-radius: 50%;
+   padding:3px;
+  border: solid 1px rgba(35, 43, 43, 0.4);
+  background-color: #fff;
+  margin: 0px 5px;
+  align-items: center;
+  justify-content: center;
+  padding-left: 8px;
+    padding-right: 8px;
+}
+.ProductListSec .mobilepagination li.disabled a 
+{ 
+  border-radius:50%; 
+  cursor: default; 
+  color: #999; 
+  opacity: 0.4; 
+  padding:3px;
+  border: solid 1px rgba(35, 43, 43, 0.4); 
+  background-color: #fff; margin-right: 30px;
+  padding-left:8px;
+  padding-right:8px;
+}
+.ProductListSec .mobilepagination li.active { background: none; }
+.ProductListSec .mobilepagination li.active a { border-radius: 50%; color: #fff; box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2); border: solid 2px #ffffff; background-color: #ff0000; }
+.ProductListSec .mobilepagination li.dot a { box-shadow:0; border:none; background-color:transparent; font-size: 24px; margin: 0; } 
 
+.dropdown-content li > a, .dropdown-content li > span { color:#333; }
 .filterBand { display: none; }
 
 
@@ -166,6 +199,8 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .vehicleReport p { font-size: 18px; color: #232c2b; }
 
 .vehicleAdvantageSec { background-color: #e5e5e5; box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3); }
+.vehicleAdvantageSecMobile{background-color: #f5f5f5; box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3);}
+
 .vehicleAdvantage h2 { color: #232c2b; }
 .vehicleAdvantage .advantageSec { padding: 0 0; }
 .vehicleAdvantage .advantageSec .advantage { padding: 5px 0; }
@@ -181,24 +216,8 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .vehicleAdvantage .advantageSec .advantage1 .advantageIconRight img { margin: 25% 0; }
 .vehicleAdvantage .advantageSec .advantage1 h3 { font-size:24px; background: url(../../assets/images/icons/advantage-icon-rt.png) right 30px no-repeat; font-weight: 800; color: #ff0000; padding-top: 37px; padding-right: 180px; text-align: right; }
 .vehicleAdvantage .advantageSec .advantage1 p { padding-right: 70px; font-size: 18px; text-align: right; }
-.advantagePadding {
-  padding: 15px !important;
-}
-.padding0{
-  padding: 0px !important;
-}
 
-.margin0 {
-  margin: 0px !important;
-}
 
-.advantageMobile {
-  font-size: 24px !important;
-}
-
-.advantage1Mobile {
-  font-size: 24px !important;
-}
 
 .similar { width: 1200px; margin:100px auto; }
 .similar .carousel { height:auto; max-height:100%; border: none; padding: 5px; background: none; overflow: inherit }

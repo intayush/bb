@@ -16,6 +16,8 @@ import { Menu } from "../../shared/utility";
 import categoryData from "../../shared/mappings/category_data";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import Modal from '@material-ui/core/Modal';
+
 import getSize from '../sizeDetect';
 
 
@@ -24,12 +26,15 @@ const CategoryPage = (props) => {
   const {width} = getSize();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
+  const [openSortByPopUp,setopenSortByPopUp]=useState(false); //for opening sort by modal in mobile view
+ 
   const { vehicles, filter, currentData, selectedCity , selectedBudget} = useSelector(
     (state) => state.vehicleDetails
   );
-  var category;
-  var searchTerm;
-  var stateFilterData = {
+
+  let category;
+  let searchTerm;
+  let stateFilterData = {
     ...filter,
     city: selectedCity,
 
@@ -126,6 +131,7 @@ const CategoryPage = (props) => {
     .join("-");
   let text =
     "Motorcycles are available at easy EMI starting at ₹2,000*. Your  dream bike is not a distant dream now.";
+
   return (
     <div id="CategoryPage">
       {/* <Header /> */}

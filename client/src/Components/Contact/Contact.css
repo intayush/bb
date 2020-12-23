@@ -15,9 +15,21 @@
   font-size: 18px;
   color: #232c2b;
 }
+
+.mobileSub-heading-black {
+  font-weight: bold;
+  font-size: 13px;
+  color: #232c2b;
+}
+
 .sub-heading-red {
   font-weight: 600;
   font-size: 19px;
+  color: #ff0000;
+}
+.mobileSub-heading-red{
+  font-weight: bold;
+  font-size: 13px;
   color: #ff0000;
 }
 p sup {
@@ -25,6 +37,10 @@ p sup {
 }
 .address {
   font-size: 16px;
+}
+.mobile-address{
+  font-size:10px;
+  color: #232b2b;
 }
 .mobile {
   font-size: 16px;

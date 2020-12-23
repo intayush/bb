@@ -40,7 +40,7 @@ export const apiFail = (error) => {
 
 export const getVehicles = (category = null, filterData = null, searchTerm = null) => {
     let url = "";
-    if(category==null || category==0){
+    if(category===null || category===0){
         url = "/apis/seedData/getAllBikes";
     }
     else{
