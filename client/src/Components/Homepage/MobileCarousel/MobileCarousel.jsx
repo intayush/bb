@@ -14,7 +14,7 @@ const MobileCarousel = () => {
   const goToPrev = () => {
     setCurrPos(currentPos === 0 ? length - 1 : currentPos - 1);
   };
-  
+
   if (!Array.isArray(carouselData) || length <= 0) {
     return null;
   }
@@ -33,11 +33,11 @@ const MobileCarousel = () => {
       </div>
       <div className="text-context">
         <span>{carouselData[currentPos].title}</span>
-        <br />
         <p style={{ fontSize: "12px", lineHeight: "12px" }}>
           {carouselData[currentPos].text}
         </p>
       </div>
+
       <div className="arrow-icon-container">
         <div className="arrow-icons">
           <img onClick={goToPrev} src={mobileLeftIcon} alt="" />

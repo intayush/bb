@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import MobileCarousel from "react-material-ui-carousel";
+ import MobileCarousel from "react-material-ui-carousel";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "../UI/Tooltip/Tooltip";
@@ -26,6 +26,7 @@ import engineIcon from "../../assets/engineIcon.png";
 import kilometerIcon from "../../assets/kilometerIcon.png";
 import locationIcon from "../../assets/locationIcon.png";
 import personIcon from "../../assets/personIcon.png";
+
 
 import "./VehicleData.css";
 
@@ -427,7 +428,7 @@ const VehicleData = (props) => {
             >
               {props.vehicle._source.images.map((item, i) => (
                 <Item key={i} item={item} />
-              ))}
+              ))} 
             </MobileCarousel>
           )}
           {matches ? (
