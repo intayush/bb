@@ -32,7 +32,7 @@ const MobileCarousel = () => {
         />
       </div>
       <div className="text-context">
-        <span>{carouselData[currentPos].title}</span>
+        <span className="p_name">{carouselData[currentPos].title}</span>
         <p style={{ fontSize: "12px", lineHeight: "12px" }}>
           {carouselData[currentPos].text}
         </p>

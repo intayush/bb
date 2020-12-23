@@ -81,7 +81,7 @@ let LocateStore = (props) => {
       city: "Aluva",
       locationName: "BikeBazaar – JKB Motors, Aluva",
       address:
-        "Jkb – BikeBazaar, Near JKB Bajaj , Pulinchode Jn. Bypass, Aluva – 683101, Kerala, India . Contact Info: Sandeep  Chandran || Mob No: +91-96893824571",
+        "Jkb – BikeBazaar, Near JKB Bajaj , Pulinchode Jn. Bypass, Aluva – 683101, Kerala, India . Contact Info: Sandeep  Chandran || Mob No: +91-8956853502",
       coordinates: {
         lat: 10.100809,
         lng: 76.348984,
@@ -91,7 +91,7 @@ let LocateStore = (props) => {
     {
       city: "Kolkata",
       locationName: "BikeBazaar – 8A Nasiruddin,Kolkata",
-      address: "8A, Nasiruddin Rd, Lower Range, Beck Bagan, Ballygunge, Kolkata, West Bengal 700017 .Contact Info: Chirag Shah || Mob No: +91-90387 95892",
+      address: "8A, Nasiruddin Rd, Lower Range, Beck Bagan, Ballygunge, Kolkata, West Bengal 700017 .Contact Info: Chirag Shah || Mob No: +91- 8956853506",
       coordinates: {
         lat: 22.541450,
         lng: 88.363410,
@@ -102,7 +102,7 @@ let LocateStore = (props) => {
       city: "Rajahmundry",
       locationName: "BikeBazaar – MCV Wheels, Rajahmundry",
       address:
-        "D. No. 77/8/7-1, Beside Bajaj Two Wheeler Showroom, R.T.C Complex Road, Rajahmundry - 533103, Andhra Pradesh, India . Contact Info: Chirag Shah || Mob No: +91- 9666422224",
+        "D. No. 77/8/7-1, Beside Bajaj Two Wheeler Showroom, R.T.C Complex Road, Rajahmundry - 533103, Andhra Pradesh, India . Contact Info: Sunil Bisoi || Mob No: +91- 8956854007",
       coordinates: {
         lat: 16.999954,
         lng: 81.786184,
@@ -113,7 +113,7 @@ let LocateStore = (props) => {
       city: "Thrissur",
       locationName: "BikeBazaar – Sitaram Trade & Services, Thrissur",
       address: `Sitaram Trade & Services, PT Manual Road, Kollothumpadam, Patturaikal, Thrissur, Kerala 
-        Contact Info: Sandeep  Chandran || Mob No: +91-9689382457`,
+        Contact Info: Sandeep  Chandran || Mob No: +91-8956853502`,
       coordinates: {
         lat: 10.54067,
         lng: 76.213814,
