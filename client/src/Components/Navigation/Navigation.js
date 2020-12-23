@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
-
 import "./Navigation.css";
 import CityWidget from "./Widgets/CityWidget";
 import CategoryWidget from "./Widgets/CategoryWidget";
@@ -16,12 +15,25 @@ import SortDropDown from "../SortDropDown/SortDropDown";
 import * as actions from "../../store/actions/index";
 import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import { CHANGE_CATEGORY, CHANGE_CITY } from "../../store/actions/actionTypes";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import categoryData from "../../shared/mappings/category_data";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const Navigation = (props) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const dispatch = useDispatch();
   const [resetKm, setResetKm] = useState(0);
   const [filter_btn, showfilter] = useState(false);
@@ -147,24 +159,73 @@ const Navigation = (props) => {
     showfilter(false);
   };
 
+
+
+// Click handler for sort button
+
+  const handler=(value)=>{
+    let category  = props.category;
+    let filterData = props.filter;
+    let selectedFilter = value.split("-");
+    filterData.sort.column = selectedFilter[0];
+    filterData.sort.order = selectedFilter[1];
+    props.getsortedData(category,filterData);
+  }
+
   return (
     <div>
       {props.viewType === "mobile" && (
         <div className="filter-display">
           <ButtonGroup fullWidth={true} variant="contained" color="default">
-            <div className="filter-btns" style={{ borderRadius: 0 }}>
-              <button className="sortDis">
-                <div className="sort-btn-display">
-                  <SortDropDown viewType="mobile" />
-                </div>
-              </button>
-            </div>
+            <Button
+              aria-controls="simple-menu"
+              aria-haspopup="true"
+              onClick={handleClick}
+              style={{
+                borderRadius: 0,
+                width: "50%",
+                lineHeight: "20px",
+                fontSize: "2ex",
+                backgroundColor: "#efefef",
+              }}
+              endIcon={<ArrowDropDownIcon />}
+            >
+              SORT BY
+            </Button>
+
+            {/* menu for the sort by */}
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              anchorOrigin={{
+                vertical: "top",
+                horizontal:'top'
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                
+              }}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+              PaperProps={{style:{
+                width:'100%',
+                bottom:'100px !important'
+              }}}
+            >
+              <MenuItem onClick={()=>handler("")}>SORT BY</MenuItem>
+              <MenuItem onClick={()=>handler("price-asc")}>Price - Low to High</MenuItem>
+              <MenuItem onClick={()=>handler("price-desc")}>Price - High to Low</MenuItem>
+              <MenuItem onClick={()=>handler("myear-asc")}>Manufacturing Year - Low to High</MenuItem>
+              <MenuItem onClick={()=>handler("myear-desc")}>Manufacturing Year - High to Low</MenuItem>
+              <MenuItem onClick={()=>handler("kmdriven-asc")}>Kilometer - Low to High</MenuItem>
+            </Menu>
             <Button
               onClick={() => showfilter(true)}
               endIcon={<ArrowDropDownIcon />}
               style={{
                 borderRadius: 0,
-                width: "160px",
+                width: "50%",
                 lineHeight: "20px",
                 fontSize: "2ex",
                 backgroundColor: "#efefef",
@@ -290,6 +351,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.getVehicles(category, filterdata)),
     kmFilter: (category, filterdata) =>
       dispatch(actions.getVehicles(category, filterdata)),
+      // for the sort dropdown
+      getsortedData: (category,sortKey) => dispatch(actions.getVehicles(category,sortKey)),  
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
