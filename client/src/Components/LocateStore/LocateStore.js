@@ -339,7 +339,7 @@ let LocateStore = (props) => {
             >
               <img
                 src={searchIcon}
-                style={matches ? {} : { marginBottom:'20px'}}
+                style={matches ? {} : { marginBottom:'20px',marginLeft:'6px'}}
                 width={matches ? "30" : "20"}
                 height={matches ? "30" : "20"}
                 alt=""

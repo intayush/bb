@@ -84,6 +84,28 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .ProductListSec .pagination li.active a { border-radius: 25px; color: #fff; box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2); border: solid 2px #ffffff; background-color: #ff0000; }
 .ProductListSec .pagination li.dot a { box-shadow:0; border:none; background-color:transparent; font-size: 30px; margin: 0; }
 
+.ProductListSec .mobilepagination { text-align:center;display:flex;flex-direction: row; }
+.ProductListSec .mobilepagination li { height:40px; padding: 0; }
+.ProductListSec .mobilepagination li:last-child { margin-left:30px; }
+.ProductListSec .mobilepagination li a {
+  width: 30px!important;
+  height: 30px!important;
+  border-radius: 50%;
+  /* padding: 7px; */
+  border: solid 1px rgba(35, 43, 43, 0.4);
+  background-color: #fff;
+  margin: 0px 5px;
+  padding-left: 9px;
+  padding-top: 3px;
+  padding-bottom: 7px;
+  padding-right: 10px;
+  /* margin-top: 46px; */
+}
+.ProductListSec .mobilepagination li.disabled a { border-radius: 20px; cursor: default; color: #999; opacity: 0.4; padding: 5px; border: solid 1px rgba(35, 43, 43, 0.4); background-color: #fff; margin-right: 30px; }
+.ProductListSec .mobilepagination li.active { background: none; }
+.ProductListSec .mobilepagination li.active a { border-radius: 25px; color: #fff; box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2); border: solid 2px #ffffff; background-color: #ff0000; }
+.ProductListSec .mobilepagination li.dot a { box-shadow:0; border:none; background-color:transparent; font-size: 24px; margin: 0; } 
+
 .dropdown-content li > a, .dropdown-content li > span { color:#333; }
 
 .filterBand { display: none; }
