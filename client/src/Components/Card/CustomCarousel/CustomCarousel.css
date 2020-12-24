@@ -3,14 +3,7 @@
 
 }
 
-.arrow-icons-mobile-container {
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between !important;
-  width: 90%;
-  margin-top: -40%;
-}
+
 
 .left-mobile-arrow {
   height: 30px;
@@ -19,6 +12,9 @@
   background-color: white;
   padding: 2%;
   margin-left: 2%;
+  position: absolute;
+  left: 0px;
+  top: 2%;
 }
 
 .right-mobile-arrow {
@@ -27,7 +23,9 @@
   border-radius: 50%;
   background-color: white;
   padding: 2%;
-  
+  position: absolute;
+  right: 0px;
+  top: 2%;
 }
 
 
