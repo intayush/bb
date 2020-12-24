@@ -210,11 +210,11 @@ const Navigation = (props) => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
               PaperProps={{style:{
-                width:'100%',
-                bottom:'100px !important'
+                width:'85%',
+                marginLeft:'-5%',
+                marginTop:"-16px"
               }}}
             >
-              <MenuItem onClick={()=>handler("")}>SORT BY</MenuItem>
               <MenuItem onClick={()=>handler("price-desc")}>Price - Low to High</MenuItem>
               <MenuItem onClick={()=>handler("price-asc")}>Price - High to Low</MenuItem>
               <MenuItem onClick={()=>handler("myear-desc")}>Manufacturing Year - Low to High</MenuItem>
@@ -352,7 +352,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.getVehicles(category, filterdata)),
     kmFilter: (category, filterdata) =>
       dispatch(actions.getVehicles(category, filterdata)),
-      // for the sort dropdown
+      // dispatching for the sort dropdown mobile button
       getsortedData: (category,sortKey) => dispatch(actions.getVehicles(category,sortKey)),  
   };
 };

@@ -325,21 +325,12 @@ const Footer = ({props}) => {
               flexDirection: "column",
               marginTop: "8%",
               wordSpacing: "3.5px",
-              marginBottom:"30px",
+              marginBottom:"15px",
               
             }}
           >
             <p style={{ color: "white" ,fontWeight:'600'}}>Connect with us</p>
-            <div
-              style={{
-                display: "flex-start",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                width: "70%",
-                fontWeight: "500",
-                marginTop: "1%",
-              }}
-            >
+            <div className="mobile-view-icons">
                <a href="https://www.facebook.com/BikeBazaaar">
               <img src={faceBookIcon} style={{height:'13px',width:'16px'}} /></a>
               <a href="https://www.instagram.com/bikebazaaar/" >
