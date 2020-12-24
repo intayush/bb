@@ -164,6 +164,7 @@ const Navigation = (props) => {
 // Click handler for sort button
 
   const handler=(value)=>{
+    setAnchorEl(null);
     let category  = props.category;
     let filterData = props.filter;
     let selectedFilter = value.split("-");
@@ -193,11 +194,11 @@ const Navigation = (props) => {
               SORT BY
             </Button>
 
-            {/* menu for the sort by */}
+            {/* Menu for the sort by button*/}
             <Menu
               id="simple-menu"
               anchorEl={anchorEl}
-              keepMounted
+              
               anchorOrigin={{
                 vertical: "top",
                 horizontal:'top'
@@ -214,11 +215,11 @@ const Navigation = (props) => {
               }}}
             >
               <MenuItem onClick={()=>handler("")}>SORT BY</MenuItem>
-              <MenuItem onClick={()=>handler("price-asc")}>Price - Low to High</MenuItem>
-              <MenuItem onClick={()=>handler("price-desc")}>Price - High to Low</MenuItem>
-              <MenuItem onClick={()=>handler("myear-asc")}>Manufacturing Year - Low to High</MenuItem>
-              <MenuItem onClick={()=>handler("myear-desc")}>Manufacturing Year - High to Low</MenuItem>
-              <MenuItem onClick={()=>handler("kmdriven-asc")}>Kilometer - Low to High</MenuItem>
+              <MenuItem onClick={()=>handler("price-desc")}>Price - Low to High</MenuItem>
+              <MenuItem onClick={()=>handler("price-asc")}>Price - High to Low</MenuItem>
+              <MenuItem onClick={()=>handler("myear-desc")}>Manufacturing Year - Low to High</MenuItem>
+              <MenuItem onClick={()=>handler("myear-asc")}>Manufacturing Year - High to Low</MenuItem>
+              <MenuItem onClick={()=>handler("kmdriven-desc")}>Kilometer - Low to High</MenuItem>
             </Menu>
             <Button
               onClick={() => showfilter(true)}
