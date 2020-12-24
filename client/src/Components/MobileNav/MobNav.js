@@ -90,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
   },
   locationDropdown: {
-    width: "35%",
+    width: "110px",
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",
@@ -185,7 +185,7 @@ const LocationDropDown = ({ matches, classes }) => {
           style: {
             backgroundColor: "black",
             marginRight: "5%",
-            width: "30%",
+            width: "110px",
             scrollbarWidth: "thin",
           },
         }}

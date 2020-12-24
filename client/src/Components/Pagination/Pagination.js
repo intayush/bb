@@ -1,11 +1,24 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import leftarrow from "../../assets/images/icons/next.svg";
+import rightarrow from "../../assets/images/icons/back.svg";
 
 const Pagination = (props) => {
+  const [currentPage, setcurrentPage] = useState();
+  const category = useSelector((state) => state.vehicleDetails.category);
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
+
   useEffect(() => {
     gotoPage(1);
-  }, []);
+  }, [category]);
 
-  const [currentPage, setcurrentPage] = useState(1);
+  const gotoPage = (page) => {
+    let currentPage = Math.max(0, Math.min(page, totalPages));
+    setcurrentPage(currentPage);
+  };
 
   const LEFT_PAGE = "LEFT";
   const RIGHT_PAGE = "RIGHT";
@@ -46,16 +59,13 @@ const Pagination = (props) => {
 
       const hasLeftSpill = startPage > 2;
       const hasRightSpill = totalPages - endPage > 1;
-      const spillOffset = totalNumbers - pages.length + 1;
 
       switch (true) {
         case hasLeftSpill && !hasRightSpill: {
-          const extraPages = range(startPage - spillOffset, startPage - 1);
           pages = [LEFT_PAGE, ...pages];
           break;
         }
         case !hasLeftSpill && hasRightSpill: {
-          const extraPages = range(endPage + 1, endPage + spillOffset);
           pages = [...pages, RIGHT_PAGE];
           break;
         }
@@ -76,11 +86,6 @@ const Pagination = (props) => {
     totalPages: totalPages,
     pageLimit: pageLimit,
     totalRecords: totalRecords,
-  };
-
-  const gotoPage = (page) => {
-    let currentPage = Math.max(0, Math.min(page, totalPages));
-    setcurrentPage(currentPage);
   };
 
   useEffect(() => {
@@ -111,11 +116,13 @@ const Pagination = (props) => {
     currentPage + pageNeighbours <= totalPages ? "" : "disabled";
 
   return (
-    <ul className="pagination">
+    <ul className={matches?"pagination":"mobilepagination"}>
       <li className={leftButtonClass}>
-        <a href="#!" onClick={handleMoveLeft}>
+      { matches ?  <a href="#!" onClick={handleMoveLeft}>
           <i className="material-icons">chevron_left</i>
-        </a>
+        </a> : <a href="#!" onClick={handleMoveLeft}>
+          <img style={{height:"8px",width:"8px"}} src={rightarrow}></img>
+        </a> }
       </li>
       {pages.map((page, index) => {
         if (page === LEFT_PAGE)
@@ -138,11 +145,13 @@ const Pagination = (props) => {
           </li>
         );
       })}
-      <li className={rightButtonClass}>
-        
-        <a href="#!" onClick={handleMoveRight}>
+     <li className={rightButtonClass}>
+      { matches ? <a href="#!" onClick={handleMoveRight}>
           <i className="material-icons">chevron_right</i>
-        </a>
+        </a> :
+         <a href="#!" onClick={handleMoveRight}>
+        <img style={{height:"8px",width:"8px"}} src={leftarrow}></img>
+      </a> }
       </li>
     </ul>
   );

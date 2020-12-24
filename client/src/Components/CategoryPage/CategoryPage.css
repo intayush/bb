@@ -56,6 +56,7 @@ form {
   float: left;
 }
 
+
 .ProductListSec .sortby {
   width: 274px;
   float: right;
@@ -99,7 +100,6 @@ form {
 }
 .ProductListSec .Product:hover {
   box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
   transition: 0.3s;
 }
 .ProductListSec .Product img {
@@ -136,7 +136,7 @@ form {
   width: 50%;
   float: left;
 }
-.ProductListSec .pagination {
+ .ProductListSec .pagination {
   text-align: center;
 }
 .ProductListSec .pagination li {
@@ -146,7 +146,7 @@ form {
 .ProductListSec .pagination li:last-child {
   margin-left: 30px;
 }
-.ProductListSec .pagination li a {
+ .ProductListSec .pagination li a {
   width: 40px;
   height: 40px;
   border-radius: 25px;
@@ -154,7 +154,7 @@ form {
   border: solid 1px rgba(35, 43, 43, 0.4);
   background-color: #fff;
   margin: 0 7px;
-}
+} 
 .ProductListSec .pagination li.disabled a {
   border-radius: 25px;
   cursor: default;
@@ -176,13 +176,13 @@ form {
   border: solid 2px #ffffff;
   background-color: #ff0000;
 }
-.ProductListSec .pagination li.dot a {
+.ProductListSec .pagination li.dot a{
   box-shadow: 0;
   border: none;
   background-color: transparent;
   font-size: 30px;
   margin: 0;
-}
+} 
 
 .dropdown-content li > a,
 .dropdown-content li > span {
@@ -395,7 +395,5 @@ form {
 .bike-name h3{
   color: #000000;
 }
-
-
 
 

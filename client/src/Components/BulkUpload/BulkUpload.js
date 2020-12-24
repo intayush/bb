@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./BulkUpload.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -9,6 +9,8 @@ import questionIcon from "../../assets/questionIcon.png";
 import closeIcon from "../../assets/Close.png";
 import ModalText from "./BulkUploadModalText";
 import AdminInnerHeader from "../AdminSection/AdminInnerHeader";
+import Backdrop from "@material-ui/core/Backdrop";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles((theme) => ({
   modalBoxSuccess: {
@@ -27,9 +29,15 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "flex-start",
   },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: "#fff",
+  },
 }));
 
 const BulkUpload = () => {
+  const [showSpinner, setshowSpinner] = useState(false);
+
   const classes = useStyles();
   const [selectedFile, setSelectedFile] = React.useState(null);
   const [open, setOpen] = React.useState(false);
@@ -39,24 +47,9 @@ const BulkUpload = () => {
 
   const onChangeHandler = (event) => {
     const files = event.target.files[0];
-    console.log(files);
-
     setSelectedFile(files);
   };
 
-  // const templateDownloader = () => {
-  //   console.log("working");
-  //   axios
-  //     .get("/apis/bulkUpload/SampleTemplate")
-  //     .then((res) => {
-
-  //       console.log(res.status);
-  //       console.log(res);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
 
   const templateDownloader = () => {
     fetch("/apis/bulkUpload/SampleTemplate").then((response) => {
@@ -78,16 +71,17 @@ const BulkUpload = () => {
       //toaster for the notification
       toast.error("Please Select the file");
     } else {
+      setshowSpinner(true)
       data.append("file", selectedFile);
       data.append("name", selectedFile.name);
 
-      console.log(data);
       //accessing the backendapi
       axios
         .post("/apis/bulkUpload/Upload", data)
         .then((res) => {
           // then print response status
-          console.log(res.statusText);
+       
+          setshowSpinner(false);
           toast.success("Upload successfull !! ");
         })
         .catch((err) => {
@@ -99,6 +93,13 @@ const BulkUpload = () => {
   return (
     <>
       <AdminInnerHeader />
+
+      <Backdrop className={classes.backdrop} open={showSpinner}>
+
+        <CircularProgress color="inherit" />
+        <p style={{marginLeft:'20px'}}> Uploading Vehicles Please wait !!</p>
+      </Backdrop>
+
       <div
         style={{ textAlign: "center", justifyContent: "center", padding: 50 }}
         className="container"

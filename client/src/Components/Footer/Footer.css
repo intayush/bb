@@ -53,3 +53,14 @@
   }
 
 
+
+.mobile-view-icons{
+  
+    display: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+    font-weight: 500;
+    margin-top: 1%;
+  
+}

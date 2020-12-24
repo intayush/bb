@@ -14,6 +14,8 @@ import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
 import { red } from '@material-ui/core/colors';
 import { createStyles, Theme, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const BBRadio = withStyles({
   root: {
@@ -44,20 +46,32 @@ const theme = createMuiTheme({
 });
 
 const CityWidget = props => {
-  
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
   const dispatch = useDispatch();
   const classes = useStyles();
   const { selectedCity, category, citynames } = useSelector(state => state.vehicleDetails);
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearchTerm = useDebounce(searchTerm, 300);
-  
+
+
+  const [selectCityMobile, changeMobileCity] = useState(props.default_city)
+
+  const [state, setState] = useState({
+    tags: [
+      { id: 1, name: "Aluva" },
+      { id: 2, name: "Kolkata" }
+    ],
+  });
+
+  // console.log("ref", reactTags);
+
   useEffect(() => {
     const filterData = {
       ...citynames,
       city: selectedCity
     }
-    console.log("filterData",filterData['city']);
-
+    
     if(debouncedSearchTerm.length > 2){
       setTimeout(() => {
         dispatch(actions.getCityNames(filterData, debouncedSearchTerm));
@@ -86,7 +100,13 @@ const CityWidget = props => {
     setSearchTerm(value.toLowerCase());
   };
 
+  const cityChangeHandler=(event)=>{
+    changeMobileCity(event.target.value);
+    props.handleChangeCategory({...props.globalState, city : event.target.value});
+  }
+
   const citiesArr = ['Aluva', 'Kolkata', 'Rajahmundry', 'Thrissur', 'Bangalore', 'Chennai', 'New Delhi', 'Gurgaon', 'Hyderabad', 'Jaipur', 'Mumbai', 'Nagpur', 'Pune' ];
+
 
   return (
     <div className="CityWidget">
@@ -126,20 +146,38 @@ const CityWidget = props => {
           </button> */}
         </form>
 
-        <RadioGroup aria-label="gender" name="city" onChange={searchClick}>
-          <ul className="cat-list">
-            {citiesArr.map(eachCity => (
-              <li>
-                <FormControlLabel
-                  value={eachCity}
-                  control={<BBRadio />}
-                  label={eachCity}
-                  checked={selectedCity === eachCity}
-                />
-              </li>
-            ))}
-          </ul>
-        </RadioGroup>
+        {matches 
+          ?(<RadioGroup  name="city" onChange={searchClick}>
+            <ul className="cat-list">
+                {(citiesArr.map(eachCity => (
+                    <li>
+                      <FormControlLabel
+                        value={eachCity}
+                        control={<BBRadio />}
+                        label={eachCity}
+                        checked={selectedCity === eachCity}
+                      />
+                    </li>
+               )))}
+            </ul>
+            </RadioGroup>
+          )
+          :(<RadioGroup  name="city" value={selectCityMobile} onChange={cityChangeHandler}>
+              <ul className="cat-list">
+                  {(citiesArr.map(eachCity => (
+                      <li>
+                        <FormControlLabel
+                          value={eachCity}
+                          control={<BBRadio />}
+                          label={eachCity}
+                          checked={selectCityMobile === eachCity}
+                        />
+                      </li>
+                )))}
+              </ul>
+            </RadioGroup>
+          )
+        }
       </div>
     </div>
   );

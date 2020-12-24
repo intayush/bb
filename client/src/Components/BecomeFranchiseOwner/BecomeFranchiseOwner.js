@@ -247,13 +247,13 @@ const BecomeFranchiseOwner = (props) => {
     },
   });
 
-  const [success, setSuccess] = React.useState(false);
-  const [open, setOpen] = React.useState(false);
+  const [success, setSuccess] = useState(false);
+  const [open, setOpen] = useState(false);
   const handleModalClose = () => {
     setOpen(false);
     props.history.go(0);
   };
-  const [modalMesg, setModalMesg] = React.useState("");
+  const [modalMesg, setModalMesg] = useState("");
 
   const tooltip = (
     <Modal

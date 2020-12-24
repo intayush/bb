@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-// import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
@@ -9,7 +8,6 @@ import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import blackHeadingLines from "../../assets/black-heading-lines.svg";
 import missionIcon from "../../assets/Mission-Icon.svg";
-import visionIcon from "../../assets/Vision-Icon.svg";
 import VehicleAdvantage from "../../Components/VehicleAdvantage/VehicleAdvantage";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";

@@ -218,7 +218,7 @@ const Contact = props => {
     let errorMessage = "";
     let error = false;
     if (isEmpty(targetValue)) {
-      if(targetName != 'query'){
+      if(targetName != 'query' && targetName != 'email'){
         errorMessage = "This field is required";
         error = true;
       }
@@ -292,7 +292,7 @@ const Contact = props => {
       let targetName = data[0];
       let errorMessage = "";
       let error = false;
-      if(targetName !== "query" ) {
+      if(targetName !== "query" && targetName !== "email" ) {
         if(targetValue === ""){
           errorMessage = "This field is required";
           error = true;
@@ -547,8 +547,8 @@ const Contact = props => {
                       <Grid item xs={11} sm={11} md={6} lg={6}>
                         <label htmlFor="email" className="black-text">
                           {/* <span className={classes.label}>Email*:</span>&nbsp;&nbsp;(eg. abc@gmail.com) */}
-                          {matches?<><span className={classes.label}>Email:*</span>&nbsp;&nbsp;(eg. abc@gmail.com) </>
-                              :<><span className={classes.mobileLabel}>Email*:</span>&nbsp;<span style={{fontSize:'13px'}}>(eg. abc@gmail.com) </span></>}
+                          {matches?<><span className={classes.label}>Email:</span>&nbsp;&nbsp;(eg. abc@gmail.com) </>
+                              :<><span className={classes.mobileLabel}>Email:</span>&nbsp;<span style={{fontSize:'13px'}}>(eg. abc@gmail.com) </span></>}
                         </label>
                         
                         {matches?<input type="email" name="email" id="email" placeholder=""
@@ -621,8 +621,8 @@ const Contact = props => {
                     <Grid container component="div" direction="row" className={classes.banner}>
                       <Grid item xs={12} sm={12} md={12} lg={12}>
                         <label htmlFor="query" className="black-text">
-                          {matches?<span className={classes.label}>Query:(Ask any query here, we will get back to you soon)</span> 
-                          :<><span className={classes.mobileLabel}>Query:</span> <span style={{fontSize:'12px'}}>(Ask any query here, we will get back to you
+                          {matches?<span style={{fontFamily:"regular"}} className={classes.label}>Query:(Ask any query here, we will get back to you soon)</span> 
+                          :<><span style={{fontFamily:"regular"}} className={classes.mobileLabel}>Query:</span> <span style={{fontSize:'12px',fontFamily:"regular"}}>(Ask any query here, we will get back to you
                             soon)</span></>}
                         </label>
                           {matches?    <textarea id="query" name="query"

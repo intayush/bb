@@ -1,5 +1,5 @@
 import React from "react";
-import FooterLogo from "./FooterLogo.svg";
+import FooterLogo from "../../assets/footerLogo.svg";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import callIcon from "../../assets/Phone.svg";
@@ -57,12 +57,6 @@ const Footer = ({props}) => {
   const dispatch=useDispatch();
   const footerCss=matches?"footer":"mobilefooter";
 
-  const categoryHandler=()=>{
-
-    dispatch({type:CHANGE_CATEGORY,payload:1});
-    props.history.push("/category/" + "bike");
-  }
-
   return (
     <div className={footerCss}>
       {matches ? (
@@ -95,7 +89,6 @@ const Footer = ({props}) => {
                     Quick Links
                   </p>
               </div>
-              
               {/* for quick links two columns */}
               <div
                 style={{
@@ -126,23 +119,22 @@ const Footer = ({props}) => {
                     flexFlow: "column",
                   }}
                 >
-                  <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/buy">Buy</Link></p>
+                  <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/category/bike">Buy</Link></p>
                   <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/sell">Sell</Link></p>
                   <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/vehicledetails/locate-store">Locate Store</Link></p>
                   <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/becomefranchiseowner"> Become a Franchise Owner</Link>
-                   
+
                   </p>
-                  <p className={classes.columnsText}>Blog</p>
+                
                 </div>
               </div>
               </div>
-            
+
             </Grid>
             {/* creating vertical lines */}
             <div
               className="verticalLineRight"
             ></div>
-            
             <Grid item>
               <div
                 style={{
@@ -186,7 +178,6 @@ const Footer = ({props}) => {
                   <img
                     style={{
                       marginLeft: "1%",
-                     
                     }}
                     className="iconImg"
                     src={messageIcon}
@@ -219,19 +210,23 @@ const Footer = ({props}) => {
                       marginTop: "3%",
                     }}
                   >
-                    <img src={faceBookIcon} />
+                   <a href="https://www.facebook.com/BikeBazaaar"> 
+                    <img src={faceBookIcon} /></a>
+                    <a href="https://www.instagram.com/bikebazaaar/" >
                     <img
                       style={{ marginLeft: "2%", cursor: "pointer" }}
                       src={instagramIcon}
-                    />
+                    /></a>
+                    <a href="https://www.linkedin.com/company/bikebazaar">
                     <img
                       style={{ marginLeft: "2%", cursor: "pointer" }}
                       src={linkedinIcon}
-                    />
+                    /></a>
+                    <a href="https://twitter.com/BikeBazaaar">
                     <img
                       style={{ marginLeft: "2%", cursor: "pointer" }}
                       src={twitterIcon}
-                    />
+                    /></a>
                   </div>
                 </div>
               </div>
@@ -274,13 +269,13 @@ const Footer = ({props}) => {
                   <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/privacypolicy">Privacy Policy</Link></span><br/>
                   <span style={{fontSize:'10px ' }}><Link style={{color:'white',letterSpacing:'0px'}} to="/termsandconditions">Terms & Conditions</Link></span><br/>
                   <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/contact">Contact Us</Link></span>
-            </div><Link to=""></Link>
+            </div>
             <div style={{ display: "flex-start", flexDirection: "column" ,marginLeft:'20%'}}>
-                  <span onClick={categoryHandler} style={{ fontSize:'10px ',color:'white'}}> Buy</span><br/>
+                  <span  style={{ fontSize:'10px ',color:'white'}}> <Link style={{letterSpacing:'0px',color:'white'}}to="/category/bike">Buy</Link></span><br/>
                   <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/sell">Sell</Link></span><br/>
                   <span style={{fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/vehicledetails/locate-store">Locate Store</Link></span><br/>
                   <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/becomefranchiseowner">Become a Franchise Owner</Link></span><br/>
-                  <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="">Blog</Link></span>
+                 
             </div>
           </div>
           <hr style={{ marginTop: "3%", marginBottom: "3%" }} />
@@ -329,33 +324,29 @@ const Footer = ({props}) => {
               flexDirection: "column",
               marginTop: "8%",
               wordSpacing: "3.5px",
+              marginBottom:"15px",
               
             }}
           >
             <p style={{ color: "white" ,fontWeight:'600'}}>Connect with us</p>
-            <div
-              style={{
-                display: "flex-start",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                width: "70%",
-                fontWeight: "500",
-                marginTop: "1%",
-              }}
-            >
-              <img src={faceBookIcon} style={{height:'13px',width:'16px'}} />
+            <div className="mobile-view-icons">
+               <a href="https://www.facebook.com/BikeBazaaar">
+              <img src={faceBookIcon} style={{height:'13px',width:'16px'}} /></a>
+              <a href="https://www.instagram.com/bikebazaaar/" >
               <img
                 style={{ marginLeft: "8%", cursor: "pointer",height:'13px',width:'16px' }}
                 src={instagramIcon}
-              />
+              /></a>
+               <a href="https://www.linkedin.com/company/bikebazaar">
               <img
                 style={{ marginLeft: "10%", cursor: "pointer",height:'13px',width:'16px' }}
                 src={linkedinIcon}
-              />
+              /></a>
+              <a href="https://twitter.com/BikeBazaaar" >
               <img
                  style={{ marginLeft: "10%", cursor: "pointer",height:'13px',width:'16px' }}
                 src={twitterIcon}
-              />
+              /></a>
             </div>
           </div>
         </div>
