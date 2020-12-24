@@ -22,16 +22,17 @@ const CustomCarousel = ({ carouselImages,vehicleid }) => {
   const vehicleImagePath = "../../../vehicles";
   return (
     <div className="mobile-container">
+       <Link to={"/vehicledetails/" + vehicleid}>
       <div className="img-mobile-container">
-      <Link to={"/vehicledetails/" + vehicleid}>
+     
         <img
           height="250"
           src={vehicleImagePath + "/" + carouselImages[currentPos]}
           alt=""
         />
-        </Link>
+      
       </div>
-
+      </Link>
       <div className="arrow-icons-mobile-container">
         <div onClick={goToPrev} className="left-mobile-arrow">
           <img src={leftArrow} alt="" />

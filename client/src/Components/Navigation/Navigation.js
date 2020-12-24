@@ -210,7 +210,7 @@ const Navigation = (props) => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
               PaperProps={{style:{
-                width:'85%',
+                width:'100%',
                 marginLeft:'-5%',
                 marginTop:"-16px"
               }}}
