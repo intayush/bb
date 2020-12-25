@@ -7,6 +7,7 @@ import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import CustomCarousel from "./CustomCarousel/Carousel";
 
+
 const useStyles = makeStyles(theme => ({
   del: {
   marginLeft: '10px',
@@ -18,6 +19,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Card = (props) => {
+
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
@@ -27,7 +29,7 @@ const Card = (props) => {
     <Grid item component="div" lg={4} md={6} sm={12} xs={12} className="Prod">
       {matches?<Link to={"/vehicledetails/" + props.vehicleid}>
         <div className="Product">
-          {matches? props.sold == "true" ? (
+          {matches? props.sold === "true" ? (
             <div className="Product-image-container watermarked watermarkedCard">
               <img src={vehicleImagePath + props.image} height="230" alt="" />
             </div>
@@ -50,7 +52,9 @@ const Card = (props) => {
               {props.discountPercent ? Math.ceil(props.cost - (props.cost * props.discountPercent / 100)) : props.cost}
               {props.discountPercent && <span className={classes.del}><strong>` </strong> {props.cost}</span>}
             </p>
+            
             <ul className="detailPoints">
+             
               <li className="year">
                 <span>{props.year}</span>
               </li>
@@ -86,7 +90,7 @@ const Card = (props) => {
             <div className="bike-name">
               <h3>{props.name} </h3>
             </div>
-            <p className="price">
+            <p style={matches?{}:{margin:"0px"}}className="price">
               <img
                 className="rupees"
                 src={require("../../assets/icons/rupee-indian-red.svg")}
@@ -95,6 +99,7 @@ const Card = (props) => {
               {props.discountPercent ? Math.ceil(props.cost - (props.cost * props.discountPercent / 100)) : props.cost}
               {props.discountPercent && <span className={classes.del}><strong>` </strong> {props.cost}</span>}
             </p>
+          {props.discountPercent && <div style={{height:"20px",width:"28%",backgroundColor:"black",color:'white',borderRadius:'2px',paddingLeft:'2%'}}><span style={{fontWeight:'bold'}}>Save {props.discountPercent} %</span></div>}
             <ul className="detailPoints">
               <li className="year">
                 <span>{props.year}</span>

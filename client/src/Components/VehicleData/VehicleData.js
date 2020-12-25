@@ -214,7 +214,7 @@ const VehicleData = (props) => {
     mobilediscount = (
       <>
         <span className="mobilesave">
-        <span style={{color:'white'}}>{props.data.discountPercent}% Off</span>
+        <span style={{color:'white'}}>Save {props.data.discountPercent}% Off</span>
          
         </span>
       </>

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import mobileDownArrow from "../../assets/down-arrow-sort.svg";
+import mobileUpArrow from "../../assets/up-arrow-sort.svg";
 import Grid from "@material-ui/core/Grid";
 import "./Navigation.css";
 import CityWidget from "./Widgets/CityWidget";
@@ -11,13 +13,13 @@ import { BRANDS } from "../../shared/mappings/brands";
 import { connect, useDispatch } from "react-redux";
 import Slide from "@material-ui/core/Slide";
 import { ButtonGroup, Button, Dialog, AppBar } from "@material-ui/core";
-import SortDropDown from "../SortDropDown/SortDropDown";
+// import SortDropDown from "../SortDropDown/SortDropDown";
 import * as actions from "../../store/actions/index";
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import { CHANGE_CATEGORY, CHANGE_CITY } from "../../store/actions/actionTypes";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import categoryData from "../../shared/mappings/category_data";
+// import categoryData from "../../shared/mappings/category_data";
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -25,12 +27,21 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const Navigation = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const[sortByButtonRed,setSortByButtonRed]=useState(false);
+  const[sortByButtonUpIcon,setsortByButtonUpIcon]=useState(false);
 
+  const[filterByButtonRed,setfilterByButtonRed]=useState(false);
+  const[filterByButtonUpIcon,setfilterByButtonUpIcon]=useState(false);
+  
   const handleClick = (event) => {
+    setSortByButtonRed(!sortByButtonRed);
+    setsortByButtonUpIcon(!sortByButtonUpIcon);
     setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
+    setSortByButtonRed(!sortByButtonRed)
+    setsortByButtonUpIcon(!sortByButtonUpIcon);
     setAnchorEl(null);
   };
 
@@ -38,7 +49,7 @@ const Navigation = (props) => {
   const [resetKm, setResetKm] = useState(0);
   const [filter_btn, showfilter] = useState(false);
 
-  const whatFilters = () => {
+  const filtersGroup = () => {
     return (
       <div>
         <CategoryWidget />
@@ -89,6 +100,7 @@ const Navigation = (props) => {
     city: null,
     distance: 100000,
   });
+  
   // Handle submit
   const handle_submit_category = () => {
     const filterData = props.filter;
@@ -97,7 +109,7 @@ const Navigation = (props) => {
 
     if (state.indexes.size > 0) {
       for (
-        var it = state.indexes.values(), val = null;
+        let it = state.indexes.values(), val = null;
         (val = it.next().value);
 
       ) {
@@ -131,7 +143,7 @@ const Navigation = (props) => {
     // // For budget------------------------------------------------------------------------------------------------
     if (state.budget.size > 0)
       for (
-        var it = state.budget.values(), val = null;
+        let it = state.budget.values(), val = null;
         (val = it.next().value);
 
       ) {
@@ -188,17 +200,17 @@ const Navigation = (props) => {
                 lineHeight: "20px",
                 fontSize: "2ex",
                 backgroundColor: "#efefef",
+                height:"38px"
               }}
-              endIcon={<ArrowDropDownIcon />}
+              endIcon={sortByButtonUpIcon?<img src={mobileUpArrow} height="15" alt=""/>:<img src={mobileDownArrow} height="15" alt=""/>}
             >
-              SORT BY
+              <span style={sortByButtonRed?{color:'red'}:{color:'black'}}>SORT BY</span>
             </Button>
 
             {/* Menu for the sort by button*/}
             <Menu
               id="simple-menu"
               anchorEl={anchorEl}
-              
               anchorOrigin={{
                 vertical: "top",
                 horizontal:'top'
@@ -215,24 +227,29 @@ const Navigation = (props) => {
                 marginTop:"-16px"
               }}}
             >
-              <MenuItem onClick={()=>handler("price-desc")}>Price - Low to High</MenuItem>
-              <MenuItem onClick={()=>handler("price-asc")}>Price - High to Low</MenuItem>
-              <MenuItem onClick={()=>handler("myear-desc")}>Manufacturing Year - Low to High</MenuItem>
-              <MenuItem onClick={()=>handler("myear-asc")}>Manufacturing Year - High to Low</MenuItem>
-              <MenuItem onClick={()=>handler("kmdriven-desc")}>Kilometer - Low to High</MenuItem>
+              <MenuItem onClick={()=>{setSortByButtonRed(!sortByButtonRed);  setsortByButtonUpIcon(!sortByButtonUpIcon); handler("price-desc")}}>Price - Low to High</MenuItem>
+              <MenuItem onClick={()=>{setSortByButtonRed(!sortByButtonRed);  setsortByButtonUpIcon(!sortByButtonUpIcon);  handler("price-asc")}}>Price - High to Low</MenuItem>
+              <MenuItem onClick={()=>{setSortByButtonRed(!sortByButtonRed);  setsortByButtonUpIcon(!sortByButtonUpIcon);  handler("myear-desc")}}>Manufacturing Year - Low to High</MenuItem>
+              <MenuItem onClick={()=>{setSortByButtonRed(!sortByButtonRed);  setsortByButtonUpIcon(!sortByButtonUpIcon); handler("myear-asc")}}>Manufacturing Year - High to Low</MenuItem>
+              <MenuItem onClick={()=>{setSortByButtonRed(!sortByButtonRed);  setsortByButtonUpIcon(!sortByButtonUpIcon); handler("kmdriven-desc")}}>Kilometer - Low to High</MenuItem>
             </Menu>
             <Button
-              onClick={() => showfilter(true)}
-              endIcon={<ArrowDropDownIcon />}
+              onClick={() => {
+                setfilterByButtonRed(!filterByButtonRed)
+                setfilterByButtonUpIcon(!filterByButtonUpIcon);
+                showfilter(true)
+              }}
+              endIcon={filterByButtonUpIcon?<img src={mobileUpArrow} height="15" alt=""/>:<img src={mobileDownArrow} height="15" alt=""/>}
               style={{
                 borderRadius: 0,
                 width: "50%",
                 lineHeight: "20px",
                 fontSize: "2ex",
                 backgroundColor: "#efefef",
+                height:"38px"
               }}
             >
-              FILTER BY
+              <span style={filterByButtonRed?{color:'red'}:{color:'black'}}>FILTER BY</span>
             </Button>
           </ButtonGroup>
         </div>
@@ -254,7 +271,7 @@ const Navigation = (props) => {
             </h5>
           </div>
           <div className="filterSec" style={{ marginBottom: "35px" }}>
-            {whatFilters()}
+            {filtersGroup()}
           </div>
         </Grid>
       )}
@@ -315,7 +332,7 @@ const Navigation = (props) => {
           <div className="line"></div>
 
           <div className="btn-container">
-            <div className="action-btn" onClick={() => showfilter(false)}>
+            <div className="action-btn" onClick={() => {setfilterByButtonRed(!filterByButtonRed) ;showfilter(false)}}>
               <span style={{ color: "black" }}>Cancel</span>
             </div>
             <div

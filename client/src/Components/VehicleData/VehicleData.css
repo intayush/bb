@@ -95,6 +95,6 @@
 .vehicleDetails .mobilePriceSec p.price { font-size: 16px; color: #ff0000; margin: 0; font-weight: bold; padding: 0 0 5px; }
 .vehicleDetails .mobilePriceSec p.price strong { font-family: RupeeForadian; font-size: 15px;  }
 .vehicleDetails .mobilePriceSec span { display: inline-block; font-size: 13px; color: #ff0000; margin: 0;padding: 0px 5px 0px 5px;}
-.vehicleDetails .mobilePriceSec span.del { font-size: 10px; color: black; text-decoration: line-through;margin-left: 40px; }
+.vehicleDetails .mobilePriceSec span.del { font-size: 14px; color: black; text-decoration: line-through;margin-left: 40px; }
 .vehicleDetails .mobilePriceSec span.del strong { font-family: RupeeForadian; font-size: 15px; }
 .vehicleDetails .mobilePriceSec span.mobilesave { font-size: 18px; color: #fff; background: #000; border-radius: 4px; font-weight: bold; }
