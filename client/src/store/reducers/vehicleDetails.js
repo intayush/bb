@@ -116,10 +116,6 @@ const reducer = (state = initialState, action) => {
       }
 
       case actionTypes.CHANGE_CATEGORY:
-      // console.log({f
-      //   ...state,
-      //   category: action.payload
-      // })
       return {
         ...state,
         category: action.payload,

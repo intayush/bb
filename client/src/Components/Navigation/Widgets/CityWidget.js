@@ -9,9 +9,6 @@ import TextField from '@material-ui/core/TextField';
 import { Autocomplete } from '@material-ui/lab';
 import useDebounce from '../../MainMenu/use-debounce';
 import { CHANGE_CITY, CHANGE_CATEGORY } from "../../../store/actions/actionTypes";
-import ReactTags from 'react-tag-autocomplete';
-import InputBase from "@material-ui/core/InputBase";
-import SearchIcon from "@material-ui/icons/Search";
 import { red } from '@material-ui/core/colors';
 import { createStyles, Theme, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { useTheme } from '@material-ui/core/styles';
@@ -39,11 +36,7 @@ const useStyles = makeStyles((Theme) =>
   }),
 );
 
-const theme = createMuiTheme({
-  palette: {
-    primary: red,
-  },
-});
+
 
 const CityWidget = props => {
   const theme = useTheme();
@@ -53,18 +46,8 @@ const CityWidget = props => {
   const { selectedCity, category, citynames } = useSelector(state => state.vehicleDetails);
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearchTerm = useDebounce(searchTerm, 300);
-
-
   const [selectCityMobile, changeMobileCity] = useState(props.default_city)
 
-  const [state, setState] = useState({
-    tags: [
-      { id: 1, name: "Aluva" },
-      { id: 2, name: "Kolkata" }
-    ],
-  });
-
-  // console.log("ref", reactTags);
 
   useEffect(() => {
     const filterData = {
@@ -164,16 +147,15 @@ const CityWidget = props => {
           )
           :(<RadioGroup  name="city" value={selectCityMobile} onChange={cityChangeHandler}>
               <ul className="cat-list">
-                  {(citiesArr.map(eachCity => (
-                      <li>
+                  {citiesArr.map(eachCity => <li>
                         <FormControlLabel
                           value={eachCity}
                           control={<BBRadio />}
                           label={eachCity}
                           checked={selectCityMobile === eachCity}
                         />
-                      </li>
-                )))}
+                      </li>)
+                }
               </ul>
             </RadioGroup>
           )

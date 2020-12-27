@@ -68,7 +68,7 @@ const BudgetWidget = props => {
     add_budegt({...budget_present})
   }
 
-  useEffect(()=>{}, budget_present);
+
   const mobileBudgetComponent=()=>{
       const mobileBudgetArray = []
       for (let i = 0; i < props.budget.length - 1; i++) {
