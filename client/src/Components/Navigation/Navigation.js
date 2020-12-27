@@ -206,7 +206,7 @@ const Navigation = (props) => {
                 style: {
                   width: "100%",
                   marginLeft: "-5%",
-                  marginTop: "-16px",
+                  marginTop: "-20px",
                 },
               }}
             >
@@ -372,6 +372,7 @@ const Navigation = (props) => {
             <div
               className="action-btn"
               onClick={() => {
+                setfilterByButtonUpIcon(!filterByButtonUpIcon)
                 setfilterByButtonRed(!filterByButtonRed);
                 showfilter(false);
               }}
