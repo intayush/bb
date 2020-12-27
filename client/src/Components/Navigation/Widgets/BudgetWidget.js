@@ -10,6 +10,10 @@ const BudgetWidget = (props) => {
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
   const [budget_present, add_budegt] = useState(props.budget2);
 
+
+
+  console.log("------budgetWidegt---->",budget_present);
+
   const selectCheckbox = (selectedCheck) => {
     let category = props.category;
     let filterData = props.filter;
@@ -82,7 +86,7 @@ const BudgetWidget = (props) => {
           <label>
             {budget_present && (
               <input
-                checked={budget_present.includes(props.budget2[i] )?true:false}
+               
                 type="checkbox"
                 className="filled-in"
                 value={
@@ -114,7 +118,6 @@ const BudgetWidget = (props) => {
       <li key={props.budget.length - 1}>
         <label>
           <input
-            checked={budget_present.includes(undefined )?true:false}
             type="checkbox"
             className="filled-in"
             onClick={() => {
