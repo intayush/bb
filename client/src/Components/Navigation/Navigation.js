@@ -94,9 +94,10 @@ const Navigation = (props) => {
     category: null,
     mYear: [...props.filter.myear],
     brandsArr: [...props.filter.brand],
+    budget:[...props.filter.budget]
   });
 
-  // console.log("-------state payload----->", state);
+  console.log("-------state payload----->", state);
 
   const handle_submit_category = () => {
     if (state.category) {
@@ -131,6 +132,12 @@ const Navigation = (props) => {
         state.category !== null ? state.category : 1,
         filterData
       );
+    }
+
+    if(state.budget.length!==0){
+      const filterData=props.filter;
+      filterData.budget=state.budget;
+      props.budgetFilter( state.category !== null ? state.category : 1, filterData);
     }
 
     showfilter(false);
@@ -335,7 +342,7 @@ const Navigation = (props) => {
           />
           <BudgetWidget
             clear={1}
-            budget={state.budget}
+            budget2={state.budget}
             globalState={state}
             handleChangeCategory={changeCategory}
             budget={[0, 15000, 25000, 35000, 45000, 55000, 100000]}
