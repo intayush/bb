@@ -26,7 +26,6 @@ const Navigation = (props) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [sortByButtonRed, setSortByButtonRed] = useState(false);
   const [sortByButtonUpIcon, setsortByButtonUpIcon] = useState(false);
-
   const [filterByButtonRed, setfilterByButtonRed] = useState(false);
   const [filterByButtonUpIcon, setfilterByButtonUpIcon] = useState(false);
 
@@ -88,13 +87,16 @@ const Navigation = (props) => {
     clearFilterData();
   };
 
-  // state for payloads for redux for the mobile view widgets
+  // state for payloads of redux for the mobile view widgets
   const [state, changeCategory] = useState({
     city: null,
     distance: 100000,
     category: null,
+    mYear: [...props.filter.myear],
     brandsArr: [...props.filter.brand],
   });
+
+  // console.log("-------state payload----->", state);
 
   const handle_submit_category = () => {
     if (state.category) {
@@ -106,16 +108,29 @@ const Navigation = (props) => {
     if (state.city) {
       const filterData = props.filter;
       filterData.city = `${state.city}`;
-      props.cityFilter(state.category || 1, filterData);
+      props.cityFilter(
+        state.category !== null ? state.category : 1,
+        filterData
+      );
     }
 
     if (state.brandsArr.length !== 0) {
       const filterData = props.filter;
       filterData.brand = state.brandsArr;
+      props.brandFilter(
+        state.category !== null ? state.category : 1,
+        filterData
+      );
+    }
 
-      console.log("final filterdata from  navigation", filterData);
+    if (state.mYear.length !== 0) {
+      const filterData = props.filter;
+      filterData.myear = state.mYear;
 
-      props.brandFilter(state.category!=null ?state.category:1, filterData);
+      props.manufactureDateFilter(
+        state.category !== null ? state.category : 1,
+        filterData
+      );
     }
 
     showfilter(false);
@@ -314,13 +329,13 @@ const Navigation = (props) => {
           <YearWidget
             startYear={2005}
             endYear={2020}
-            default_years={state.years}
+            myears={state.mYear}
             globalState={state}
             handleChangeCategory={changeCategory}
           />
           <BudgetWidget
             clear={1}
-            default_budget={state.budget}
+            budget={state.budget}
             globalState={state}
             handleChangeCategory={changeCategory}
             budget={[0, 15000, 25000, 35000, 45000, 55000, 100000]}
