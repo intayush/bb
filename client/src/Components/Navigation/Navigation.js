@@ -332,6 +332,13 @@ const Navigation = (props) => {
             globalState={state}
             handleChangeCategory={changeCategory}
           />
+           <BudgetWidget
+            clear={1}
+            budget2={state.budget}
+            globalState={state}
+            handleChangeCategory={changeCategory}
+            budget={[0, 15000, 25000, 35000, 45000, 55000, 100000]}
+          />
           <BrandWidget
             brands={BRANDS}
             brandsArr={state.brandsArr}
@@ -345,13 +352,7 @@ const Navigation = (props) => {
             globalState={state}
             handleChangeCategory={changeCategory}
           />
-          <BudgetWidget
-            clear={1}
-            budget2={state.budget}
-            globalState={state}
-            handleChangeCategory={changeCategory}
-            budget={[0, 15000, 25000, 35000, 45000, 55000, 100000]}
-          />
+         
           <KmWidget
             default_value={state.distance}
             globalState={state}
