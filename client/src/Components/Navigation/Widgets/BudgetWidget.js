@@ -82,7 +82,7 @@ const BudgetWidget = (props) => {
           <label>
             {budget_present && (
               <input
-                checked={budget_present.includes(props.budget2[i])?true:false}
+                checked={budget_present.includes(props.budget2[i] )?true:false}
                 type="checkbox"
                 className="filled-in"
                 value={
@@ -114,6 +114,7 @@ const BudgetWidget = (props) => {
       <li key={props.budget.length - 1}>
         <label>
           <input
+            checked={budget_present.includes(undefined )?true:false}
             type="checkbox"
             className="filled-in"
             onClick={() => {
