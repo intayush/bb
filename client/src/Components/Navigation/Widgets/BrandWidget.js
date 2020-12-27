@@ -9,7 +9,7 @@ const BrandWidget = (props) => {
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
   const [hasIndex, sethasIndex] = useState(props.brandsArr);
 
-  console.log("----->", hasIndex);
+
 
   const selectCheckbox = (selectedCheck) => {
     let category = props.category;
@@ -52,7 +52,7 @@ const BrandWidget = (props) => {
     sethasIndex([...props.brandsArr]);
   };
 
-  console.log(hasIndex)
+ 
   
   const brandArrayMobile = props.brands.map((brand, index) => {
     return (

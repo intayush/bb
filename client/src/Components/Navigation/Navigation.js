@@ -97,13 +97,13 @@ const Navigation = (props) => {
     budget:[...props.filter.budget]
   });
 
-  console.log("-------state payload----->", state);
 
   const handle_submit_category = () => {
     if (state.category) {
       const filterData = props.filter;
       dispatch({ type: CHANGE_CATEGORY, payload: parseInt(state.category) });
       props.cityFilter(state.category, filterData);
+      
     }
 
     if (state.city) {
@@ -113,6 +113,7 @@ const Navigation = (props) => {
         state.category !== null ? state.category : 1,
         filterData
       );
+      state.city=null;
     }
 
     if (state.brandsArr.length !== 0) {
@@ -122,6 +123,7 @@ const Navigation = (props) => {
         state.category !== null ? state.category : 1,
         filterData
       );
+      state.brandsArr=[]
     }
 
     if (state.mYear.length !== 0) {
@@ -132,12 +134,14 @@ const Navigation = (props) => {
         state.category !== null ? state.category : 1,
         filterData
       );
+      state.mYear=[];
     }
 
     if(state.budget.length!==0){
       const filterData=props.filter;
       filterData.budget=state.budget;
       props.budgetFilter( state.category !== null ? state.category : 1, filterData);
+        state.budget=[];
     }
 
     showfilter(false);
@@ -254,6 +258,7 @@ const Navigation = (props) => {
             </Menu>
             <Button
               onClick={() => {
+                state.category=null;
                 setfilterByButtonRed(!filterByButtonRed);
                 setfilterByButtonUpIcon(!filterByButtonUpIcon);
                 showfilter(true);

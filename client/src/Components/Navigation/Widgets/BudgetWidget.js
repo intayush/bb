@@ -19,8 +19,6 @@ const BudgetWidget = (props) => {
     } else {
       filterData.budget.push(selectedCheck);
     }
-
-    console.log("000000000>", filterData);
     props.budgetFilter(category, filterData);
   };
 
