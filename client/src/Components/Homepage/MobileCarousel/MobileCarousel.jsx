@@ -31,7 +31,7 @@ const MobileCarousel = () => {
           src={carouselData[currentPos].image}
         />
       </div>
-      <div className="text-context">
+      <div className="text-content">
         <span className="p_name">{carouselData[currentPos].title}</span>
         <p style={{ fontSize: "12px", lineHeight: "14px",paddingLeft:"4px",paddingRight:"4px" }}>
           {carouselData[currentPos].text}
