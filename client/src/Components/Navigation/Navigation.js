@@ -187,6 +187,7 @@ const Navigation = (props) => {
                 fontSize: "2ex",
                 backgroundColor: "#efefef",
                 height: "38px",
+                textTransform:'none'
               }}
               endIcon={
                 sortByButtonUpIcon ? (
@@ -199,7 +200,7 @@ const Navigation = (props) => {
               <span
                 style={sortByButtonRed ? { color: "red" } : { color: "black" }}
               >
-                SORT BY
+                Sort By
               </span>
             </Button>
 
@@ -289,6 +290,7 @@ const Navigation = (props) => {
                 fontSize: "2ex",
                 backgroundColor: "#efefef",
                 height: "38px",
+                textTransform:'none'
               }}
             >
               <span
@@ -296,7 +298,7 @@ const Navigation = (props) => {
                   filterByButtonRed ? { color: "red" } : { color: "black" }
                 }
               >
-                FILTER BY
+                Filter By
               </span>
             </Button>
           </ButtonGroup>
