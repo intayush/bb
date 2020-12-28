@@ -4,7 +4,7 @@ import testimonial_azhar from "../../../../assets/Azhar_Mirza.png";
 
 export default [
   {
-    title: "Hari Raj!",
+    title: "Hari Raj",
     text:
       "If anyone is looking for a pre owned bikes/scooty then bike bazaar is the right place to go... Awesome experience from team bike bazaar... Especially Subhojit and sandeep helped me a lot to find out the best vehicle which i was exactly looking for...i will always recommend bike bazaar..thankyou team.",
     image: testimonial_hari,

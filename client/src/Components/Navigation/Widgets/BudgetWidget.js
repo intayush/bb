@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../../store/actions/index";
-
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
@@ -10,9 +9,6 @@ const BudgetWidget = (props) => {
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
   const [budget_present, add_budegt] = useState(props.budget2);
 
-
-
-  console.log("------budgetWidegt---->",budget_present);
 
   const selectCheckbox = (selectedCheck) => {
     let category = props.category;

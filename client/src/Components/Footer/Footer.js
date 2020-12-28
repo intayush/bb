@@ -11,7 +11,6 @@ import instagramIcon from "../../assets/instagram-icon.svg";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import {Link} from "react-router-dom";
-import {CHANGE_CATEGORY} from "../../store/actions/actionTypes";
 import {useDispatch} from "react-redux";
 import "./Footer.css";
 
@@ -54,7 +53,6 @@ const Footer = ({props}) => {
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
-  const dispatch=useDispatch();
   const footerCss=matches?"footer":"mobilefooter";
 
   return (
