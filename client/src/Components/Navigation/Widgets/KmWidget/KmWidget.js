@@ -38,6 +38,7 @@ class KmWidget extends Component {
     filterData.kmdriven = event;
     this.props.kmFilter(category, filterData);
   }
+  
   handleChangeMobile(event){
     this.setState({slideValueMobile:event})
     this.props.handleChangeCategory({...this.props.globalState, distance:event});

@@ -144,6 +144,12 @@ const Navigation = (props) => {
         state.budget=[];
     }
 
+    if(state.distance!==0){
+      const filterData=props.filter;
+      filterData.kmdriven=state.distance;
+      props.kmFilter(state.category !== null ? state.category : 1, filterData);
+      state.distance=100000;
+    }
     showfilter(false);
   };
 
