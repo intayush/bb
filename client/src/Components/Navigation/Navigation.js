@@ -27,7 +27,6 @@ const Navigation = (props) => {
   const [sortByButtonRed, setSortByButtonRed] = useState(false);
   const [sortByButtonUpIcon, setsortByButtonUpIcon] = useState(false);
   const [filterByButtonRed, setfilterByButtonRed] = useState(false);
-  const [filterByButtonUpIcon, setfilterByButtonUpIcon] = useState(false);
 
   const handleClick = (event) => {
     setSortByButtonRed(!sortByButtonRed);
@@ -99,21 +98,24 @@ const Navigation = (props) => {
 
 
   const handle_submit_category = () => {
-    if (state.category) {
+
+    if (state.category!==null) {
       const filterData = props.filter;
       dispatch({ type: CHANGE_CATEGORY, payload: parseInt(state.category) });
       props.cityFilter(state.category, filterData);
-      
+      setfilterByButtonRed(true)
     }
 
-    if (state.city) {
+    if (state.city!==null) {
       const filterData = props.filter;
       filterData.city = `${state.city}`;
       props.cityFilter(
         state.category !== null ? state.category : 1,
         filterData
       );
+     
       state.city=null;
+      setfilterByButtonRed(true)
     }
 
     if (state.brandsArr.length !== 0) {
@@ -124,6 +126,7 @@ const Navigation = (props) => {
         filterData
       );
       state.brandsArr=[]
+      setfilterByButtonRed(true)
     }
 
     if (state.mYear.length !== 0) {
@@ -135,6 +138,7 @@ const Navigation = (props) => {
         filterData
       );
       state.mYear=[];
+      setfilterByButtonRed(true)
     }
 
     if(state.budget.length!==0){
@@ -142,6 +146,7 @@ const Navigation = (props) => {
       filterData.budget=state.budget;
       props.budgetFilter( state.category !== null ? state.category : 1, filterData);
         state.budget=[];
+        setfilterByButtonRed(true)
     }
 
     if(state.distance!==0){
@@ -149,8 +154,10 @@ const Navigation = (props) => {
       filterData.kmdriven=state.distance;
       props.kmFilter(state.category !== null ? state.category : 1, filterData);
       state.distance=100000;
+      setfilterByButtonRed(true)
     }
     showfilter(false);
+
   };
 
   const handler = (value) => {
@@ -163,6 +170,7 @@ const Navigation = (props) => {
     props.getsortedData(category, filterData);
   };
 
+ 
   return (
     <div>
       {props.viewType === "mobile" && (
@@ -265,16 +273,14 @@ const Navigation = (props) => {
             <Button
               onClick={() => {
                 state.category=null;
-                setfilterByButtonRed(!filterByButtonRed);
-                setfilterByButtonUpIcon(!filterByButtonUpIcon);
+               
+                setfilterByButtonRed(false)
                 showfilter(true);
               }}
               endIcon={
-                filterByButtonUpIcon ? (
-                  <img src={mobileDownArrow} height="15" alt="" />
-                ) : (
+               
                   <img src={mobileUpArrow} height="15" alt="" />
-                )
+                
               }
               style={{
                 borderRadius: 0,
@@ -378,8 +384,6 @@ const Navigation = (props) => {
             <div
               className="action-btn"
               onClick={() => {
-                setfilterByButtonUpIcon(!filterByButtonUpIcon)
-                setfilterByButtonRed(!filterByButtonRed);
                 showfilter(false);
               }}
             >
