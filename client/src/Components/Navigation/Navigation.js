@@ -17,6 +17,7 @@ import * as actions from "../../store/actions/index";
 import { CHANGE_CATEGORY } from "../../store/actions/actionTypes";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import dropdownredArrow from "../../assets/dropdownUpArrow.png";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -191,7 +192,7 @@ const Navigation = (props) => {
               }}
               endIcon={
                 sortByButtonUpIcon ? (
-                  <img src={mobileDownArrow} height="15" alt="" />
+                  <img style={{ transform: 'scaleY(-1)'}} src={dropdownredArrow} height="10" width="15" alt="" />
                 ) : (
                   <img src={mobileUpArrow} height="15" alt="" />
                 )

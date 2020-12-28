@@ -40,7 +40,7 @@ const MobileCarousel = () => {
 
       <div className="arrow-icon-container">
         <div className="arrow-icons">
-          <img onClick={goToPrev} src={mobileLeftIcon} alt="" />
+          <img height="12" onClick={goToPrev} src={mobileLeftIcon} alt="" />
           <div className="grey-dot"></div>
           <img onClick={goToNext} src={mobileRightIcon} alt="" />
         </div>
