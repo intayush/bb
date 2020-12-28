@@ -9,10 +9,10 @@ import TextField from '@material-ui/core/TextField';
 import { Autocomplete } from '@material-ui/lab';
 import useDebounce from '../../MainMenu/use-debounce';
 import { CHANGE_CITY, CHANGE_CATEGORY } from "../../../store/actions/actionTypes";
-import { red } from '@material-ui/core/colors';
 import { createStyles, Theme, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import searchIcon from "../../../assets/search-icon.svg";
 
 const BBRadio = withStyles({
   root: {
@@ -33,6 +33,9 @@ const useStyles = makeStyles((Theme) =>
       // margin: Theme.spacing(1),
       width: '100%',
     },
+    mobileWidth:{
+      width:'60%'
+    }
   }),
 );
 
@@ -112,15 +115,19 @@ const CityWidget = props => {
               freeSolo
               options={searchTerm ? citiesArr: []}
               renderInput={(params) => (
-                <TextField
-                  className={classes.margin}
-                  onChange={updateState(params.inputProps.value)} 
-                  {...params} 
-                  // label="Search City"
-                  variant="outlined"
-                  // id="mui-theme-provider-standard-input"
-                  id="mui-theme-provider-outlined-input"
-                  />
+                <div style={{display:'flex',flexDirection:'row'}}><TextField
+                placeholder={matches?"":"Search your City"}
+                className={matches?classes.margin:classes.mobileWidth}
+                onChange={updateState(params.inputProps.value)} 
+                {...params} 
+                // label="Search City"
+                variant="outlined"
+                // id="mui-theme-provider-standard-input"
+                id="mui-theme-provider-outlined-input"
+                /> 
+                {matches?<></>:<div style={{backgroundColor:'red',padding:'2%',height:'5%'}} ><img  src={searchIcon} height="20" width="30" alt=""/></div>}
+                </div>
+                
                 )}
               />
           </ThemeProvider>
