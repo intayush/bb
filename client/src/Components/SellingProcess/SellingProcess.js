@@ -8,7 +8,7 @@ import rp from "../../assets/rp.svg";
 import syv from "../../assets/syv.svg";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import mobiledivider from "../../assets/mobiledivider.png";
+import mobiledivider from "../../assets/mobiledividerred.png";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -80,11 +80,12 @@ const SellingProcess = (props) => {
     <div id="SellingProcess">
       <Paper className={matches?(classes.paper + " center-align"):(classes.mobilePaper + " center-align")}>
         {matches?  <h3 className={classes.heading}>{props.heading}</h3>:
-           <p
-            className={classes.mobileHeading}
-         >
-           {props.heading}
-         </p>
+        <div style={{display:'flex',flexDirection:'column'}}>  <span
+        className={classes.mobileHeading}
+     >
+       {props.heading}
+     </span></div>
+         
         }
       
       {matches?<img alt="" src={headingLines} width="57" height="4" />:<img src={mobiledivider} height="4"/>}  

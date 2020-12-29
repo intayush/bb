@@ -295,7 +295,6 @@ const HamburgerDropdown = ({ matches }) => {
             marginTop: "-10%",
             marginLeft: "6%",
             height: "550px",
-            overflowY: "hidden",
           },
         }}
       >
@@ -308,6 +307,25 @@ const HamburgerDropdown = ({ matches }) => {
             alt=""
           />
         </MenuItem>
+        <Link to="/category/bike">
+          <StyledMenuItem>
+            <img className="icon-img" src={selectedTyre} height="25" alt="" />
+            <span style={{ lineHeight: "34px" }}>Buy</span>
+          </StyledMenuItem>
+        </Link>
+        <Link to="/sell">
+          <StyledMenuItem>
+            <img className="icon-img" src={selectedTyre} height="25" alt="" />
+            <span style={{ lineHeight: "34px" }}>Sell</span>
+          </StyledMenuItem>
+        </Link>
+        <Link to="/vehicledetails/locate-store">
+          <StyledMenuItem>
+            <img className="icon-img" src={selectedTyre} height="25" alt="" />
+            <span style={{ lineHeight: "34px" }}>Locate Store</span>
+          </StyledMenuItem>
+        </Link>
+
         <Link to={`/about`}>
           <StyledMenuItem>
             <img className="icon-img" src={selectedTyre} height="25" alt="" />

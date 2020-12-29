@@ -7,8 +7,13 @@ import mvcIcon from '../../../assets/stores/bb_mvc_wheels.jpg';
 import stsIcon from '../../../assets/stores/bb_sts_thrissur.jpg';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-
+import mobiledivider from "../../../assets/mobiledivider.png";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 const StoreSection = () => {
+    const theme=useTheme();
+    const matches = useMediaQuery(theme.breakpoints.up("sm"));
+
     const responsive = {
         superLargeDesktop: {
           // the naming can be any, depends on you.
@@ -32,8 +37,8 @@ const StoreSection = () => {
 
     return (
         <div id="StoreSection">
-            <h2>BikeBazaar Stores</h2>
-            <div className="flex-center"><img src={headingLines} alt=""/></div><br />
+            {matches?<h2>BikeBazaar Stores</h2>:<div style={{justifyContent:'center',textAlign:'center',marginTop:'5%'}}><span style={{fontSize:'13px',fontWeight:'bold'}}>BikeBazaar Stores</span></div>}
+            {matches?<><div className="flex-center"><img src={headingLines} alt=""/></div><br /></>:<div style={{alignItems:'center',textAlign:'center'}}><img src={mobiledivider} alt="mobileDivider"/></div>}
             <Grid container component="div" direction="row">
                 <Grid item xs={12} sm={12} md={12} lg={12}>
                 {/* <Carousel responsive={responsive} className="flex-center"> */}
@@ -42,13 +47,14 @@ const StoreSection = () => {
                     <div className="StoreCard">
                         <img src={jkbIcon} alt="" />
                         <div className="detail">
-                            <h3>BikeBazaar – JKB Motors, Aluva</h3>
-                            <p className="address">
+                            {matches?<h3>BikeBazaar – JKB Motors, Aluva</h3>:<span className="mobileTextHeader">BikeBazaar – JKB Motors, Aluva</span>}
+                            
+                            <p className={matches?"address":"mobileaddress"}>
                                 Jkb - BikeBazaar, Near JKB Bajaj,Pulinchode Jn. Bypass,
                                 Aluva - 683101, Kerala, India
                             </p>
                             <br className="clr"/>
-                            <p className="location">Aluva, Kerala</p>
+                            <p className={matches?"location":"mobilelocation"}>Aluva, Kerala</p>
                         </div>
                     </div>
                     </Grid>
@@ -56,12 +62,12 @@ const StoreSection = () => {
                     <div className="StoreCard">
                         <img src={mvcIcon} alt="" />
                         <div className="detail">
-                            <h3>BikeBazaar – MCV Wheels, Rajahmundry</h3>
-                            <p className="address">
+                            {matches?<h3>BikeBazaar – MCV Wheels, Rajahmundry</h3>:<span className="mobileTextHeader">BikeBazaar – MCV Wheels, Rajahmundry</span>}
+                            <p className={matches?"address":"mobileaddress"}>
                                 D. No. 77/8/7-1, Beside Bajaj Two Wheeler Showroom, R.T.C Complex Road, Rajahmundry - 533103, Andhra Pradesh, India.
                             </p>
                             <br className="clr"/>
-                            <p className="location">Rajahmundry, AP</p>
+                            <p className={matches?"location":"mobilelocation"}>Rajahmundry, AP</p>
                         </div>
                     </div>
                     </Grid>
@@ -82,12 +88,12 @@ const StoreSection = () => {
                     <div className="StoreCard">
                         <img src={stsIcon} alt="" />
                         <div className="detail">
-                            <h3>BikeBazaar – Sitaram Trade & Services, Thrissur</h3>
-                            <p className="address">
+                           {matches? <h3>BikeBazaar – Sitaram Trade & Services, Thrissur</h3>:<span className="mobileTextHeader">BikeBazaar – Sitaram Trade & Services, Thrissur</span>}
+                            <p className={matches?"address":"mobileaddress"}>
                                 Sitaram Trade & Services, PT Manual Road, Kollothumpadam, Patturaikal, Thrissur, Kerala
                             </p>
                             <br className="clr"/>
-                            <p className="location">Thrissur, Kerala</p>
+                            <p className={matches?"location":"mobilelocation"}>Thrissur, Kerala</p>
                         </div>
                     </div>
                     </Grid>

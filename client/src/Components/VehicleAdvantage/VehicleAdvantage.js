@@ -21,6 +21,7 @@ const VehicleAdvantage = (props) => {
   const adv1Mobile = matches ? "" : "advantage1Mobile";
   const advantagePadding = matches ? "" : "advantagePadding";
   const containerStyle = matches ? props.continerStyle : "";
+
   const advRight1 = matches ? (
     <Grid
       container
@@ -44,10 +45,9 @@ const VehicleAdvantage = (props) => {
   ) : (
     <Grid container component="div" direction="row">
       <Grid style={{textAlign:'center',justifyContent:'center'}} direction="row" item xs={12} sm={12}>
-        <div  style={{ display: "flex" ,justifyContent:'center',paddingRight:'10%'}}>
+        <div  style={{ display: "flex" ,alignItems:'center',justifyContent:'center',paddingRight:'18%'}}>
           
           <img
-            style={{ marginTop: "16%"}}
             height="10"
             width="45"
             src={rightDotLine}
@@ -58,18 +58,18 @@ const VehicleAdvantage = (props) => {
               borderRadius: "60%",
               backgroundColor: "white",
               padding: "4%",
-              height: "100px",
-              width: "100px",
+              height: "80px",
+              width: "80px",
               textAlign: "center",
               boxShadow: " 0 0 12px 0 rgba(0, 0, 0, 0.17)",
             }}
           >
             <img
-              height="60"
-              width="60"
+              height="45"
+              width="48"
               src={warrantyIcon}
               alt=""
-              style={{ marginTop: "10px" }}
+              style={{ marginTop: "8px" }}
             />
           </div>
         </div>
@@ -113,9 +113,9 @@ const VehicleAdvantage = (props) => {
   ) : (
     <Grid container component="div" direction="row">
       <Grid item xs={12} sm={12}>
-        <div style={{ display: "flex", flexDirection: "row",justifyContent:'center',paddingRight:'10%'}}>
+        <div style={{ display: "flex", alignItems:'center',flexDirection: "row",justifyContent:'center',paddingRight:'18%'}}>
           <img
-            style={{ marginTop: "16%" }}
+          
             height="10"
             width="45"
             src={rightDotLine}
@@ -126,15 +126,15 @@ const VehicleAdvantage = (props) => {
               borderRadius: "60%",
               backgroundColor: "white",
               padding: "4%",
-              height: "100px",
-              width: "100px",
+              height: "80px",
+              width: "80px",
               textAlign: "center",
               boxShadow: " 0 0 12px 0 rgba(0, 0, 0, 0.17)",
             }}
           >
             <img
-              height="60"
-              width="60"
+              height="40"
+              width="45"
               src={emiIcon}
               alt=""
               style={{ marginTop: "10px" }}
@@ -190,7 +190,7 @@ const VehicleAdvantage = (props) => {
           <h3
             style={{
               fontWeight: "bold",
-              fontSize: "11px",
+              fontSize: "15px",
               textAlign: "center",
             }}
           >
@@ -241,29 +241,29 @@ const VehicleAdvantage = (props) => {
           ) : (
             <Grid container component="div" direction="row">
               <Grid item xs={12} sm={12} md={2} lg={2}>
-                <div style={{ display: "flex", flexDirection: "row" }}>
+                <div style={{ display: "flex",alignItems:'center', flexDirection: "row" }}>
                   <div
                     style={{
                       borderRadius: "60%",
                       backgroundColor: "white",
                       padding: "4%",
-                      height: "100px",
-                      width: "100px",
+                      height: "80px",
+                      width: "80px",
                       textAlign: "center",
                       boxShadow: " 0 0 12px 0 rgba(0, 0, 0, 0.17)",
                       marginLeft: "35%",
                     }}
                   >
                     <img
-                      height="60"
-                      width="45"
+                      height="45"
+                      width="35"
                       src={certifiedIcon}
                       alt=""
                       style={{ marginTop: "10px" }}
                     />
                   </div>
                   <img
-                    style={{ marginTop: "16%" }}
+                   
                     height="10"
                     width="45"
                     src={leftRedDotLine}
@@ -317,29 +317,29 @@ const VehicleAdvantage = (props) => {
           ) : (
             <Grid container component="div" direction="row">
               <Grid item xs={12} sm={12} md={2} lg={2}>
-                <div style={{ display: "flex", flexDirection: "row" }}>
+                <div style={{ display: "flex", alignItems:'center',flexDirection: "row" }}>
                   <div
                     style={{
                       borderRadius: "60%",
                       backgroundColor: "white",
                       padding: "4%",
-                      height: "100px",
-                      width: "100px",
+                      height: "80px",
+                      width: "80px",
                       textAlign: "center",
                       boxShadow: " 0 0 12px 0 rgba(0, 0, 0, 0.17)",
                       marginLeft: "35%",
                     }}
                   >
                     <img
-                      height="60"
-                      width="60"
+                      height="40"
+                      width="40"
                       src={buyerIcon}
                       alt=""
                       style={{ marginTop: "10px" }}
                     />
                   </div>
                   <img
-                    style={{ marginTop: "16%" }}
+                   
                     height="10"
                     width="45"
                     src={leftRedDotLine}
@@ -393,29 +393,28 @@ const VehicleAdvantage = (props) => {
           ) : (
             <Grid container component="div" direction="row">
               <Grid item xs={12} sm={12} md={2} lg={2}>
-                <div style={{ display: "flex", flexDirection: "row" }}>
+                <div style={{ display: "flex", alignItems:'center',flexDirection: "row" }}>
                   <div
                     style={{
                       borderRadius: "60%",
                       backgroundColor: "white",
                       padding: "4%",
-                      height: "100px",
-                      width: "100px",
+                      height: "80px",
+                      width: "80px",
                       textAlign: "center",
                       boxShadow: " 0 0 12px 0 rgba(0, 0, 0, 0.17)",
                       marginLeft: "35%",
                     }}
                   >
                     <img
-                      height="50"
-                      width="50"
+                      height="40"
+                      width="40"
                       src={transferIcon}
                       alt=""
-                      style={{ marginTop: "10px" }}
+                      style={{ marginTop: "5px" }}
                     />
                   </div>
                   <img
-                    style={{ marginTop: "16%" }}
                     height="10"
                     width="45"
                     src={leftRedDotLine}

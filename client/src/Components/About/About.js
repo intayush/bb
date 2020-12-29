@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
   },
   paper2Mobile: {
-    marginBottom: theme.spacing(5),
+    marginBottom: theme.spacing(3),
     boxShadow: "0 0 4px 1px rgba(0, 0, 0, 0.2) !important",
     fontSize: 10,
     letterSpacing: 0.63,
@@ -89,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#ff0000",
   },
   mobilePaper: {
-    marginBottom: theme.spacing(6),
+    marginBottom: theme.spacing(3),
     boxShadow: "0 0 4px 1px rgba(0, 0, 0, 0.2) !important",
     padding: theme.spacing(3),
     fontSize: 10,
