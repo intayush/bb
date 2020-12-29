@@ -9,13 +9,10 @@ import TextField from '@material-ui/core/TextField';
 import { Autocomplete } from '@material-ui/lab';
 import useDebounce from '../../MainMenu/use-debounce';
 import { CHANGE_CITY, CHANGE_CATEGORY } from "../../../store/actions/actionTypes";
-import ReactTags from 'react-tag-autocomplete';
-import InputBase from "@material-ui/core/InputBase";
-import SearchIcon from "@material-ui/icons/Search";
-import { red } from '@material-ui/core/colors';
 import { createStyles, Theme, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import searchIcon from "../../../assets/search-icon.svg";
 
 const BBRadio = withStyles({
   root: {
@@ -36,14 +33,13 @@ const useStyles = makeStyles((Theme) =>
       // margin: Theme.spacing(1),
       width: '100%',
     },
+    mobileWidth:{
+      width:'60%'
+    }
   }),
 );
 
-const theme = createMuiTheme({
-  palette: {
-    primary: red,
-  },
-});
+
 
 const CityWidget = props => {
   const theme = useTheme();
@@ -53,18 +49,8 @@ const CityWidget = props => {
   const { selectedCity, category, citynames } = useSelector(state => state.vehicleDetails);
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearchTerm = useDebounce(searchTerm, 300);
-
-
   const [selectCityMobile, changeMobileCity] = useState(props.default_city)
 
-  const [state, setState] = useState({
-    tags: [
-      { id: 1, name: "Aluva" },
-      { id: 2, name: "Kolkata" }
-    ],
-  });
-
-  // console.log("ref", reactTags);
 
   useEffect(() => {
     const filterData = {
@@ -129,15 +115,19 @@ const CityWidget = props => {
               freeSolo
               options={searchTerm ? citiesArr: []}
               renderInput={(params) => (
-                <TextField
-                  className={classes.margin}
-                  onChange={updateState(params.inputProps.value)} 
-                  {...params} 
-                  // label="Search City"
-                  variant="outlined"
-                  // id="mui-theme-provider-standard-input"
-                  id="mui-theme-provider-outlined-input"
-                  />
+                <div style={{display:'flex',flexDirection:'row'}}><TextField
+                placeholder={matches?"":"Search your City"}
+                className={matches?classes.margin:classes.mobileWidth}
+                onChange={updateState(params.inputProps.value)} 
+                {...params} 
+                // label="Search City"
+                variant="outlined"
+                // id="mui-theme-provider-standard-input"
+                id="mui-theme-provider-outlined-input"
+                /> 
+                {matches?<></>:<div style={{backgroundColor:'red',padding:'2%',height:'5%'}} ><img  src={searchIcon} height="20" width="30" alt=""/></div>}
+                </div>
+                
                 )}
               />
           </ThemeProvider>
@@ -164,16 +154,15 @@ const CityWidget = props => {
           )
           :(<RadioGroup  name="city" value={selectCityMobile} onChange={cityChangeHandler}>
               <ul className="cat-list">
-                  {(citiesArr.map(eachCity => (
-                      <li>
+                  {citiesArr.map(eachCity => <li>
                         <FormControlLabel
                           value={eachCity}
                           control={<BBRadio />}
                           label={eachCity}
                           checked={selectCityMobile === eachCity}
                         />
-                      </li>
-                )))}
+                      </li>)
+                }
               </ul>
             </RadioGroup>
           )

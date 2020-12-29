@@ -1,0 +1,37 @@
+.mobile-container {
+    width: 100%;
+  object-fit: contain;
+  }
+  
+  .arrow-icons-mobile-container {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between !important;
+    width: 90%;
+    margin-top: -40%;
+  }
+  
+  .left-mobile-arrow {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 2%;
+    margin-left: 2%;
+  }
+  
+  .right-mobile-arrow {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 2%;
+    
+  }
+  
+  
+  .img-mobile-container{
+      position: relative;
+      object-fit: contain;
+  }

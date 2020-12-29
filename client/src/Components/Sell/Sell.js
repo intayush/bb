@@ -19,7 +19,6 @@ import isNumeric from "validator/lib/isNumeric";
 import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-// import stepsToSellMobile from "../../assets/steps_to_sell_ mobile.jpg";
 import shareTwoWheelerIcon from "../../assets/Icon-1.png";
 import inspectionIcon from "../../assets/Icons-2.png";
 import documentIcon from "../../assets/Icon-3.png";

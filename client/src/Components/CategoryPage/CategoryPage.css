@@ -100,7 +100,6 @@ form {
 }
 .ProductListSec .Product:hover {
   box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
   transition: 0.3s;
 }
 .ProductListSec .Product img {
@@ -177,7 +176,7 @@ form {
   border: solid 2px #ffffff;
   background-color: #ff0000;
 }
-.ProductListSec .pagination li.dot a {
+.ProductListSec .pagination li.dot a{
   box-shadow: 0;
   border: none;
   background-color: transparent;

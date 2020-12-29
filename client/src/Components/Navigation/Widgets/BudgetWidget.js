@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../../store/actions/index";
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-
-const BudgetWidget = props => {
+const BudgetWidget = (props) => {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('sm'));
-  const [budget_present, add_budegt] = useState({current : props.default_budget})
-  const selectCheckbox = selectedCheck => {
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
+  const [budget_present, add_budegt] = useState(props.budget2);
+
+
+  const selectCheckbox = (selectedCheck) => {
     let category = props.category;
     let filterData = props.filter;
     let position = filterData.budget.indexOf(selectedCheck);
@@ -18,7 +19,7 @@ const BudgetWidget = props => {
     } else {
       filterData.budget.push(selectedCheck);
     }
-     props.budgetFilter(category, filterData);
+    props.budgetFilter(category, filterData);
   };
 
   const budgetArray = [];
@@ -30,7 +31,11 @@ const BudgetWidget = props => {
             type="checkbox"
             className="filled-in"
             onClick={() => {
-              selectCheckbox(props.budget[i] === 0 ? props.budget[i] : ((props.budget[i] + 1)+"-"+(props.budget[i + 1])))
+              selectCheckbox(
+                props.budget[i] === 0
+                  ? props.budget[i]
+                  : props.budget[i] + 1 + "-" + props.budget[i + 1]
+              );
             }}
           />
           <span>
@@ -45,11 +50,11 @@ const BudgetWidget = props => {
   budgetArray.push(
     <li key={props.budget.length - 1}>
       <label>
-        <input 
-          type="checkbox" 
-          className="filled-in" 
+        <input
+          type="checkbox"
+          className="filled-in"
           onClick={() => {
-            selectCheckbox()
+            selectCheckbox();
           }}
         />
         <span>
@@ -59,60 +64,70 @@ const BudgetWidget = props => {
     </li>
   );
 
+  const selectCheckboxMobile = (selectedCheck) => {
+    let position = props.budget2.indexOf(selectedCheck);
+    if (~position) {
+      props.budget2.splice(position, 1);
+    } else {
+      props.budget2.push(selectedCheck);
+    }
+    add_budegt([...props.budget2]);
+  };
 
-
-  const selectCheckboxMobile = (id) =>{
-    if(props.globalState.budget.has(id)) props.globalState.budget.delete(id);
-    else props.globalState.budget.add(id);
-    budget_present.current = new Set(props.globalState.budget);
-    add_budegt({...budget_present})
-  }
-
-  useEffect(()=>{}, budget_present);
-  const mobileBudgetComponent=()=>{
-      const mobileBudgetArray = []
-      for (let i = 0; i < props.budget.length - 1; i++) {
-        mobileBudgetArray.push(
-          <li key={i}>
-            <label>
+  const mobileBudgetComponent = () => {
+    const mobileBudgetArray = [];
+    for (let i = 0; i < props.budget.length - 1; i++) {
+      mobileBudgetArray.push(
+        <li key={i}>
+          <label>
+            {budget_present && (
               <input
+               
                 type="checkbox"
                 className="filled-in"
-                value={props.budget[i] === 0 ? props.budget[i] : ((props.budget[i] + 1)+"-"+(props.budget[i + 1]))}
-                checked={budget_present.current && budget_present.current.has(props.budget[i] === 0 ? props.budget[i] : ((props.budget[i] + 1)+"-"+(props.budget[i + 1])))?true:false}
+                value={
+                  props.budget[i] === 0
+                    ? props.budget[i]
+                    : props.budget[i] + 1 + "-" + props.budget[i + 1]
+                }
                 onClick={() => {
-                  selectCheckboxMobile(props.budget[i] === 0 ? props.budget[i] : ((props.budget[i] + 1)+"-"+(props.budget[i + 1])))
+                  selectCheckboxMobile(
+                    props.budget[i] === 0
+                      ? props.budget[i]
+                      : props.budget[i] + 1 + "-" + props.budget[i + 1]
+                  );
                 }}
               />
-              <span>
-                <strong>₹</strong>
-                {props.budget[i] === 0 ? props.budget[i] : props.budget[i] + 1} 
-                <strong /> {props.budget[i + 1]}
-              </span>
-            </label>
-          </li>
-        );
-      }
+            )}
 
-      mobileBudgetArray.push(
-        <li key={props.budget.length - 1}>
-          <label>
-            <input 
-              type="checkbox" 
-              className="filled-in" 
-              
-              onClick={() => {
-                selectCheckboxMobile()
-              }}
-            />
             <span>
-              <strong>₹</strong> {props.budget[props.budget.length - 1] + 1} +
+              <strong>₹</strong>
+              {props.budget[i] === 0 ? props.budget[i] : props.budget[i] + 1}
+              <strong /> {props.budget[i + 1]}
             </span>
           </label>
         </li>
       );
-      return mobileBudgetArray;
-  }
+    }
+
+    mobileBudgetArray.push(
+      <li key={props.budget.length - 1}>
+        <label>
+          <input
+            type="checkbox"
+            className="filled-in"
+            onClick={() => {
+              selectCheckboxMobile();
+            }}
+          />
+          <span>
+            <strong>₹</strong> {props.budget[props.budget.length - 1] + 1} +
+          </span>
+        </label>
+      </li>
+    );
+    return mobileBudgetArray;
+  };
   return (
     <div className="BudgetWidget">
       <h3 className="WidgetTitle">
@@ -127,26 +142,25 @@ const BudgetWidget = props => {
         </a>
       </h3>
       <div className="WidgetBody">
-       <ul className="list">{matches?budgetArray:mobileBudgetComponent()}</ul>
+        <ul className="list">
+          {matches ? budgetArray : mobileBudgetComponent()}
+        </ul>
       </div>
     </div>
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     filter: state.vehicleDetails.filter,
-    category: state.vehicleDetails.category
+    category: state.vehicleDetails.category,
   };
 };
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     budgetFilter: (category, filterdata) =>
-      dispatch(actions.getVehicles(category, filterdata))
+      dispatch(actions.getVehicles(category, filterdata)),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BudgetWidget);
+export default connect(mapStateToProps, mapDispatchToProps)(BudgetWidget);

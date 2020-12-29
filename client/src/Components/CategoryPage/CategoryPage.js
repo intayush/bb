@@ -20,6 +20,8 @@ import MobileFooter from "./mobileFilterPage/mobileFooter/mobileFooter";
 import Modal from '@material-ui/core/Modal';
 
 import getSize from '../sizeDetect';
+
+
 const CategoryPage = (props) => {
   const dispatch = useDispatch();
   const {width} = getSize();
@@ -77,8 +79,6 @@ const CategoryPage = (props) => {
 
   const onPageChanged = (paginationData) => {
     const { currentPage, totalPages, pageLimit } = paginationData;
-
-    // console.log(paginationData.totalRecords)
     const offset = (currentPage - 1) * pageLimit;
     dispatch(actions.getPaginatedData(offset, pageLimit));
   };

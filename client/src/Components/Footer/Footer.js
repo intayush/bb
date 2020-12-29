@@ -11,7 +11,6 @@ import instagramIcon from "../../assets/instagram-icon.svg";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import {Link} from "react-router-dom";
-import {CHANGE_CATEGORY} from "../../store/actions/actionTypes";
 import {useDispatch} from "react-redux";
 import "./Footer.css";
 
@@ -54,14 +53,7 @@ const Footer = ({props}) => {
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
-  const dispatch=useDispatch();
   const footerCss=matches?"footer":"mobilefooter";
-
-  const categoryHandler=()=>{
-
-    dispatch({type:CHANGE_CATEGORY,payload:1});
-    props.history.push("/category/" + "bike");
-  }
 
   return (
     <div className={footerCss}>
@@ -132,7 +124,7 @@ const Footer = ({props}) => {
                   <p className={classes.columnsText}><Link style={{letterSpacing:'0px'}}to="/becomefranchiseowner"> Become a Franchise Owner</Link>
 
                   </p>
-                  <p className={classes.columnsText}>Blog</p>
+                
                 </div>
               </div>
               </div>
@@ -276,13 +268,13 @@ const Footer = ({props}) => {
                   <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/privacypolicy">Privacy Policy</Link></span><br/>
                   <span style={{fontSize:'10px ' }}><Link style={{color:'white',letterSpacing:'0px'}} to="/termsandconditions">Terms & Conditions</Link></span><br/>
                   <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/contact">Contact Us</Link></span>
-            </div><Link to=""></Link>
+            </div>
             <div style={{ display: "flex-start", flexDirection: "column" ,marginLeft:'20%'}}>
-                  <span onClick={categoryHandler} style={{ fontSize:'10px ',color:'white'}}> Buy</span><br/>
+                  <span  style={{ fontSize:'10px ',color:'white'}}> <Link style={{letterSpacing:'0px',color:'white'}}to="/category/bike">Buy</Link></span><br/>
                   <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/sell">Sell</Link></span><br/>
                   <span style={{fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/vehicledetails/locate-store">Locate Store</Link></span><br/>
                   <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/becomefranchiseowner">Become a Franchise Owner</Link></span><br/>
-                  <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="">Blog</Link></span>
+                 
             </div>
           </div>
           <hr style={{ marginTop: "3%", marginBottom: "3%" }} />
@@ -331,19 +323,12 @@ const Footer = ({props}) => {
               flexDirection: "column",
               marginTop: "8%",
               wordSpacing: "3.5px",
+              marginBottom:"15px",
+              
             }}
           >
             <p style={{ color: "white" ,fontWeight:'600'}}>Connect with us</p>
-            <div
-              style={{
-                display: "flex-start",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                width: "70%",
-                fontWeight: "500",
-                marginTop: "1%",
-              }}
-            >
+            <div className="mobile-view-icons">
                <a href="https://www.facebook.com/BikeBazaaar">
               <img src={faceBookIcon} style={{height:'13px',width:'16px'}} /></a>
               <a href="https://www.instagram.com/bikebazaaar/" >

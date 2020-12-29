@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import mobileDownArrow from "../../assets/down-arrow-sort.svg";
+import mobileUpArrow from "../../assets/up-arrow-sort.svg";
 import Grid from "@material-ui/core/Grid";
-
 import "./Navigation.css";
 import CityWidget from "./Widgets/CityWidget";
 import CategoryWidget from "./Widgets/CategoryWidget";
@@ -12,21 +13,39 @@ import { BRANDS } from "../../shared/mappings/brands";
 import { connect, useDispatch } from "react-redux";
 import Slide from "@material-ui/core/Slide";
 import { ButtonGroup, Button, Dialog, AppBar } from "@material-ui/core";
-import SortDropDown from "../SortDropDown/SortDropDown";
 import * as actions from "../../store/actions/index";
-import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
-import { CHANGE_CATEGORY, CHANGE_CITY } from "../../store/actions/actionTypes";
+import { CHANGE_CATEGORY } from "../../store/actions/actionTypes";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import dropdownredArrow from "../../assets/dropdownUpArrow.png";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const Navigation = (props) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [sortByButtonRed, setSortByButtonRed] = useState(false);
+  const [sortByButtonUpIcon, setsortByButtonUpIcon] = useState(false);
+  const [filterByButtonRed, setfilterByButtonRed] = useState(false);
+
+  const handleClick = (event) => {
+    setSortByButtonRed(!sortByButtonRed);
+    setsortByButtonUpIcon(!sortByButtonUpIcon);
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setSortByButtonRed(!sortByButtonRed);
+    setsortByButtonUpIcon(!sortByButtonUpIcon);
+    setAnchorEl(null);
+  };
+
   const dispatch = useDispatch();
   const [resetKm, setResetKm] = useState(0);
   const [filter_btn, showfilter] = useState(false);
 
-  const whatFilters = () => {
+  const filtersGroup = () => {
     return (
       <div>
         <CategoryWidget />
@@ -37,7 +56,7 @@ const Navigation = (props) => {
         />
         <BrandWidget brands={BRANDS} />
         <YearWidget startYear={2005} endYear={2020} />
-        <KmWidget reset={resetKm} />
+        <KmWidget viewType="web" reset={resetKm} />
       </div>
     );
   };
@@ -53,6 +72,7 @@ const Navigation = (props) => {
     props.manufactureDateFilter(category, filterData);
     props.kmFilter(category, filterData);
   };
+
   const clearAllFilters = () => {
     let check = document.getElementsByTagName("input");
     for (var i = 0; i < check.length; i++) {
@@ -67,109 +87,220 @@ const Navigation = (props) => {
     clearFilterData();
   };
 
-  // Global state
+  // state for payloads of redux for the mobile view widgets
   const [state, changeCategory] = useState({
-    category: null,
-    indexes: new Set(),
-    years: new Set(),
-    budget: new Set(),
     city: null,
     distance: 100000,
+    category: null,
+    mYear: [...props.filter.myear],
+    brandsArr: [...props.filter.brand],
+    budget:[...props.filter.budget]
   });
-  // Handle submit
+
+
   const handle_submit_category = () => {
-    const filterData = props.filter;
-    dispatch({ type: CHANGE_CATEGORY, payload: parseInt(state.category) });
-    // for brands------------------------------------------------------------------------------------------------
 
-    if (state.indexes.size > 0) {
-      for (
-        var it = state.indexes.values(), val = null;
-        (val = it.next().value);
-
-      ) {
-        let position = filterData.brand.indexOf(val);
-        if (position >= 0 && filterData.brand.length) {
-          filterData.brand.splice(position, 1);
-        } else {
-          filterData.brand.push(val);
-        }
-      }
-    } else filterData.brand = [];
-    props.brandFilter(props.category, filterData);
-
-    // For years------------------------------------------------------------------------------------------------
-    if (state.years.size > 0) {
-      for (
-        var it = state.years.values(), val = null;
-        (val = it.next().value);
-
-      ) {
-        let position = filterData.myear.indexOf(val);
-        if (~position) {
-          filterData.myear.splice(position, 1);
-        } else {
-          filterData.myear.push(val);
-        }
-      }
-    } else filterData.myear = [];
-    props.manufactureDateFilter(state.category, filterData);
-
-    // // For budget------------------------------------------------------------------------------------------------
-    if (state.budget.size > 0)
-      for (
-        var it = state.budget.values(), val = null;
-        (val = it.next().value);
-
-      ) {
-        let position = filterData.budget.indexOf(val);
-        if (~position) {
-          filterData.budget.splice(position, 1);
-        } else {
-          filterData.budget.push(val);
-        }
-      }
-    else filterData.budget = [];
-    props.budgetFilter(state.category, filterData);
-
-    // For City------------------------------------------------------------------------------------------------
-    if (state.city) {
-      dispatch({ type: CHANGE_CITY, payload: state.city });
-      filterData.city = state.city;
-      props.cityFilter(parseInt(state.category), filterData);
+    if (state.category!==null) {
+      const filterData = props.filter;
+      dispatch({ type: CHANGE_CATEGORY, payload: parseInt(state.category) });
+      props.cityFilter(state.category, filterData);
+      setfilterByButtonRed(true)
     }
 
-    // //For Kilometer------------------------------------------------------------------------------------------------
-    filterData.kmdriven = state.distance;
-    props.kmFilter(state.category, filterData);
+    if (state.city!==null) {
+      const filterData = props.filter;
+      filterData.city = `${state.city}`;
+      props.cityFilter(
+        state.category !== null ? state.category : 1,
+        filterData
+      );
+     
+      state.city=null;
+      setfilterByButtonRed(true)
+    }
 
+    if (state.brandsArr.length !== 0) {
+      const filterData = props.filter;
+      filterData.brand = state.brandsArr;
+      props.brandFilter(
+        state.category !== null ? state.category : 1,
+        filterData
+      );
+      state.brandsArr=[]
+      setfilterByButtonRed(true)
+    }
+
+    if (state.mYear.length !== 0) {
+      const filterData = props.filter;
+      filterData.myear = state.mYear;
+
+      props.manufactureDateFilter(
+        state.category !== null ? state.category : 1,
+        filterData
+      );
+      state.mYear=[];
+      setfilterByButtonRed(true)
+    }
+
+    if(state.budget.length!==0){
+      const filterData=props.filter;
+      filterData.budget=state.budget;
+      props.budgetFilter( state.category !== null ? state.category : 1, filterData);
+        state.budget=[];
+        setfilterByButtonRed(true)
+    }
+
+    if(state.distance!==0){
+      const filterData=props.filter;
+      filterData.kmdriven=state.distance;
+      props.kmFilter(state.category !== null ? state.category : 1, filterData);
+      state.distance=100000;
+      setfilterByButtonRed(true)
+    }
     showfilter(false);
+
   };
 
+  const handler = (value) => {
+    setAnchorEl(null);
+    let category = props.category;
+    let filterData = props.filter;
+    let selectedFilter = value.split("-");
+    filterData.sort.column = selectedFilter[0];
+    filterData.sort.order = selectedFilter[1];
+    props.getsortedData(category, filterData);
+  };
+
+ 
   return (
     <div>
       {props.viewType === "mobile" && (
         <div className="filter-display">
           <ButtonGroup fullWidth={true} variant="contained" color="default">
-            <div className="filter-btns" style={{ borderRadius: 0 }}>
-              <button className="sortDis">
-                <div className="sort-btn-display">
-                  <SortDropDown viewType="mobile" />
-                </div>
-              </button>
-            </div>
             <Button
-              onClick={() => showfilter(true)}
-              endIcon={<ArrowDropDownIcon />}
+              aria-controls="simple-menu"
+              aria-haspopup="true"
+              onClick={handleClick}
               style={{
                 borderRadius: 0,
-                width: "160px",
+                width: "50%",
                 lineHeight: "20px",
                 fontSize: "2ex",
                 backgroundColor: "#efefef",
+                height: "38px",
+                textTransform:'none'
+              }}
+              endIcon={
+                sortByButtonUpIcon ? (
+                  <img style={{ transform: 'scaleY(-1)'}} src={dropdownredArrow} height="10" width="15" alt="" />
+                ) : (
+                  <img src={mobileUpArrow} height="15" alt="" />
+                )
+              }
+            >
+              <span
+                style={sortByButtonRed ? { color: "red" } : { color: "black" }}
+              >
+                Sort By
+              </span>
+            </Button>
+
+            {/* Menu for the sort by button*/}
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "top",
+              }}
+              transformOrigin={{
+                vertical: "top",
+              }}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+              PaperProps={{
+                style: {
+                  width: "100%",
+                  marginLeft: "-5%",
+                  marginTop: "-20px",
+                },
               }}
             >
-              FILTER BY
+              <MenuItem
+                onClick={() => {
+                  setSortByButtonRed(!sortByButtonRed);
+                  setsortByButtonUpIcon(!sortByButtonUpIcon);
+                  handler("price-desc");
+                }}
+              >
+                Price - Low to High
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  setSortByButtonRed(!sortByButtonRed);
+                  setsortByButtonUpIcon(!sortByButtonUpIcon);
+                  handler("price-asc");
+                }}
+              >
+                Price - High to Low
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  setSortByButtonRed(!sortByButtonRed);
+                  setsortByButtonUpIcon(!sortByButtonUpIcon);
+                  handler("myear-desc");
+                }}
+              >
+                Manufacturing Year - Low to High
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  setSortByButtonRed(!sortByButtonRed);
+                  setsortByButtonUpIcon(!sortByButtonUpIcon);
+                  handler("myear-asc");
+                }}
+              >
+                Manufacturing Year - High to Low
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  setSortByButtonRed(!sortByButtonRed);
+                  setsortByButtonUpIcon(!sortByButtonUpIcon);
+                  handler("kmdriven-desc");
+                }}
+              >
+                Kilometer - Low to High
+              </MenuItem>
+            </Menu>
+            <Button
+              onClick={() => {
+                state.category=null;
+               
+                setfilterByButtonRed(false)
+                showfilter(true);
+              }}
+              endIcon={
+               
+                  <img src={mobileUpArrow} height="15" alt="" />
+                
+              }
+              style={{
+                borderRadius: 0,
+                width: "50%",
+                lineHeight: "20px",
+                fontSize: "2ex",
+                backgroundColor: "#efefef",
+                height: "38px",
+                textTransform:'none'
+              }}
+            >
+              <span
+                style={
+                  filterByButtonRed ? { color: "red" } : { color: "black" }
+                }
+              >
+                Filter By
+              </span>
             </Button>
           </ButtonGroup>
         </div>
@@ -191,7 +322,7 @@ const Navigation = (props) => {
             </h5>
           </div>
           <div className="filterSec" style={{ marginBottom: "35px" }}>
-            {whatFilters()}
+            {filtersGroup()}
           </div>
         </Grid>
       )}
@@ -216,26 +347,27 @@ const Navigation = (props) => {
             globalState={state}
             handleChangeCategory={changeCategory}
           />
+           <BudgetWidget
+            clear={1}
+            budget2={state.budget}
+            globalState={state}
+            handleChangeCategory={changeCategory}
+            budget={[0, 15000, 25000, 35000, 45000, 55000, 100000]}
+          />
           <BrandWidget
             brands={BRANDS}
-            default_indexes={state.indexes}
+            brandsArr={state.brandsArr}
             globalState={state}
             handleChangeCategory={changeCategory}
           />
           <YearWidget
             startYear={2005}
             endYear={2020}
-            default_years={state.years}
+            myears={state.mYear}
             globalState={state}
             handleChangeCategory={changeCategory}
           />
-          <BudgetWidget
-            clear={1}
-            default_budget={state.budget}
-            globalState={state}
-            handleChangeCategory={changeCategory}
-            budget={[0, 15000, 25000, 35000, 45000, 55000, 100000]}
-          />
+         
           <KmWidget
             default_value={state.distance}
             globalState={state}
@@ -252,7 +384,12 @@ const Navigation = (props) => {
           <div className="line"></div>
 
           <div className="btn-container">
-            <div className="action-btn" onClick={() => showfilter(false)}>
+            <div
+              className="action-btn"
+              onClick={() => {
+                showfilter(false);
+              }}
+            >
               <span style={{ color: "black" }}>Cancel</span>
             </div>
             <div
@@ -289,6 +426,9 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actions.getVehicles(category, filterdata)),
     kmFilter: (category, filterdata) =>
       dispatch(actions.getVehicles(category, filterdata)),
+    // dispatching for the sort dropdown mobile button
+    getsortedData: (category, sortKey) =>
+      dispatch(actions.getVehicles(category, sortKey)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

@@ -1,0 +1,34 @@
+.mobile-container {
+  width: 100%;
+
+}
+
+
+
+.left-mobile-arrow {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: white;
+  padding: 2%;
+  margin-left: 2%;
+  position: absolute;
+  left: 0px;
+  top: 2%;
+}
+
+.right-mobile-arrow {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: white;
+  padding: 2%;
+  position: absolute;
+  right: 0px;
+  top: 2%;
+}
+
+
+.img-mobile-container{
+    position: relative;
+}

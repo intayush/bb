@@ -456,7 +456,7 @@ const Contact = props => {
             <Grid item xs={12} sm={12} md={7} lg={7}>
               <Paper elevation={3} className={matches?classes.paper2:classes.mobilepaper2}>
                 <div className="center-align">
-                  {matches? <h5 className="contact-heading">Contact Form</h5>:<p style={{fontSize:'15px',fontWeight:'bold',color:'#ff0000'}}>Contact Us</p>}
+                  {matches? <h5 className="contact-heading">Contact Form</h5>:<p style={{fontSize:'15px',fontWeight:'bold',color:'#ff0000'}}>Contact Form</p>}
                   <img src={matches?headingLines:mobiledivider} style={matches?{marginBottom:'10px'}:{marginBottom:'5px'}} alt="" className="heading-line" />
                 </div>
                 <div id="contactForm">

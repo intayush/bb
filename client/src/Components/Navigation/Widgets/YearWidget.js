@@ -1,19 +1,18 @@
-import React, { useEffect , useState} from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../../store/actions/index";
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-const YearWidget = props => {
+const YearWidget = (props) => {
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('sm'));
-  const [years_present, add_years] = useState({current:new Set(props.default_years)});
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
+  const [years_present, add_years] = useState(props.myears);
 
-  const selectCheckbox = selectedCheck => {
+  const selectCheckbox = (selectedCheck) => {
     let category = props.category;
     let filterData = props.filter;
     let position = filterData.myear.indexOf(selectedCheck);
-
     if (~position) {
       filterData.myear.splice(position, 1);
     } else {
@@ -23,8 +22,6 @@ const YearWidget = props => {
   };
 
   const yearArray = [];
-
- 
 
   for (let i = props.endYear; i >= props.startYear; i--) {
     yearArray.push(
@@ -43,28 +40,29 @@ const YearWidget = props => {
     );
   }
 
+  const selectCheckboxMobile = (selectedCheck) => {
+    let position = props.myears.indexOf(selectedCheck);
+    if (~position) {
+      props.myears.splice(position, 1);
+    } else {
+      props.myears.push(selectedCheck);
+    }
+    add_years([...props.myears]);
+  };
 
-  const selectCheckboxMobile = (id)=>{
-    if(props.globalState.years.has(id)) props.globalState.years.delete(id);
-    else props.globalState.years.add(id);
-    years_present.current = new Set(props.globalState.years);
-    add_years({...years_present})
-  }
-  
-
-  useEffect(()=>{
-
-  },[years_present])
   const mobileYearArray = [];
+
   for (let i = props.endYear; i >= props.startYear; i--) {
     mobileYearArray.push(
       <li key={i}>
         <label>
-          <input
-            type="checkbox" className="filled-in"
-            value={i} checked={years_present.current.has(i)}
-            onClick={() => {selectCheckboxMobile(i)}}
-          />
+          {years_present&&<input
+            checked={years_present.includes(i)?true:false}
+            type="checkbox"
+            className="filled-in"
+            value={i}
+            onClick={() => selectCheckboxMobile(i)}
+          />}
           <span>{i}</span>
         </label>
       </li>
@@ -92,20 +90,17 @@ const YearWidget = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     filter: state.vehicleDetails.filter,
-    category: state.vehicleDetails.category
+    category: state.vehicleDetails.category,
   };
 };
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     manufactureDateFilter: (category, filterdata) =>
-      dispatch(actions.getVehicles(category, filterdata))
+      dispatch(actions.getVehicles(category, filterdata)),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(YearWidget);
+export default connect(mapStateToProps, mapDispatchToProps)(YearWidget);

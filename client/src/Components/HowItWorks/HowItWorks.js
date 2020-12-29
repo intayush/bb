@@ -65,6 +65,8 @@ const useStyles = makeStyles((theme) => ({
   mobilesubHeading: {
     fontSize: 13,
     fontWeight: "bold",
+    display:'flex',
+    flexDirection:'column'
   },
 
   text: {
