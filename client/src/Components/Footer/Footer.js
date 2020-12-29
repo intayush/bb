@@ -269,7 +269,7 @@ const Footer = ({props}) => {
                   <span style={{fontSize:'10px ' }}><Link style={{color:'white',letterSpacing:'0px'}} to="/termsandconditions">Terms & Conditions</Link></span><br/>
                   <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/contact">Contact Us</Link></span>
             </div>
-            <div style={{ display: "flex-start", flexDirection: "column" ,marginLeft:'20%'}}>
+            <div style={{ display: "flex-start", flexDirection: "column" ,marginLeft:'10%'}}>
                   <span  style={{ fontSize:'10px ',color:'white'}}> <Link style={{letterSpacing:'0px',color:'white'}}to="/category/bike">Buy</Link></span><br/>
                   <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/sell">Sell</Link></span><br/>
                   <span style={{fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/vehicledetails/locate-store">Locate Store</Link></span><br/>

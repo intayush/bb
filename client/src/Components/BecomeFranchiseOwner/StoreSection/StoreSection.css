@@ -127,3 +127,20 @@ h2 {
 .carousel:hover .flex-direction-nav .flex-next:hover {
   opacity: 1;
 }
+
+
+.mobileTextHeader{
+  font-size: 13px;
+  font-weight: bold;
+  
+}
+
+.mobileaddress{
+  font-size: 11px;
+}
+
+.mobilelocation{
+  font-size: 14px;
+  color:red;
+  font-weight: bold;
+}

@@ -45,13 +45,19 @@ const useStyles = makeStyles((theme) => ({
     color: "#000000",
     letterSpacing: 0.53,
     fontWeight: 600,
+    padding:'0px !important'
   },
   collapsible: {
     "& .MuiExpansionPanelDetails-root": {
       fontSize: 17,
       letterSpacing: 0.53,
+      padding:'0px'
     },
   },
+
+  expansionPaddingZero:{
+    padding:"0px !important"
+  }
 }));
 
 const Faq = (props) => {
@@ -288,7 +294,8 @@ const Faq = (props) => {
                 <ExpansionPanel
                   defaultExpanded
                   style={{ border: "none" }}
-                  className={classes.collapsible}
+                  className={classes.collapsible }
+                  
                 >
                   <ExpansionPanelSummary
                     expandIcon={<ExpandMoreIcon style={{ width: "20px" }} />}
@@ -296,7 +303,7 @@ const Faq = (props) => {
                     className={classes.faqQuestion}
                     style={{
                       color: "#ff0000",
-                      fontSize: "11px",
+                      fontSize: "12px",
                       fontWeight: "bold",
                       letterSpacing: "0px",
                     }}
@@ -309,7 +316,7 @@ const Faq = (props) => {
                       style={{
                         display: "flex",
                         flexDirection: "column",
-                        marginTop: "-4%",
+                        marginTop: "-5%",
                       }}
                     >
                       <span style={{ fontSize: "10px" }}>
@@ -334,7 +341,7 @@ const Faq = (props) => {
                 <ExpansionPanel className={classes.collapsible}>
                   <ExpansionPanelSummary
                     style={{
-                      fontSize: "11px",
+                      fontSize: "12px",
                       fontWeight: "bold",
                       letterSpacing: "0px",
                     }}
@@ -346,7 +353,14 @@ const Faq = (props) => {
                     it?
                   </ExpansionPanelSummary>
                   <ExpansionPanelDetails style={{ fontSize: "10px" }}>
-                    After selecting the two-wheeler category, you can use the
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        marginTop: "-5%",
+                      }}
+                    >
+                       After selecting the two-wheeler category, you can use the
                     “Sort By” option to see the two-wheelers nearest to your
                     location.
                     <br />
@@ -354,6 +368,8 @@ const Faq = (props) => {
                     Another way to see two-wheeler nearest to your location is
                     by using the “Locate Store” feature, through which you can
                     find out the BikeBazaar store nearest to your location.
+                    </div>
+                   
                   </ExpansionPanelDetails>
                 </ExpansionPanel>
 
@@ -363,7 +379,7 @@ const Faq = (props) => {
                 >
                   <ExpansionPanelSummary
                     style={{
-                      fontSize: "11px",
+                      fontSize: "12px",
                       fontWeight: "bold",
                       letterSpacing: "0px",
                     }}
@@ -375,6 +391,13 @@ const Faq = (props) => {
                     should I do next?
                   </ExpansionPanelSummary>
                   <ExpansionPanelDetails style={{ fontSize: "10px" }}>
+                  <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        marginTop: "-5%",
+                      }}
+                    >
                     When you like any two-wheeler, you just need to share your
                     details (Name, Mobile Number & Email ID) and BikeBazaar will
                     help you with all the details related to the location of the
@@ -383,12 +406,13 @@ const Faq = (props) => {
                     <br />
                     You can visit the store and have a look at the bike and
                     inspect it on all the parameters crucial for you.
+                    </div>
                   </ExpansionPanelDetails>
                 </ExpansionPanel>
                 <ExpansionPanel className={classes.collapsible}>
                   <ExpansionPanelSummary
                     style={{
-                      fontSize: "11px",
+                      fontSize: "12px",
                       fontWeight: "bold",
                       letterSpacing: "0px",
                     }}
@@ -400,7 +424,14 @@ const Faq = (props) => {
                     some issue in the bike after purchasing?
                   </ExpansionPanelSummary>
                   <ExpansionPanelDetails style={{ fontSize: "10px" }}>
-                    All the bikes available at BikeBazaar store goes through a
+                  <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        marginTop: "-5%",
+                      }}
+                    >
+                       All the bikes available at BikeBazaar store goes through a
                     thorough inspection by auto experts.
                     <br />
                     <br />
@@ -421,11 +452,13 @@ const Faq = (props) => {
                     <br />
                     So, you can buy the vehicle at "Zero Risk" from BikeBazaar
                     stores.
+                      </div>
+                   
                   </ExpansionPanelDetails>
                 </ExpansionPanel>
                 <ExpansionPanel
                   style={{
-                    fontSize: "11px",
+                    fontSize: "12px",
                     fontWeight: "bold",
                     letterSpacing: "0px",
                     border: "none",
@@ -434,7 +467,7 @@ const Faq = (props) => {
                 >
                   <ExpansionPanelSummary
                     style={{
-                      fontSize: "11px",
+                      fontSize: "12px",
                       fontWeight: "bold",
                       letterSpacing: "0px",
                     }}
@@ -447,6 +480,14 @@ const Faq = (props) => {
                     me with this?
                   </ExpansionPanelSummary>
                   <ExpansionPanelDetails style={{ fontSize: "10px" }}>
+                  <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        marginTop: "-5%",
+                        fontWeight:"100"
+                      }}
+                    >
                     Nothing can stop you from buying your dream bike, not even
                     financial issues.
                     <br />
@@ -454,12 +495,13 @@ const Faq = (props) => {
                     BikeBazaar provides financial assistance to you through
                     which you can purchase your dream bike at EMI starting at as
                     low as ₹2000*.
+                    </div>
                   </ExpansionPanelDetails>
                 </ExpansionPanel>
                 <ExpansionPanel className={classes.collapsible}>
                   <ExpansionPanelSummary
                     style={{
-                      fontSize: "11px",
+                      fontSize: "12px",
                       fontWeight: "bold",
                       letterSpacing: "0px",
                     }}
@@ -470,6 +512,13 @@ const Faq = (props) => {
                     How can I buy the bike at low cost EMI?
                   </ExpansionPanelSummary>
                   <ExpansionPanelDetails style={{ fontSize: "10px" }}>
+                  <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        marginTop: "-5%",
+                      }}
+                    >
                     If you want to avail the facility of low-cost EMI for the
                     dream bike you want to purchase then you just need to show
                     the interest in taking the loan by clicking on the checkbox
@@ -479,6 +528,7 @@ const Faq = (props) => {
                     Our team will help you in taking the loan with low-cost EMI
                     even if you don’t purchase the bike from the BikeBazaar
                     store and buy it from somewhere else.
+                    </div>
                   </ExpansionPanelDetails>
                 </ExpansionPanel>
                 <ExpansionPanel className={classes.collapsible}>
@@ -496,6 +546,13 @@ const Faq = (props) => {
                     document transfer... Will it be Hassle-free?
                   </ExpansionPanelSummary>
                   <ExpansionPanelDetails style={{ fontSize: "10px" }}>
+                  <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        marginTop: "-5%",
+                      }}
+                    >
                     Hassle-free document transfer is one of the biggest
                     advantages of buying the used two-wheeler form BikeBazaar
                     store.
@@ -503,6 +560,7 @@ const Faq = (props) => {
                     <br />
                     We make all the efforts in making the process of transfer of
                     ownership very smooth for both buyer and seller.
+                    </div>
                   </ExpansionPanelDetails>
                 </ExpansionPanel>
               </Paper>
