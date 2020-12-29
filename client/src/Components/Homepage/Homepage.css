@@ -414,16 +414,6 @@ i.icon-black {
   height: 250px;
 }
 
-.dot{
-  height: 14px;
-   width: 14px;
-   margin-bottom: 2px;
-   margin-left: 30px;
-   margin-right: 30px;
-   background-color: #bbb;
-   border-radius: 50%;
-   display: inline-block;
-}
 .carousel-item img {
   width: inherit !important;
   height: inherit !important;
