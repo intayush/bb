@@ -11,6 +11,7 @@ import instagramIcon from "../../assets/instagram-icon.svg";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import {Link} from "react-router-dom";
+import {CHANGE_CATEGORY} from "../../store/actions/actionTypes";
 import {useDispatch} from "react-redux";
 import "./Footer.css";
 
@@ -53,6 +54,7 @@ const Footer = ({props}) => {
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("md"));
+  const dispatch=useDispatch();
   const footerCss=matches?"footer":"mobilefooter";
 
   return (
@@ -87,7 +89,6 @@ const Footer = ({props}) => {
                     Quick Links
                   </p>
               </div>
-
               {/* for quick links two columns */}
               <div
                 style={{
@@ -269,7 +270,7 @@ const Footer = ({props}) => {
                   <span style={{fontSize:'10px ' }}><Link style={{color:'white',letterSpacing:'0px'}} to="/termsandconditions">Terms & Conditions</Link></span><br/>
                   <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/contact">Contact Us</Link></span>
             </div>
-            <div style={{ display: "flex-start", flexDirection: "column" ,marginLeft:'10%'}}>
+            <div style={{ display: "flex-start", flexDirection: "column" ,marginLeft:'20%'}}>
                   <span  style={{ fontSize:'10px ',color:'white'}}> <Link style={{letterSpacing:'0px',color:'white'}}to="/category/bike">Buy</Link></span><br/>
                   <span style={{ fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/sell">Sell</Link></span><br/>
                   <span style={{fontSize:'10px '}}><Link style={{color:'white',letterSpacing:'0px'}} to="/vehicledetails/locate-store">Locate Store</Link></span><br/>
