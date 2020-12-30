@@ -446,13 +446,16 @@ const VehicleData = (props) => {
             </div>
           ) : (
             <>
-             <span style={{ fontSize: "17px", fontWeight: "bold",paddingLeft:'5%' }}>
+            <div style={{display:'flex',flexDirection:'column'}}><span style={{ fontSize: "17px", fontWeight: "bold",paddingLeft:'5%', }}>
                 {name}
-              </span>
+              </span> 
+              
+              
+            
             <div
-              style={{ display: "inline-block",padding:"5px" }}
+              style={{ display: "inline-block",padding:"5px",flexDirection:'row' }}
             >
-             
+              
               <div className="mobilePriceSec">
               <p className="price">
                 <strong>`</strong> {props.data.price - discountAmt}
@@ -470,9 +473,9 @@ const VehicleData = (props) => {
                 xs={12}
                 md={12}
                 lg={12}
-                style={{paddingLeft:'6%'}}
+                style={{paddingLeft:'4%'}}
               >
-                <div style={{width:"45%",marginTop:'10%'}}>
+                <div style={{width:"45%"}}>
                  
                   <ul>
                     <li className="year"><img src={calenderIcon} alt="calenderIcon"/><span  className="cardText">{props.data.myear}</span></li>
@@ -480,9 +483,9 @@ const VehicleData = (props) => {
                   </ul>
                 </div>
 
-                <div style={{width:"45%",marginTop:'10%'}}>
+                <div style={{width:"45%"}}>
                  
-                  <ul style={{ marginLeft: "100%"}}>
+                  <ul >
                     <li style={{width:'100px'}} className="km"><img src={kilometerIcon} alt="kilometerIcon"/><span className="cardText">{props.data.kmdriven}<span >KMs</span></span> </li>
                     <li style={{width:'100px',marginTop:'10px'}} className="owner"><img src={personIcon} alt="ownerIcon"/><span className="cardText">{props.data.owner}</span></li>
                   </ul>
@@ -490,6 +493,7 @@ const VehicleData = (props) => {
 
               </Grid>
               
+            </div>
             </div>
             <hr className="horizontalLines"/>
               <div style={{marginLeft:'5%',display:'flex',flexDirection:'row'}}>
