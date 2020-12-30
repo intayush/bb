@@ -491,7 +491,7 @@ const MobNav = () => {
                       onChange={updateState(params.inputProps.value)}
                       {...params}
                       style={{
-                        paddingLeft: "20px !important",
+                        paddingLeft: "25px !important",
                         margin: "0px",
                       }}
                       label=""
@@ -504,7 +504,7 @@ const MobNav = () => {
             </Grid>
 
             {searchTerm && selectedCity ? (
-              <Grid item >
+              <Grid item xs={2} sm={2} md={2} lg={2}>
                 <Link
                   to={`/category/bike?searchTerm=${searchTerm}&city=${selectedCity}`}
                 >
@@ -522,7 +522,7 @@ const MobNav = () => {
                 </Link>
               </Grid>
             ) : (
-              <Grid item xs={2}>
+              <Grid item xs={2} sm={2} md={2} lg={2}>
                 <Link to={`/category/bike`}>
                   <div
                     style={{
