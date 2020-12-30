@@ -553,7 +553,7 @@ const MainMenu = (props) => {
                         />
                       </div>
                     </Grid>
-                    {searchTerm && selectedCity ? (
+                    {searchTerm ? (
                       <Grid item xs={2} sm={2} md={2} lg={2}>
                         <Link
                           to={`/category/bike?searchTerm=${searchTerm}&city=${selectedCity}`}
