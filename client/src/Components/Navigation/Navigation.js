@@ -187,7 +187,7 @@ const Navigation = (props) => {
                 lineHeight: "20px",
                 fontSize: "2ex",
                 backgroundColor: "#efefef",
-                height: "38px",
+                height: "45px",
                 textTransform:'none'
               }}
               endIcon={
@@ -290,7 +290,7 @@ const Navigation = (props) => {
                 lineHeight: "20px",
                 fontSize: "2ex",
                 backgroundColor: "#efefef",
-                height: "38px",
+                height: "45px",
                 textTransform:'none'
               }}
             >

@@ -446,12 +446,13 @@ const VehicleData = (props) => {
             </div>
           ) : (
             <>
+             <span style={{ fontSize: "17px", fontWeight: "bold",paddingLeft:'5%' }}>
+                {name}
+              </span>
             <div
               style={{ display: "inline-block",padding:"5px" }}
             >
-              <span style={{ fontSize: "17px", fontWeight: "bold",paddingLeft:'5%' }}>
-                {name}
-              </span>
+             
               <div className="mobilePriceSec">
               <p className="price">
                 <strong>`</strong> {props.data.price - discountAmt}
