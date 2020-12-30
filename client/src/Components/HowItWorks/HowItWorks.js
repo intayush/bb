@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 16,
   },
   mobileText: {
-    fontSize: "9px",
+    fontSize: "10px",
   },
   advantageContainer: {
     width: 1200,
@@ -188,7 +188,7 @@ const HowItWorks = (props) => {
                   {matches ? (
                     <img src={selectIcon} width={300} alt="" />
                   ) : (
-                    <img src={selectIcon} height="150" alt="" />
+                    <img src={selectIcon} height="200px"  width={270} alt="" />
                   )}
                   {matches ? (
                     <p className={classes.text}>
@@ -232,7 +232,7 @@ const HowItWorks = (props) => {
                   {matches ? (
                     <img src={visitIcon} width="300" alt="" />
                   ) : (
-                    <img src={visitIcon} height="140" alt="" />
+                    <img src={visitIcon} height="200" width="270" alt="" />
                   )}
                   {matches ? (
                   <p className={classes.text}>
@@ -265,7 +265,7 @@ const HowItWorks = (props) => {
                   {matches ? (
                     <img src={buyIcon} width={300} alt="" />
                   ) : (
-                    <img src={buyIcon} height="150" alt="" />
+                    <img src={buyIcon} height="200" width={270} alt="" />
                   )}
                   {matches ? (
                   <p className={classes.text}>

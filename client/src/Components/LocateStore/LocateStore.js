@@ -24,7 +24,11 @@ import mobiledivider from "../../assets/mobiledivider.png";
 let useStyles = makeStyles((theme) => ({
   mapContainer: {
     width: "100%",
-    height: 400,
+    height: "400px",
+  },
+  mobilemapContainer:{
+    width: "100%",
+    height: "216.5px",
   },
   modalBoxSuccess: {
     position: "absolute",
@@ -260,7 +264,7 @@ let LocateStore = (props) => {
           <h5>{mapLocations[0].locationName}</h5>
           <div className="locationAddress">{mapLocations[0].address}</div>
         </div>
-        <div className="mapContainer">
+        <div className={matches ? "mapContainer" : "mobilemapContainer"}>
           <GoogleMap
             center={mapLocations[0].coordinates}
             zoom={mapProps.zoom}
@@ -380,7 +384,7 @@ let LocateStore = (props) => {
                 <h5>{thisLocation.locationName}</h5>
                 <div className="locationAddress">{thisLocation.address}</div>
               </div>
-              <div className={classes.mapContainer}>
+              <div className={matches ? classes.mapContainer : classes.mobilemapContainer}>
                 <GoogleMap
                   center={thisLocation.coordinates}
                   zoom={mapProps.zoom}
@@ -405,7 +409,7 @@ let LocateStore = (props) => {
                   <h5>{thisLocation.locationName}</h5>
                   <div className="locationAddress">{thisLocation.address}</div>
                 </div>
-                <div className={classes.mapContainer}>
+                <div className={matches ? classes.mapContainer : classes.mobilemapContainer}>
                   <GoogleMap
                     center={thisLocation.coordinates}
                     zoom={mapProps.zoom}

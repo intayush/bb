@@ -28,7 +28,8 @@ import Modal from "@material-ui/core/Modal";
 import closeIcon from "../../assets/Close.png";
 import Button from "@material-ui/core/Button";
 import AddIcon from '@material-ui/icons/Add';
-import mobiledivider from "../../assets/mobiledivider.png";
+ import mobiledivider2 from "../../assets/mobiledivider.png";
+import mobiledivider from "../../assets/mobiledividerred.png";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -608,7 +609,7 @@ const Sell = (props) => {
         <h3 className={classes.sellHeadingMobile}>
           Steps to Sell Your Two-Wheeler
       </h3>
-        <img alt="" src={mobiledivider} height="4" />
+        <img alt="" src={mobiledivider2} height="4" />
         {/* Share your two wheelers details section */}
         <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
           <p style={{ fontSize: '13px', fontWeight: 'bold', color: '#232b2b' }}>Share Your <br />Two-Wheeler’s Details </p>

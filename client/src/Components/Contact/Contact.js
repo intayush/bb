@@ -80,6 +80,13 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(5),
     height:'500px'
   },
+  mobilemapContainer: {
+    marginTop: theme.spacing(5),
+    marginBottom: theme.spacing(5),
+    width: "100%" ,
+    height: "317px",
+    
+  },
   formError: {
     color: "red",
     fontSize: 13
@@ -668,8 +675,8 @@ const Contact = props => {
               </Paper>
             </Grid>
           </Grid>
-          <Grid container component="div" direction="row" className={classes.mapContainer}>
-            <Grid item xs={12} sm={12} md={12} lg={12} className="mapContainer">
+          <Grid container component="div" direction="row" className={matches ? classes.mapContainer : classes.mobilemapContainer}>
+            <Grid item xs={12} sm={12} md={12} lg={12} className={matches ? "mapContainer" : "mobilemapContainer"}>
               <GoogleMap
                 center={{ lat: 18.552560, lng: 73.804782 }}
                 zoom={12}

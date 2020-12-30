@@ -54,8 +54,8 @@ const useStyle = makeStyles((theme) => ({
       marginBottom: 10,
     },
   },
-  red: {
-    color: "#ff0000",
+  black: {
+    color: "black",
   },
   mobilePaper: {
     marginBottom: theme.spacing(3),
@@ -919,7 +919,7 @@ const TermsAndConditions = (props) => {
                 You may reach out to us for any questions or comments regarding
                 usage of BikeBazaar’s website, mobile app or services. Please
                 write to us at{" "}
-                <span className={classes.red}>legal@bikebazaar.com</span> with a
+                <span className={classes.black}>legal@bikebazaar.com</span> with a
                 thorough description of such concerns/issues faced by you and we
                 will try to resolve the issue for you.
               </Paper>
