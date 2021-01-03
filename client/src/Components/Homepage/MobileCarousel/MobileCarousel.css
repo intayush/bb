@@ -1,4 +1,4 @@
-.container {
+.mobile-carousel-homepage {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -59,7 +59,7 @@
 .text-content {
   display: flex;
   flex-direction: column;
-  
+  height: 130px;
 }
 
 
@@ -68,6 +68,3 @@
   font-weight: bold;
 }
 
-.text-content{
-  height: 130px;
-}

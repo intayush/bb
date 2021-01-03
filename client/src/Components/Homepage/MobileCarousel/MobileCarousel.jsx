@@ -20,7 +20,7 @@ const MobileCarousel = () => {
   }
 
   return (
-    <div className="container">
+    <div className="mobile-carousel-homepage">
       <p className="text">TESTIMONIALS</p>
       <img height="5" width="15" src={mobiledivider} alt="smalldivider" />
 

@@ -6,6 +6,7 @@ import "./Carousel.css";
 const CustomCarousel = ({ carouselImages,imagePopUp }) => {
   const [currentPos, setCurrPos] = React.useState(0);
   const { length } = carouselImages;
+  
   const goToNext = () => {
     setCurrPos(currentPos === length - 1 ? 0 : currentPos + 1);
   };

@@ -15,18 +15,19 @@ import isNumeric from "validator/lib/isNumeric";
 import "../Card/watermark.css";
 import ImageGallery from "react-image-gallery";
 import Modal from "@material-ui/core/Modal";
-import closeIcon from "../../assets/close-icon-black.png";
+import whiteCloseIcon from "../../assets/whiteCloseIcon.png";
+import temporaryblackiconformobile from "../../assets/Close.png";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { BRANDS } from "../../shared/mappings/brands";
 import { MODELS } from "../../shared/mappings/bike_models";
-import { useSelector } from "react-redux";
 import calenderIcon from "../../assets/calenderIcon.png";
 import engineIcon from "../../assets/engineIcon.png";
 import kilometerIcon from "../../assets/kilometerIcon.png";
 import locationIcon from "../../assets/locationIcon.png";
 import personIcon from "../../assets/personIcon.png";
 import CustomCarousel from "./Carousel/Carousel";
+import Customwebcarousel from "./Customwebcarousel";
 
 import "./VehicleData.css";
 
@@ -35,10 +36,10 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     width: "80%",
     height: "90%",
-    backgroundColor: "white",
+    backgroundColor: "black",
     border: "0 solid #fff",
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(1),
+    padding: theme.spacing(2),
     outline: 0,
     display: "flex",
     justifyContent: "space-between",
@@ -79,7 +80,6 @@ const formValidator = (name, value) => {
 };
 
 const VehicleData = (props) => {
-  const { vehicle } = useSelector((state) => state.vehicleDetails);
 
   let name =
     props.vehicle._source.model <= MODELS.length - 1 &&
@@ -93,6 +93,8 @@ const VehicleData = (props) => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
   const [openImgPopup, setOpenImgPopup] = React.useState(false);
+  const [counterOfImagesForWebCarousel,setcounterOfImagesForWebCarousel]=useState(0)
+  
   const handleImgPopupClose = () => {
     setOpenImgPopup(false);
   };
@@ -102,6 +104,7 @@ const VehicleData = (props) => {
       original: vehicleImagePath + image,
       thumbnail: vehicleImagePath + image,
     }));
+
     return (
       <>
         {props.data.sold == "true" ? (
@@ -113,11 +116,11 @@ const VehicleData = (props) => {
             />
           </div>
         ) : (
-          <ImageGallery
-            thumbnailPosition="left"
-            items={images}
-            showPlayButton={false}
-          />
+        matches? <Customwebcarousel setcounterOfImagesForWebCarousel ={setcounterOfImagesForWebCarousel} images={images}/>: <ImageGallery
+        thumbnailPosition="left"
+        items={images}
+        showPlayButton={false}
+      />
         )}
       </>
     );
@@ -323,6 +326,7 @@ const VehicleData = (props) => {
           justifyContent: "center",
           alignItems: "center",
           border: "none",
+          
         }}
         open={openImgPopup}
         onClose={handleImgPopupClose}
@@ -336,26 +340,47 @@ const VehicleData = (props) => {
           direction="row"
           className={classes.imagePopupModal}
         >
+           {matches?<Grid item xs={1} md={1} sm={1} lg={1}>
+         <div style={{display:'flex',flexDirection:'row',fontSize:'20px',fontWeight:'bold',color:'white'}}> {`${counterOfImagesForWebCarousel + 1} of ${sliderImages.length}` }</div>
+        </Grid>:<></>}
           <Grid item xs={10} md={10} sm={10} lg={10}>
             {imgPopup()}
           </Grid>
-          <Grid item xs={1} md={1} sm={1} lg={1}></Grid>
-          <Grid item xs={1} md={1} sm={1} lg={1}>
-            <img
+         
+         {/* for the close icon mobile and web viewport */}
+          {matches?<Grid item xs={1} md={1} sm={1} lg={1}>
+            <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>  <img
               style={{ cursor: "pointer" }}
               onClick={handleImgPopupClose}
-              src={closeIcon}
+              src={whiteCloseIcon}
               height="30"
+              width="30"
               alt=""
             />
-          </Grid>
+            <span style={{fontWeight:"bold",fontSize:'20px',color:'white'}}>close</span>
+            </div>
+          
+          </Grid>:<Grid item xs={1} md={1} sm={1} lg={1}>
+            <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>  <img
+              style={{ cursor: "pointer" }}
+              onClick={handleImgPopupClose}
+              src={temporaryblackiconformobile}
+              height="20"
+              width="20"
+              alt=""
+            />
+            <span style={{fontWeight:"bold",fontSize:'20px',color:'white'}}>close</span>
+            </div>
+          
+          </Grid>}
+
         </Grid>
         {/* </div> */}
       </Modal>
       {matches && (
         <Grid item xs={12} md={12} sm={12} lg={6} className="vehicleGalSec">
           <div className="vehicleGal" style={{ minHeight: "610px" }}>
-            {props.data.sold == "true" ? (
+            {props.data.sold ==="true" ? (
               <Carousel
                 dynamicHeight={true}
                 showThumbs={true}

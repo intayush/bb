@@ -22,7 +22,7 @@ export const getStoreData = (storeid = null) => {
     }else{
         url = "/apis/stores/searchStores?storeid="+storeid;
     }
-    return dispatch => {
+    return (dispatch) => {
         axios.get(url)
             .then(response => {
                 dispatch(storeData(response.data));
