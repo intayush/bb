@@ -128,13 +128,13 @@ const Pagination = (props) => {
         if (page === LEFT_PAGE)
           return (
             <li key={index} className="dot">
-              <a href="#!">....</a>
+              {matches?<a href="#!">....</a>:<a href="#!">..</a>}
             </li>
           );
         if (page === RIGHT_PAGE)
           return (
             <li key={index} className="dot">
-              <a href="#!">....</a>
+              {matches?<a href="#!">....</a>:<a href="#!">..</a>}
             </li>
           );
         return (
