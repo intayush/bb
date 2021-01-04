@@ -9,13 +9,13 @@
 }
 
 .img-container-web{
-  height: auto;
-  width: auto;
-   
+  height: 100%;
+  width: 100%;
+   object-fit: contain;
 }
 
 .vehicleData-img-container{
     width: 100%;
-    height: 700px;
+    height: 43rem;
     object-fit: contain;
 }
