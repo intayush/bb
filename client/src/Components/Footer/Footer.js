@@ -106,7 +106,7 @@ const Footer = ({props}) => {
                   <p className={classes.columnsText1}><Link style={{letterSpacing:'0px'}} to="/about">About</Link></p>
                   <p className={classes.columnsText1}><Link style={{letterSpacing:'0px'}}to="/howitworks">How it works</Link></p>
                   <p className={classes.columnsText1}><Link style={{letterSpacing:'0px'}}to="/faq">FAQs</Link></p>
-                  <p className={classes.columnsText1}><Link style={{letterSpacing:'0px'}}to="//privacypolicy">Privacy Policy</Link></p>
+                  <p className={classes.columnsText1}><Link style={{letterSpacing:'0px'}}to="/privacypolicy">Privacy Policy</Link></p>
                   <p className={classes.columnsText1}><Link style={{letterSpacing:'0px'}}to="/termsandconditions">Terms & conditions</Link></p>
                   <p className={classes.columnsText1}><Link style={{letterSpacing:'0px'}}to="/contact">Contact Us</Link></p>
                 </div>
