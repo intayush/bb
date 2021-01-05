@@ -125,17 +125,17 @@ let LocateStore = (props) => {
       },
       storeId: 4,
     },
-    // {
-    //   city: "Bangalore",
-    //   locationName: "BikeBazaar – Rajaji Nagar, Bangalore",
-    //   address:
-    //     "New no.72, Old No.60/61, Dr. Rajkumar Road, Rajaji Nagar, Opp Srinath sanitary wares,Bangalore - 560010",
-    //   coordinates: {
-    //     lat: 12.989492,
-    //     lng: 77.558663,
-    //   },
-    //   storeId: 5,
-    // },
+    {
+      city: "Bangalore",
+      locationName: "BikeBazaar – Rajaji Nagar, Bangalore",
+      address:
+        "New no.72, Old No.60/61, Dr. Rajkumar Road, Rajaji Nagar, Opp Srinath sanitary wares,Bangalore - 560010",
+      coordinates: {
+        lat: 12.989492,
+        lng: 77.558663,
+      },
+      storeId: 5,
+    },
     // {
     //   city: "Chennai",
     //   locationName: "BikeBazaar – Mootha Centre, Nungambakkam",
