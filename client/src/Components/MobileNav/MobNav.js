@@ -485,8 +485,7 @@ const MobNav = () => {
                   freeSolo
                   options={searchTerm ? vehicleNames : []}
                   renderInput={(params) => (
-                    <StyledTextField
-                     
+                    <StyledTextField   
                       placeholder="Search Your Two-Wheeler"
                       onChange={updateState(params.inputProps.value)}
                       {...params}
@@ -502,11 +501,9 @@ const MobNav = () => {
                 />
               </div>
             </Grid>
-
-            {searchTerm ? (
-              <Grid item xs={2} sm={2} md={2} lg={2}>
+              <Grid item xs={2} sm={2} md={2} lg={2}>     
                 <Link
-                  to={`/category/bike?searchTerm=${searchTerm}&city=${selectedCity}`}
+                  to={searchTerm?`/category/bike?searchTerm=${searchTerm.trim().toLowerCase()}&city=${selectedCity.trim().toLowerCase()}`:`/category/bike`}
                 >
                   <div
                     style={{
@@ -521,22 +518,7 @@ const MobNav = () => {
                   </div>
                 </Link>
               </Grid>
-            ) : (
-              <Grid item xs={2} sm={2} md={2} lg={2}>
-                <Link to={`/category/bike`}>
-                  <div
-                    style={{
-                      marginTop: "1px",
-                      backgroundColor: "#1d1d1d",
-                    }}
-                    className="btn search-label-btn"
-                    type="submit"
-                  >
-                    <img src={searchIcon} height="25" alt="" />
-                  </div>
-                </Link>
-              </Grid>
-            )}
+         
           </Grid>
         </form>
       </div>

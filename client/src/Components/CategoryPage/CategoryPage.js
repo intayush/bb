@@ -16,7 +16,7 @@ import { Menu } from "../../shared/utility";
 import categoryData from "../../shared/mappings/category_data";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import Modal from '@material-ui/core/Modal';
+
 
 import getSize from '../sizeDetect';
 
@@ -26,7 +26,7 @@ const CategoryPage = (props) => {
   const {width} = getSize();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
-  const [openSortByPopUp,setopenSortByPopUp]=useState(false); //for opening sort by modal in mobile view
+
  
   const { vehicles, filter, currentData, selectedCity , selectedBudget} = useSelector(
     (state) => state.vehicleDetails
@@ -95,7 +95,7 @@ const CategoryPage = (props) => {
     />
   );
 
-  if (vehicles.length && currentData[0] != "NA") {
+  if (vehicles.length && currentData[0] !== "NA") {
     renderedVehicles = currentData.map((vehicle, index) => {
       return <Card
           key={index}
@@ -115,7 +115,7 @@ const CategoryPage = (props) => {
     containerClass = vehicles.length > 12 ? "cardContainer" : "";
   }
 
-  if (currentData[0] == "NA") {
+  if (currentData[0] === "NA") {
     renderedVehicles = <h2>'No Vehicles Found!'</h2>;
   }
 
