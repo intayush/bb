@@ -44,14 +44,14 @@ const vehiclesNames = (state, action) => {
 
 const getPaginatedData = (state, action) => {
 
-  let reversedVehicleList=[];
+  // let reversedVehicleList=[];
 
-  for(let i=state.vehicles.length-1;i>=0;i--){
+  // for(let i=state.vehicles.length-1;i>=0;i--){
 
-    reversedVehicleList.push(state.vehicles[i])
-  }
+  //   reversedVehicleList.push(state.vehicles[i])
+  // }
 
-  let currentData =reversedVehicleList.slice(
+  let currentData =state.vehicles.slice(
     action.offset,
     action.offset + action.pageLimit
   );
