@@ -52,8 +52,8 @@ let mapProps = {
 let LocateStore = (props) => {
   let dispatch = useDispatch();
   let location = useLocation();
+  
 
- 
   const storeParams=new URLSearchParams(props.location.search).get("store-id")
 
   let classes = useStyles();
@@ -256,7 +256,7 @@ let LocateStore = (props) => {
   }, []);
 
   let locationCards = (
-    props.location.search?<div className="col s12 m12 flex-center" key={1}>
+    storeParams!==null?<div className="col s12 m12 flex-center" key={1}>
       <div className="locationCard">
         <div
           style={{ cursor: "pointer" }}
@@ -273,7 +273,24 @@ let LocateStore = (props) => {
           />
         </div>
       </div>
-    </div>:<></>
+    </div>:<div className="col s12 m12 flex-center" key={1}>
+      <div className="locationCard">
+        <div
+          style={{ cursor: "pointer" }}
+          onClick={() => handleStoreClick(mapLocations[0])}
+        >
+          <h5>{mapLocations[0].locationName}</h5>
+          <div className="locationAddress">{mapLocations[0].address}</div>
+        </div>
+        <div className="mapContainer">
+          <GoogleMap
+            center={mapLocations[0].coordinates}
+            zoom={mapProps.zoom}
+            location={mapLocations[0].locationName}
+          />
+        </div>
+      </div>
+    </div>
   );
 
   let multiStore = "";
