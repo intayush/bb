@@ -136,6 +136,19 @@ let LocateStore = (props) => {
       },
       storeId: 5,
     },
+    {
+      city: "Pune",
+      locationName: "Shri Seva Moto Corp",
+      address:
+        `G-1, Rathi Appt,Final Plot No. 42,Near Narveer Tanaji Wadi underpass,Shivaji Nagar - Pune 411005
+         Contact Info : Amit || +919673111727
+        `,
+      coordinates: {
+        lat: 18.536174275946074,
+        lng: 73.8497141671567,
+      },
+      storeId: 6,
+    }
     // {
     //   city: "Chennai",
     //   locationName: "BikeBazaar – Mootha Centre, Nungambakkam",
@@ -226,7 +239,7 @@ let LocateStore = (props) => {
     // },
   ]);
 
-  let [cities] = useState(["Aluva", "Rajahmundry", "Thrissur", "Kolkata"]);
+  let [cities] = useState(["Aluva", "Rajahmundry", "Thrissur", "Kolkata","Pune","Bangalore"]);
 
   let [searchedLocation, setSearchedLocation] = useState(null);
 
