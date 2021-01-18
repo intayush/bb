@@ -136,9 +136,87 @@ let LocateStore = (props) => {
       },
       storeId: 5,
     },
+ 
+    {
+      // city: "Chennai",
+      // locationName: "BikeBazaar – Mootha Centre, Nungambakkam",
+      // address:
+      //   "Mootha Centre, Door No 23, Kodambakkam High road, Nungambakkam, Chennai - 600034",
+      // coordinates: {
+      //   lat: 13.052892,
+      //   lng: 80.246384,
+      // },
+      // storeId: 6,
+    },
+    {
+      // city: "New Delhi",
+      // locationName: "BikeBazaar – S/F Arya Samaj, Karol Bagh",
+      // address:
+      //   "1694 S/F Arya Samaj Road Karol Bagh, Near Grace Hotel & Sat Bharaba Govt School, l Karol Bagh, New Delhi - 110005",
+      // coordinates: {
+      //   lat: 28.647347,
+      //   lng: 77.194833,
+      // },
+      // storeId: 7,
+    },
+    {
+      // city: "Gurgaon",
+      // locationName: "BikeBazaar – Sector-12 A, Gurgaon",
+      // address:
+      //   "SCO 37, 3rd Floor, Hall No.1 Sector-12 A, Huda Market, Opp. Telephone Exchange, Near Bikanerwala, Gurgaon - 122001",
+      // coordinates: {
+      //   lat: 28.468494,
+      //   lng: 77.035545,
+      // },
+      // storeId: 8,
+    },
+    {
+      // city: "Hyderabad",
+      // locationName: "BikeBazaar – Babukhan Estate, Hyderabad",
+      // address:
+      //   "5th Floor, Flat No 509/A, Babukhan Estate, Basheerbagh, Hyderabad, Telanagna - 500001",
+      // coordinates: {
+      //   lat: 17.400817,
+      //   lng: 78.474401,
+      // },
+      // storeId: 9,
+    },
+    {
+      // city: "Jaipur",
+      // locationName: "BikeBazaar – ARG CORPORATE PARK, Jaipur",
+      // address:
+      //   "ARG CORPORATE PARK GOPAL BARI BUILDING, Ajmer Road, Panch Batti, Mission Compound, Hathroi, Jaipur, Rajasthan",
+      // coordinates: {
+      //   lat: 26.91515,
+      //   lng: 75.794112,
+      // },
+      // storeId: 10,
+    },
+    {
+      // city: "Mumbai",
+      // locationName: "BikeBazaar – Sagar Tech Plaza A, Mumbai",
+      // address:
+      //   "Office N0. 208, 2nd Floor, Sagar Tech Plaza A, Sakinaka Junction, Mumbai - 400072",
+      // coordinates: {
+      //   lat: 19.102637,
+      //   lng: 72.885387,
+      // },
+      // storeId: 11,
+    },
+    {
+      // city: "Nagpur",
+      // locationName: "BikeBazaar – Jejani Bhavan, Nagpur",
+      // address:
+      //   "Jejani Bhavan, Above Khamgaon urban Bank, Gandhi Grain Market, Telephone Exchange Square, Central Avenue Road, Nagpur - 440009",
+      // coordinates: {
+      //   lat: 21.148516,
+      //   lng: 79.122348,
+      // },
+      // storeId: 12,
+    },
     {
       city: "Pune",
-      locationName: "Shri Seva Moto Corp",
+      locationName: "Shri Seva Moto Corp,Pune",
       address:
         `G-1, Rathi Appt,Final Plot No. 42,Near Narveer Tanaji Wadi underpass,Shivaji Nagar - Pune 411005
          Contact Info : Amit || +919673111727
@@ -147,97 +225,11 @@ let LocateStore = (props) => {
         lat: 18.536174275946074,
         lng: 73.8497141671567,
       },
-      storeId: 6,
-    }
-    // {
-    //   city: "Chennai",
-    //   locationName: "BikeBazaar – Mootha Centre, Nungambakkam",
-    //   address:
-    //     "Mootha Centre, Door No 23, Kodambakkam High road, Nungambakkam, Chennai - 600034",
-    //   coordinates: {
-    //     lat: 13.052892,
-    //     lng: 80.246384,
-    //   },
-    //   storeId: 6,
-    // },
-    // {
-    //   city: "New Delhi",
-    //   locationName: "BikeBazaar – S/F Arya Samaj, Karol Bagh",
-    //   address:
-    //     "1694 S/F Arya Samaj Road Karol Bagh, Near Grace Hotel & Sat Bharaba Govt School, l Karol Bagh, New Delhi - 110005",
-    //   coordinates: {
-    //     lat: 28.647347,
-    //     lng: 77.194833,
-    //   },
-    //   storeId: 7,
-    // },
-    // {
-    //   city: "Gurgaon",
-    //   locationName: "BikeBazaar – Sector-12 A, Gurgaon",
-    //   address:
-    //     "SCO 37, 3rd Floor, Hall No.1 Sector-12 A, Huda Market, Opp. Telephone Exchange, Near Bikanerwala, Gurgaon - 122001",
-    //   coordinates: {
-    //     lat: 28.468494,
-    //     lng: 77.035545,
-    //   },
-    //   storeId: 8,
-    // },
-    // {
-    //   city: "Hyderabad",
-    //   locationName: "BikeBazaar – Babukhan Estate, Hyderabad",
-    //   address:
-    //     "5th Floor, Flat No 509/A, Babukhan Estate, Basheerbagh, Hyderabad, Telanagna - 500001",
-    //   coordinates: {
-    //     lat: 17.400817,
-    //     lng: 78.474401,
-    //   },
-    //   storeId: 9,
-    // },
-    // {
-    //   city: "Jaipur",
-    //   locationName: "BikeBazaar – ARG CORPORATE PARK, Jaipur",
-    //   address:
-    //     "ARG CORPORATE PARK GOPAL BARI BUILDING, Ajmer Road, Panch Batti, Mission Compound, Hathroi, Jaipur, Rajasthan",
-    //   coordinates: {
-    //     lat: 26.91515,
-    //     lng: 75.794112,
-    //   },
-    //   storeId: 10,
-    // },
-    // {
-    //   city: "Mumbai",
-    //   locationName: "BikeBazaar – Sagar Tech Plaza A, Mumbai",
-    //   address:
-    //     "Office N0. 208, 2nd Floor, Sagar Tech Plaza A, Sakinaka Junction, Mumbai - 400072",
-    //   coordinates: {
-    //     lat: 19.102637,
-    //     lng: 72.885387,
-    //   },
-    //   storeId: 11,
-    // },
-    // {
-    //   city: "Nagpur",
-    //   locationName: "BikeBazaar – Jejani Bhavan, Nagpur",
-    //   address:
-    //     "Jejani Bhavan, Above Khamgaon urban Bank, Gandhi Grain Market, Telephone Exchange Square, Central Avenue Road, Nagpur - 440009",
-    //   coordinates: {
-    //     lat: 21.148516,
-    //     lng: 79.122348,
-    //   },
-    //   storeId: 12,
-    // },
-    // {
-    //   city: "Pune",
-    //   locationName: "BikeBazaar – Govind Niwas, Pune",
-    //   address:
-    //     "Office no. 2 and 3, 1st Floor, Govind Niwas, Rasta Peth, Near Naidu Ganapati Rasta Peth, Pune - 411011",
-    //   coordinates: {
-    //     lat: 18.517641,
-    //     lng: 73.867125,
-    //   },
-    //   storeId: 13,
-    // },
+      storeId: 13,
+    },
   ]);
+
+  
 
   let [cities] = useState(["Aluva", "Rajahmundry", "Thrissur", "Kolkata","Pune","Bangalore"]);
 
@@ -408,30 +400,36 @@ let LocateStore = (props) => {
     );
 
     locationCards = mapLocations.map((thisLocation, key) => {
+
       if (searchedLocation === null) {
-        return (
-          <Grid item xs={12} sm={12} md={4} lg={4} xl={4} key={key}>
-            <div
-              className="locationCard"
-              style={{ marginRight: "10px", marginBottom: "17px" }}
-            >
-              <div
-                style={{ cursor: "pointer" }}
-                onClick={() => handleStoreClick(thisLocation)}
-              >
-                <h5>{thisLocation.locationName}</h5>
-                <div className="locationAddress">{thisLocation.address}</div>
-              </div>
-              <div className={classes.mapContainer}>
-                <GoogleMap
-                  center={thisLocation.coordinates}
-                  zoom={mapProps.zoom}
-                  location={thisLocation.locationName}
-                />
-              </div>
-            </div>
-          </Grid>
-        );
+
+          if(thisLocation.storeId!==undefined && thisLocation.coordinates!==undefined){
+
+            return (
+              <Grid item xs={12} sm={12} md={4} lg={4} xl={4} key={key}>
+                <div
+                  className="locationCard"
+                  style={{ marginRight: "10px", marginBottom: "17px" }}
+                >
+                  <div
+                    style={{ cursor: "pointer" }}
+                    onClick={() => handleStoreClick(thisLocation)}
+                  >
+                    <h5>{thisLocation.locationName}</h5>
+                    <div className="locationAddress">{thisLocation.address}</div>
+                  </div>
+                  <div className={classes.mapContainer}>
+                    <GoogleMap
+                      center={thisLocation.coordinates}
+                      zoom={mapProps.zoom}
+                      location={thisLocation.locationName}
+                    />
+                  </div>
+                </div>
+              </Grid>
+            );
+          }
+     
       } else {
         if (thisLocation.city === searchedLocation) {
           return (
