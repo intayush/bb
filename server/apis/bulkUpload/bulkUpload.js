@@ -9,6 +9,7 @@ const client = new Client({ node: "http://localhost:9200" });
 
 //global fileName variable
 let fileName = null;
+let oldvehicledetailslength;
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -92,7 +93,8 @@ function zipHelper() {
 
           
           //getting the previous vehicles from database
-          // const oldVehicles = await oldVehiclesDetails();
+          const oldVehicles = await oldVehiclesDetails();
+          oldvehicledetailslength=oldVehicles.length;
 
           // console.log("------->length",oldVehicles.length);
         //   let newRecords=[];
@@ -187,7 +189,10 @@ async function dataUpload(data) {
     { lat: 16.999954, lon: 81.786184 },
   ];
 
-  const modifiedData = data.map((vehicle) => ({
+
+  
+  const modifiedData = data.map((vehicle,index) => ({
+    id:index+oldvehicledetailslength,
     name: vehicle.name,
     type: parseInt(vehicle.category),
     model: parseInt(vehicle.model),
