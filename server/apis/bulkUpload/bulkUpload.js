@@ -96,7 +96,7 @@ function zipHelper() {
           const oldVehicles = await oldVehiclesDetails();
           oldvehicledetailslength=oldVehicles.length;
 
-          // console.log("------->length",oldVehicles.length);
+        // console.log("------->length",oldVehicles.length);
         //   let newRecords=[];
 
         //   if (Array.isArray(oldVehicles) && oldVehicles.length) {

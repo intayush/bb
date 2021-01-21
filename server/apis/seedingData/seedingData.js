@@ -1030,11 +1030,45 @@ router.post("/deleteVehicle", (req, res) => {
   deleteBike().catch(console.log);
 });
 
+
+async function oldVehiclesDetails() {
+  // getting the old vehicles from db
+  let oldVehiclesDataFromDB = [];
+
+  const { body } = await client.search({
+    index: "bike-details",
+    body: {
+      size: 10000,
+      query: {
+        match_all: {},
+      },
+    },
+  });
+
+  return new Promise((resolve, reject) => {
+    if (!body) {
+      reject();
+    } else {
+      for (let i = 0; i < body.hits.hits.length; i++) {
+        oldVehiclesDataFromDB.push(body.hits.hits[i]._source);
+      }
+      resolve(oldVehiclesDataFromDB);
+    }
+  });
+}
+
 router.post("/adminVehiclesUpdate", (req, res) => {
+
   let data = req.body;
   async function updateBike() {
+
+    let oldvehicledetailslength=0;
+    const oldvehiclesDetails=await oldVehiclesDetails();
+    oldvehicledetailslength=oldVehiclesDetails.length+1;
+
     const dataset = 
       {
+        id:oldvehicledetailslength,
         name: data.submitObj.name.value,
         type: parseInt(data.submitObj.type.value),
         brand: parseInt(data.submitObj.brand.value),
