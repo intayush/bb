@@ -230,7 +230,7 @@ const Navigation = (props) => {
                 onClick={() => {
                   setSortByButtonRed(!sortByButtonRed);
                   setsortByButtonUpIcon(!sortByButtonUpIcon);
-                  handler("price-desc");
+                  handler("price-asc");
                 }}
               >
                 Price - Low to High
@@ -239,7 +239,7 @@ const Navigation = (props) => {
                 onClick={() => {
                   setSortByButtonRed(!sortByButtonRed);
                   setsortByButtonUpIcon(!sortByButtonUpIcon);
-                  handler("price-asc");
+                  handler("price-desc");
                 }}
               >
                 Price - High to Low
@@ -248,7 +248,7 @@ const Navigation = (props) => {
                 onClick={() => {
                   setSortByButtonRed(!sortByButtonRed);
                   setsortByButtonUpIcon(!sortByButtonUpIcon);
-                  handler("myear-desc");
+                  handler("myear-asc");
                 }}
               >
                 Manufacturing Year - Low to High
@@ -257,7 +257,7 @@ const Navigation = (props) => {
                 onClick={() => {
                   setSortByButtonRed(!sortByButtonRed);
                   setsortByButtonUpIcon(!sortByButtonUpIcon);
-                  handler("myear-asc");
+                  handler("myear-desc");
                 }}
               >
                 Manufacturing Year - High to Low
@@ -266,7 +266,7 @@ const Navigation = (props) => {
                 onClick={() => {
                   setSortByButtonRed(!sortByButtonRed);
                   setsortByButtonUpIcon(!sortByButtonUpIcon);
-                  handler("kmdriven-desc");
+                  handler("kmdriven-asc");
                 }}
               >
                 Kilometer - Low to High
