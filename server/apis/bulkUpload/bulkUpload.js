@@ -190,7 +190,6 @@ async function dataUpload(data) {
   ];
 
 
-  
   const modifiedData = data.map((vehicle,index) => ({
     id:index+oldvehicledetailslength,
     name: vehicle.name,

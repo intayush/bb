@@ -1062,13 +1062,8 @@ router.post("/adminVehiclesUpdate", (req, res) => {
   let data = req.body;
   async function updateBike() {
 
-    let oldvehicledetailslength=0;
-    const oldvehiclesDetails=await oldVehiclesDetails();
-    oldvehicledetailslength=oldVehiclesDetails.length+1;
-
     const dataset = 
       {
-        id:oldvehicledetailslength,
         name: data.submitObj.name.value,
         type: parseInt(data.submitObj.type.value),
         brand: parseInt(data.submitObj.brand.value),
@@ -1119,10 +1114,15 @@ router.post("/adminVehiclesUpdate", (req, res) => {
   updateBike().catch((err)=> console.log(err.meta.body.error, true, 10, true));
 });
 
+
+
 router.post("/adminVehiclesUpload", (req, res) => {
+
   let formData = req.body;
+  
   // console.log(formData);
   async function uploadVehiclels() {
+
     async function getStore() {
       const { body } = await client.search({
         index: "store-location",
@@ -1136,10 +1136,16 @@ router.post("/adminVehiclesUpload", (req, res) => {
       });
       return body.hits.hits[0]._source;
     }
+
+    let oldvehicledetailsArr=await oldVehiclesDetails();
+    let idTobeAssigned=oldvehicledetailsArr.length;
+
     let storeDetails = await getStore();
+  
     console.log("AB: ", storeDetails)
     const dataset = [
       {
+        id:idTobeAssigned,
         name: formData.name.value,
         type: parseInt(formData.type.value),
         brand: parseInt(formData.brand.value),

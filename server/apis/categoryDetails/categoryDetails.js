@@ -127,7 +127,7 @@ router.get("/getCategoryById", (req, res) => {
         sort: [sortKey]
       }
     });
-    res.send(body.hits.hits.reverse());
+    res.send(body.hits.hits);
     // console.log(body.hits.hits);
   }
   getBikesForCategory().catch(console.log);
