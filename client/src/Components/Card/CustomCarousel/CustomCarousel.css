@@ -31,4 +31,9 @@
 
 .img-mobile-container{
     position: relative;
+    background-color: black;
+}
+
+.img-mobile-container img{
+  max-width:100%; object-fit: contain;
 }

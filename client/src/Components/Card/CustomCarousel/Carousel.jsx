@@ -21,12 +21,14 @@ const CustomCarousel = ({ carouselImages,vehicleid }) => {
 
   const vehicleImagePath = "../../../vehicles";
   return (
-    <div className="mobile-container">
+    
+          <div className="mobile-container">
        <Link to={"/vehicledetails/" + vehicleid}>
       <div className="img-mobile-container">
      
         <img
-          height="250"
+         
+          height="300"
           src={vehicleImagePath + "/" + carouselImages[currentPos]}
           alt=""
         />
@@ -42,6 +44,7 @@ const CustomCarousel = ({ carouselImages,vehicleid }) => {
         </div>
       </div>
     </div>
+   
   );
 };
 
