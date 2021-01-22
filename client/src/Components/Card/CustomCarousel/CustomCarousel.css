@@ -35,5 +35,5 @@
 }
 
 .img-mobile-container img{
-  max-width:100%; object-fit: contain;
+  max-width:100%; object-fit: contain;padding-top:5px
 }

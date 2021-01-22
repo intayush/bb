@@ -67,7 +67,7 @@ h1, h2, h3, h4, h5, h6, ul, li, form { margin:0; }
 .ProductListSec .Prod { height: auto; padding: 0 14px 28px; }
 .ProductListSec .Product { border-radius: 4px; box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.2); background-color: #ffffff; }
 .ProductListSec .Product:hover { box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.2);transition: 0.3s; }
-.ProductListSec .Product img { max-width:100%;  }
+.ProductListSec .Product img { max-width:100%;padding-top: 5px;  }
 .ProductListSec .Product .detail { padding: 19px; }
 .ProductListSec .Product .detail h3 { font-size: 18px; padding-bottom: 0; font-weight: bold; }
 .ProductListSec .Product .detail p.price { font-size: 20px; color: #ff0000; margin: 0; font-weight: bold; margin-top: 10px; }
