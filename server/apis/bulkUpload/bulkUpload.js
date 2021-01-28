@@ -10,6 +10,7 @@ const client = new Client({ node: "http://localhost:9200" });
 //global fileName variable
 let fileName = null;
 let oldvehicledetailslength;
+let oldVehicleLastId;
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -67,8 +68,29 @@ async function oldVehiclesDetails() {
       for (let i = 0; i < body.hits.hits.length; i++) {
         oldVehiclesDataFromDB.push(body.hits.hits[i]._source);
       }
+
       resolve(oldVehiclesDataFromDB);
     }
+  });
+}
+
+function largestIdGetter(oldVehicles) {
+  const largestid = [];
+
+  for (let i = 0; i < oldVehicles.length; i++) {
+    largestid.push(oldVehicles[i].id);
+  }
+
+  let largest = largestid[0];
+
+  for (let i = 0; i < largestid.length; i++) {
+    if (largest < largestid[i]) {
+      largest = largestid[i];
+    }
+  }
+
+  return new Promise((resolve) => {
+    resolve(largest);
   });
 }
 
@@ -90,23 +112,13 @@ function zipHelper() {
         if (err) {
           console.log(err);
         } else {
-
-          
           //getting the previous vehicles from database
           const oldVehicles = await oldVehiclesDetails();
-          oldvehicledetailslength=oldVehicles.length;
 
-        // console.log("------->length",oldVehicles.length);
-        //   let newRecords=[];
+          const max = await largestIdGetter(oldVehicles);
 
-        //   if (Array.isArray(oldVehicles) && oldVehicles.length) {
-
-        //    const newRecordsFromExcel=result.filter(item=>{
-        //       return !oldVehicles.some(el=>el.regnumber===item.registrationNumber)
-        //     })
-        //     newRecords.push(newRecordsFromExcel);
-        //     console.log("=====newRecords vehicles", newRecords);
-        // }
+          oldVehicleLastId = max;
+          oldvehicledetailslength = oldVehicles.length;
 
           dataUpload(result)
             .then(() => {
@@ -167,10 +179,7 @@ function imgMappingHelper(data) {
   });
 }
 
-
-
 async function dataUpload(data) {
-
   const regtoimagesMapping = await imgMappingHelper(data);
 
   //making the modified array keys and values
@@ -187,36 +196,78 @@ async function dataUpload(data) {
     { lat: 10.100809, lon: 76.348984 },
     { lat: 22.5726, lon: 88.3639 },
     { lat: 16.999954, lon: 81.786184 },
+    { lat: 10.54067, lng: 76.213814 },
+    { lat: 12.989492, lng: 77.558663 },
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {
+      lat: 18.536174275946074,
+      lng: 73.8497141671567,
+    },
   ];
 
-
-  const modifiedData = data.map((vehicle,index) => ({
-    id:index+oldvehicledetailslength,
-    name: vehicle.name,
-    type: parseInt(vehicle.category),
-    model: parseInt(vehicle.model),
-    brand: parseInt(vehicle.brand),
-    regnumber: vehicle.registrationNumber,
-    descr: "",
-    price: parseInt(vehicle.price),
-    state: vehicle.state,
-    city: vehicle.city,
-    loc: vehicle.location,
-    location: latLon[vehicle.storeId - 1],
-    myear: parseInt(vehicle.manufacturingYear),
-    mmonth: parseInt(vehicle.manufacturingMonth),
-    kmdriven: parseInt(vehicle.kmdriven),
-    images: regtoimagesMapping[vehicle.registrationNumber],
-    mimage: regtoimagesMapping[vehicle.registrationNumber][0],
-    owner: parseInt(vehicle.NumberOfOwner),
-    cc: parseInt(vehicle.cc),
-    bhp: 0,
-    category: parseInt(vehicle.category),
-    mileage: 0,
-    storeId: parseInt(vehicle.storeId),
-    sold: "false",
-    discountPercent: parseFloat(vehicle.discountPercent),
-  }));
+  const modifiedData = data.map((vehicle, index) =>
+    oldVehicleLastId !== undefined && oldVehicleLastId > 0
+      ? {
+          id: index + oldVehicleLastId + 1,
+          name: vehicle.name,
+          type: parseInt(vehicle.category),
+          model: parseInt(vehicle.model),
+          brand: parseInt(vehicle.brand),
+          regnumber: vehicle.registrationNumber,
+          descr: "",
+          price: parseInt(vehicle.price),
+          state: vehicle.state,
+          city: vehicle.city,
+          loc: vehicle.location,
+          location: latLon[vehicle.storeId - 1],
+          myear: parseInt(vehicle.manufacturingYear),
+          mmonth: parseInt(vehicle.manufacturingMonth),
+          kmdriven: parseInt(vehicle.kmdriven),
+          images: regtoimagesMapping[vehicle.registrationNumber],
+          mimage: regtoimagesMapping[vehicle.registrationNumber][0],
+          owner: parseInt(vehicle.NumberOfOwner),
+          cc: parseInt(vehicle.cc),
+          bhp: 0,
+          category: parseInt(vehicle.category),
+          mileage: 0,
+          storeId: parseInt(vehicle.storeId),
+          sold: "false",
+          discountPercent: parseFloat(vehicle.discountPercent),
+        }
+      : {
+          id: index + oldvehicledetailslength,
+          name: vehicle.name,
+          type: parseInt(vehicle.category),
+          model: parseInt(vehicle.model),
+          brand: parseInt(vehicle.brand),
+          regnumber: vehicle.registrationNumber,
+          descr: "",
+          price: parseInt(vehicle.price),
+          state: vehicle.state,
+          city: vehicle.city,
+          loc: vehicle.location,
+          location: latLon[vehicle.storeId - 1],
+          myear: parseInt(vehicle.manufacturingYear),
+          mmonth: parseInt(vehicle.manufacturingMonth),
+          kmdriven: parseInt(vehicle.kmdriven),
+          images: regtoimagesMapping[vehicle.registrationNumber],
+          mimage: regtoimagesMapping[vehicle.registrationNumber][0],
+          owner: parseInt(vehicle.NumberOfOwner),
+          cc: parseInt(vehicle.cc),
+          bhp: 0,
+          category: parseInt(vehicle.category),
+          mileage: 0,
+          storeId: parseInt(vehicle.storeId),
+          sold: "false",
+          discountPercent: parseFloat(vehicle.discountPercent),
+        }
+  );
 
   // imgArr.forEach((oldImage) => {
   //   fs.rename(
