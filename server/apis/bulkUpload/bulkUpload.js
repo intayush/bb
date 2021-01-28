@@ -115,9 +115,9 @@ function zipHelper() {
           //getting the previous vehicles from database
           const oldVehicles = await oldVehiclesDetails();
 
-          const max = await largestIdGetter(oldVehicles);
+          const maximumid = await largestIdGetter(oldVehicles);
 
-          oldVehicleLastId = max;
+          oldVehicleLastId = maximumid;
           oldvehicledetailslength = oldVehicles.length;
 
           dataUpload(result)
