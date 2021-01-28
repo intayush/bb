@@ -1115,26 +1115,6 @@ router.post("/adminVehiclesUpdate", (req, res) => {
 });
 
 
-function largestIdGetter(oldVehicles) {
-  const largestid = [];
-
-  for (let i = 0; i < oldVehicles.length; i++) {
-    largestid.push(oldVehicles[i].id);
-  }
-
-  let largest = largestid[0];
-
-  for (let i = 0; i < largestid.length; i++) {
-    if (largest < largestid[i]) {
-      largest = largestid[i];
-    }
-  }
-
-  return new Promise((resolve) => {
-    resolve(largest);
-  });
-}
-
 
 router.post("/adminVehiclesUpload", (req, res) => {
 
@@ -1158,15 +1138,15 @@ router.post("/adminVehiclesUpload", (req, res) => {
     }
 
     let oldvehicledetailsArr=await oldVehiclesDetails();
-    const max = await largestIdGetter(oldvehicledetailsArr);
-    let idTobeAssigned=max;
+    
+    let idTobeAssigned=oldvehicledetailsArr.length;
 
     let storeDetails = await getStore();
   
     console.log("AB: ", storeDetails)
     const dataset = [
       {
-        id:idTobeAssigned+1,
+        id:idTobeAssigned,
         name: formData.name.value,
         type: parseInt(formData.type.value),
         brand: parseInt(formData.brand.value),
