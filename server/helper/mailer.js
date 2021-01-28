@@ -28,7 +28,7 @@ async function mailer(output, subject, sendTo, attach = []) {
         console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
         attach.forEach(img => {
           fs.unlink(img.path, (err) => {
-            if(err) throw err;
+            if(err) console.log(err);
             console.log("deleted");
           })
         })
