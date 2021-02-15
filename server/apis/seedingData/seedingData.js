@@ -1139,7 +1139,26 @@ router.post("/adminVehiclesUpload", (req, res) => {
 
     let oldvehicledetailsArr=await oldVehiclesDetails();
     
-    let idTobeAssigned=oldvehicledetailsArr.length;
+
+    let idTobeAssigned;
+
+    if(oldvehicledetailsArr.length===0){
+      idTobeAssigned=oldvehicledetailsArr.length+1
+    }
+
+    else if(oldvehicledetailsArr.length!==0){
+
+      let largestid=oldvehicledetailsArr[0].id;
+
+      oldvehicledetailsArr.forEach((eachobj)=>{
+
+        if(eachobj.id>largestid){
+          largestid=eachobj.id;
+        }
+      })
+
+      idTobeAssigned=largestid+1;
+    }
 
     let storeDetails = await getStore();
   
