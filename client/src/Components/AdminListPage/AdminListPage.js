@@ -66,7 +66,7 @@ const AdminListPage = (props) => {
             Edit Info
           </Link>
         </tb>
-        {/* <td onClick={() => deleteVehicle(vehicle._id)} id={'id-' + vehicle._id} className={classes.delete}>Delete</td> */}
+        <td onClick={() => deleteVehicle(vehicle._id)} id={'id-' + vehicle._id} className={classes.delete}>Delete</td>
         <td
           id={"id-" + vehicle._id}
           className={classes.delete}

@@ -13,8 +13,10 @@ const blogs = require("./apis/blogs/blogs")
 const passport = require("passport");
 const multer = require('multer');
 const cors = require('cors');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 app.use(express.static('public'))
+app.use('/api', createProxyMiddleware({ target: 'http://localhost:4200', changeOrigin: true }));
 
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
