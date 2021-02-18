@@ -6,7 +6,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import CustomCarousel from "./CustomCarousel/Carousel";
-
+import {useDispatch} from "react-redux";
+import * as vehicleactions from "../../store/actions/vehiclesDetails";
 
 const useStyles = makeStyles(theme => ({
   del: {
@@ -19,14 +20,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Card = (props) => {
-
+  const dispatch = useDispatch();
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
   const vehicleImagePath = "../../vehicles/";
   return (
-    <Grid item component="div" lg={4} md={6} sm={12} xs={12} className="Prod">
+    <Grid onClick={()=>dispatch(vehicleactions.setemptyvehicleflagtofalse())} item component="div" lg={4} md={6} sm={12} xs={12} className="Prod">
       {matches?<Link to={"/vehicledetails/" + props.vehicleid}>
         <div className="Product">
           {matches? props.sold === "true" ? (

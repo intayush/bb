@@ -128,6 +128,11 @@ const reducer = (state = initialState, action) => {
           ...state,
           emptyvehicle: true,
         };
+      case actionTypes.EMPTY_VEHICLE_TO_FALSE:
+        return{
+          ...state,
+          emptyvehicle:false
+        }
   
     default:
       return state;

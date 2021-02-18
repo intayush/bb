@@ -38,6 +38,8 @@ export const apiFail = (error) => {
     };
 };
 
+
+
 export const getVehicles = (category = null, filterData = null, searchTerm = null) => {
     let url = "";
     if(category===null || category===0){
@@ -60,6 +62,10 @@ export const getVehicles = (category = null, filterData = null, searchTerm = nul
 
 export const emptyvehicledata=()=>{
       return({type:actionTypes.EMPTY_VEHICLE})
+}
+
+export const setemptyvehicleflagtofalse=()=>{
+    return({type:actionTypes.EMPTY_VEHICLE_TO_FALSE})
 }
 
 export const getVehicleData = (vehicleid) => {
