@@ -71,7 +71,7 @@ const App = () => {
       <Route exact path="/blog/:id" component={BlogPost} />
       <Route exact path="/blog" component={BlogPostHome} />
       <Route exact path="/mobileFilterPage" component={mobileFilterPage}/>
-      <Route path="*" component={NotFoundPage}/>
+      <Route component={NotFoundPage}/>
     </Switch>
   );
 };
