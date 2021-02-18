@@ -25,7 +25,7 @@ import AdminHomePage from "./Components/AdminSection/AdminHomePage";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import mobileFilterPage from "./Components/CategoryPage/mobileFilterPage/mobileFilterPage";
 import NotFoundPage from "./Components/404Page/404Page";
-
+import {useSelector} from "react-redux";
 import * as actions from "./store/actions/index";
 import jwt_decode from "jwt-decode";
 
@@ -34,6 +34,8 @@ import jwt_decode from "jwt-decode";
 const App = () => {
   //for admin login
   const dispatch = useDispatch();
+  const vehicleempty=useSelector((state)=>state.vehicleDetails.emptyvehicle);
+
   if (localStorage.getItem("adminJwtToken")) {
     const token = localStorage.getItem("adminJwtToken");
     // Set token to Auth header
@@ -55,7 +57,7 @@ const App = () => {
       <Route exact path="/" component={Homepage} />
       <Route exact path="/category/:category" component={CategoryPage} />
       <Route path="/vehicledetails/locate-store" component={LocateStore} />
-      <Route path="/vehicledetails/:vehicleid" component={VehicleDetails} />
+      {vehicleempty?<Route component={NotFoundPage}/> :<Route path="/vehicledetails/:vehicleid" component={VehicleDetails} />}
       <Route path="/sell" component={Sell} />
       <Route path="/becomefranchiseowner" component={BecomeFranchiseOwner} />
       <Route path="/contact" component={Contact} />
@@ -69,7 +71,7 @@ const App = () => {
       <Route exact path="/blog/:id" component={BlogPost} />
       <Route exact path="/blog" component={BlogPostHome} />
       <Route exact path="/mobileFilterPage" component={mobileFilterPage}/>
-      <Route component={NotFoundPage}/>
+      <Route path="*" component={NotFoundPage}/>
     </Switch>
   );
 };

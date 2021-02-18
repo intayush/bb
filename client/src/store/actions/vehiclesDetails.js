@@ -57,12 +57,19 @@ export const getVehicles = (category = null, filterData = null, searchTerm = nul
     };
 };
 
+
+export const emptyvehicledata=()=>{
+      return({type:actionTypes.EMPTY_VEHICLE})
+}
+
 export const getVehicleData = (vehicleid) => {
+
     return dispatch => {
         let url = "/apis/seedData/searchBike?vehicleid=" + vehicleid;
         axios.get(url)
             .then(response => {
-                dispatch(vehicleData(response.data));
+                if(response.data.length!==0){dispatch(vehicleData(response.data));}
+                else {dispatch(emptyvehicledata())}
             })
             .catch(err => {
                 dispatch(apiFail(err));

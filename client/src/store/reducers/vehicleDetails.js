@@ -22,7 +22,9 @@ const initialState = {
     brand: [],
     kmdriven: 100000,
     searchTerm: "*",
+   
   },
+  emptyvehicle:false
 };
 const vehicles = (state, action) => {
 
@@ -121,7 +123,12 @@ const reducer = (state = initialState, action) => {
         category: action.payload,
       };
 
-
+      case actionTypes.EMPTY_VEHICLE:
+        return {
+          ...state,
+          emptyvehicle: true,
+        };
+  
     default:
       return state;
   }
