@@ -62,6 +62,12 @@ const formValidator = (name, value) => {
         ? "PIN Code must only have Numeric Characters"
         : "";
     }
+    case "current_business": {
+      const current_business = value.replace(/ /g, "");
+      return !isAlpha(current_business)
+        ? "Current Business must only have alphabet Characters"
+        : "";
+    }
     default: {
       return false;
     }
@@ -245,6 +251,11 @@ const BecomeFranchiseOwner = (props) => {
       error: false,
       errorMessage: "",
     },
+    current_business:{
+      value:"",
+      error:false,
+      errorMessage:""
+    }
   });
 
   const [success, setSuccess] = useState(false);
@@ -1296,6 +1307,31 @@ const BecomeFranchiseOwner = (props) => {
                           )}
                         </Grid>
                       )}
+
+                        <Grid item xs={12} sm={12} md={5} lg={5}>
+                          <label className="fieldname" htmlFor="current_business">
+                            <span className={classes.label}>Current Business:*</span>
+                          
+                          </label>
+                          <input
+                            type="text"
+                            name="current_business"
+                            id="pin"
+                            className={
+                              formData.current_business.error
+                                ? "invalid"
+                                : formData.current_business.value
+                                ? "valid"
+                                : ""
+                            }
+                            onBlur={(event) => updateFormdata(event, formData)}
+                          />
+                          {formData.pin.error && (
+                            <div className="invalid-feedback d-block">
+                              {formData.current_business.errorMessage}
+                            </div>
+                          )}
+                        </Grid>
                     </Grid>
                   </Grid>
                 </Grid>

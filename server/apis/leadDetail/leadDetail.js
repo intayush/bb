@@ -150,7 +150,7 @@ router.post("/insertFranchiseRequest", (req, res) => {
         city: formData.city.value,
         address: formData.address.value,
         pincode: formData.pin.value,
-        currentBusiness:formData.currentBusiness.value
+        currentBusiness:formData.current_business.value
 
       }
     ];
