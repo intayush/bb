@@ -85,9 +85,18 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    background-color: #FFFFFF;
 }
 
 .content_container_div{
     margin-top: 14%;
+    width: 46%;
+    margin-left: 4%;
+   
 }
 
+
+.gif404{
+  width: 45%;
+  height: 90%;
+}

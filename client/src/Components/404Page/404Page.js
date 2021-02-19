@@ -44,7 +44,7 @@ const NotFound = () => {
                                     Back to Home
                                 </button>
                             </div>
-                            <img  src={gif404}/>
+                            <img className="gif404" src={gif404}/>
                     </div>
                 <Footer/>
                
