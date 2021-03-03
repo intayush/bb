@@ -2,44 +2,68 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const path = require("path");
+const cron = require("node-cron");
+const { Client } = require("@elastic/elasticsearch");
+const client = new Client({ node: "http://localhost:9200" });
+const SellersMailer = require("./helper/sellersmailer");
+
+
+cron.schedule("0 * * * *", async () => {
+  const { body } = await client.search({
+    index: "sellerdetails",
+    body: {
+      size: 10000,
+      query: {
+        match_all: {},
+      },
+    },
+  });
+  const datafromsellersindex = body.hits.hits;
+  const dataset = [];
+  for (let i = 0; i < datafromsellersindex.length; i++) {
+    dataset.push(datafromsellersindex[i]._source);
+  }
+  for (let i = 0; i < dataset.length; i++) {
+    delete dataset[i]["images"];
+  }
+  SellersMailer(dataset).catch(console.error)
+});
+
+
 //Require route files
-const bulkUpload=require("./apis/bulkUpload/bulkUpload");
+const bulkUpload = require("./apis/bulkUpload/bulkUpload");
 const seedData = require("./apis/seedingData/seedingData");
 const categoryDetails = require("./apis/categoryDetails/categoryDetails");
 const leadDetail = require("./apis/leadDetail/leadDetail");
 const userDetail = require("./apis/userDetails/userDetails");
 const stores = require("./apis/stores/stores");
-const blogs = require("./apis/blogs/blogs")
+const blogs = require("./apis/blogs/blogs");
 const passport = require("passport");
-const multer = require('multer');
-const cors = require('cors');
+const multer = require("multer");
+const cors = require("cors");
 
-
-app.use(express.static('public'))
+app.use(express.static("public"));
 
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, '../client/public/vehicles')
+    cb(null, "../client/public/vehicles");
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname)
-  }
+    cb(null, file.originalname);
+  },
 });
 
-const upload = multer({ storage })
+const upload = multer({ storage });
 
 app.use(cors());
 
-app.post('/upload', upload.single('image'), (req, res) => {
+app.post("/upload", upload.single("image"), (req, res) => {
   if (req.file)
     res.json({
-      imageUrl: `images/uploads/${req.file.filename}`
+      imageUrl: `images/uploads/${req.file.filename}`,
     });
-  else
-    res.status("409").json("No Files to Upload.")
+  else res.status("409").json("No Files to Upload.");
 });
-
-
 
 // Passport middleware
 app.use(passport.initialize());
@@ -59,8 +83,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-
-app.use("/apis/bulkUpload",bulkUpload);
+app.use("/apis/bulkUpload", bulkUpload);
 app.use("/apis/seedData", seedData);
 app.use("/apis/categoryDetails", categoryDetails);
 app.use("/apis/leadDetail", leadDetail);
