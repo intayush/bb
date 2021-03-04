@@ -16,7 +16,7 @@ const SellersMailer = async ( content) => {
               {header: 'address', key: 'address'},
               {header: 'model', key: 'model'},
               {header: 'kmsdriven', key: 'kmsdriven'},
-              {header: 'manufactureYear:', key: 'manufactureYear:'},
+              {header: 'manufactureYear', key: 'manufactureYear'},
               {header: 'promocode', key: 'promocode'},
           ];
     let data = content;
@@ -34,10 +34,10 @@ const SellersMailer = async ( content) => {
         },
     });
     const mailOptions = {
-        from: '"Trial" <bikebazaar01@gmail.com>',
+        from: '"Daily Sellers Report" <bikebazaar01@gmail.com>',
         to: 'saurabh.k@bikebazaar.com ',
         subject: 'Sellers Report',
-        html: 'content',
+        html: '',
         attachments: [
             {
                 filename,
