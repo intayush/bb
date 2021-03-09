@@ -1326,7 +1326,7 @@ const BecomeFranchiseOwner = (props) => {
                             }
                             onBlur={(event) => updateFormdata(event, formData)}
                           />
-                          {formData.pin.error && (
+                          {formData.current_business.error && (
                             <div className="invalid-feedback d-block">
                               {formData.current_business.errorMessage}
                             </div>

@@ -129,7 +129,7 @@ const BulkUpload = () => {
             >
               Instructions for Bulk Upload
             </span>
-            <img src={questionIcon} height={25} />
+            <img alt="" src={questionIcon} height={25} />
           </div>
           {/**react toaster file */}
 
