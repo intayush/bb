@@ -1308,7 +1308,8 @@ const BecomeFranchiseOwner = (props) => {
                         </Grid>
                       )}
 
-                        <Grid item xs={12} sm={12} md={5} lg={5}>
+                       
+                       {matches?<Grid item xs={12} sm={12} md={5} lg={5}>
                           <label className="fieldname" htmlFor="current_business">
                             <span className={classes.label}>Current Business:*</span>
                           
@@ -1331,7 +1332,30 @@ const BecomeFranchiseOwner = (props) => {
                               {formData.current_business.errorMessage}
                             </div>
                           )}
-                        </Grid>
+                        </Grid>:<Grid item xs={12} sm={12} md={5} lg={5}>
+                          <label className="fieldname" htmlFor="current_business">
+                            <span className={classes.mobileLabel}>Current Business:*</span>
+                          
+                          </label>
+                          <input
+                            type="text"
+                            name="current_business"
+                            id="pin"
+                            className={
+                              formData.current_business.error
+                                ? "invalid"
+                                : formData.current_business.value
+                                ? "valid"
+                                : ""
+                            }
+                            onBlur={(event) => updateFormdata(event, formData)}
+                          />
+                          {formData.current_business.error && (
+                            <div className="invalid-feedback d-block">
+                              {formData.current_business.errorMessage}
+                            </div>
+                          )}
+                        </Grid>} 
                     </Grid>
                   </Grid>
                 </Grid>
