@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React  from "react";
 import "./MobileCarousel.css";
 import mobiledivider from "../../../assets/mobiledivider.png";
 import mobileRightIcon from "../../../assets/mobileRightIcon.png";

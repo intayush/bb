@@ -16,7 +16,7 @@ import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { makeStyles } from "@material-ui/core/styles";
 import { CHANGE_CITY } from "../../store/actions/actionTypes";
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Modal from "@material-ui/core/Modal";
 import closeIcon from "../../assets/Close.png";
 import mobiledivider from "../../assets/mobiledivider.png";
@@ -253,7 +253,7 @@ let LocateStore = (props) => {
     }
     let elems = document.querySelectorAll(".dropdown-trigger");
     M.Dropdown.init(elems, {});
-    if (props.history.location.search.trim() != "") {
+    if (props.history.location.search.trim() !== "") {
       setSingleScore(true);
     } else {
       props.getStoreData();

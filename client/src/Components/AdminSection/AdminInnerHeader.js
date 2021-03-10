@@ -12,7 +12,7 @@ import * as actions from "../../store/actions/index";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 import Logout from "../../assets/LogOut.png";
-import { withStyles, useTheme } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 
 
@@ -85,7 +85,7 @@ const AdminInnerHeader = () => {
     if (path === "/admin/upload") setDropdownTitle("Single Two Wheeler Upload");
     if (path === "/admin/list") setDropdownTitle("Edit Two wheeler");
     if (path === "/admin/BulkUpload") setDropdownTitle("Bulk Upload");
-  }, []);
+  }, [location.pathname]);
 
   return (
     <div className={classes.root}>
@@ -100,7 +100,7 @@ const AdminInnerHeader = () => {
             className={classes.title}
           >
             <Link to="/admin/homepage">
-              <img height="25" src={bikeBazaarLogo} />
+              <img alt="" height="25" src={bikeBazaarLogo} />
             </Link>
             <span style={{ fontWeight: "bold", marginTop: "4px" }}>Admin</span>
             <FormControl className={classes.formControl}>
@@ -137,7 +137,7 @@ const AdminInnerHeader = () => {
             </FormControl>
           </Typography>
           <>
-            <img src={Logout} />
+            <img alt="" src={Logout} />
             <span
               style={{
                 cursor: "pointer",

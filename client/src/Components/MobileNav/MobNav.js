@@ -23,7 +23,7 @@ import selectedTyre from "../../assets/SelectedPageTyre.svg";
 import Grid from "@material-ui/core/Grid";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { CHANGE_CITY, CHANGE_CATEGORY } from "../../store/actions/actionTypes";
+import { CHANGE_CITY} from "../../store/actions/actionTypes";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 

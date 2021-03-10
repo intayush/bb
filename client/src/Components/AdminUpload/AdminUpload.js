@@ -282,7 +282,6 @@ const AdminUpload = (props) => {
     },
   });
 
-  const [successSubmit, setSuccessSubmit] = useState(false);
   const [tooltipState, setTooltipState] = useState({
     open: false,
     message: "",
@@ -651,7 +650,7 @@ const AdminUpload = (props) => {
               setLoader(false);
               console.log(err);
             });
-          setSuccessSubmit(true);
+        
         })
         .catch((err) => {
           setLoader(false);
@@ -736,7 +735,7 @@ const AdminUpload = (props) => {
               setLoader(false);
               console.log(err);
             });
-          setSuccessSubmit(true);
+          
         })
         .catch((err) => {
           setLoader(false);

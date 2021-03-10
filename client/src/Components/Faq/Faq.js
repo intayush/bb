@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./Faq.css";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
@@ -61,8 +61,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Faq = (props) => {
-  const [showImage, setshowImage] = useState(false);
-
+ 
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
   const classes = useStyles();

@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-//  import MobileCarousel from "react-material-ui-carousel";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from "../UI/Tooltip/Tooltip";
@@ -79,15 +78,9 @@ const formValidator = (name, value) => {
   }
 };
 
-const VehicleData = (props) => {
+const VehicleData = ({vehicle,data,history}) => {
 
-  let name =
-    props.vehicle._source.model <= MODELS.length - 1 &&
-    props.vehicle._source.brand <= BRANDS.length - 1
-      ? BRANDS[props.vehicle._source.brand] +
-        " " +
-        MODELS[props.vehicle._source.model]
-      : "NA";
+  let name = vehicle._source.model <= MODELS.length - 1 && vehicle._source.brand <= BRANDS.length - 1 ? BRANDS[vehicle._source.brand] +  " " + MODELS[vehicle._source.model] : "NA";
 
   const classes = useStyles();
   const theme = useTheme();
@@ -107,7 +100,7 @@ const VehicleData = (props) => {
 
     return (
       <>
-        {props.data.sold == "true" ? (
+        {data.sold === "true" ? (
           <div className="watermarked watermarkedCarousel">
             <ImageGallery
               thumbnailPosition="left"
@@ -126,7 +119,7 @@ const VehicleData = (props) => {
     );
   };
 
-  const [sliderImages, setSliderImages] = useState(props.data.images);
+  const [sliderImages, setSliderImages] = useState(data.images);
 
   const [formData, setFormData] = useState({
     name: {
@@ -161,8 +154,6 @@ const VehicleData = (props) => {
     },
   });
 
-  const [successSubmit, setSuccessSubmit] = useState(false);
-
   const [tooltipState, setTooltipState] = useState({
     open: false,
     message: "",
@@ -191,13 +182,12 @@ const VehicleData = (props) => {
   let discountAmt = 0;
 
 
-  if (props.data.discountPercent) {
+  if (data.discountPercent) {
     discountAmt = Math.ceil(
-      (props.data.discountPercent * props.data.price) / 100
+      (data.discountPercent * data.price) / 100
     );
     discount = (
       <>
-        {/* <span style={{ color: 'black' }}>{props.data.discountPercent}% Off</span> */}
         <span className="save">
           Save <strong>` </strong>
           {discountAmt}
@@ -210,14 +200,15 @@ const VehicleData = (props) => {
   // for the mobile discount
   let mobilediscount = null;
   let mobilediscountAmt = 0;
-  if (props.data.discountPercent) {
+
+  if (data.discountPercent) {
     mobilediscountAmt = Math.ceil(
-      (props.data.discountPercent * props.data.price) / 100
+      (data.discountPercent * data.price) / 100
     );
     mobilediscount = (
       <>
         <span className="mobilesave">
-        <span style={{color:'white'}}>Save {props.data.discountPercent}% Off</span>
+        <span style={{color:'white'}}>Save {data.discountPercent}% Off</span>
          
         </span>
       </>
@@ -228,7 +219,7 @@ const VehicleData = (props) => {
   const updateFormdata = (event, formData) => {
     let targetName = event.target.name;
     let targetValue =
-      targetName == "emi" ? event.target.checked : event.target.value;
+      targetName === "emi" ? event.target.checked : event.target.value;
     let errorMessage = "";
     let error = false;
     if (targetName !== "emi") {
@@ -279,7 +270,7 @@ const VehicleData = (props) => {
         .post("/apis/leadDetail/insertBuyRequest", formData)
         .then((response) => {
           //  sending SMS
-          props.history.push(`locate-store?store-id=${props.data.storeId}`, {
+          history.push(`locate-store?store-id=${data.storeId}`, {
             message:
               "Thank you for reaching out to us. The location of the store is provided below:",
           });
@@ -300,22 +291,16 @@ const VehicleData = (props) => {
     let vehicleId = {
       ...formData,
       vehicleid: {
-        value: props.data.id,
+        value: data.id,
         error: false,
         errorMessage: "",
       },
     };
     setFormData(vehicleId);
-    setSliderImages(props.data.images);
-  }, [props.data.images]);
+    setSliderImages(data.images);
+  }, [data.images]);
 
-  const Item = (props) => {
-    return (
-      <div  onClick={() => setOpenImgPopup(true)}>
-        <img src={vehicleImagePath + props.item} width="100%" height="230" alt="" />
-      </div>
-    );
-  };
+ 
 
   return (
     <Grid container component="div" direction="row">
@@ -380,7 +365,7 @@ const VehicleData = (props) => {
       {matches && (
         <Grid item xs={12} md={12} sm={12} lg={6} className="vehicleGalSec">
           <div className="vehicleGal" style={{ minHeight: "610px" }}>
-            {props.data.sold ==="true" ? (
+            {data.sold ==="true" ? (
               <Carousel
                 dynamicHeight={true}
                 showThumbs={true}
@@ -440,30 +425,16 @@ const VehicleData = (props) => {
           {matches ? (
             <></>
           ) : (
-            // <MobileCarousel
-            //   timeout={{
-            //     appear: 0,
-            //     enter: 0,
-            //     exit: 0,
-            //   }}
-            //   indicators={false}
-            //   autoPlay={false}
-            //   animation={"slide"}
-            //   navButtonsAlwaysVisible={true}
-            // >
-            //   {props.vehicle._source.images.map((item, i) => (
-            //     <Item key={i} item={item} />
-            //   ))} 
-            // </MobileCarousel>
-             <CustomCarousel imagePopUp={()=>setOpenImgPopup(true)} carouselImages={props.vehicle._source.images}/>
+       
+             <CustomCarousel imagePopUp={()=>setOpenImgPopup(true)} carouselImages={vehicle._source.images}/>
           )}
           {matches ? (
             <div className="PriceSec">
               <p className="price">
-                <strong>`</strong> {props.data.price - discountAmt}
+                <strong>`</strong> {data.price - discountAmt}
                 {discount && (
                   <span className="del">
-                    <strong> </strong> {props.data.price}
+                    <strong> </strong> {data.price}
                   </span>
                 )}
               </p>
@@ -483,10 +454,10 @@ const VehicleData = (props) => {
               
               <div className="mobilePriceSec">
               <p className="price">
-                <strong>`</strong> {props.data.price - discountAmt}
+                <strong>`</strong> {data.price - discountAmt}
                 {discount && (
                   <span className="del">
-                    <strong>` </strong> {props.data.price}
+                    <strong>` </strong> {data.price}
                   </span>
                 )}
               </p>
@@ -503,16 +474,16 @@ const VehicleData = (props) => {
                 <div style={{width:"45%"}}>
                  
                   <ul>
-                    <li className="year"><img src={calenderIcon} alt="calenderIcon"/><span  className="cardText">{props.data.myear}</span></li>
-                    <li style={{width:'100px',marginTop:'10px'}} className="cc"><img src={engineIcon} alt="engineIcon"/><span  className="cardText">{props.data.cc}</span> CC</li>
+                    <li className="year"><img src={calenderIcon} alt="calenderIcon"/><span  className="cardText">{data.myear}</span></li>
+                    <li style={{width:'100px',marginTop:'10px'}} className="cc"><img src={engineIcon} alt="engineIcon"/><span  className="cardText">{data.cc}</span> CC</li>
                   </ul>
                 </div>
 
                 <div style={{width:"45%"}}>
                  
                   <ul >
-                    <li style={{width:'100px'}} className="km"><img src={kilometerIcon} alt="kilometerIcon"/><span className="cardText">{props.data.kmdriven}<span >KMs</span></span> </li>
-                    <li style={{width:'100px',marginTop:'10px'}} className="owner"><img src={personIcon} alt="ownerIcon"/><span className="cardText">{props.data.owner}</span></li>
+                    <li style={{width:'100px'}} className="km"><img src={kilometerIcon} alt="kilometerIcon"/><span className="cardText">{data.kmdriven}<span >KMs</span></span> </li>
+                    <li style={{width:'100px',marginTop:'10px'}} className="owner"><img src={personIcon} alt="ownerIcon"/><span className="cardText">{data.owner}</span></li>
                   </ul>
                 </div>
 
@@ -522,7 +493,7 @@ const VehicleData = (props) => {
             </div>
             <hr className="horizontalLines"/>
               <div style={{marginLeft:'5%',display:'flex',flexDirection:'row'}}>
-                  <img height="18" src={locationIcon} alt="locationIcon" /><span className="cardText">{props.data.city}</span>
+                  <img height="18" src={locationIcon} alt="locationIcon" /><span className="cardText">{data.city}</span>
               </div>
              
             <hr className="horizontalLines"/>
@@ -531,12 +502,12 @@ const VehicleData = (props) => {
           {matches ? (
             <div className="ProductDetail">
               <ul className="detailPoints">
-                <li className="year">{props.data.myear}</li>
-                <li className="km">{props.data.kmdriven} KMs</li>
-                <li className="cc">{props.data.cc} CC</li>
-                <li className="owner">{props.data.owner}</li>
+                <li className="year">{data.myear}</li>
+                <li className="km">{data.kmdriven} KMs</li>
+                <li className="cc">{data.cc} CC</li>
+                <li className="owner">{data.owner}</li>
                 <li className="location">
-                  {props.data.loc + ", " + props.data.city}
+                  {data.loc + ", " + data.city}
                 </li>
               </ul>
               <br className="clr" />
@@ -568,26 +539,19 @@ const VehicleData = (props) => {
                     <input
                       type="text"
                       autoComplete="off"
-                      className="name"
                       name="name"
                       id=""
                       placeholder="Type Your Name"
                       onBlur={(event) => updateFormdata(event, formData)}
                       required
-                      className={
-                        formData.name.error
-                          ? "invalid"
-                          : formData.name.value
-                          ? "valid"
-                          : ""
-                      }
+                      className={formData.name.error ? "invalid" : formData.name.value ? "valid" : ""}
                     />
                   ) : (
                     <input
                       style={{ height: "30px" }}
                       type="text"
                       autoComplete="off"
-                      className="name"
+                  
                       name="name"
                       id=""
                       placeholder="Type Your Name"
@@ -631,7 +595,7 @@ const VehicleData = (props) => {
                     <input
                       type="text"
                       autoComplete="off"
-                      className="phone"
+                      
                       name="phone"
                       id=""
                       placeholder="Type Your Contact Number"
@@ -650,7 +614,7 @@ const VehicleData = (props) => {
                       style={{ height: "30px" }}
                       type="text"
                       autoComplete="off"
-                      className="phone"
+                      
                       name="phone"
                       id=""
                       placeholder="Type Your Contact Number"
@@ -693,7 +657,7 @@ const VehicleData = (props) => {
                   {matches ? (
                     <input
                       type="text"
-                      className="email"
+                      
                       autoComplete="off"
                       name="email"
                       id=""
@@ -712,7 +676,7 @@ const VehicleData = (props) => {
                     <input
                       style={{ height: "30px" }}
                       type="text"
-                      className="email"
+                     
                       autoComplete="off"
                       name="email"
                       id=""

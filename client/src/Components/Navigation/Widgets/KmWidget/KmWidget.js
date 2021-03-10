@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import Slider from "react-rangeslider";
 import { connect } from "react-redux";
 import * as actions from "../../../../store/actions/index";
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import "./KmWidget.css";
 
 class KmWidget extends Component {

@@ -3,7 +3,7 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { connect, useDispatch } from "react-redux";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import { CHANGE_CATEGORY } from "../../../../store/actions/actionTypes";
 import * as actions from "../../../../store/actions/index";
 import FormControl from '@material-ui/core/FormControl';
@@ -17,11 +17,6 @@ const BBRadio = withStyles({
   checked: {},
 })((props) => <Radio {...props} />);
 
-const useStyle = makeStyles({
-  countColor: {
-    color: "#ff0000",
-  },
-});
 
 const CategoryWidget = (props) => {
   const dispatch = useDispatch();

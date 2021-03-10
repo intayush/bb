@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 import "./watermark.css";
@@ -77,7 +77,7 @@ const Card = (props) => {
         </div>
       </Link>:
         <div className="Product">
-          {matches? props.sold == "true" ? (
+          {matches? props.sold === "true" ? (
             <div className="Product-image-container watermarked watermarkedCard">
               <img src={vehicleImagePath + props.image} height="230" alt="" />
             </div>

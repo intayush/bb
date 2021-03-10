@@ -11,7 +11,6 @@ import instagramIcon from "../../assets/instagram-icon.svg";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import {Link} from "react-router-dom";
-import {useDispatch} from "react-redux";
 import "./404Page.css";
 
 
@@ -62,7 +61,7 @@ const Footer = ({props}) => {
           <Grid container>
             <Grid item md={4}>
               <div className="first_col">
-                <img src={FooterLogo} height="25" alt="FooterLogo" />
+                <img  src={FooterLogo} height="25" alt="FooterLogo" />
                 <p style={{ marginTop: "5%" }} className={classes.text}>
                   BikeBazaar aims to provide a hassle-free experience to
                   <br /> anyone looking to buy/sell a pre-owned 2 wheeler with
@@ -154,13 +153,13 @@ const Footer = ({props}) => {
                     marginTop: "8%",
                   }}
                 >
-                  <img
+                  <img alt=""
                     style={{ marginLeft: "1%" }}
                     className="icon-img"
                     src={callIcon}
                     width="25"
                     height="30"
-                    alt=""
+                 
                   />
                   <span style={{ marginLeft: "2%" }}>8956853498</span>
                 </div>
@@ -174,7 +173,7 @@ const Footer = ({props}) => {
                     justifyContent: "space-between",
                   }}
                 >
-                  <img
+                  <img alt=""
                     style={{
                       marginLeft: "1%",
                     }}
@@ -182,7 +181,7 @@ const Footer = ({props}) => {
                     src={messageIcon}
                     height="20"
                     width="25"
-                    alt=""
+                   
                   />
                   <span style={{ marginLeft: "8%" }}>
                     connect@bikebazaar.com
@@ -210,19 +209,19 @@ const Footer = ({props}) => {
                     }}
                   >
                    <a href="https://www.facebook.com/BikeBazaaar"> 
-                    <img src={faceBookIcon} /></a>
+                    <img alt="" src={faceBookIcon} /></a>
                     <a href="https://www.instagram.com/bikebazaaar/" >
-                    <img
+                    <img alt=""
                       style={{ marginLeft: "2%", cursor: "pointer" }}
                       src={instagramIcon}
                     /></a>
                     <a href="https://www.linkedin.com/company/bikebazaar">
-                    <img
+                    <img alt=""
                       style={{ marginLeft: "2%", cursor: "pointer" }}
                       src={linkedinIcon}
                     /></a>
                     <a href="https://twitter.com/BikeBazaaar">
-                    <img
+                    <img alt=""
                       style={{ marginLeft: "2%", cursor: "pointer" }}
                       src={twitterIcon}
                     /></a>
@@ -234,7 +233,7 @@ const Footer = ({props}) => {
         </div>
       ) : (
         <div style={{width:"100%"}}>
-          <img src={FooterLogo} height="25" alt="" />
+          <img  src={FooterLogo} height="25" alt="" />
           <p style={{ fontSize: "10px", color: "white" , lineHeight: '1.3'}}>
             BikeBazaar aims to provide a hassle-free experience to anyone
             looking to buy/sell a pre-owned 2 wheeler with the help of
@@ -288,13 +287,13 @@ const Footer = ({props}) => {
               marginTop: "1%",
             }}
           >
-            <img
+            <img alt=""
               style={{ marginLeft: "1%" }}
-              className="icon-img"
+              className="icon-img "
               src={callIcon}
               width="18"
               height="14"
-              alt=""
+           
             />
             <span style={{ marginLeft: "1%",fontSize:'13px' }}>8956853498</span>
           </div>
@@ -306,14 +305,14 @@ const Footer = ({props}) => {
               marginTop: "2%",
             }}
           >
-            <img
+            <img alt=""
               style={{
                 marginLeft: "1%",
               }}
               src={messageIcon}
               height="14"
               width="18"
-              alt=""
+           
             />
             <span style={{ marginLeft: "4%",fontSize:'13px' }}>connect@bikebazaar.com</span>
           </div>
@@ -330,19 +329,19 @@ const Footer = ({props}) => {
             <p style={{ color: "white" ,fontWeight:'600'}}>Connect with us</p>
             <div className="mobile-view-icons">
                <a href="https://www.facebook.com/BikeBazaaar">
-              <img src={faceBookIcon} style={{height:'13px',width:'16px'}} /></a>
+              <img alt="" src={faceBookIcon} style={{height:'13px',width:'16px'}} /></a>
               <a href="https://www.instagram.com/bikebazaaar/" >
-              <img
+              <img alt=""
                 style={{ marginLeft: "8%", cursor: "pointer",height:'13px',width:'16px' }}
                 src={instagramIcon}
               /></a>
                <a href="https://www.linkedin.com/company/bikebazaar">
-              <img
+              <img alt=""
                 style={{ marginLeft: "10%", cursor: "pointer",height:'13px',width:'16px' }}
                 src={linkedinIcon}
               /></a>
               <a href="https://twitter.com/BikeBazaaar" >
-              <img
+              <img alt=""
                  style={{ marginLeft: "10%", cursor: "pointer",height:'13px',width:'16px' }}
                 src={twitterIcon}
               /></a>

@@ -8,7 +8,6 @@ import Footer from "../Footer/Footer";
 import VehicleData from "../VehicleData/VehicleData";
 import VehicleMetaData from "../VehicleMetaData/VehicleMetaData";
 import VehicleAdvantage from "../VehicleAdvantage/VehicleAdvantage";
-import SimilarVehicles from "../SimilarVehicles/SimilarVehicles";
 import Spinner from "../UI/Spinner/Spinner";
 import Banner from "../Banner/Banner";
 import M from "materialize-css";

@@ -59,7 +59,6 @@ const useStyles = makeStyles((theme) => ({
     fontStretch: "normal",
    lineHeight: "normal",
    letterSpacing: "normal",
-   textAlign: "center"
   },
   mobilePaper:{
     marginTop: theme.spacing(3),
@@ -88,7 +87,7 @@ const SellingProcess = (props) => {
          
         }
       
-      {matches?<img alt="" src={headingLines} width="57" height="4" />:<img src={mobiledivider} height="4"/>}  
+      {matches?<img alt="" src={headingLines} width="57" height="4" />:<img alt="" src={mobiledivider} height="4"/>}  
         <Grid
           container
           component="div"

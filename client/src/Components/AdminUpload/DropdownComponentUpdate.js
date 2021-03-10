@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React  from "react";
 import Grid from "@material-ui/core/Grid";
 
 import Select from "react-select";
@@ -6,7 +6,7 @@ import Select from "react-select";
 const DropdownComponentUpdate = (props) => {
   function searchOptionsObject(nameKey, myArray) {
     for (var i = 0; i < myArray.length; i++) {
-      if (myArray[i].value == nameKey) {
+      if (myArray[i].value === nameKey) {
         return myArray[i];
       }
     }

@@ -5,7 +5,6 @@ import headingLines from '../../../assets/heading-lines.svg';
 import jkbIcon from '../../../assets/stores/bb_ jkb_motors.jpg';
 import mvcIcon from '../../../assets/stores/bb_mvc_wheels.jpg';
 import stsIcon from '../../../assets/stores/bb_sts_thrissur.jpg';
-import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import mobiledivider from "../../../assets/mobiledivider.png";
 import { useTheme } from "@material-ui/core/styles";
@@ -14,34 +13,12 @@ const StoreSection = () => {
     const theme=useTheme();
     const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
-    const responsive = {
-        superLargeDesktop: {
-          // the naming can be any, depends on you.
-          breakpoint: { max: 4000, min: 3000 },
-          items: 5,
-        },
-        desktop: {
-          breakpoint: { max: 3000, min: 1024 },
-          items: 3,
-        },
-        tablet: {
-          breakpoint: { max: 1024, min: 464 },
-          items: 2,
-        },
-        mobile: {
-          breakpoint: { max: 464, min: 0 },
-          items: 2,
-        },
-    };
-
-
     return (
         <div id="StoreSection">
             {matches?<h2>BikeBazaar Stores</h2>:<div style={{justifyContent:'center',textAlign:'center',marginTop:'5%'}}><span style={{fontSize:'13px',fontWeight:'bold'}}>BikeBazaar Stores</span></div>}
             {matches?<><div className="flex-center"><img src={headingLines} alt=""/></div><br /></>:<div style={{alignItems:'center',textAlign:'center'}}><img src={mobiledivider} alt="mobileDivider"/></div>}
             <Grid container component="div" direction="row">
                 <Grid item xs={12} sm={12} md={12} lg={12}>
-                {/* <Carousel responsive={responsive} className="flex-center"> */}
                 <Grid container component="div" direction="row" style={{display: 'flex', justifyContent:'space-around'}}>
                     <Grid item xs={12} sm={12} md={4} lg={4} style={{paddingBottom: '13px'}} >
                     <div className="StoreCard">
@@ -71,19 +48,7 @@ const StoreSection = () => {
                         </div>
                     </div>
                     </Grid>
-                    {/* <Grid item xs={12} sm={12} md={6} lg={5} style={{paddingBottom: '13px'}} >
-                    <div className="StoreCard">
-                        <img src={mvcIcon} alt="" />
-                        <div className="detail">
-                            <h3>BikeBazaar – Undelcared, Kolkata</h3>
-                            <p className="address">
-                                unknown
-                            </p>
-                            <br className="clr"/>
-                            <p className="location">Kolkata, West Bengal</p>
-                        </div>
-                    </div>
-                    </Grid> */}
+              
                     <Grid item xs={12} sm={12} md={4} lg={4}>
                     <div className="StoreCard">
                         <img src={stsIcon} alt="" />

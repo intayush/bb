@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./Contact.css";
-// import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
@@ -218,7 +217,7 @@ const Contact = props => {
     let errorMessage = "";
     let error = false;
     if (isEmpty(targetValue)) {
-      if(targetName != 'query' && targetName != 'email'){
+      if(targetName !== 'query' && targetName !== 'email'){
         errorMessage = "This field is required";
         error = true;
       }

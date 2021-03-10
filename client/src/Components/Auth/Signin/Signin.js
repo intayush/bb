@@ -98,8 +98,8 @@ const formValidator = (name, value) => {
   }
 };
 
-const Signin = props => {
-  const [successSubmit, setSuccessSubmit] = useState(false);
+const Signin = ({auth,history,errors,loginUser}) => {
+ 
   const [tooltipState, setTooltipState] = useState({
     open: false,
     message: "",
@@ -125,20 +125,20 @@ const Signin = props => {
 
 
   useEffect(() => {
-    if (props.auth.isAuthenticated == true) {
-      props.history.push("/"); // push user to dashboard when they login
+    if (auth.isAuthenticated === true) {
+      history.push("/"); // push user to dashboard when they login
     }
-  }, [props.auth.isAuthenticated]);
+  }, [auth.isAuthenticated,history]);
 
   useEffect(() => {
-    if (Object.entries(props.errors).length) {
+    if (Object.entries(errors).length) {
       setTooltipState({
         open: true,
-        message: props.errors.emailnotfound,
+        message: errors.emailnotfound,
         variant: "error"
       });
     }
-  }, [props.errors]);
+  }, [errors]);
 
 
   const classes = useStyles();
@@ -205,7 +205,7 @@ const Signin = props => {
       formDataCopy[targetName].error = error;
     });
     if (!errorFlag) {
-      props.loginUser(formData); // push user to dashboard when they login
+      loginUser(formData); // push user to dashboard when they login
     } else {
       setFormData({
         ...formData,

@@ -30,8 +30,9 @@ const reducer = (state = initialState, action) => {
       return blogs(state, action);
     case actionTypes.BLOG_BY_ID:
         return blog(state, action);
+    default:
+      return state;
   }
-  return state;
 };
 
 export default reducer;

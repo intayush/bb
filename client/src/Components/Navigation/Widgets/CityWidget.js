@@ -9,7 +9,7 @@ import TextField from '@material-ui/core/TextField';
 import { Autocomplete } from '@material-ui/lab';
 import useDebounce from '../../MainMenu/use-debounce';
 import { CHANGE_CITY, CHANGE_CATEGORY } from "../../../store/actions/actionTypes";
-import { createStyles, Theme, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { createStyles, ThemeProvider } from '@material-ui/core/styles';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import searchIcon from "../../../assets/search-icon.svg";
@@ -41,7 +41,7 @@ const useStyles = makeStyles((Theme) =>
 
 
 
-const CityWidget = props => {
+const CityWidget = ({default_city,filter,cityFilter,handleChangeCategory,globalState}) => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
   const dispatch = useDispatch();
@@ -49,15 +49,16 @@ const CityWidget = props => {
   const { selectedCity, category, citynames } = useSelector(state => state.vehicleDetails);
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearchTerm = useDebounce(searchTerm, 300);
-  const [selectCityMobile, changeMobileCity] = useState(props.default_city)
+  const [selectCityMobile, changeMobileCity] = useState(default_city)
 
+
+  const filterData = {
+    ...citynames,
+    city: selectedCity
+  }
 
   useEffect(() => {
-    const filterData = {
-      ...citynames,
-      city: selectedCity
-    }
-    
+  
     if(debouncedSearchTerm.length > 2){
       setTimeout(() => {
         dispatch(actions.getCityNames(filterData, debouncedSearchTerm));
@@ -67,19 +68,19 @@ const CityWidget = props => {
 
   const searchCity = event => {
     event.preventDefault();
-    let filterData = props.filter;
+    let filterData = filter;
     dispatch({ type: CHANGE_CITY, payload: searchTerm.charAt(0).toUpperCase() + searchTerm.slice(1) });
     dispatch({ type: CHANGE_CATEGORY, payload: category });
     filterData.city = `${searchTerm}*`;
-    props.cityFilter(category, filterData);
+    cityFilter(category, filterData);
   };
 
   const searchClick = clickValue => {
-    let filterData = props.filter;
+    let filterData = filter;
     dispatch({ type: CHANGE_CITY, payload: clickValue.target.value });
     dispatch({ type: CHANGE_CATEGORY, payload: category });
     filterData.city = `${clickValue.target.value}*`;
-    props.cityFilter(category, filterData);
+    cityFilter(category, filterData);
   };
 
   const updateState = value => {
@@ -88,7 +89,7 @@ const CityWidget = props => {
 
   const cityChangeHandler=(event)=>{
     changeMobileCity(event.target.value);
-    props.handleChangeCategory({...props.globalState, city : event.target.value});
+    handleChangeCategory({...globalState, city : event.target.value});
   }
 
   const citiesArr = ['Aluva', 'Kolkata', 'Rajahmundry', 'Thrissur', 'Bangalore', 'Chennai', 'New Delhi', 'Gurgaon', 'Hyderabad', 'Jaipur', 'Mumbai', 'Nagpur', 'Pune' ];
@@ -116,24 +117,20 @@ const CityWidget = props => {
               options={searchTerm ? citiesArr: []}
               renderInput={(params) => (
                 <div style={{display:'flex',flexDirection:'row'}}><TextField
-                placeholder={matches?"":"Search your City"}
-                className={matches?classes.margin:classes.mobileWidth}
-                onChange={updateState(params.inputProps.value)} 
-                {...params} 
-                // label="Search City"
-                variant="outlined"
-                // id="mui-theme-provider-standard-input"
-                id="mui-theme-provider-outlined-input"
+                      placeholder={matches?"":"Search your City"}
+                      className={matches?classes.margin:classes.mobileWidth}
+                      onChange={updateState(params.inputProps.value)} 
+                      {...params} 
+                      variant="outlined"
+                      id="mui-theme-provider-outlined-input"
                 /> 
-                {matches?<></>:<div style={{backgroundColor:'red',padding:'2%',height:'5%'}} ><img  src={searchIcon} height="20" width="30" alt=""/></div>}
+                  {matches?<></>:<div style={{backgroundColor:'red',padding:'2%',height:'5%'}} ><img  src={searchIcon} height="20" width="30" alt=""/></div>}
                 </div>
                 
                 )}
               />
           </ThemeProvider>
-          {/* <button type="button" onClick={searchCity} style={{paddingLeft: '12'}}>
-            <i className="material-icons">search</i>
-          </button> */}
+     
         </form>
 
         {matches 

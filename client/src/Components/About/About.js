@@ -5,7 +5,6 @@ import Banner from "../Banner/Banner";
 import SellingProcess from "../SellingProcess/SellingProcess";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import { makeStyles } from "@material-ui/core/styles";
 import blackHeadingLines from "../../assets/black-heading-lines.svg";
 import missionIcon from "../../assets/Mission-Icon.svg";
 import VehicleAdvantage from "../../Components/VehicleAdvantage/VehicleAdvantage";
@@ -21,11 +20,10 @@ const About = (props) => {
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
   const classes = useStyles();
   const paper2 = matches ? classes.paper2 : classes.paper2Mobile;
-  const ml50 = matches ? "" : classes.ml50;
   const ml70 = matches ? "" : classes.ml70;
   const centerClass = matches ? "" : classes.center;
   const fs17 = matches ? "" : classes.fs17;
-  const flexEndClass = matches ? classes.flexEnd : "";
+
 
   useEffect(() => {
     try {

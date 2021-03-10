@@ -3,13 +3,12 @@ import "./Signup.css";
 // import Header from "../../Header/Header";
 import MainMenu from "../../MainMenu/MainMenu";
 import Footer from "../../Footer/Footer";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import M from "materialize-css";
 import isEmpty from "validator/lib/isEmpty";
-import isAlpha from "validator/lib/isAlpha";
 import isEmail from "validator/lib/isEmail";
 import isNumeric from "validator/lib/isNumeric";
 import isAlphaNumeric from "validator/lib/isAlphanumeric";
@@ -102,7 +101,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Signup = props => {
-  const [successSubmit, setSuccessSubmit] = useState(false);
   const [tooltipState, setTooltipState] = useState({
     open: false,
     message: "",
@@ -201,7 +199,7 @@ const Signup = props => {
       let targetName = data[0];
       let errorMessage = "";
       let error = false;
-      if (targetName != "interest") {
+      if (targetName !== "interest") {
         if (isEmpty(targetValue)) {
           errorMessage = "This field is required";
           error = true;
@@ -222,7 +220,7 @@ const Signup = props => {
       axios
         .post("/apis/userDetail/insertUserDetails", formData)
         .then(response => {
-          if (response.data.type == "success") {
+          if (response.data.type === "success") {
             setTimeout(() => {
               props.history.push(`/signin`);
             }, 2000);
@@ -234,7 +232,6 @@ const Signup = props => {
             variant: "success"
           });
 
-          setSuccessSubmit(true);
         })
         .catch(err => {
           // setTooltipState({

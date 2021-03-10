@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import mobileDownArrow from "../../assets/down-arrow-sort.svg";
 import mobileUpArrow from "../../assets/up-arrow-sort.svg";
 import Grid from "@material-ui/core/Grid";
 import "./Navigation.css";
@@ -76,7 +75,7 @@ const Navigation = (props) => {
   const clearAllFilters = () => {
     let check = document.getElementsByTagName("input");
     for (var i = 0; i < check.length; i++) {
-      if (check[i].type == "checkbox") {
+      if (check[i].type === "checkbox") {
         check[i].checked = false;
       }
     }

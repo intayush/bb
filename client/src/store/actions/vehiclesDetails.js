@@ -3,7 +3,7 @@ import * as actionTypes from './actionTypes';
 
 // this code is important for theh filter data
 export const vehicleList = (vehicleList, filterData, category) => {
-    if (vehicleList.length == 0) {
+    if (vehicleList.length === 0) {
         vehicleList = ['NA'];
     }
     return {

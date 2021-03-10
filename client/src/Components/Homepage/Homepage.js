@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useCallback} from "react";
 import { useDispatch } from "react-redux";
 import "./Homepage.css";
 import MobileCarousel from "./MobileCarousel/MobileCarousel";
@@ -33,19 +33,16 @@ const Homepage = (props) => {
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
   const changeSliders = matches ? "sliders" : "mobile-sliders";
   const changeSlides = matches ? "slide" : "mobile-slide";
-  const changeCaptions = matches ? "captions" : "mobile-captions";
   const changeHeadings = matches ? "headings" : "mobile-headings";
   const changeLogo = matches ? "tick-icon" : "mobile-tick-icon";
   const changeImage = matches ? "bannerimage" : "mobile-bannerimage";
   const changeBanner = matches ? "bannercolor" : "mobile-bannercolor";
   const dispatch = useDispatch();
-  const [searchTerm, setSearchTerm] = useState("");
   const [bikeHover, setBikeHover] = useState(false);
   const [scooterHover, setScooterHover] = useState(false);
   const [highEndBikeHover, setHighEndBikeHover] = useState(false);
-  const updateState = (event) => {
-    setSearchTerm(event.target.value);
-  };
+
+
   const [sliderState, changeSlider] = useState(null);
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -60,7 +57,7 @@ const Homepage = (props) => {
     props.history.push("/category/" + category);
   };
 
-  const initCar = (direction) => {
+  const initCar = useCallback((direction) => {
     if (sliderState == null) {
       var instance;
       const testimonialMessages = [
@@ -102,15 +99,13 @@ const Homepage = (props) => {
         sliderState[0].next();
       }
     }
-  };
+  },[sliderState]);
 
   useEffect(() => {
     let topSlider = document.querySelectorAll(".slider");
     M.Slider.init(topSlider, {});
     initCar();
-
-    //dispatch({ type: HOMEPAGE_LOAD });
-  }, []);
+  }, [initCar]);
 
   return (
     <div className="App">

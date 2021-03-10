@@ -39,13 +39,13 @@ const AdminHeader = () => {
       <AppBar className={classes.appBar} position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            <img height="25" src={bikeBazaarLogo} />
+            <img alt="" height="25" src={bikeBazaarLogo} />
             <span style={{ fontWeight: "bold" }}>Admin</span>
           </Typography>
           {
             location.pathname !== "/admin/signin" &&
             <>
-            <img src={Logout} />
+            <img alt="" src={Logout} />
             <span
               style={{
                 cursor: "pointer",

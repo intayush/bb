@@ -11,7 +11,6 @@ import instagramIcon from "../../assets/instagram-icon.svg";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import {Link} from "react-router-dom";
-import {useDispatch} from "react-redux";
 import "./Footer.css";
 
 
@@ -210,19 +209,22 @@ const Footer = ({props}) => {
                     }}
                   >
                    <a href="https://www.facebook.com/BikeBazaaar"> 
-                    <img src={faceBookIcon} /></a>
+                    <img alt="" src={faceBookIcon} /></a>
                     <a href="https://www.instagram.com/bikebazaaar/" >
                     <img
+                     alt=""
                       style={{ marginLeft: "2%", cursor: "pointer" }}
                       src={instagramIcon}
                     /></a>
                     <a href="https://www.linkedin.com/company/bikebazaar">
                     <img
+                      alt=""
                       style={{ marginLeft: "2%", cursor: "pointer" }}
                       src={linkedinIcon}
                     /></a>
                     <a href="https://twitter.com/BikeBazaaar">
                     <img
+                      alt=""
                       style={{ marginLeft: "2%", cursor: "pointer" }}
                       src={twitterIcon}
                     /></a>
@@ -330,19 +332,22 @@ const Footer = ({props}) => {
             <p style={{ color: "white" ,fontWeight:'600'}}>Connect with us</p>
             <div className="mobile-view-icons">
                <a href="https://www.facebook.com/BikeBazaaar">
-              <img src={faceBookIcon} style={{height:'13px',width:'16px'}} /></a>
+              <img alt="" src={faceBookIcon} style={{height:'13px',width:'16px'}} /></a>
               <a href="https://www.instagram.com/bikebazaaar/" >
               <img
+                alt=""
                 style={{ marginLeft: "8%", cursor: "pointer",height:'13px',width:'16px' }}
                 src={instagramIcon}
               /></a>
                <a href="https://www.linkedin.com/company/bikebazaar">
               <img
+               alt=""
                 style={{ marginLeft: "10%", cursor: "pointer",height:'13px',width:'16px' }}
                 src={linkedinIcon}
               /></a>
               <a href="https://twitter.com/BikeBazaaar" >
               <img
+                  alt=""
                  style={{ marginLeft: "10%", cursor: "pointer",height:'13px',width:'16px' }}
                 src={twitterIcon}
               /></a>

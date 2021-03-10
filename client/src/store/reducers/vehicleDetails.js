@@ -22,7 +22,6 @@ const initialState = {
     brand: [],
     kmdriven: 100000,
     searchTerm: "*",
-   
   },
   emptyvehicle:false
 };

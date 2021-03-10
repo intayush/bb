@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -11,14 +11,19 @@ const Pagination = (props) => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
-  useEffect(() => {
-    gotoPage(1);
-  }, [category]);
 
-  const gotoPage = (page) => {
+  const gotoPage = useCallback((page) => {
+
+    const totalPages=props.totalRecords/props.pageLimit;
+
     let currentPage = Math.max(0, Math.min(page, totalPages));
     setcurrentPage(currentPage);
-  };
+  },[props.totalRecords,props.pageLimit]);
+
+  useEffect(() => {
+    gotoPage(1);
+  }, [category,gotoPage]);
+
 
   const LEFT_PAGE = "LEFT";
   const RIGHT_PAGE = "RIGHT";
@@ -81,6 +86,7 @@ const Pagination = (props) => {
   };
 
   let { onPageChanged = (f) => f } = props;
+  
   let paginationData = {
     currentPage,
     totalPages: totalPages,
@@ -121,7 +127,7 @@ const Pagination = (props) => {
       { matches ?  <a href="#!" onClick={handleMoveLeft}>
           <i className="material-icons">chevron_left</i>
         </a> : <a href="#!" onClick={handleMoveLeft}>
-          <img style={{height:"8px",width:"8px"}} src={rightarrow}></img>
+          <img alt="" style={{height:"8px",width:"8px"}} src={rightarrow}></img>
         </a> }
       </li>
       {pages.map((page, index) => {
@@ -150,7 +156,7 @@ const Pagination = (props) => {
           <i className="material-icons">chevron_right</i>
         </a> :
          <a href="#!" onClick={handleMoveRight}>
-        <img style={{height:"8px",width:"8px"}} src={leftarrow}></img>
+        <img alt="" style={{height:"8px",width:"8px"}} src={leftarrow}></img>
       </a> }
       </li>
     </ul>

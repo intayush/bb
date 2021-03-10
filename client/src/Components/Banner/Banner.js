@@ -7,7 +7,7 @@ import {useSelector} from "react-redux";
 
 const Banner = (props) =>  {
 	const theme=useTheme();
-	const {category}=useSelector(state=>state.vehicleDetails);
+	const category=useSelector(state=>state.vehicleDetails.category);
 	const CATEGORY = ["All", "Motorcycle", "Scooter", "High-End Motorcycle"];
 	const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
@@ -17,7 +17,7 @@ const Banner = (props) =>  {
 					<ul>
 							{category?<><li><Link to="/">Home</Link></li>
 						
-						<li className="current"><Link to={CATEGORY[category]}>{CATEGORY[category]}</Link></li></>:
+							<li className="current"><Link to={CATEGORY[category]}>{CATEGORY[category]}</Link></li></>:
 						<><li><Link to="/">Home</Link></li>
 						
 						<li className="current"><Link to={props.path}>{props.navigation}</Link></li></>}

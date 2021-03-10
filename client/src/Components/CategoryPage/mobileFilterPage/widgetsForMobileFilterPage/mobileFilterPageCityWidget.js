@@ -15,7 +15,6 @@ import {
 import { red } from "@material-ui/core/colors";
 import {
   createStyles,
-  Theme,
   ThemeProvider,
   createMuiTheme,
 } from "@material-ui/core/styles";

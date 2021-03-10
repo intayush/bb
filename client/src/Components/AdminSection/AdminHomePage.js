@@ -2,7 +2,7 @@ import React from "react";
 import AdminHeader from "./AdminHeader";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
-import { Container as MaterialUiContainer, Button } from "@material-ui/core/";
+import { Container as MaterialUiContainer } from "@material-ui/core/";
 import { Grid as MaterialUiGrid } from "@material-ui/core/";
 import { useHistory } from "react-router-dom";
 
