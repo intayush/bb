@@ -18,31 +18,35 @@ const BBRadio = withStyles({
 })((props) => <Radio {...props} />);
 
 
-const CategoryWidget = (props) => {
+
+
+
+const CategoryWidget = ({category,filter,cityFilter,vehicles}) => {
+  
   const dispatch = useDispatch();
 
-  let [selectedCategory, setSelectedCategory] = useState(props.category);
+  let [selectedCategory, setSelectedCategory] = useState(category);
 
   const handleChange = (categ) => {
-    let filterData = props.filter;
+    let filterData = filter;
     setSelectedCategory(categ);
     dispatch({ type: CHANGE_CATEGORY, payload: categ });
-    props.cityFilter(categ, filterData);
-  };
+    cityFilter(categ, filterData);
+  }
 
   const val = (value) => {
     if (value[0] === "NA") {
       return 0;
     } else {
-      return Object.keys(props.vehicles).length;
+      return Object.keys(vehicles).length;
     }
   };
 
-  let valued = " ( " + val(props.vehicles) + " ) ";
+  let valued = " ( " + val(vehicles) + " ) ";
 
   useEffect(() => {
-    handleChange(props.category);
-  }, [props.category]);
+    handleChange(category);
+  }, [category]);
 
   return (
     <div >
@@ -85,7 +89,6 @@ const mapStateToProps = (state) => {
     filter: state.vehicleDetails.filter,
     category: state.vehicleDetails.category,
     vehicles: state.vehicleDetails.vehicles,
-    category: state.vehicleDetails.category,
   };
 };
 const mapDispatchToProps = (dispatch) => {

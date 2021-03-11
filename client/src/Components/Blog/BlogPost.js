@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
-// import Header from "../Header/Header";
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import Banner from "../Banner/Banner";
 import M from "materialize-css";
-import axios from "axios";
 import { connect } from "react-redux";
 import './BlogPost.css';
 
@@ -13,7 +11,6 @@ import * as actions from "../../store/actions/index";
 
 const Blog = props => {
   const [blogPostData, setBlogPostData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {

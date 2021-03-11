@@ -574,7 +574,7 @@ const Sell = (props) => {
   };
 
   let stepsToSellSection = matches ? (
-    <Grid item Grid item xs={11} sm={11} md={11} lg={11}>
+    <Grid item  xs={11} sm={11} md={11} lg={11}>
       <Paper className={classes.paper1 + " center-align"}>
         <h3 className={classes.sellHeading}>Steps to Sell Your Two-Wheeler</h3>
         <img alt="" src={blackHeadingLines} width="57" height="4" />
@@ -1099,6 +1099,7 @@ const Sell = (props) => {
                                     src={URL.createObjectURL(file)}
                                     width={200}
                                     height={150}
+                                    alt=""
                                   />
                                   <span title="Remove image">
                                     <DeleteIcon
@@ -1935,7 +1936,6 @@ const Sell = (props) => {
                                             selectFiles(event, formData)
                                           }
                                           multiple
-                                          type="file"
                                           hidden
                                         />
                                       </Button>
@@ -1971,6 +1971,7 @@ const Sell = (props) => {
                                       src={URL.createObjectURL(file)}
                                       width={200}
                                       height={150}
+                                      alt=""
                                     />
                                     <span title="Remove image">
                                       <DeleteIcon

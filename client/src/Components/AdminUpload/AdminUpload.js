@@ -314,6 +314,9 @@ const AdminUpload = (props) => {
           },
         });
         break;
+
+        default:
+          return null;
     }
   };
 

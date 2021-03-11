@@ -392,7 +392,7 @@ const Contact = props => {
 
 
                 <p className={matches?"sub-heading-black":"mobileSub-heading-black "}>Contact:</p>
-                <a target="_blank" href="tel: 8956853498" >
+                <a rel="noopener noreferrer" target="_blank" href="tel: 8956853498" >
 
                  {matches?<div className="mobile">
                     <CallIcon style={{ fontSize: 23, color: grey[900] }} />
@@ -405,14 +405,8 @@ const Contact = props => {
 
                 </a>
 
-                <a target="_blank" href="mailto:connect@bikebazaar.com" >
+                <a rel="noopener noreferrer" target="_blank" href="mailto:connect@bikebazaar.com" >
 
-                  {/* <div className="mail">
-                    <EmailIcon style={{ fontSize: 23, color: grey[900] }} />
-                    &nbsp;&nbsp;&nbsp;
-                    <span style={{color:'black', opacity: '0.5'}}>connect@bikebazaar.com</span>
-                  </div>
-                   */}
                      {matches?<div className="mobile">
                     <EmailIcon style={{ fontSize: 23, color: grey[900] }} />
                     &nbsp;&nbsp;&nbsp;

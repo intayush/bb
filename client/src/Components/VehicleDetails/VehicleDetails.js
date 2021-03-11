@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 import "./VehicleDetails.css";
-import Header from "../Header/Header";
+
+// if header removed the main header structure would go away
+import Header from "../Header/Header"; 
+// 
+
 import MainMenu from "../MainMenu/MainMenu";
 import Footer from "../Footer/Footer";
 import VehicleData from "../VehicleData/VehicleData";

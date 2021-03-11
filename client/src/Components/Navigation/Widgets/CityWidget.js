@@ -136,8 +136,8 @@ const CityWidget = ({default_city,filter,cityFilter,handleChangeCategory,globalS
         {matches 
           ?(<RadioGroup  name="city" onChange={searchClick}>
             <ul className="cat-list">
-                {(citiesArr.map(eachCity => (
-                    <li>
+                {(citiesArr.map((eachCity,index) => (
+                    <li key={index}>
                       <FormControlLabel
                         value={eachCity}
                         control={<BBRadio />}
@@ -151,7 +151,7 @@ const CityWidget = ({default_city,filter,cityFilter,handleChangeCategory,globalS
           )
           :(<RadioGroup  name="city" value={selectCityMobile} onChange={cityChangeHandler}>
               <ul className="cat-list">
-                  {citiesArr.map(eachCity => <li>
+                  {citiesArr.map((eachCity,index) => <li key={index}>
                         <FormControlLabel
                           value={eachCity}
                           control={<BBRadio />}

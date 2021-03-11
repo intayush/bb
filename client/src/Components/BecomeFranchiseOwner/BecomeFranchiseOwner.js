@@ -520,6 +520,7 @@ const BecomeFranchiseOwner = (props) => {
                       src={BikeBazaarStore}
                       width="500px"
                       className={matches ? "" : "imageMobile"}
+                      alt=""
                     />
                   </Grid>
                 ) : (
@@ -677,6 +678,7 @@ const BecomeFranchiseOwner = (props) => {
                         width="30"
                         style={{ marginTop: "25%" }}
                         src={certifiedIcon}
+                        alt=""
                       />
                     </div>
                   </div>
@@ -718,6 +720,7 @@ const BecomeFranchiseOwner = (props) => {
                           height="35"
                           style={{ marginTop: "25%" }}
                           src={strongItInfra}
+                          alt=""
                         />
                       </div>
 
@@ -783,6 +786,7 @@ const BecomeFranchiseOwner = (props) => {
                         width="40"
                         style={{ marginTop: "25%" }}
                         src={callCentre}
+                        alt=""
                       />
                     </div>
                   </div>
@@ -835,6 +839,7 @@ const BecomeFranchiseOwner = (props) => {
                           height="35"
                           style={{ marginTop: "25%" }}
                           src={moreSalesThanEver}
+                          alt=""
                         />
                       </div>
 
@@ -927,6 +932,7 @@ const BecomeFranchiseOwner = (props) => {
                         width="50"
                         style={{ marginTop: "15%" }}
                         src={shakeHand}
+                        alt=""
                       />
                     </div>
                   </div>
@@ -1473,7 +1479,7 @@ const BecomeFranchiseOwner = (props) => {
                         paddingRight:'20%'
                       }}
                     >
-                      <img className="redLine" src={rightRedLine} />
+                      <img className="redLine" src={rightRedLine} alt=""/>
                       <div className="mobileAdvantageIconRight">
                         <img
                           style={{ marginTop: "20%" }}
@@ -1599,6 +1605,7 @@ const BecomeFranchiseOwner = (props) => {
                             height="35"
                             style={{ marginTop: "25%" }}
                             src={strongOnlinePresence}
+                            alt=""
                           />
                         </div>
 

@@ -502,7 +502,7 @@ let LocateStore = (props) => {
               {matches ? (
                 <img src={headingLines} width="57" height="4" alt="" />
               ) : (
-                <img src={mobiledivider} height="4" />
+                <img  alt="" src={mobiledivider} height="4" />
               )}
             </div>
             <Grid

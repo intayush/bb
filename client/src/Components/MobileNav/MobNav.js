@@ -126,7 +126,7 @@ const LocationDropDown = ({ matches, classes }) => {
 
     handleClose();
     if (window.location.pathname === "/") {
-      {
+      
         matches
           ? window.scrollTo({
               top: 500,
@@ -136,7 +136,7 @@ const LocationDropDown = ({ matches, classes }) => {
               top: 150,
               behavior: "smooth",
             });
-      }
+      
     }
   };
 
@@ -355,6 +355,7 @@ const HamburgerDropdown = ({ matches }) => {
           <img className="icon-img" src={selectedTyre} height="25" alt="" />
           <img className="icon-img" src={callIcon} height="25" alt="" />
           <a
+            rel="noopener noreferrer"
             target="_blank"
             href="tel:+8956853498"
             style={{ marginRight: "10px", fontWeight: "700", fontSize: "13px" }}
@@ -366,6 +367,7 @@ const HamburgerDropdown = ({ matches }) => {
           <img className="icon-img" src={selectedTyre} height="25" alt="" />
           <img className="icon-img" src={messageIcon} alt="" />
           <a
+            rel="noopener noreferrer"
             target="_blank"
             href="mailto:connect@bikebazaar.com"
             style={{ marginRight: "10px", fontWeight: "700", fontSize: "13px" }}
@@ -423,6 +425,7 @@ const MobNav = () => {
   const { category, filter, vehicleNames, selectedCity } = useSelector(
     (state) => state.vehicleDetails
   );
+  
   useEffect(() => {
     const filterData = {
       ...filter,
@@ -434,6 +437,8 @@ const MobNav = () => {
       }, 10);
   }, [searchTerm, selectedCity]);
 
+
+  
   const updateState = (value) => {
     setSearchTerm(value);
   };
