@@ -224,9 +224,11 @@ router.post("/insertFranchiseRequest", (req, res) => {
 
 router.post("/insertSellrequest",(req,res) => {
   let formData = req.body;
+
   async function upload() {
     const dataset = [
       {
+        date:formData.dateofinitiation.value,
         name: formData.name.value,
         city: formData.city.value,
         brand:formData.make.value ,
@@ -237,7 +239,8 @@ router.post("/insertSellrequest",(req,res) => {
         kmsdriven: formData.kmsdriven.value,
         manufactureYear: formData.yom.value,
         promocode: formData.promocode.value,
-        images: formData.image.imageNames
+        images: formData.image.imageNames,
+       
       }
     ];
     const data = dataset[0];
@@ -291,7 +294,7 @@ router.post("/insertSellrequest",(req,res) => {
       </table>
     `;
     //const sendToEmail = 'inspection@bikebazaar.com'; //email to send alerts to
-    const sendToEmail = 'rahul.khedkar@bikebazaar.com';
+    const sendToEmail = 'prabhjot@tekonika.co';
     mailer(output, 'Appointment Booked', sendToEmail, attachmentImages).catch(console.error);
 
     const body = dataset.flatMap(doc => [

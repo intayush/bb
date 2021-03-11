@@ -269,15 +269,7 @@ async function dataUpload(data) {
         }
   );
 
-  // imgArr.forEach((oldImage) => {
-  //   fs.rename(
-  //     oldImage.path,
-  //     `../client/public/vehicles/${oldImage.name}`,
-  //     () => {
-  //       console.log("Images moved");
-  //     }
-  //   );
-  // });
+
 
   data.forEach((vehicle) => {
     fs.readdir(

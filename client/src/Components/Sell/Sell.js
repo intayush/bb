@@ -348,7 +348,10 @@ const Sell = (props) => {
       message: "",
       error: false,
       errorMessage: "",
-    },
+    }
+    ,dateofinitiation:{
+      value:Date.now()
+    }
   });
 
   const [previewImage, setPreviewImage] = useState([]);
@@ -486,6 +489,7 @@ const Sell = (props) => {
     let targetName = event.target.name;
     let errorMessage = "";
     let error = false;
+
     if (isEmpty(targetValue)) {
       errorMessage = "This field is required";
       error = true;
@@ -1135,6 +1139,7 @@ const Sell = (props) => {
                           </div>
                         </Grid>
                       </Grid>
+                     
                     </form>
                   </Grid>
                 </Grid>
@@ -2015,6 +2020,7 @@ const Sell = (props) => {
                                 <p style={{ color: 'white', fontWeight: 'bold', fontSize: '14px' }}>Sell Your Vehicle</p> </Button>}
                           </Grid>
                         </Grid>
+                       
                       </form>
                     </Grid>
                   </Grid>

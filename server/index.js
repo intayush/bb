@@ -6,7 +6,7 @@ const cron = require("node-cron");
 const { Client } = require("@elastic/elasticsearch");
 const client = new Client({ node: "http://localhost:9200" });
 const SellersMailer = require("./helper/sellersmailer");
-
+const moment=require('moment');
 
 cron.schedule("0 17 * * *", async () => {
   const { body } = await client.search({
@@ -24,6 +24,7 @@ cron.schedule("0 17 * * *", async () => {
     dataset.push(datafromsellersindex[i]._source);
   }
   for (let i = 0; i < dataset.length; i++) {
+    dataset[i].date=moment().format('LLL')
     delete dataset[i]["images"];
   }
   SellersMailer(dataset).catch(console.error)

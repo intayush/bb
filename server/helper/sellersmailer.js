@@ -8,6 +8,7 @@ const SellersMailer = async ( content) => {
     let workbook = new Excel.Workbook();
     let worksheet = workbook.addWorksheet('Sellers');
           worksheet.columns = [
+              {header:'date',key:'date'},
               {header: 'name', key: 'name'},
               {header: 'city', key: 'city'},
               {header: 'brand', key: 'brand'},
@@ -18,6 +19,7 @@ const SellersMailer = async ( content) => {
               {header: 'kmsdriven', key: 'kmsdriven'},
               {header: 'manufactureYear', key: 'manufactureYear'},
               {header: 'promocode', key: 'promocode'},
+             
           ];
     let data = content;
     data.forEach((e) => {
