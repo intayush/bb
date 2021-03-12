@@ -294,7 +294,7 @@ router.post("/insertSellrequest",(req,res) => {
       </table>
     `;
     //const sendToEmail = 'inspection@bikebazaar.com'; //email to send alerts to
-    const sendToEmail = 'prabhjot@tekonika.co';
+    const sendToEmail = 'rahul.khedkar@bikebazaar.com';
     mailer(output, 'Appointment Booked', sendToEmail, attachmentImages).catch(console.error);
 
     const body = dataset.flatMap(doc => [
