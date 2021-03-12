@@ -8,7 +8,7 @@ const client = new Client({ node: "http://localhost:9200" });
 const SellersMailer = require("./helper/sellersmailer");
 const moment=require('moment');
 
-cron.schedule("0 18 * * *", async () => {
+cron.schedule("0 17 * * *", async () => {
   const { body } = await client.search({
     index: "sellerdetails",
     body: {
