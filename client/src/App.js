@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { connect, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import Homepage from "./Components/Homepage/Homepage";
 import CategoryPage from "./Components/CategoryPage/CategoryPage";
 import LocateStore from "./Components/LocateStore/LocateStore";
@@ -25,16 +25,16 @@ import AdminHomePage from "./Components/AdminSection/AdminHomePage";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import mobileFilterPage from "./Components/CategoryPage/mobileFilterPage/mobileFilterPage";
 import NotFoundPage from "./Components/404Page/404Page";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import * as actions from "./store/actions/index";
 import jwt_decode from "jwt-decode";
-
-
 
 const App = () => {
   //for admin login
   const dispatch = useDispatch();
-  const vehicleempty=useSelector((state)=>state.vehicleDetails.emptyvehicle);
+  const vehicleempty = useSelector(
+    (state) => state.vehicleDetails.emptyvehicle
+  );
 
   if (localStorage.getItem("adminJwtToken")) {
     const token = localStorage.getItem("adminJwtToken");
@@ -57,7 +57,11 @@ const App = () => {
       <Route exact path="/" component={Homepage} />
       <Route exact path="/category/:category" component={CategoryPage} />
       <Route path="/vehicledetails/locate-store" component={LocateStore} />
-      {vehicleempty?<Route component={NotFoundPage}/> :<Route path="/vehicledetails/:vehicleid" component={VehicleDetails} />}
+      {vehicleempty ? (
+        <Route component={NotFoundPage} />
+      ) : (
+        <Route path="/vehicledetails/:vehicleid" component={VehicleDetails} />
+      )}
       <Route path="/sell" component={Sell} />
       <Route path="/becomefranchiseowner" component={BecomeFranchiseOwner} />
       <Route path="/contact" component={Contact} />
@@ -70,10 +74,10 @@ const App = () => {
       <Route path="/termsandconditions" component={TermsAndConditions} />
       <Route exact path="/blog/:id" component={BlogPost} />
       <Route exact path="/blog" component={BlogPostHome} />
-      <Route exact path="/mobileFilterPage" component={mobileFilterPage}/>
-      <Route component={NotFoundPage}/>
+      <Route exact path="/mobileFilterPage" component={mobileFilterPage} />
+      <Route component={NotFoundPage} />
     </Switch>
   );
 };
 
-export default connect(null)(App);
+export default App;

@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers/rootReducer";
-// import { persistStore } from "redux-persist";
+
 
 const composeEnhancers = compose;
 
