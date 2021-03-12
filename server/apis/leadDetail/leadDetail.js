@@ -228,7 +228,7 @@ router.post("/insertSellrequest",(req,res) => {
   async function upload() {
     const dataset = [
       {
-        date:formData.dateofinitiation.value,
+        date:Date.now(),
         name: formData.name.value,
         city: formData.city.value,
         brand:formData.make.value ,
@@ -240,7 +240,6 @@ router.post("/insertSellrequest",(req,res) => {
         manufactureYear: formData.yom.value,
         promocode: formData.promocode.value,
         images: formData.image.imageNames,
-       
       }
     ];
     const data = dataset[0];

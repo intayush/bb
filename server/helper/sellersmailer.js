@@ -37,7 +37,7 @@ const SellersMailer = async ( content) => {
     });
     const mailOptions = {
         from: '"Daily Sellers Report" <bikebazaar01@gmail.com>',
-        to: 'saurabh.k@bikebazaar.com ',
+        to: 'saurabh.k@bikebazaar.com',
         subject: 'Sellers Report',
         html: '',
         attachments: [

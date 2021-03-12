@@ -349,9 +349,6 @@ const Sell = (props) => {
       error: false,
       errorMessage: "",
     }
-    ,dateofinitiation:{
-      value:Date.now()
-    }
   });
 
   const [previewImage, setPreviewImage] = useState([]);

@@ -8,7 +8,7 @@ const client = new Client({ node: "http://localhost:9200" });
 const SellersMailer = require("./helper/sellersmailer");
 const moment=require('moment');
 
-cron.schedule("0 17 * * *", async () => {
+cron.schedule("0 18 * * *", async () => {
   const { body } = await client.search({
     index: "sellerdetails",
     body: {
@@ -23,10 +23,16 @@ cron.schedule("0 17 * * *", async () => {
   for (let i = 0; i < datafromsellersindex.length; i++) {
     dataset.push(datafromsellersindex[i]._source);
   }
+
   for (let i = 0; i < dataset.length; i++) {
-    dataset[i].date=moment().format('LLL')
+    
+    if(dataset[i].date!==null){
+      dataset[i].date=moment(dataset[i].date).format('LLL')
+    }
+
     delete dataset[i]["images"];
   }
+
   SellersMailer(dataset).catch(console.error)
 });
 
