@@ -228,7 +228,7 @@ router.post("/insertSellrequest",(req,res) => {
   async function upload() {
     const dataset = [
       {
-        date:Date.now(),
+        date:formData.date.value,
         name: formData.name.value,
         city: formData.city.value,
         brand:formData.make.value ,

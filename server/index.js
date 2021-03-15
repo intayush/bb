@@ -26,10 +26,9 @@ cron.schedule("0 17 * * *", async () => {
 
   for (let i = 0; i < dataset.length; i++) {
     
-    if(dataset[i].date!==null){
+    if(dataset[i].date){
       dataset[i].date=moment(dataset[i].date).format('LLL')
     }
-
     delete dataset[i]["images"];
   }
 

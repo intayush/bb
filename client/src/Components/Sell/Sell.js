@@ -348,6 +348,9 @@ const Sell = (props) => {
       message: "",
       error: false,
       errorMessage: "",
+    },
+    date:{
+      value:Date.now()
     }
   });
 
